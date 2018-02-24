@@ -1,0 +1,237 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 f transcript. Skip to the end.\par
+So far, we've looked at how to get JSON and XML\par
+data from the web.\par
+Now today we look at how to get it\par
+HTML, which is essentially going out to the web\par
+and scraping data from web pages.\par
+So that's our goal for today.\par
+Essentially, what do we need to know?\par
+Well, we need to know, to be able to do this properly\par
+we need to know some amount of HTML and CSS.\par
+Not a whole lot, but just enough,\par
+so that we understand where the data is on our page\par
+and how to get it out of there.\par
+We need to be able to, of course,\par
+send and receive HTTP requests, so we need\par
+this whole stuff over there.\par
+And finally, once we get the HTML back,\par
+we need to parse the HTML that's returned by the HTTP request\par
+and the HTTP request process.\par
+So these are the three things we need to know.\par
+So let's start with HTML.\par
+And that stands for HyperText Markup Language.\par
+It's actually a very simple language,\par
+because the whole idea of HyperText Markup Language\par
+is to take a piece of text and format it.\par
+And just like Word, or Pages on a Mac formats a document,\par
+similarly HyperText Markup Language formats an HTML page--\par
+takes the text on a HTML page and formats it.\par
+The only difference is that when you're\par
+writing the structure of the page,\par
+you actually have to write the HTML code yourself unless you\par
+use an HTML editor or some sort of HTML page generator,\par
+I should say.\par
+So the basic idea here is that the HTML page\par
+consists of content.\par
+That's text.\par
+And all the text lives inside tagged elements.\par
+The tagged elements are what actually marks up the text.\par
+And the elements can have attributes,\par
+and the attributes often contain formatting commands,\par
+like for example, the color of the text or the font size\par
+or those kind of things.\par
+We don't really care but it's derived from SGML.\par
+That's one of our languages here.\par
+If you want to look at that.\par
+It's closely related to XML, and we've already seen XML.\par
+So you can see that there are structural similarities\par
+between XML and HTML, because they both are SGML based.\par
+And the only other thing that we need to worry about\par
+is that in an HTML page you can also\par
+find runnable scripts, typically written in JavaScript.\par
+And that complicates matters a little bit,\par
+because a script is essentially a program that generates--\par
+or a program fragment that generates an output,\par
+and until the script is run, you're\par
+not going to get the output.\par
+So that complicates things a little bit.\par
+We'll talk about it but we're not\par
+going to really delve into it in this class.\par
+We're going to assume that our HTML pages are well\par
+structured in HTML itself.\par
+So we'll briefly look at HTML in a way here.\par
+And I will point you to resources\par
+you can find out more about it.\par
+But if you look at a typical HTML page,\par
+this is what it looks like.\par
+Essentially, we have a bunch of tags.\par
+So, here for example, this tag says HTML and that's says\par
+/HTML.\par
+So what this is saying is that all this stuff that\par
+is between these two, that is all this, is piece of HTML code\par
+so to speak.\par
+It's not strictly necessary to put an HTML tag, because it's\par
+an HTML page, but it's a good way\par
+to do it for forward compatibility.\par
+So that's the basic idea.\par
+So the content is always going to be\par
+included inside an HTML tag.\par
+Let's look a little bit deeper into this.\par
+The page is divided into two parts.\par
+A head and a body.\par
+The head contains meta information about the page,\par
+and typically that includes the title.\par
+And the title is what shows up on the top\par
+of your page over there.\par
+So if you look at an HTML page, we\par
+have here for example our notebook for today.\par
+And we notice that it has a title which says, over there--\par
+I don't know if you can see it, but it says, "web scraping."\par
+That's the title, so that's included inside the title\par
+tag inside your HTML page.\par
+So that's the purpose of the title,\par
+and then it contains some meta information.\par
+And more important than anything else,\par
+it contains what's called the style of the page.\par
+The style, and we'll see an example later,\par
+is typically CSS style.\par
+And that tells HTML how to format individual sections\par
+of the page.\par
+So how you want the heading to look like,\par
+how you want the body to look like.\par
+Those kind of things.\par
+The style is kind of important for web scraping,\par
+and so it's important to note that the style is really\par
+where we are going to scrape data from.\par
+We going to use it to scrape data.\par
+Then there's a body part.\par
+And the body contains the actual contents of the page.\par
+So this is what really shows up on the page itself.\par
+So in the body we've got various things.\par
+So there's an H1, which is a bold, you know big letters,\par
+heading kind of stuff over there.\par
+And this is where you are in this world or whatever,\par
+and you'll see that in big bold letters\par
+somewhat like this anatomy of an HTML page.\par
+Not that this is HTML, but that's the idea.\par
+That it's a heading.\par
+Just like in Word, you can set a heading,\par
+or a body, headings, subheading, or stuff like that.\par
+Then there's a script in this page here.\par
+And this script is a Google API script,\par
+because this particular example that I'm looking at here\par
+embeds a map inside-- or actually no.\par
+It uses API to get some information from Google.\par
+So actually it does embed a map.\par
+It embeds a map into the page.\par
+Then there's a div tag.\par
+Div tags divide your page up into sections.\par
+So the idea is that you have a page you want it to look nice.\par
+You know, like in a brochure.\par
+You might have a panel on one side,\par
+a graph on the other side, a picture,\par
+and an image in another corner.\par
+And you want to decide beforehand\par
+what the different segments of your page will look like.\par
+So typically you put them inside a div tag.\par
+And in this div tag we see here--\par
+so the important thing to note here\par
+is that every tag has an open and a close.\par
+So we got an H1 and a /H1.\par
+And the text that's inside is what is marked up.\par
+Some tags like-- actually any tag\par
+can also have additional information\par
+in the open tag part of it.\par
+So this is the open tag here.\par
+And it contains an additional piece of information,\par
+which says, "class=listbox."\par
+Class is a CSS selector.\par
+So what we are doing is we are saying here, use the formatting\par
+commands that are inside a CSS definition,\par
+CSS is cascading style sheets, inside of CSS definition\par
+called listbox, use that format for whatever\par
+follows in this div tag.\par
+So this is kind of important.\par
+Because if you think about it, when you're structuring the web\par
+page and you're designing a web page\par
+you're going to define different segments of your page,\par
+and for each segment you're going\par
+to have a different format.\par
+For example, you might divide your page up into parts,\par
+and you might say this part contains an image,\par
+this part contains a panel, and that this part here\par
+contains text.\par
+Right?\par
+So now the first thing you are going to do\par
+is you're going to say how big is this part.\par
+How big is this part?\par
+So each part has its own size.\par
+And when it has on size, you're going\par
+to have to define that size.\par
+And that's what is going to show up\par
+in your CSS listbox, or selector,\par
+or the value over there.\par
+So whenever anyone, any organization that's\par
+delivering HTML to you is designing the page,\par
+they're going to include certain formatting information\par
+inside the tags so that the page can be formatted appropriately.\par
+And we can use that formatting information\par
+to decide whether there is valuable information or not\par
+in that section.\par
+We'll see that later on.\par
+So that's the general idea here.\par
+So let's look into the head over here.\par
+In our head page over here it contains a style tag.\par
+And inside the style tag we're defining\par
+the different formatting commands\par
+that the page might have.\par
+So let's take a look at one of them over here.\par
+And the one we are going to look at is a listbox.\par
+What we're seeing here that a listbox--\par
+a div tag that contains a listbox box class\par
+should have a background of light green\par
+and a width of 500 pixels.\par
+That's what we're seeing here.\par
+And what this works out to is in our body itself\par
+when we define the div tag, we want to map to appear.\par
+So in this case, like I said, it's\par
+a Google map that's going to show up,\par
+an embedded map that's going to show up.\par
+We're seeing that the div tag here contains "class=listbox"\par
+and this is going to use the formatting that we gave\par
+on our page at the back over here,\par
+which means light green and 500px.\par
+And it's going to use that over there.\par
+So in this example, the listbox didn't contain anything,\par
+but what we want to do is we want\par
+to say, OK, if the listbox, for example,\par
+might contain a list of places.\par
+Let's say the map is actually a list of restaurants\par
+in your neighborhood.\par
+So the map here shows you the map itself.\par
+And there's more to this on the right, which\par
+is not showing up on the page.\par
+The map is the actual Google map.\par
+And then, under that, we have a listbox\par
+that contains a listing of all the restaurants.\par
+So this would be substituted by a listing\par
+of all the restaurants.\par
+And we would know then-- when we are scraping the page we would\par
+know then that we need to look for a div tag with\par
+the "class=listbox" to find the list of restaurants that we\par
+want to look for.\par
+And that's the idea here.\par
+There could be more than one div tag on the page.\par
+In fact there typically are many div tags on the page.\par
+However, each div tag is formatted in a particular way,\par
+depending on the content and we can\par
+use that formatting, for example, the listbox formatting\par
+as a mechanism for figuring out which section of the page\par
+contains useful information for us.\par
+So here is "class=listbox" contains that.\par
+And so that's what we would use to actually find\par
+the data that we want.\par
+}
+ 

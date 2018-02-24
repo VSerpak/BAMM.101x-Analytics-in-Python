@@ -1,0 +1,184 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Some more examples of CSS selectors over here.\par
+So here we have an H1 as heading format.\par
+And this is, if you have an H1 tag that\par
+contains a heading format attribute or value,\par
+then that should be colored blue-violet.\par
+So we can take a look at that here.\par
+So here we have a second example.\par
+In this, we have an H1 tag, several tags, actually.\par
+It says that if you have an H1 tag with the heading format\par
+as a CSS selector value, then the color\par
+should be blue-violet.\par
+So the way this will work here is,\par
+it'll say H1 class = heading_format,\par
+and then CSS examples is going to be colored blue-violet.\par
+We also have another tag here, the p tag,\par
+which is a paragraph tag.\par
+And it has an id = cursive_green_font.\par
+The main difference between ID and class\par
+is that class applies to specific tags.\par
+So this is saying div explain box.\par
+Therefore, when we want to format something\par
+in the explain box, we have to use it with a div tag\par
+and give the class equals explain box value with that.\par
+However, what this says is hashtag cursive green font.\par
+And this is not attached to any particular HTML tag.\par
+It's an independent one.\par
+So we can use this in any HTML tag.\par
+And here we are using it in the paragraph tag,\par
+and in order to use it in any HTML tag,\par
+we have to give it an ID value.\par
+So any CSS selector definition that starts with a hashtag\par
+is used with an ID, and any CSS selector\par
+that starts with the HTML tag is used with the class.\par
+That's the main difference.\par
+But we don't really have to worry too much about this.\par
+Our goal is to understand that in HTML, there are tags.\par
+There's a tag, let's say p, and then it\par
+can have a bunch of attributes.\par
+For example, you can have an attribute\par
+that says article equals something, xyz.\par
+Then there's text, and then there's a closed tag.\par
+And by trying to find this section here,\par
+we can identify the location of our text\par
+and extract it from the page.\par
+That's our goal.\par
+The last kind of tag we want to look at is the a tag --\par
+actually, no.\par
+Not the last tag.\par
+We have one more tag to look at.\par
+We want to look at the a tag.\par
+A tags are very important, because a tags\par
+are what I call annotate tags.\par
+So this tag is an annotate tag.\par
+And the annotate tags connect us to other web pages.\par
+After all, what is a web page?\par
+A web page is a bunch of text, and inside the text\par
+are embedded links, and then you take your cursor\par
+and hover around over that link, and then click it,\par
+and you go to another web page.\par
+So the page has to know what the next page is going\par
+to be when you click on it.\par
+And that's embedded inside and a tag,\par
+and it uses the value of an attribute called href\par
+to know where to go when you click on it.\par
+So what we can think of this is that an a tag really\par
+is a href equals http-- it must start with an http\par
+if it's an HTTP link-- slash slash something.\par
+That's the open tag.\par
+And then there's a link, "Click me!"\par
+And then there's a close tag.\par
+So this sets up our clickable link.\par
+What will show up on the screen is, "Click me!"\par
+That's all.\par
+And typically, it's colored blue, or some other color,\par
+depending on whether you have clicked on it before, or not,\par
+or the browser does.\par
+And then, you take your cursor, and you\par
+hover around "Click me!"\par
+And what happens is that, when you click on it, then,\par
+at that point, the HTML page goes and picks up\par
+the link that it's supposed to go to\par
+and goes to that link, basically.\par
+So if you're hunting in a page to find all the HTML links,\par
+you really need to look for all the a tags.\par
+And we'll go through an example where we do that.\par
+The only thing left here is the forms tag.\par
+So often, when we are using HTML,\par
+we are also entering data into the page.\par
+For example, you might log into a page,\par
+or you might be providing some information about yourself\par
+or entering a bunch of keywords for a search on the page.\par
+And when you're doing that, you have\par
+to send data from your browser, which is a client,\par
+to the server, which is sitting remotely somewhere, like,\par
+for example, maybe amazon.com or something.\par
+It's sitting in Seattle, and you could\par
+be in New York or Paris or Beijing or anywhere.\par
+So the goal there is to send the data across.\par
+The data from a client to the server\par
+typically is collected in a form.\par
+And then it goes across in an HTTP request object back\par
+to the server.\par
+So the format of a form is fairly simple.\par
+The idea in a form is that you've got the tag form\par
+and closing tag slash form.\par
+You have an action.\par
+The action is what your page is going\par
+to do after the user clicks the Submit button.\par
+So the user clicks the Submit button,\par
+and we'll see in a second what that is.\par
+Then typically, you send the data back to the server,\par
+and that server is going to run some kind of a script\par
+or do something like that.\par
+So here I have After_form.html, but it might contain some other\par
+URL reference.\par
+It should typically contain a URL reference.\par
+So we are not worried too much about method and all that stuff\par
+here.\par
+So really, ignore that for now, because we are essentially\par
+data scrapers.\par
+But the key thing here is the input field.\par
+All the data that you enter is collected through the input\par
+tag in your form.\par
+Input tags go inside a form, and they collect the data.\par
+So there are various kinds of data\par
+that you can give You can give text data,\par
+you can do radio buttons, you can have a date box,\par
+you can have numbers.\par
+All kinds of things.\par
+And so the key in an input tag is,\par
+there's a type, which tells it what kind of data is expected,\par
+and there's a name.\par
+The name is really important, because the name\par
+is like a variable name that is sent back to the server\par
+so that the server knows that that's\par
+the value that it's collecting.\par
+So typically, when you send this back,\par
+it's going to send back the data.\par
+It would say name = John, or something like that,\par
+if you entered John over there.\par
+So that would go back in the HTTP response,\par
+and then the server will know that the--\par
+sorry.\par
+Not name.\par
+Your name.\par
+Your name.\par
+Because it has to use the name of the variable.\par
+Your name = John.\par
+So the server will know that that the value\par
+of your name that the user is sending back to the server\par
+is John.\par
+And then it can use that in a database query or calculations\par
+or whatever else it's doing to get the data back.\par
+So when we as web scrapers, sometimes we\par
+need to send information to the server\par
+as well through the program.\par
+For example, if you want to log in programmatically,\par
+you will have to send your username and password\par
+through your program.\par
+And to do that, you need to figure out\par
+what is the variable that contains the name, the username\par
+or whatever, and what is the variable that\par
+contains the password, and put that into your HTTP request\par
+and send that to the server so that you can\par
+log into the software itself.\par
+We'll take an example of that shortly.\par
+But that's what we want to be able to know,\par
+that we need to figure out what the input variables are inside\par
+of form.\par
+If you have further interest in HTML and CSS--\par
+which you should do, it's a good idea to know these things--\par
+you can go to Khan Academy.\par
+And I've put the link over here that you can use.\par
+So if you use this link and go to Khan Academy\par
+and study the HTML CSS, do the first two topics, Intro\par
+to HTML and Intro the CSS, and you\par
+will be well prepared for web scraping,\par
+because you will understand what format the data that you're\par
+getting back is going in.\par
+And that's useful.\par
+}
+ 
