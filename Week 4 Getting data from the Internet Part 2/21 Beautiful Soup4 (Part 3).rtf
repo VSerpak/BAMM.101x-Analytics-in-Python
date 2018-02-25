@@ -1,0 +1,179 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9\par
+I can also specify that I want to find certain tags that have\par
+certain CSS selector values.\par
+So for example, if I want to find all the article\par
+tags that contain class equals recipe content card.\par
+Then I can specify that directly by giving the tag that I'm\par
+looking for, article in this case,\par
+and then telling it that for this CSS selector class,\par
+I want the value to be recipe content card.\par
+So it will exclude all other article tags,\par
+that is the ones that don't have recipe content card as a value.\par
+Note that I need to put an underscore after the word class\par
+here.\par
+And this only applies to class, the class attribute,\par
+because class is also a keyword in Python.\par
+For example, on the browser if I remove this, and the rest of it\par
+becomes dark green, and that's an indication that this is not\par
+something I can mess around with.\par
+So let's say I do this, and Beautiful Soup can figure out--\par
+you can drop the underscore basically and figure that out.\par
+So if I run this, I get this stuff back here,\par
+which is essentially these two articles,\par
+and I can check the length of it to see how many I get back.\par
+And that says two, and I get exactly two back,\par
+which is what corresponds to what I have on this page.\par
+And a useful way of looking at a page is to look at the page\par
+itself, and then look at-- so what we're interested\par
+in in our page is--\par
+in this page over here is, the ones that are actual recipes.\par
+So if you look through the results,\par
+we see that the recipe here, Spicy Lemongrass Tofu.\par
+Then there's some general articles, which\par
+we don't care about that much.\par
+And then there is one more recipe, Chinese Egg Noodles.\par
+So just two recipes.\par
+So we don't want all the other articles.\par
+We just want the recipes.\par
+So what we do is, we look at this recipe here,\par
+and if you right-click on it and choose the Inspect Element,\par
+you might need to turn on the developer menu in your browser.\par
+So if you are-- like I'm in Safari here.\par
+I go to Safari preferences, and then choose show whatever menu,\par
+and I think Chrome comes with that set as default,\par
+but you might need to do that.\par
+But if you can do that, and then click Inspect Element.\par
+It shows me that element itself.\par
+And we see here that the element says,\par
+article class equals recipe content card.\par
+So that indicates that it's a recipe.\par
+And I can see that that's a recipe,\par
+and this is not by right clicking on this,\par
+and looking at the value here.\par
+And this says, article class equals article content card.\par
+So this is not a recipe content card.\par
+So essentially what you want to do\par
+is, you want to look at your web page,\par
+and figure out what uniquely identifies the data that you're\par
+looking for.\par
+Our interest in this page is recipes.\par
+So we want to find out what uniquely identify as recipes,\par
+and it turns out that what does that is this which says,\par
+recipe content card.\par
+And that's what we want to look for.\par
+So that's what we are looking for over here.\par
+We are saying article class equals recipe content card,\par
+and we get our data back from them.\par
+In this case, what we're doing is\par
+we are calling find all with two arguments.\par
+The tag that we're looking for, and then\par
+the attribute, the selector, and value pair\par
+that we're looking for.\par
+Sent as, the name of the selector,\par
+and the value of the selector, equals the value selector.\par
+You can also send them as dictionaries.\par
+This is useful in particular when you want\par
+to look for multiple selectors.\par
+So if there's a tag that says, class equals XYZ, ID equals\par
+ABC, and then something else and then something else,\par
+and you want to send them all.\par
+You can put them all inside a dictionary one after the other,\par
+and the normal dictionary elements separated by commas.\par
+And then we are saying, we only want the tags\par
+that correspond to all those different selector\par
+values that we're looking for.\par
+So either method is fine, and it's often easier\par
+to just do this, do the class equals stuff.\par
+But you should know this is there as well, because it's not\par
+always going to work.\par
+So that will give us the same too whatever\par
+you're looking for over there.\par
+The next thing we can do is given a particular tag result,\par
+we can get the content that's marked up.\par
+So here, for example, instead of find all I'm using find.\par
+I think find the first article that\par
+has class value of recipe content card.\par
+Note that here I don't need an underscore, because sending\par
+class is a string.\par
+So it's a literal.\par
+It doesn't have any Python meaning anyway, right?\par
+So and then what I can do is, I find that.\par
+And then from the result, I call the Get Text function,\par
+and I get the contents of that text over there.\par
+So that's how I get the marked up text.\par
+It's got all the backslash n's and all kinds of stuff in it,\par
+but we can always get rid of that.\par
+If I just print this, for example, it\par
+will print very nicely, and you'll be all set.\par
+So we get this stuff back here.\par
+And finally, we can get the value of an actual attribute\par
+by using the dot get, which is actually the same as what\par
+we use in dictionaries, to find particular attribute\par
+values inside a tag.\par
+So let's look now inside our Spicy Lemongrass Tofu,\par
+and Inspect Element again.\par
+And so we get here our article class equals recipe content\par
+card, and inside that we see that there is an a-link, which\par
+has a class equals photo link.\par
+Doesn't really matter I guess.\par
+But inside this class equals photo link-- no, not that.\par
+We want this one.\par
+Class equals a view complete item.\par
+So this view complete item in this a-class over here,\par
+we've got the link to the recipe itself.\par
+So this contains a link to the recipe.\par
+And we want to extract this link,\par
+but this link is not part of the text of the marked-up text.\par
+It's inside the tag itself, and we want to get that link.\par
+So what we want to do is, we want to say, find this a-tag,\par
+get the HREF attribute from that, and extract its value.\par
+And that will give us the link to the next article\par
+if you want to find the actual recipe content from Epicurious.\par
+So that we can do here by using the dot get function.\par
+So let's say first what we're going to do\par
+is we're going to find the recipe information.\par
+The entire recipe information.\par
+So we do results page dot find, give the tag name article,\par
+and send the attributes that we're\par
+looking for that we want the class to be recipe content\par
+card.\par
+So that's the first thing we do.\par
+From that we look for the annotate tag\par
+that gives us the a-tag.\par
+Then we can print the link just to be sure that we're\par
+getting the right thing.\par
+And we say that from this tag--\par
+so this recipe link is our thing they're looking for.\par
+So from the recipe link, we want to get the value of the HREF\par
+attribute.\par
+You can get the value of any attribute,\par
+but we're looking for the HREF attribute.\par
+And we get that and so it's going to return the URL,\par
+and shove it inside link URL.\par
+And then we print that.\par
+So let's take a look at this, and that's what we get here.\par
+So our a-tag is entire tag.\par
+HREF all this stuff, Spicy Lemongrass Tofu marked up,\par
+the link URL is this.\par
+Notice that it's missing the {{\field{\*\fldinst{HYPERLINK www.epicurious.com }}{\fldrslt{www.epicurious.com\ul0\cf0}}}}\f0\fs22 .\par
+Any link for it to work actually has\par
+to have HTTP in front of it, and we need to add that back again.\par
+But typically on a web page you're\par
+not going to see the full link, because the server knows\par
+that it's going to put Epicurious.com in front of it.\par
+And we see the type of the link is a string.\par
+So both get text as well as get return a string type,\par
+and that's our string there.\par
+So just to clarify all this stuff here.\par
+If I take my link URL, and add to the front of it,\par
+and run this I get a clickable link.\par
+If you notice now, it's clickable link, right?\par
+Because it's got the HTTP in front of it.\par
+Anything to be clickable has to have HTTP in that.\par
+So that's the basic commands that we can--\par
+or functions we can use with Beautiful Soup.\par
+}
+ 

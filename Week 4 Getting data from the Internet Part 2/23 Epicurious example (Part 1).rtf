@@ -1,0 +1,215 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9\par
+So let's take an example of how we can get data from the web.\par
+And our goal here will be to go to the Epicurious site\par
+and to get a list of recipes for a keyword,\par
+or a bunch of keywords.\par
+And for each recipe, we're going to get\par
+a list of recipe dictionaries.\par
+We're going to get a list of recipes in a dictionary format,\par
+and each recipe, we will get the name, a brief description,\par
+the list of ingredients, and the preparation steps.\par
+So just to take a look at what exactly we're working with,\par
+let's go back to Epicurious and see what we get there.\par
+So if we type in "tofu chili" like we did before\par
+in our example, we get this page over here.\par
+And the page, we can see, contains a recipe\par
+for spicy lemongrass tofu.\par
+And further down, a recipe for Chinese egg\par
+noodles with smoked duck and snow peas over here.\par
+So our goal is to go--\par
+if you enter "tofu chili," we want to find these two recipes.\par
+Spicy lemongrass tofu, and the Chinese egg noodles\par
+with smoked duck and snow peas.\par
+And for each recipe, we want to get the description.\par
+The description is-- if you look into this page\par
+here and click on Quick View, for example,\par
+we get this stuff here.\par
+No, we don't want to do that.\par
+We want to go straight to spicy lemongrass tofu,\par
+and we go to this page over here.\par
+So what we want to do is we want to get that link--\par
+yikes.\par
+You want to get this link here, the link to spicy lemongrass\par
+tofu.\par
+We're going to click on it and then go to the Detail page.\par
+And on the Detail page, you want to pull out\par
+the description, the list of ingredients,\par
+and the preparation steps.\par
+So these things you want to pull out from there.\par
+And finally, put all this stuff in a dictionary\par
+where we have every recipe.\par
+In this case, spicy lemongrass tofu and the Chinese egg\par
+noodles, with the name of the recipe, the description, which\par
+contains all this stuff, while traveling on a train,\par
+and all that kind of stuff.\par
+And then the list of ingredients.\par
+That is lemongrass stalks, soy sauce, et cetera.\par
+And the preparation steps.\par
+And so we get a list of these dictionaries.\par
+And that becomes our data, and a list or dictionary.\par
+Which, as you can think, can be easily saved\par
+as a JSON-- in JSON format for distribution.\par
+Or perhaps, in a NoSQL database, or some such thing.\par
+So that's our goal here.\par
+So let's see if we can go about doing this.\par
+So the first thing we want to do is\par
+we want to write the function itself.\par
+So I actually have-- on the IPython notebook\par
+that I've given you guys, the solutions are already there.\par
+But let me walk through the steps\par
+on how we build, just to get some experience\par
+with this process.\par
+So the first thing you want to do, of course,\par
+is figure out what the function is called.\par
+So we know that our function is going to get recipes.\par
+And we're going to first write a function that\par
+returns the list of recipes.\par
+And on the Recipe page itself, we have--\par
+the List of Recipes page itself, that\par
+is when we type "tofu chili" and get the list of recipes back.\par
+We've got the name of the recipe, the link of the recipe,\par
+and the recipe description.\par
+So we can pull that information out from that page itself.\par
+And then we'll use the link to open up the next page where\par
+the recipe detail is, and get the ingredients\par
+and the preparation steps.\par
+So let's say we start with a function, Get Recipes.\par
+And what this does is, given a bunch of keywords,\par
+that's the argument, it's going to return a list of recipes.\par
+So what we'll do is we'll say recipelist = list.\par
+An empty list, because we haven't sent anything yet.\par
+And our goal in the end finally is\par
+to return to this recipe list.\par
+We have to create the recipe list and then return it,\par
+so we have a function template in place.\par
+So this a good way to start, usually.\par
+Get a function template and work with that.\par
+And we can test it out.\par
+It's not going to do anything, but if you want,\par
+we can test it out.\par
+So let's just test it out.\par
+What the heck, right?\par
+So if you do this and then type "get recipes," and give\par
+it a bunch of keywords like "tofu chili,"\par
+it doesn't return anything.\par
+It returns an empty list, actually,\par
+because we've created an empty list here,\par
+and we're returning that.\par
+So now what you want to do is to actually go to the page,\par
+open it, and get the list of recipes.\par
+So that means doing the HTTP Request Response Cycle,\par
+so let's start with that.\par
+For that, we'll need to import requests.\par
+As a general rule, it's a good idea\par
+to do all your imports inside the function itself,\par
+so that your function is self-contained.\par
+You can move it from one program to another,\par
+and you won't need to have your program handle the inputs.\par
+So we import requests, and from BS 4, input "beautiful soup."\par
+So we go do those things, and then we\par
+do the Request Response Cycle.\par
+So we could say, response-- well,\par
+we first construct the URL.\par
+So the URL we know is {{\field{\*\fldinst{HYPERLINK http://www.epicurious.com/ }}{\fldrslt{http://www.epicurious.com/\ul0\cf0}}}}\f0\fs22 .\par
+That's the base URL.\par
+And from our experience, looking back at this thing here,\par
+we can see that our--\par
+that the page itself has the URL right in it.\par
+So we've got here the keywords right in them.\par
+Tofu percentage 20, chili and percent 20 was our--\par
+was the browser's way of saying--\par
+substituting a space inside the URL.\par
+Because URLs can't actually have spaces.\par
+So we can reconstruct that here by just adding our keywords.\par
+We don't have to worry about the space itself,\par
+because the request library will take care of any spaces\par
+when it sends the HTTP request.\par
+So we do this.\par
+And then we've got that, so now we\par
+can get our response by calling requests our get.\par
+response = requests.geturl.\par
+And we want to make sure that our response actually\par
+is successful, because it could be the mistake.\par
+The URL could change.\par
+For example, perhaps Epicurious decides\par
+to rewrite their search URL.\par
+And instead of calling it "search,"\par
+call it "keyword search" or something,\par
+and then this is going to fail.\par
+So then it's a good idea to check\par
+to see whether we've actually succeeded in this.\par
+So we have a couple of options.\par
+One is we could put it inside a try-except,\par
+so it catches an exception if necessary.\par
+Or we could just check the status code.\par
+It's better to use a try-except, but here, I'm\par
+going to just use a status code.\par
+So if a response.status_code = 200, which is good.\par
+And in fact, what we'll do is we'll say, if not,\par
+response to a status code.\par
+Because we don't want to--\par
+if you do a response to a status code equals 200,\par
+then our else will naturally be indented.\par
+And we want to reduce the spaghettiness of our code.\par
+So equals 200, then we return the empty list.\par
+And we don't need an else now.\par
+Because obviously, if we get to this point of the program,\par
+then it's obviously going to have our correct status\par
+code over there.\par
+So once we've got that, now we can\par
+put a try-except around this, just in case\par
+our "beautiful soup" fails.\par
+So we'll say, try, and we'll convert our page\par
+into the stuff returned into "Beautiful soup"\par
+response.content.\par
+Remember, response.content is going\par
+to actually return the content of the page\par
+and give it to our parser.\par
+[INAUDIBLE] XML is the before problem.\par
+A parser you don't need to give it.\par
+But if you don't, you will see a lot of pink stuff on your page,\par
+and that's not going to be really nice.\par
+So we've got this.\par
+So we've got that.\par
+And now what we want to do is we want to figure out\par
+our recipes in the page.\par
+And we saw earlier when we were testing this stuff out\par
+previously that if we find any article tag with a class\par
+attribute equals recipe content card, then we--\par
+then that contains a recipe.\par
+So what we can do is we can go here\par
+and say, get all our recipes.\par
+We could do a resultspage.findall\par
+and give it the article tag.\par
+Give me all article tags where the class--\par
+and remember, class needs an underscore,\par
+equals a recipe content guard.\par
+So that's going to give us all that stuff.\par
+So just to make sure you got it correctly, what I want to do\par
+is I want to print.\par
+Now, this is a good idea when you're developing something,\par
+to keep testing it out to see whether it works or not.\par
+I'm going to print recipes and run this.\par
+Oh well, it's not going to work.\par
+Well, they need an except, right?\par
+Except--\par
+So now I do this and I get an empty list.\par
+That's not so good.\par
+It's a good idea to test everything out.\par
+So let's test this out.\par
+And I do that, I do this, I get an empty list back.\par
+So now after I decide why am I getting an empty list back?\par
+I can see here why I'm getting it,\par
+because I forgot the word "search" over here.\par
+But in general, what you could do\par
+if you were looking for something\par
+is to print steps in the middle, or run the debugger\par
+or something like that to figure out where you went wrong.\par
+So let's try that again.\par
+And now we get our recipes back.\par
+OK, so that looks good.\par
+}
+ 
