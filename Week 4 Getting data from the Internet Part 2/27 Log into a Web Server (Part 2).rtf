@@ -1,0 +1,215 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 transcript. Skip to the end.\par
+--this here.\par
+So we see that there are a bunch of inputs.\par
+So you put that inside of an object\par
+that contains all this data.\par
+So here I'm going to create a dictionary over here.\par
+And I'm going to call that Payload.\par
+And in the Payload, I'm going to put every input name.\par
+So for every input we take the name of that input\par
+and use that as a keyword in the dictionary.\par
+And we give the value as the value of that key.\par
+So we have WP Name.\par
+That's the username.\par
+And that value comes from the file that I just read,\par
+your WP Password.\par
+And that's a password.\par
+And that also comes from the file that I just read.\par
+There's a login attempt value.\par
+And that has a value called Login.\par
+And that we get from the page itself.\par
+There's Edit Token.\par
+And that also we get from the page itself.\par
+A Title, and that also we get from the page itself.\par
+And Authorize Action, and we get that also from the page itself.\par
+Force, and that's MT, so we don't care about it.\par
+WP Force HTTPS colon 1--\par
+that means it's forcing us to use HTTPS rather than HTTP.\par
+And we send that with a 1.\par
+And from HTTP, because we are sending it from an HTTP file,\par
+so we set a 1 there as well.\par
+And finally, we're going to add one more field called the WP\par
+Login Token.\par
+And this, like I said before, is a value\par
+that is provided by the server.\par
+So we need to extract this from the page\par
+that we get from the server when we connect to this login URL,\par
+this one over here, OK?\par
+So we need to extract that.\par
+So for now I'm just putting in a placeholder.\par
+But it's not actually there in my dictionary.\par
+So we've got that.\par
+So we run that.\par
+And now I want to get the value of the login token itself.\par
+So I write a small function over here that says,\par
+GET Login Token from a response, HTTP response, request response\par
+thing.\par
+And to extract that, I create a BeautifulSoup Object.\par
+And in that object, I find an input field,\par
+which has a name attribute.\par
+And the value of the name attribute is WP Login Token.\par
+And then I do a dot GET and get the value\par
+of that attribute, which is pretty much what I want here.\par
+We can look over here.\par
+We see that this is--\par
+in this line over here, we have input name\par
+equals WP Login Token.\par
+And the value equals blah blah blah.\par
+So we want to get the value that's\par
+associated with this attribute, the Value attribute.\par
+And that's what we do.\par
+Dot GET, remember, gets a value of a CSS selector.\par
+Or more generally you can think of it\par
+as an attribute of a HTML tag.\par
+And we return the token.\par
+So we have this function.\par
+We write that.\par
+Now, the next thing we want to do\par
+is we want to send our login information.\par
+And we want to stay logged in into the website,\par
+into the web server.\par
+So it's not just a question of sending the page with the data\par
+and then that's the end of it.\par
+That won't work for us because when we send the data,\par
+our login data, that goes to the server, the server logs us in.\par
+And then after that, we stay logged\par
+in for every subsequent request.\par
+And the way that works is that the server sends back\par
+a session object that contains-- you\par
+can think of it as containing the fact that we are logged in.\par
+And that little object will go back and forth\par
+with every request after that, So\par
+that the server knows who we are,\par
+that we are the person who logged\par
+in initially, the same person.\par
+So we don't have to keep logging in every time we\par
+make a request because then we get nothing done.\par
+We're just logging in.\par
+So we need to-- what we need to do\par
+is, we need to set up what's called a Session Object.\par
+The request library contains a function called Session,\par
+which creates a session object.\par
+And that's going to keep track of the session data\par
+that comes back with our HTTP response.\par
+And it will send that along with the HTTP request\par
+back to the server.\par
+And when the server returns something,\par
+that will send back the session on it again.\par
+And that way we-- you can think of it as like a relay baton.\par
+That baton is going to get passed back and forth\par
+every time we send a request or a response or get a response.\par
+And that's how we keep track of who we are\par
+and this kind of thing.\par
+The server keeps track of who we are.\par
+So we set up a session object.\par
+So we're going to set up a session object,\par
+and we're going to say that the session object is valid\par
+only inside this block.\par
+We don't have to do that, but it's a good idea\par
+because you don't want a session object to be\par
+valid after a certain point.\par
+Because your program might be serving somebody else,\par
+and you might want to get some data\par
+and then stop the access to that session.\par
+So it's always a good idea, when you're\par
+accessing an external resource, to put it inside of width block\par
+so that it's lifetime is restricted.\par
+So here we wet up a session object.\par
+And now rather than saying request dot GET,\par
+we actually use the session, S. So we get a session object, S.\par
+And we're saying, from this session, get the login page.\par
+From the login page--\par
+so this is the page we got earlier--\par
+we use our Login Token function that we just\par
+wrote to get the value of the login token\par
+and add it to a payload.\par
+The payload we've already created over here, right?\par
+We created the payload over here.\par
+But we're going to add this new key and its value\par
+to the payload so that we have a complete set of data\par
+to send with our HTTP request.\par
+Now we send our login request.\par
+Logins are a POST request.\par
+That's more secure than a GET request.\par
+So generally when you are sending,\par
+for example, search parameters or something,\par
+you would probably do S dot GET rather than S dot POST.\par
+But if you're sending login information,\par
+you need to use S dot POST.\par
+So we send a POST request.\par
+And in the POST request, we give our same login page.\par
+And we give it the data that we want the request to do.\par
+So this is the data that is getting\par
+sent along with our request.\par
+And that data contains all the stuff\par
+that we put here, the name, the password, the login attempt,\par
+and all the way down to the login token.\par
+So once we got get that, we can check and see\par
+if we are still logged in.\par
+To see we are still logged in we-- in Wikipedia, once you\par
+log in, you get a page that contains various stuff.\par
+And one of the things it contains is a watch list.\par
+Now what the watch list is is a list of recent articles\par
+that you as a user have indicated\par
+that you want to see if someone has changed it or not.\par
+So this is a way-- if you don't have a watch list,\par
+it means you're not logged in.\par
+If you have a watch list, it means you're logged in.\par
+So we are going to get that page over there.\par
+And once we get that page over here, we send a GET request.\par
+And we're sending with a session, remember.\par
+So what the session is going to do\par
+is it's going to send our baton that says that we are logged in\par
+back along with that so Wikipedia knows it's us\par
+or where we were, right?\par
+And we'll look at the content.\par
+And in the Logged In page there, the watch list,\par
+there's a thing called MW dash changes list,\par
+which tells you the changes.\par
+So we'll get the text of that and see if that works.\par
+So now that we've set everything up,\par
+we can actually test this out.\par
+Before we do that we want to make sure\par
+that we have our imports ready, so Import\par
+Requests and from BS4 import BeautifulSoup.\par
+And that should be it.\par
+So let's test this out.\par
+And we run this.\par
+And it's going to go there.\par
+And it gets back page.\par
+And it does us--\par
+I had put "Big Bang" and the Main page as our two things\par
+to check on the watch list.\par
+It's just a dummy thing there.\par
+And it says that, yes, we've got a change on 17th May.\par
+And today is 18th May, just for your information.\par
+With the Talk Main page here in 2225 by the user\par
+called Bencherlite And Big Bang by Rivertorch on 15th May.\par
+And that's pretty much it.\par
+So that does us, yes we are logged in.\par
+And we can do all the login kind of stuff with that.\par
+So this is what you would do if you, for example, want\par
+to log in to the New York Times and look at the archives,\par
+or you want to log in to some other data provider who\par
+requires you to log in, first before you can actually\par
+get data from them.\par
+And with that, we end our getting data part.\par
+So what have we done?\par
+We have reviewed how to deal with JSON data and lxml data--\par
+oh, sorry, JSON data and XML data.\par
+We've looked at how to send HTTP requests\par
+and deal with the response that we get back.\par
+And if you're scraping web pages,\par
+then we can use BeautifulSoup to scrape the web page itself\par
+and get the data out of the web page--\par
+scrape the HTML and get it out of it.\par
+If there is JavaScript on the page,\par
+then you need to look at a library\par
+called Selenium, which is not-- we are not\par
+covering in this class.\par
+But it's worth knowing that it exists.\par
+Thanks.\par
+}
+ 
