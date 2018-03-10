@@ -1,0 +1,300 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Today, we'll look at the basics of databases.\par
+This is not intended to be a substitute for a database\par
+class, but we need some basic knowledge\par
+of what the structure of a database looks like\par
+and how we can use SQL to get data from a database.\par
+This is, after all, a data analytics class.\par
+So let's take a look at the basics of databases.\par
+And the first thing to understand\par
+is that in a computer program, the data that we use\par
+in the program is transient.\par
+When the program gets turned off,\par
+or the computer gets switched off,\par
+or the program ends, or crashes, or whatever,\par
+all the data that the program is using\par
+is lost, because it's transient.\par
+It exists only for that instant of time\par
+that the program is running or the computer is running,\par
+and then it's gone.\par
+But typically, when we have large storage of, large chunks\par
+of data that we need to use for analysis,\par
+we need to store that data in a persistent fashion.\par
+That means that the data should be available forever,\par
+so to speak.\par
+So the key in understanding is that what we don't want is\par
+or what we want to be able to do is\par
+to get data from sources that are persistent.\par
+And typically, a persistent database\par
+is one that sits on a computer, or a server, or something,\par
+and has an organized collection of data.\par
+So the key here is organized and data.\par
+It's data that's organized in some fashion.\par
+And there are many different kinds of databases.\par
+But the key is that they are organized.\par
+And they sit permanently on the computer.\par
+And they are persistent.\par
+So you can turn on the computer off, turn it back on,\par
+and it's still over there.\par
+That's the idea there, right?\par
+Or if it's on a server, you turn the server off and on,\par
+and it's still over there.\par
+And there are many databases like this.\par
+And typically, the two types of databases that we usually\par
+end up using in data analytics are either\par
+a relational database or something\par
+called a NoSQL database.\par
+So let's take a look at what these things are.\par
+We will in a minute.\par
+But these are the two basic forms of databases\par
+that we want to consider.\par
+Who uses databases?\par
+Well, almost everyone does.\par
+If you take any application, you're\par
+going to be using a database.\par
+If you're going to the web, you go to amazon.com and you type\par
+in your favorite thing that you're searching for--\par
+perhaps the latest drone or whatever.\par
+Then what Amazon does is, it goes to its database,\par
+sends a query saying find drones under $500\par
+or whatever your query is, and returns a long list of drones,\par
+the things that satisfy that condition,\par
+and shows them to you.\par
+So Amazon has a permanent repository\par
+of data that contains all the products that\par
+are available for sale.\par
+And you're essentially, when you send a request over the web,\par
+you are querying that database.\par
+That's what you're doing.\par
+So almost everyone uses databases.\par
+And when we interact on the web, we\par
+are actually using a database, whether we realize it or not.\par
+Well, most of the time anyway.\par
+The two kinds of databases that are of interest\par
+are relational databases and NoSQL databases.\par
+And relational databases are very straightforward kind\par
+of things.\par
+The analogy with tables is very clear.\par
+In a relational database, data is\par
+stored in tables, two-dimensional tables.\par
+So they look exactly like this, like this with Column 1,\par
+Column 2, et cetera, and Row 1, Row 2, et cetera.\par
+That's what a table looks like.\par
+And that's what we see inside a relational database.\par
+The idea in the relational database\par
+is that if you have a database, then the tables are logically\par
+connected.\par
+That means that you don't have tables\par
+that are dissociated from everything\par
+else in the database.\par
+Typically, they're connected through a column.\par
+So we might have a column here, like C1 for example,\par
+that is a key column.\par
+And that column is used in some other column as well.\par
+And then we can say Row 1 contains\par
+data for whatever table this is.\par
+And we can find some other table that has the same value of C1,\par
+and then connect the two up.\par
+So the idea is that if you think of a relational database,\par
+you really have T1, T2, T3.\par
+And these are all linked somehow.\par
+It may not be all of them linked to each other.\par
+For example, perhaps T2 and T3 are not linked,\par
+but you don't really want something\par
+that is like a T4 over here that is not connected to anything\par
+at all.\par
+Within the table itself, the columns are attribute values.\par
+So it's like an Excel table.\par
+You can think of having multiple Excel tables\par
+in a relational database.\par
+And the columns are social security number, name, phone\par
+number, and stuff like that.\par
+So what we end up having is rows and columns.\par
+And we finally want to get data from this,\par
+so we use a language called SQL for information retrieval.\par
+And that's really the key thing that we\par
+want to learn out of all this.\par
+How do we write SQL queries to get data\par
+from a relational database?\par
+And the goal in a relational database is to do two things--\par
+to make sure that the database has very low redundancy\par
+and is maximally consistent.\par
+Redundancy means that if in a database\par
+you have the same data repeated twice, or three times,\par
+or 10 times, or 15 times, then that's redundant.\par
+So if you have for example, let's\par
+say your name is John Smith.\par
+And in Table 1, there's John Smith,\par
+a row that corresponds to John Smith, and there your address.\par
+So let's say you live in New York.\par
+And then Table 2 also has the same thing--\par
+John Smith, NY, and maybe some other information\par
+attached to that.\par
+This is redundancy.\par
+We have the same piece of information, NY, NY,\par
+and John Smith, and John Smith repeated in the database.\par
+That's less than ideal, because what\par
+will happen if you moved from New York to Paris, right?\par
+If you move to Paris, we have to find\par
+every instance of your address in our database and change it.\par
+And that's not so good.\par
+You forget it in one place, then what you're going to have is,\par
+like if you go here and we say, hey,\par
+we've changed NY to say France.\par
+And now, if I ask the database, where does John Smith live?\par
+If the database goes to T1 and gets the address from there,\par
+it's going to say France.\par
+And if it goes to T2 and gets the address from there,\par
+it's going to say New York.\par
+And what that means is that we have a database that\par
+is no longer consistent.\par
+Consistency means that the database should give you\par
+the same answer to the same query,\par
+irrespective of how that query is executed.\par
+In the case of our example here, if the query\par
+was executed by looking at T1, we get one answer.\par
+If the query executed by looking at T2,\par
+we get a different answer.\par
+So that's inconsistent.\par
+So redundancy leads to inconsistencies, and of course,\par
+to wasted space and all kinds of other things as well--\par
+not so nice things as well.\par
+And the goal in a relational database\par
+is to make sure that we have minimal redundancy and maximal\par
+consistency in the database.\par
+The second kind of database is called a NoSQL database.\par
+And there's really not a single type.\par
+A NoSQL database is essentially a database\par
+that doesn't use SQL for--\par
+SQL, that is.\par
+SQL, sequel are interchangeable terms for accessing data.\par
+In other words, it's not a relational database.\par
+So NoSQL databases are typically used for very large data sets,\par
+often on the internet.\par
+And the idea there is that you have a very large data set.\par
+And let's say you have a row of information\par
+about a person that contains every possible piece\par
+of information known about that person.\par
+You know what their web habits are, what they spend money on,\par
+all their credit card numbers, their addresses, their spouse\par
+or previous spouses, their children, their children's\par
+ages, their children's schools, and all kinds of stuff.\par
+So you have all of this data.\par
+In a relational database, typically, that data\par
+will be spread out over multiple tables.\par
+And if you want to access all that information in one step,\par
+then you have to go to multiple tables,\par
+and collect that information, and then produce the result.\par
+And that can be slow.\par
+If however, you know that your application is going\par
+to actually get all that information in one step,\par
+it's going to require that information,\par
+the complete information in one step,\par
+then maybe it makes sense to rather than storing it\par
+in a NoSQL database, to store it in a-- so sorry,\par
+rather than storing it in a relational database\par
+in multiple tables, to store it in a single record of some form\par
+or the other, a single data element.\par
+And then you say, get me the data for John Smith\par
+and the entire data there--\par
+his history, the kid's history, their spouses,\par
+ex-spouses, parents, grandparents, grandchildren,\par
+whatever-- can show up in one shot.\par
+So that's the idea with the NoSQL database.\par
+Often that record is stored in the JSON format.\par
+We've already seen JSON formats.\par
+So often, the format is either JSON or something\par
+similar to that, but the idea is that whatever makes the most\par
+amount of sense in terms of getting\par
+the data as fast as possible.\par
+In other words, you want low latency.\par
+So you have to know beforehand how you're\par
+going to query the database.\par
+If you don't know that, if you want generalized querying,\par
+relational databases are better.\par
+But if you have a specific form of querying,\par
+then you need to think about, OK, I\par
+know this is what I'm going to get,\par
+so I might as well store it in a format that brings it out very,\par
+very quickly.\par
+The second nice thing about it is, it's very scalable.\par
+Because if you want to add more records to the database,\par
+you can think of it as having one giant table with all\par
+the information.\par
+So some new person comes along and you\par
+want to add all information about them,\par
+you just tag it on at the bottom.\par
+And you can keep tagging on at the bottom.\par
+And in fact, if you run out of space,\par
+you store it on the cloud, you just\par
+get another machine, another machine, another machine,\par
+another disk, whatever, and you can go on forever.\par
+So it's very scalable.\par
+And the downside, of course, is that there's\par
+lots of redundancy.\par
+So the same information may be stored in multiple places.\par
+For example, if you have John Smith's entire history in one\par
+record, that includes his children's history,\par
+and if you have, let's say his kid is Gene Smith.\par
+So Gene Smith's information is in a different record.\par
+And we have all that information there.\par
+It's duplicated.\par
+We already have it with John Smith,\par
+but we need to duplicate it with Jane Smith.\par
+Because if our query is says get me information on Jane Smith,\par
+we don't want to have to go and find John Smith\par
+and then get her data.\par
+That's the idea.\par
+So there's a lot of redundancy built\par
+in inside a NoSQL database, which\par
+is an issue, because we're talking with very large data\par
+sets.\par
+But it's also less of an issue because computing power,\par
+the price of storage, all these things\par
+are actually getting lower as time goes by.\par
+So since they're getting lower, redundancy,\par
+at least in storage terms, is not a big deal.\par
+We still have the issue of inconsistencies,\par
+but we have to live with that.\par
+So like I said, typically, they are stored on a cloud,\par
+because that's where you want to have the scalability.\par
+And it doesn't use SQL.\par
+That's why they call it NoSQL.\par
+There may be some NoSQL databases that use SQL.\par
+I don't know of any.\par
+But the idea of NoSQL really says it doesn't use SQL.\par
+And there's some very nice examples out there.\par
+There's MongoDB, which is a proprietary commercial\par
+database.\par
+There's Google Big Table.\par
+That's brought by Google and you have\par
+to pay for using it above a certain amount.\par
+There's Sparksee.\par
+There's Amazon DynamoDB.\par
+So they are the possible vendors, or users of data,\par
+or possible database servers you can\par
+get that are NoSQL databases.\par
+We're not going to look at NoSQL databases in our class.\par
+And the easiest of these would be,\par
+if you really want to look it up, is to look up MongoDB.\par
+MongoDB is a very simple database.\par
+It also uses the JSON format.\par
+We are already familiar with that.\par
+So it's something really familiar for us,\par
+so that should be really easy to use.\par
+Or you could use Google Big Table or Amazon DynamoDB.\par
+But just note that if you are beyond a certain threshold,\par
+a fairly small threshold, you're going to end up paying for it,\par
+so which is not a really great thing.\par
+But MongoDB, you can get a free license for certain uses.\par
+So it's not a bad thing to start with.\par
+So that's up to you, if you want to do that.\par
+We're not going to do it in this class.\par
+We don't have the time for that.\par
+What we're going to do is, we're going to focus\par
+on relational databases.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

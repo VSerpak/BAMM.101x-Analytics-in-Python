@@ -1,0 +1,237 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 So let's take a look at relational databases.\par
+When you think of relational databases,\par
+we can think of three different aspects of our data.\par
+So typically what happens is that we have something\par
+called a data model, and the data model\par
+is the structure of our database, the entities,\par
+and their relationships.\par
+The idea behind relational databases, like I said earlier,\par
+is to somehow come to a point where\par
+your database has minimal redundancy and maximal\par
+consistency.\par
+And I say minimal and maximal because you\par
+can build a perfectly non-redundant database,\par
+I assume, but in reality, you will\par
+sacrifice some querying speed for every gain\par
+that you make in reducing redundancy or increasing\par
+consistency.\par
+So there's a trade-off.\par
+So the goal is to minimize that.\par
+So the first step, really, is to look at your problem,\par
+to look at the data world that you're looking at\par
+and build a data model, an abstract model, that\par
+has nothing to do with computers and nothing to do with storage,\par
+but just a model that represents the structure of your data.\par
+And the idea in that is that you build two kinds of things.\par
+You outline one of the main entities\par
+and how they are related.\par
+The other thing we talked about in relational databases,\par
+we said that the tables are related,\par
+that you have a linked, related set of tables.\par
+So we want to get relationships between different entities.\par
+We'll take a look at that in a minute, what that means.\par
+The next thing is, once you have a data model,\par
+you can work that into what's called a relational model,\par
+and the original model is nothing\par
+other than the set of tables that your database should\par
+contain.\par
+So you have a data model that is an abstraction,\par
+you have a relational model that is the structure of tables\par
+that you want to finally store on you computer,\par
+and before you actually go and store it,\par
+you do something called normalization.\par
+And the process of normalization,\par
+which is a very well-structured process, so to speak,\par
+is to take your data, your set of tables that we have,\par
+take our set of tables, our relations--\par
+tables and relations are interchangeable terms here--\par
+and reorganize them so that we have low redundancy and high\par
+consistency.\par
+So we follow this process of normalization to do that.\par
+So let's take a look at what all this stuff means.\par
+So the data model, there are many ways\par
+of constructing a data model, and we'll\par
+look at one approach, which is called\par
+the entity-relationship model.\par
+And the entity-relational model is actually\par
+a very nice, very simple way of looking at our data.\par
+And the idea is very simple.\par
+We're going to build a conceptual data model.\par
+So it's a bunch of concepts.\par
+That data model is going to capture semantic information\par
+about the world being modeled.\par
+That's the goal here.\par
+And it's going to do that through entities\par
+and the relationships between the entities.\par
+That's our idea here.\par
+So what does that give us?\par
+Well, it tells us that the main components of our entity\par
+relationship model are two of them.\par
+They are entities and relationships.\par
+So let's take an example.\par
+Let's say you are modeling a university system.\par
+In a university system, we have many, many things\par
+that we may want to model.\par
+But some of them are students, there\par
+are students in the university.\par
+So we have an entity, a real-world thing\par
+called a student.\par
+We know that they're students.\par
+So we say, hey, we have students.\par
+So let's say they're one entity.\par
+We have professors, obviously, because the students are there\par
+to learn, et cetera.\par
+We have courses, that's what they take,\par
+like this is a course, so it's one entity.\par
+And we have rooms, not in an online university, of course,\par
+but in a real world, face-to-face university,\par
+you have rooms where the students and professors are\par
+going to meet and attend classes.\par
+And that's the idea here.\par
+There are many other entities.\par
+We could add entities like buildings, departments,\par
+we could add entities like furniture, maybe cafes,\par
+dining halls, student dormitories, everything that\par
+has a real-world equivalent.\par
+And it doesn't have to be physical.\par
+It can be an abstraction, but some kind of l-world equivalent\par
+is a potential entity.\par
+So many different entities, but let's say\par
+we start with these four.\par
+There could be many more.\par
+And the goal, roughly as you should have figured out by now\par
+is that we should be able to build a model that\par
+takes these four entities, or these entities,\par
+whatever you have identified, and builds\par
+a network of relationships between these entities.\par
+And then we have what's called a relational--\par
+model of our data that will work in the relational world.\par
+For the relational world we need linked,\par
+networked model relationships between the different entities.\par
+So that's our entities.\par
+So the first step is to identify identities.\par
+So once we have them, we take each entity\par
+and see how it is related to the other entities.\par
+There may not be a relationship with everything,\par
+but there should be a relationship with at least\par
+one other entity, otherwise there's something\par
+wrong with your model.\par
+You don't really have things that are completely\par
+disconnected from everything else inside a data model.\par
+So for example, we have a student entity and a course\par
+entity, and we have students who enroll inside courses.\par
+So we can call this relationship an enrolled-in relationship.\par
+Students are enrolled in courses.\par
+A student is enrolled in a course.\par
+So that's the relationship between students and courses.\par
+We have professors and courses, and a professor\par
+teaches a course.\par
+So that's a pretty straightforward relationship.\par
+We have professors and students, and a professor\par
+could be an adviser, an academic adviser, for a student.\par
+Typically, in the university setting,\par
+every student has one academic adviser.\par
+So that's our relationship between a professor\par
+and a student, that they're being advised,\par
+the student is being advised by the professor.\par
+And we could say that a professor\par
+has an office in a room.\par
+You can have a course being taught in a room,\par
+or you can have a professor who has an office in a room.\par
+This is all semantic and it really\par
+depends upon how you view the world,\par
+so maybe we could say the room is an attribute of a professor.\par
+So let's take a look at attributes.\par
+Every entity and every relationship\par
+can have, attached to it, a set of attributes.\par
+What's an attribute?\par
+An attribute is a property of the entity or relationship.\par
+So you can think of some data, think of it\par
+as being some data element that is useful to record\par
+with that entity.\par
+And the key term is useful.\par
+It has to have meaning in our world.\par
+So for example, we have professors in the university,\par
+and there are many attributes we can attribute to them.\par
+So for example, a professor has a name,\par
+so, clearly, we need to know the name of the professor.\par
+That's useful to store it in the database.\par
+Possibly a department that they're attached to,\par
+that's useful, stored in the database.\par
+But the professor also has a mother and a father.\par
+We don't care about that.\par
+That is an attribute of the person who\par
+happens to be a professor, but it's not\par
+an attribute of the role that person\par
+is playing as a professor.\par
+So we want to look at the attributes that\par
+are meaningful in the context of our database.\par
+So the mother, the father of the professor\par
+are not meaningful in our database.\par
+The children might be.\par
+For example, the professor might be getting benefits\par
+from the university, and those benefits\par
+may be accruable by the students.\par
+Free education in the university, maybe, health care,\par
+stuff like that.\par
+So if we were looking at the professor\par
+as an employee of the university,\par
+then that would be useful.\par
+But we don't care who the mother or the father\par
+or the grandparents of the professor are.\par
+We don't even care where they were born,\par
+which city they were born in.\par
+This is all information that doesn't really matter to us.\par
+So we only want to store the stuff that\par
+is useful in the context of our database.\par
+So if you're looking only at the academic,\par
+if you're building purely an academic database,\par
+and that's probably what we're doing here,\par
+this is purely an academic database,\par
+then we don't even care about children or anything\par
+that has to do with benefits.\par
+You only care about the academic role,\par
+and the academic role would be interested in where\par
+the professor's office is, we want\par
+to know maybe the department, and things\par
+like that, maybe the average ratings or history of ratings\par
+and those kind of things.\par
+But nothing really beyond that.\par
+So only the academic data is what we care about.\par
+So let's take our professor attribute then.\par
+So professor entity then.\par
+So professor entity contains-- we can think of having three\par
+attributes, the name of the professor,\par
+because that's important, the office, where their room is--\par
+and this is a nice example.\par
+I'll come to that in a second--\par
+and the department that they belong to.\par
+So here what I've done, actually,\par
+is, I've taken the office relationship here,\par
+this one, the has office relationship, this one,\par
+and made that into an attribute over here.\par
+And that's perfectly reasonable.\par
+You can do that.\par
+You can do that if it makes sense.\par
+So an attribute can become a relationship\par
+if it's important enough to have existence of its own.\par
+So for example, if professor's office\par
+has-- if a professor has multiple offices,\par
+then you have a problem.\par
+You'd have to say office one, office two, office three,\par
+and we don't want to do that.\par
+Then we might want to say, hey, office is a relationship rather\par
+than attribute.\par
+Things like that.\par
+It depends on how we want to structure it.\par
+The point being that the way our model is going\par
+to represent our data depends upon the way\par
+we want to use the data.\par
+So there is no perfect way of recording a data model.\par
+That's the bottom line.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

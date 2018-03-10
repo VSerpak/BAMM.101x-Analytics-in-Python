@@ -1,0 +1,233 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 So that becomes are our ER model.\par
+And once we have that, we've got our relational model set up.\par
+So we end up with a bunch of tables\par
+that look something like this.\par
+So we have here a student table that\par
+has social security number, first name, last name, emails--\par
+I've expanded on the attributes just\par
+to make it look slightly different-- the students have\par
+multiple phones, everybody has lots of phones, right?\par
+So we have, for example, Roberto Perez has two telephone\par
+numbers, comes from San Francisco, you know,\par
+all that kind of stuff, has two email addresses--\par
+people might have multiple email addresses--\par
+that kind of stuff.\par
+We have courses, and for each course\par
+we've got a course number, and then data about the course.\par
+And the course data that I put over here, again,\par
+added a few attributes, includes the room\par
+and the number of seats in that room.\par
+OK, so we have here the room, and the number\par
+of seats in that room.\par
+So this tells us that room 1127 has 60 seats.\par
+If you're alert, you've already noticed\par
+that I've sort of rigged this a little bit\par
+because this data is redundant.\par
+And we can see it has severe inconsistency issues.\par
+So for example, if I accidentally change this to 70,\par
+and I asked the question, how many seats\par
+are there in room 1127?\par
+Then, depending on whether I start from here in searching,\par
+or I start from the back, I'm going\par
+to get a different answer.\par
+That's inconsistency, and we can see\par
+that's coming of the redundancy that's inbuilt in this stuff\par
+here.\par
+And finally, we have a relationship table,\par
+which is in Enrills-In.\par
+And the relationship table has borrowed--\par
+because of the many, many relationships--\par
+has borrowed the key of the student table,\par
+and the key of the course table.\par
+And then it has some other data of its own--\par
+and first name, last name of the student, and then their grade.\par
+So that becomes our Enrolls-In table.\par
+Again, this is not meant to be a good database because I've\par
+sort of rigged it a little bit to make our next step\par
+a little bit more meaningful.\par
+But this is what is-- it's not unreasonable,\par
+to have a bunch of tables that look like this.\par
+And this comes straight over ER model.\par
+So that's the goal here.\par
+And once we've done that, then we can say,\par
+hey, we've got our relational model,\par
+we have a bunch of tables, and SQL\par
+is going to work now in answering queries\par
+on these tables.\par
+So if necessary, we can use that.\par
+So that's where we are right now.\par
+Once we've got our relational model,\par
+we want to move on and normalize it.\par
+So what is this normalization stuff?\par
+Normalization is the process of reorganizing the database\par
+to reduce redundancies, and increase integrity-- that\par
+means increase the consistency of the data,\par
+make it more consistent.\par
+So the idea of normalization is it actually\par
+ends up making the queries a little bit more\par
+efficient, and more consistent, which is kind of nice.\par
+Because it's where we want to be in this kind of world here.\par
+But more importantly, what normalization does\par
+is it addresses three different types of anomalies\par
+that typically give rise redundancies\par
+and inconsistencies in the database.\par
+So these anomalies are anomalies in the sense they are--\par
+you can think of them as a feature of the database that\par
+will cause a problem when you're trying\par
+to insert data, or change something, or remove something\par
+from the database.\par
+That's why they're called anomalies--\par
+because they cause problems.\par
+So the problems occur when you are inserting new data\par
+into the database, or when you're\par
+updating, changing the value in the database,\par
+or when you're deleting a piece of data--\par
+complete data item in the database.\par
+And the whole goal with normalization\par
+is to ensure that these anomalies are--\par
+at least the probability of having these problems\par
+is greatly reduced.\par
+That is the goal of this.\par
+It's a very complicated field, and typically it\par
+would require perhaps--\par
+normalization, alone, would require\par
+a half semester of coursework.\par
+So what we're going to do here is\par
+do a very simple philosophical view\par
+of what normalization aims to achieve, and leave it at that.\par
+So, because it's a data analytics class,\par
+it's not a databases class.\par
+So we just want to understand the philosophy behind it--\par
+we don't want to be experts in this stuff here.\par
+So the first anomaly that we want to look at\par
+is the insertion anomaly.\par
+And this occurs when you want to add something to the database,\par
+but there is no place to add it.\par
+So you want to add some new information-- a new entity,\par
+or a new thing to the database-- and you can't add it anywhere.\par
+You look at your table structure,\par
+there's no place at to add it.\par
+So let's take a look at an example.\par
+So let's say we have a table here called Professor.\par
+And the Professor table has three columns--\par
+the name of the professor, the office where they sit,\par
+and their department.\par
+So here we've got these three things here,\par
+and you've got professors--\par
+this got a little bit messed up, but let's\par
+say there's actually a name over there--\par
+a Professor Lee, Professor Woo, and two other professors--\par
+and their departments over here.\par
+And that information is there.\par
+Now, what happens is if the university decides that it\par
+needs a physics department.\par
+So it says, all right, let me add a physics department\par
+to my database.\par
+But initially, we don't have any faculty members--\par
+the university senate has just sat down and had a meeting\par
+and said, all right, from now on we have a physics department.\par
+And we're going to start offering physics degrees,\par
+or we're going to start admitting students\par
+for a bachelor's in physics, starting\par
+in the fall of this year.\par
+So now we have a decision to do that.\par
+We have how to set up the process of admitting students\par
+and all kinds of things.\par
+But the only place in our database\par
+where a department is mentioned is\par
+in this table called Professor.\par
+If there's no professor in the physics department,\par
+we can't have a physics department in our database.\par
+There's no place for it.\par
+We can't add it to our set-up--\par
+because you can't just have a nothing, a nothing,\par
+and physics.\par
+You need values, over here, and a value over here.\par
+There's no professor, so we can't add it.\par
+It's as simple as that.\par
+So this is what's called an insertion anomaly,\par
+because we have--\par
+and conceptually what's happening\par
+is that we have this real world thing called physics.\par
+Or real world thing called department, or major,\par
+or something.\par
+That is out there.\par
+But we haven't modeled it in our database as an entity.\par
+We model it as an attribute of another entity.\par
+You modeled it as an attribute of the entity, Professor.\par
+So it's an entity which apparently now we\par
+can see has some importance of its own,\par
+we treat it as an attribute.\par
+So that's our problem.\par
+So there's no way to add it.\par
+So this is an insertion anomaly, because now the senate\par
+has said physics, and the computer IT department,\par
+or whatever, is sitting down and saying,\par
+hey, where do I put physics?\par
+I can't see anywhere to put physics.\par
+This is a problem.\par
+So you've got to solve that.\par
+This is fairly easily solvable, but what you can do is--\par
+or, what you would need to do is,\par
+you need to take the department, and remember\par
+I said that the reason we are having the problem\par
+is because the department is really\par
+an entity of some importance, and we put it as an attribute,\par
+so what we should do is make it an entity.\par
+So we make it an entity over here.\par
+And we have now industrial engineering and operations\par
+research, mechanical engineering, computer science,\par
+and we need a new department called physics.\par
+And we give them a code as a key, which is not necessary,\par
+but typically, when you have long strings of this sort,\par
+it's a good idea to have a simple key attached to that,\par
+because you're going to repeat this in other places.\par
+So rather than having to put industrial engineering\par
+and operational research here, you can just use IEOR.\par
+And that's the idea here.\par
+So now we've got this.\par
+So now we can add physics, because we just\par
+add it to the department.\par
+Nothing happens to Professor-- we\par
+don't have a new professor in that department,\par
+there's no one teaching in that area, so there's nobody there.\par
+So we don't need to add it there.\par
+We can just add it over here, and then,\par
+if there any other administrative stuff that needs\par
+to be done, it will follow from this.\par
+If, for example, our brochures, the school bulletins\par
+or brochures, they list departments using this table.\par
+They list departments, they can just use this table.\par
+Let's say we have a physics department.\par
+So what if you don't know any professors, but it's there.\par
+So we can either make a new relationship called,\par
+say, Belongs to, and create yet another table that\par
+has each professor name, say Miche IEOR, et cetera.\par
+Or we could simplify matters by just including the Department\par
+as another column here, even though it's\par
+no longer an attribute.\par
+But since this table is only going to contain just one\par
+column, and it's not a perfect solution,\par
+but for ease of access it makes sense to say,\par
+hey, we just collapse the department right\par
+into this column over here, into this column\par
+inside our Professor table.\par
+And the Professor table now contains the department code\par
+for each department, and we can access\par
+the name of the department by following that code over there.\par
+So this really is a sort of-- you\par
+can think of it as a synonym for a relationship.\par
+But you just collapse it into a single table.\par
+So that's the way to deal with insertion anomalies.\par
+And what you're really doing is you\par
+are saying that, hey, I have an entity that\par
+is modeled as an attribute.\par
+So I need to take it out, make it a separate entity,\par
+and build relationships between that entity and other things.\par
+That's the goal there.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

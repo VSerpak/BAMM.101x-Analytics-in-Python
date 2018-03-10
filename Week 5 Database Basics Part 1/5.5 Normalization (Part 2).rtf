@@ -1,0 +1,235 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 The second kind of anomaly is an update anomaly,\par
+and this occurs when there's a change\par
+to the value of an attribute.\par
+But that change has to be made in multiple places.\par
+We've already seen this.\par
+This is the issue of redundancy.\par
+So you have the same attribute having multiple--\par
+occurring in multiple locations, with the same value,\par
+and when you change that value, you\par
+need to go and change it in multiple places.\par
+It was never a great idea.\par
+So if you do that, then you're going to have--\par
+possibly have redundant data and inconsistencies in the way\par
+your queries are respond--\par
+answered.\par
+So let's take an example.\par
+So we've already seen this, but let's take a look at it again.\par
+We have a course table over here.\par
+The course table contains the course number, course number,\par
+the name, the room, and the seats.\par
+So what we are doing here is we are taking\par
+the room and the seats, this stuff over here,\par
+and what we're really modeling here if you think about it,\par
+is the relationship between the room\par
+and the number of chairs in the room.\par
+So if you think of that the number 60 in our example.\par
+The 60 is not an attribute of the course C4.\par
+It's an attribute-- it's not an attribute of this.\par
+It's an attribute of this.\par
+So we have inside here what's in database terms is called\par
+dependency, what we're seeing is that the number of seats\par
+depends on the room number.\par
+It doesn't depend on the course.\par
+Because the course can be switched to a different room\par
+right?\par
+So that's the reason why we have this repeating, redundant field\par
+in our table.\par
+Right, because we really have a dependency that\par
+is between two things that are not really\par
+what the table is about.\par
+And that's the thing.\par
+The table is not about the room and the seats.\par
+It's about the courses.\par
+So what happens, of course, here is\par
+that if we change this 60 to 70 and we ask the question,\par
+how many seats are there in room 1127?\par
+We're going to have a problem.\par
+Because if our algorithm that looks at the table and, you\par
+know, we don't know.\par
+We don't have control of the way SQL actually\par
+is executing the table--\par
+the queries.\par
+If it looks at the query by searching top down,\par
+then it's going to say 70.\par
+On the other hand, if it looks at the query bottom up,\par
+it's going to say 60.\par
+And we get two different answers for the same question.\par
+Not a good idea.\par
+OK.\par
+So how do we deal with this?\par
+Well, pretty straightforward.\par
+We know that our problem is occurring\par
+because our number of seats depends on the room,\par
+not on the course.\par
+Right, the dependency is going this way.\par
+From the seats depends on this, and does not depend on this.\par
+Therefore, what do we do?\par
+We take this out and make this into a separate table.\par
+So now we have a table that has the room\par
+number, the number of the room and the number of seats\par
+in the room, et cetera.\par
+And we're all set.\par
+Because now if we want to change the number of seats,\par
+all we need to do is go in here and replace the 60 by 70.\par
+And there's no other place where the number of seats is listed.\par
+So we are all set with that.\par
+So this is a straightforward way of doing it.\par
+But we can see again, the reason that this happened\par
+was because there was a dependency between one column.\par
+In this case, in our example here,\par
+between the seats column and something that wasn't really\par
+what the table was about.\par
+And in a more formal sense, we are\par
+saying that there is a dependency between seats\par
+and something--\par
+room in this case--\par
+that is not a key for the table.\par
+The key for this table is course number.\par
+It's not the room.\par
+In fact, the room you can see occurs numerous times.\par
+1127.\par
+1127.\par
+1127.\par
+1127.\par
+So it's not a key.\par
+And we are dependency between seats and something\par
+that's not a key.\par
+That's the formal way of saying it.\par
+But in a more informal sense, what we're really saying\par
+is that we have here seats that depends on something that is\par
+not what this table is about.\par
+So that's why we're getting this problem.\par
+So that's update anomalies.\par
+And then the third kind of anomaly\par
+is what's called deletion anomaly.\par
+This occurs when deleting something in the database\par
+results in some other, possibly important, fact being deleted.\par
+So you take something out of the database and something\par
+else that is important also goes away.\par
+Right?\par
+And we can see actually, if you think back to our tables,\par
+we see many such examples.\par
+So if we do this, what will happen\par
+is that we end up losing data.\par
+Just a simple example.\par
+If we go back here and I delete information about--\par
+like say, if I delete course C3 from this table,\par
+not only do we lose information about course C3,\par
+but we also lose this relationship between the room\par
+and the number of seats.\par
+Once I've deleted that if I have a question like how many seats\par
+are there in room 331?\par
+I can't answer it, right?\par
+It's not in my database anymore.\par
+So that's a really bad thing.\par
+You don't want to lose information.\par
+So going back to our course over here, our example over here.\par
+Let's say we have our table, which has\par
+four columns, four attributes.\par
+And the course number, the name of the course, the room\par
+number the course is in, and the enrollment in the course, OK?\par
+So the enrollment in the course means the number\par
+of students who are enrolled.\par
+So let's look at the first course number one.\par
+There are only six students enrolled.\par
+Data analytics in Python.\par
+Or data whatever, right?\par
+Only six students enrolled in that class.\par
+So the university decides it's not cost effective\par
+to hold a class with only six students.\par
+So let's fire the professor and close this class down.\par
+So that class gets closed down.\par
+And what that means is that this row vanishes from our table.\par
+But not only are we losing the enrollment or that kind\par
+of information with it, but we're\par
+also losing other information which is not exactly over here,\par
+but should be.\par
+Things like the course description, you know?\par
+What is the long description of the course?\par
+What are the ratings of the professor?\par
+Maybe they didn't fire the professor,\par
+but they kept him on.\par
+But his or her ratings are useful information.\par
+So that's also gone.\par
+Maybe over here we had columns that\par
+said ratings, description, previous enrollments, et\par
+cetera.\par
+All kinds of stuff.\par
+That's all gone.\par
+So we will lose a lot of information\par
+when we delete an entity or thing from our database.\par
+An item from our database.\par
+And the question is are we structuring our database\par
+so that we don't actually lose the information that we\par
+don't want to lose?\par
+You only lose information that we don't care about.\par
+So in this case, it would be, again, fairly straightforward.\par
+Because what we are really doing, if you look at our table\par
+here, is our course table contains in this structure--\par
+and this is a really artificial structure,\par
+so forgive me for that.\par
+But in this structure, what it contains\par
+is information about the current occurrence of a course.\par
+If you don't offer a course this semester,\par
+that course doesn't exist.\par
+Which is not really a reasonable thing to do.\par
+So what we need to do is, we need to say,\par
+hey, we need to take out the listing of courses that exist,\par
+separately, and courses that are currently offered\par
+and keep them separate.\par
+We don't want them to be in the same table.\par
+They're linked by the course number.\par
+So that's our link.\par
+So the course number links these two tables together.\par
+But all information that needs to persist\par
+is contained in this table and only current enrollment\par
+information and the current room number\par
+is contained in this table.\par
+That's the idea here.\par
+OK?\par
+So that would make take care of the deletion anomalies.\par
+So what we've done is you've taken courses and offered\par
+courses and separated out these two tables,\par
+and made them into independent tables,\par
+so that this is the persistent table.\par
+And it will contain the information forever.\par
+And this table is our current enrollment,\par
+or current offerings table and it contains\par
+only the current information.\par
+Now if we decide to scrap this class.\par
+We can do it without losing any meaningful information.\par
+That's the goal there.\par
+So if we can remove all these anomalies,\par
+then we are in a position to say that we have\par
+what's called a normalized database.\par
+And the database normalization is a process\par
+of removing these things.\par
+And again, we're not going to database theory over here,\par
+but just to be familiar with the terminology.\par
+We say that a relational database can\par
+be in any one of these forms.\par
+First normal form, second normal forms, third normal forms,\par
+voice call normal form, and fourth normal form.\par
+And there's actually another form as well,\par
+but let's stick with this.\par
+And generally, if we are free--\par
+if we've gone through this process of removing\par
+the anomalies-- if we are free of these three\par
+kinds of anomalies, then the database\par
+is said to be in 3NF, or third normal form.\par
+We want-- we're not going to study the normal forms here.\par
+It's a reasonably comprehensive piece of literature.\par
+But you should be aware they exist.\par
+And when you're designing a database of your own,\par
+you should think about these issues,\par
+whether you know how to get rid of these three things?\par
+Insertion, updation, and deletion anomalies.\par
+And if you can think about this and get rid of them,\par
+then you know you're in pretty good shape.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 
