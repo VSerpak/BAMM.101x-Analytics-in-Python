@@ -1,0 +1,199 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 All right.\par
+So now if you'll go to your server running,\par
+my SQL Server running.\par
+And everything's good to go, let's\par
+take a look at what SQL queries looks like.\par
+So, generally, in a very rough way,\par
+we can think of queries of being of three types.\par
+There are data definitional queries, which\par
+are used to define the table, to change the table in some way,\par
+maybe change a field definition and that kind of stuff.\par
+The data manipulation queries where you insert, delete,\par
+or update actual data.\par
+So data definitional queries are the queries\par
+that are defining or changing the schema--\par
+the schema is the structure of a database-- in some way.\par
+Data manipulation is the queries that\par
+are changing the data itself.\par
+And the third element is data querying.\par
+Data querying is the process of getting data from the database.\par
+And this is where we will typically do maximum work.\par
+That's because usually you're querying a database trying\par
+to find information, and that's where\par
+the power of the querying language-- the one that is\par
+descriptive-- comes into play.\par
+So let's take a look at some of these queries.\par
+So we start with our basic data definition queries,\par
+and we can see that there are a bunch of them.\par
+So let's take a look, here are the basic queries.\par
+Well, the first thing you want to do, of course,\par
+is see what databases exist in your server.\par
+So there's a simple command called SHOW,\par
+and what SHOW does is it'll show you\par
+the SHOW databases will show you the list of these databases.\par
+SHOW shows you something on the database.\par
+We'll see that against your table,\par
+across your databases, et cetera.\par
+So this is our SHOW database command.\par
+You can create a database and that\par
+uses a command called CREATE, which says, create a database,\par
+so it creates that.\par
+And we give it a clause here that says,\par
+IF NOT EXISTS, which means that if the database actually\par
+exists and you try to create it, you're\par
+going to get an error saying the data is already exists.\par
+So IF NOT EXIST is sort of protection, and says,\par
+only if it doesn't exist, then you should create it.\par
+Once you've got that, and you want to actually use\par
+a particular database, so inside a database server,\par
+you can have multiple databases.\par
+So you tell which when you want to use and use\par
+a command called USE, use this particular database.\par
+And finally, if you want to drop the database itself,\par
+you use a command called DROP and tell it what you're\par
+dropping in the database.\par
+And you give it the name of the database.\par
+So we have a sample database called\par
+SchoolDB, which I will take a look at in a minute.\par
+And that should do that thing.\par
+So let's now move on and see how this works on MySQL Workbench.\par
+MySQL Workbench is a GUI client for MySQL.\par
+So let's take a look at it.\par
+You should be able to run it on your machines\par
+if you downloaded it following the instructions on our class\par
+site.\par
+And when you open up MySQL Workbench,\par
+you're going to get a screen that looks something like this.\par
+So here we've got our screen would say\par
+is we've got MySQL connections.\par
+So connections are the connection\par
+that you as a client or, in this case, the Workbench as a client\par
+makes the server.\par
+So from the same MySQL Workbench client software,\par
+we can open multiple connections,\par
+but we're not really interested in that.\par
+We'll start with a single connection.\par
+And it says over here that the connection we're going to open\par
+is the Local Instance 3306, which\par
+3306 is the port on which it's operating.\par
+And it says that the connection when it open with the username\par
+root, and that's OK.\par
+Ideally, when you have a client, the client\par
+should be opening the connection, not as\par
+a root because root has complete privileges to destroy stuff\par
+if they feel like it, which is not a great idea,\par
+but we are running a local installation,\par
+and we're not really worried about messing stuff up.\par
+So let's do that.\par
+So you click on this, and it should open up this screen\par
+here.\par
+And here you can give a password to open it.\par
+My password that I have done is none, which is our Python none.\par
+And as a general rule, you can just save that,\par
+so you don't have to keep entering it every day.\par
+And say, OK.\par
+And that brings up the GUI interface to your MySQL Server.\par
+So once you've got this--\par
+in mine, I've already have something here,\par
+so I'm just going to cut that out.\par
+So this comes up like this.\par
+And what it does is it's got a whole bunch of stuff,\par
+we don't worry too much about it.\par
+The main thing here that we're going to look at\par
+is the thing called schemas.\par
+So we see the two schemas, there's a test schema in mine,\par
+which you may or may not have.\par
+And there's a sys schema, which is the system stuff.\par
+You're not really going to mess with the system schema\par
+or the test schema for that matter.\par
+We'll create our own stuff along the way.\par
+So the main thing that we're interested in\par
+is this big window in the middle.\par
+That is our query window.\par
+This is where we enter the queries and get our results.\par
+So let's try a couple of things.\par
+We have two databases here already,\par
+let's create a third one.\par
+So I'll say CREATE database.\par
+And note how it really nicely helps us by--\par
+the Workbench sort of helps us by prompting us with stuff.\par
+And we notice that it's got a little red X\par
+next to that, which means the query is not\par
+yet complete or it's an incorrect query\par
+because it's not complete.\par
+So we can do a CREATE database, let's call it SchoolDB.\par
+I think that's what I call it there.\par
+And once you've done this, we can execute this thing\par
+by hitting the little lightning thing over there.\par
+That executes a query.\par
+And it says, CREATE database SchoolDB,\par
+and it does this in the bottom of the screen over here.\par
+It says one row affected, and there's a little green check\par
+mark next to the line that tells us that yes, it's worked fine.\par
+So we've done this.\par
+Now what we want to do is next we\par
+can try creating a table inside or well,\par
+using the database, of course.\par
+We need to use the database first.\par
+So I say, USE SchoolDB, and I can execute this.\par
+So what happens with this in the MySQL Workbench\par
+is that you can either execute the entire thing by hitting\par
+the little lightning stuff or execute only one line,\par
+and that's what we're going to do here, just one line.\par
+So let's do that.\par
+It's a little bit clumsy.\par
+So we could use SchoolDB that tell us\par
+yes, we are using SchoolDB now.\par
+And then, I create a table--\par
+CREATE table.\par
+Let's call it Student.\par
+And I give it a list, so this is a table that I'm creating.\par
+I need to tell it what different elements I'm\par
+going to have in that.\par
+So I could say here name worker 20 comma, and let's give it--\par
+what else should we say?\par
+City worker 20.\par
+And again, just to make sure I don't run the whole thing.\par
+If I run the whole thing, what's going to happen is that--\par
+oh, yikes.\par
+Sorry about that.\par
+Let me run this again.\par
+Run this, and I get a student table over here.\par
+And now, when we do that, we will just delete all the stuff,\par
+so that way I don't have to keep highlighting it.\par
+And I can do short tables.\par
+And it will show me the tables.\par
+It tells me I have one table called Student,\par
+and I can see what's inside it.\par
+And whatever.\par
+I can describe the table, so see the contents of the table\par
+itself.\par
+DESCRIBE student; and that tells me I have two elements--\par
+a name and a city.\par
+So this is a really simple way of using the client\par
+that we have here, the Workbench client.\par
+And what we will do is we will now\par
+go on and take a look at what else we can do with this.\par
+So let's clean this out until we come back to our data\par
+definition queries in a second.\par
+Let's clean this thing out.\par
+So what I will do is I'm going to drop the database SchoolDB.\par
+For now, we don't have that database is gone.\par
+Now if I look at all the databases,\par
+I shouldn't see that anymore.\par
+SHOW databases, there's no SchoolDB now.\par
+So the other databases that are there in the system.\par
+Test is just a test one.\par
+And the rest are, actually, we don't really\par
+want to worry with them.\par
+They're really, essentially, system-level databases.\par
+So this is the Workbench client.\par
+And what we're going to do next is\par
+we're going to start seeing how we can use this,\par
+so let's move on to our actual queries itself.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 
