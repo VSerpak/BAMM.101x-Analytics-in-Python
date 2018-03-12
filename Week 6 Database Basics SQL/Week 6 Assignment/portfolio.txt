@@ -1,0 +1,8 @@
+Ticker:Company Name:Purchase Price:Shares:Purchase Date
+AAPL:Apple, Inc.:0.21:100:1982-08-23
+GOOG:Alphabet, Inc.:950.7:500:2017-07-25
+GS:Goldman Sachs:172.81:1550:2014-10-23
+AAPL:Apple, Inc.:2.31:300:2004-09-10
+AAPL:Apple, Inc.:162.91:100:2017-08-29
+GE:General Electric:0.18:500:1964-10-26
+GS:Goldman Sachs:152.79:200:2011-02-14
