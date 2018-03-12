@@ -1,0 +1,249 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Now, I can go across three tables.\par
+So if I want to get the names of the courses\par
+that John Childs is enrolled in, then I\par
+need to go and look at not just student and enrolls_in.\par
+From here, from student and enrolls_in,\par
+I'm going to get the class numbers.\par
+John Childs enrolled in C1 and C2,\par
+and then I need to go, from there, to the course table\par
+and pick up the name of the class itself.\par
+So data analytics and Python.\par
+I need to pick that up from that table there itself.\par
+So now, I need to combine data from three different tables.\par
+And then you can see, you can make it four, five, six,\par
+whatever.\par
+It doesn't matter.\par
+So if you look at the query itself, it's over here.\par
+So what this says is SELECT the name from student\par
+a, enrolls_in b.\par
+I'm saying name over here because if you\par
+look at our table structure, name\par
+is actually a unique column for this thing here.\par
+The name is not first name, last name.\par
+It's not the same as the student name.\par
+It's the name of the course.\par
+So I'm saying select the name field from,\par
+and this is saying now the from is really saying\par
+from the resulting table.\par
+So when I say select these three things,\par
+I'm saying get me what are the result of all this stuff is.\par
+So here, I'm saying select the name field from three tables--\par
+student, enrolls_in, and course--\par
+and I'm giving them the aliases a, b, and c.\par
+And then, I'm telling the condition.\par
+The condition is now going to be I\par
+want to join across multiple tables,\par
+so I'm going to say a.ssn equals b.ssn,\par
+AND b.class equals c.number.\par
+So here, what I'm doing is I'm saying take this table\par
+and join it on this.\par
+Whoops, wrong one.\par
+Join it on this.\par
+And then, from the result--\par
+That is what we get from joining these two tables.\par
+We get one big table.\par
+You've seen the result of that.\par
+We take this table and join it on this.\par
+So the resulting table that is a combination of student\par
+and enrolls_in will be joined on the class and the number,\par
+right?\par
+That's what this is saying over here.\par
+We have b.class equals c.number.\par
+So that's our query over here.\par
+So let's take a look at this.\par
+We are getting the name of the courses\par
+that John Childs is enrolled in.\par
+And you can say here SELECT c.name FROM student\par
+a, enrolls_in b, course c WHERE a.ssn equals b.ssn AND b.class\par
+equals c.number AND a.f_name equals John and a.l_name equals\par
+Childs.\par
+I hope that's correct.\par
+Let's try it.\par
+Yes, we get the two names of the two classes\par
+that John Childs is enrolled in.\par
+We can add more stuff to this.\par
+If I want, I could say c.name, b.score.\par
+So I get not just the name, but I also\par
+get the score that John Childs has in each of these classes.\par
+So it's a nice reporting feature.\par
+And the reason, of course, is that the data is distributed\par
+across multiple tables, and we need\par
+to combine data from all of that to actually get it.\par
+So what we've been doing so far is\par
+combining data in these tables, and the technical term for this\par
+is what's called a join.\par
+And the whole idea in the join is\par
+that you take two or more tables and you combine\par
+the rows in these two tables.\par
+Join, there's a formal way of looking at it.\par
+We have been looking at it very informally,\par
+because our goal is much simpler.\par
+We're not into really learning SQL.\par
+We are more into how to use SQL practically\par
+in our applications.\par
+So we are not going to go too deep into it,\par
+but the idea, as we said before, is very straightforward.\par
+You have two different tables, courses and enrolls_in,\par
+and what we want to do is we want\par
+to combine these rows in some way,\par
+so you look for a link between the tables.\par
+And typically, the link is going to be\par
+in a key or a part of a key.\par
+So here, the part of the key that we're looking at--\par
+So we know this is a relationship, right?\par
+Enrolls_in is a relationship between student and course.\par
+So, therefore, the key of course is\par
+going to figure inside the composite key of enrolls_in.\par
+That's how this works.\par
+And it's a many-many relationship,\par
+because one student can be enrolled in one course,\par
+and one course can have many students in it.\par
+One student can be enrolled in many courses,\par
+and one course can have many students\par
+that are enrolled in it.\par
+Therefore, we have this composite key\par
+that really has both these things inside it,\par
+Social Security number as well as class.\par
+But the linkage between enrolls_in and course\par
+is going to be through this stuff over here.\par
+And the whole idea in the join is that rows in enrolls_in\par
+are matched with rows in course where class\par
+has the same value as number.\par
+So what SQL does is it provides us with a special feature,\par
+a special command, called join, which\par
+will tell SQL that we are joining the two\par
+tables together.\par
+Over here, we are putting our join condition\par
+inside the WHERE clause.\par
+So the query doesn't really say that there's\par
+a join coming up, even though there is a join coming up.\par
+And therefore, in principle, SQL, the server,\par
+can't optimize this for this query.\par
+Whereas, if we explicitly tell it\par
+that we're going to have a join coming up,\par
+then it can optimize the query.\par
+So let's take a look at our first example here.\par
+So the question here is that we want\par
+to get the listing of the course number, the course\par
+name, the room number, the Social Security\par
+number of a student in that class, and their score.\par
+Not the name or the student.\par
+We're just needing the Social Security number.\par
+So, in a sense, what we are saying\par
+is we want to take these two tables, course and enrolls_in,\par
+and from those two tables, want to get these, all the columns,\par
+the number, the name, the room, the Social Security number,\par
+the class, and the score.\par
+We're not interested in the student table at all.\par
+Therefore, our combination is across these two tables,\par
+and that's what we are trying to do over here.\par
+We're going to join them.\par
+So what we can do is rather than saying FROM course, enrolls_in\par
+and then giving a WHERE clause, which combines the course\par
+number and enrolls_in class number,\par
+we can say that we want to get these data items, all of them,\par
+all these data items from the course table,\par
+which is our main entity over there.\par
+And we want to take that course table\par
+and do something called an inner join.\par
+An inner join is what we've been doing so far.\par
+What an inner join does is it'll ignore anything\par
+inside the enrolls_in that doesn't have an entry in class.\par
+That's the idea here.\par
+So inner joins are typically the most common that we work.\par
+There's an outer join, a left outer join, right outer join,\par
+but we're not going to worry about all that.\par
+So we say INNER JOIN, and we want to inner join the course\par
+table with the enrolls_in table, and we\par
+want to join the two on these fields.\par
+So this is like the WHERE clause.\par
+The WHERE clause, we would have said WHERE course.number equals\par
+enrolls_in.class.\par
+There's absolutely no difference, and in many cases,\par
+there's actually no performance difference, either,\par
+between using the term INNER JOIN\par
+or actually writing the complete thing the way\par
+we've been doing so far.\par
+However, it's much clearer, when you have multiple tables,\par
+to use the term INNER JOIN, because then you\par
+can see where you're joining the tables together.\par
+So let's just, for a second, run this thing.\par
+What I want to do is I want to say here SELECT name, number,\par
+room, ssn, score FROM course INNER JOIN enrolls_in ON,\par
+and ON is telling us what to join on.\par
+The only advantage is that it tells SQL\par
+that we're doing a join, so it should maybe, hopefully,\par
+optimize for it.\par
+But in practice, it would probably optimize anyway.\par
+So, ON.\par
+And now we give it the two columns we want to join on.\par
+So we want to do course.number equals enrolls_in.class.\par
+I think it was called class.\par
+Let's check and see if this works.\par
+Yup.\par
+So we join these two and we get this table here.\par
+So we can see that this is pretty much the same thing,\par
+but in practice, if you use the inner join,\par
+things will become much clearer.\par
+So here's an example where joins can be explicit.\par
+This is the explicit, saying that we're doing an inner join,\par
+and this is what we would do if we wanted to do it\par
+without the inner join.\par
+We would say select the same bunch of fields that we have,\par
+and instead of saying FROM course,\par
+we now give all the tables we're going to join from.\par
+And then, in our condition, we give the joining condition,\par
+course.number equals enrolls_in.class.\par
+That's the idea of it.\par
+But what join really does and it's really useful\par
+for us is that if we have a case where we have many, many tables\par
+that we are joining, then when you write out\par
+the clause in this form, you're going\par
+to have FROM course, enrolls_in, et cetera.\par
+and the where.\par
+So what's happening is that the join conditions,\par
+that is course.number equals enrolls_in.class,\par
+is separated from the FROM conditions,\par
+so it's harder to read.\par
+Whereas, say when you're doing a three table kind of thing,\par
+maybe we want the names of the courses\par
+that John is enrolled in, then what we can do\par
+is we could say SELECT course.name from student,\par
+and then we can list all the joins one after the other.\par
+It could be 10 tables, right?\par
+We're saying INNER JOIN enrolls_in ON student.ssn\par
+equals enrolls_in.ssn INNER JOIN course ON course.number equals\par
+enrolls_in.class.\par
+So, essentially what we are doing\par
+is we are saying our tables over here, course and enrolls_in,\par
+and the join conditions are listed together,\par
+and it becomes much clearer.\par
+It's a much more readable thing.\par
+So if for no other reason, like I said, in theory,\par
+it might help to optimize our query, but I think in practice,\par
+it probably won't.\par
+But for no other reason than readability,\par
+it's a good idea to actually do the joins explicitly, to say,\par
+hey, we're going to do an inner join and an inner join,\par
+so it knows what the heck's going on.\par
+So that should be our SQL thing here.\par
+There's plenty of resources online\par
+that you can look at if you want to study SQL more.\par
+There's a very nice book called The Idiot's Guide to SQL,\par
+if you want to read up on SQL more.\par
+But this should give us a basic introduction\par
+that should be sufficient for the rest of this course\par
+and for other courses in this program to be\par
+ready for the basics of SQL.\par
+The last thing we're going to look at next,\par
+after we finish with this, is to look\par
+at how we can interface Python with SQL,\par
+which essentially make our Python program into an SQL\par
+client.\par
+And when we come back, that's where we will be.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

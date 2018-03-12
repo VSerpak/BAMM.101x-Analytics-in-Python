@@ -1,0 +1,221 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 So we will use the simple example database\par
+to look at queries in our lecture today.\par
+The database contains three tables--\par
+a table called Student that contains student information;\par
+a table called Course that contains information\par
+about courses; and a table called Enrolls_in, which,\par
+as you can see, is a relationship table\par
+between these two entities.\par
+So Student and Course correspond to entities\par
+in our entity relationship model,\par
+and Enrolls_in is a relationship.\par
+And we can see that the relationship is defined\par
+by a key from the Student table and a key from the class table.\par
+So what we have in our database is three tables--\par
+the Student table, which has a key,\par
+social_security_number; a Course table\par
+that has a key, course_number; and the Enrolls_in table that\par
+has a composite key that contains social_security_number\par
+and course_number.\par
+Assuming, of course, that no student\par
+can enroll more than once in a class, right?\par
+That's an assumption there.\par
+So we've got this stuff here.\par
+So this is our basic structure that we're going to work with.\par
+So the first thing you want to do\par
+is to add this data into your database.\par
+We'll take the database schema itself and create\par
+that in our database.\par
+And then, we're going to work through that\par
+to add the various table data, as well,\par
+and use that in our examples.\par
+So let's do that and walk through these steps\par
+a little bit over here.\par
+So the first thing you want to do is to download these two\par
+files, school_schema.sql and school_data.sql,\par
+from our course website.\par
+Once you've downloaded them and you're set to go,\par
+we're going to run these two files.\par
+So what we can do in SQL is you can take a bunch of queries\par
+and put them into a single file and then run them as a group\par
+from your client, whatever client it is.\par
+So these two files-- school_schema.sql contains\par
+the schema definition, which is the definitions of the tables,\par
+the fields, and the keys, and all that kind of stuff.\par
+It's got the create commands.\par
+And the school_data.sql contains the actual data that is going\par
+to go into the tables itself.\par
+So once we've done that, you want\par
+to open MySQL Workbench, which we've done before.\par
+Then, you want to open school_schema.sql,\par
+and let me walk you through those steps and execute\par
+the script.\par
+So let's walk through that.\par
+So what I want to do is I'm going to kill this window here.\par
+And if you look at this little tab over here,\par
+which looks like a folder, under query1.\par
+I click on that.\par
+And now, this allows me to open up\par
+a file that contains the query that I want to execute,\par
+the bunch of query that I want to execute.\par
+So my query, my files, are sitting in this directory\par
+called Hardeep Johar.\par
+And if I go down here, I get school_schema.sql,\par
+and I want to open that.\par
+When I open that, this shows up over here.\par
+So let's walk through some of these steps\par
+to understand how SQL works.\par
+So here, the first line that I have in this thing\par
+is DROP DATABASE IF EXIST SchoolDB.\par
+So what this does is it makes sure that if I already\par
+have SchoolDB defined, for some reason or other,\par
+in my database server, then I want to drop it.\par
+I don't want it to be there anymore.\par
+So that's because it's a test sample.\par
+Definitely, you don't want to do this as a general rule,\par
+because you may be dropping a database that is useful.\par
+And it'll just drop it, so you want\par
+to be careful, especially since it's your root.\par
+Then, I create the SchoolDB, and we've already\par
+seen this command.\par
+It says CREATE DATABASE IF NOT EXISTS SchoolDB.\par
+We know it won't exist because I just dropped it,\par
+but it's there.\par
+And then I use SchoolDB.\par
+Now, I want to create the three tables that we want\par
+to define for our database.\par
+The three tables are Student, that's\par
+this one, Course, that's this one,\par
+and Enrolls_in, that's this one.\par
+So each table, I have a CREATE TABLE command.\par
+And what I say is if the table doesn't exist, then create it.\par
+I don't want to overwrite an existing table.\par
+For each table, I define the fields.\par
+So for the Student table, I have six fields, SSN, f_name,\par
+l_name, phone, city, and zip.\par
+And for each field, I have to explain\par
+what data type that field is.\par
+So in this case, they're all VARCHAR.\par
+VARCHAR means a character field of variable length.\par
+So some people's name is John and other people's name\par
+is Matthew or Gellibrand or whatever.\par
+So everyone has different name lengths.\par
+And so VARCHAR essentially says you\par
+can have differing name lengths, and they\par
+don't have to be exactly X characters\par
+or something like that.\par
+So, generally, text fields--\par
+For example, I could have used CHAR 11\par
+for social_security_number, because Social Security\par
+numbers are always 11.\par
+So if you use CHAR, you have to have the same exact amount.\par
+If you use VARCHAR, then you can have a variable amount.\par
+So, generally, it's safer to use VARCHAR,\par
+but for both zip as well as social_security_number,\par
+I could have just used CHAR.\par
+The next thing I say is that social_security_number,\par
+for example, is not null.\par
+That means that I cannot have a student in my Student table who\par
+does not have a Social Security number.\par
+Everyone has to have Social Security number.\par
+So NOT NULL says that this particular field cannot be\par
+null.\par
+So, in general, all my fields are not null,\par
+except for the phone field.\par
+So a student perhaps doesn't have a telephone.\par
+Kind of odd, but you never know.\par
+And the Score field in the Enrolls_in,\par
+because obviously before the semester\par
+has started, they don't have a final score,\par
+so that could be null.\par
+There have been no, let's say, evaluation mechanisms that\par
+have been started so far, initiated so far.\par
+So that's the main thing here.\par
+NOT NULL essentially says that this field cannot be null.\par
+If you add data into the table, then you\par
+want to make sure that that data is there.\par
+Otherwise, it won't work.\par
+Then finally, the last thing I have here is\par
+this word called PRIMARY KEY, and what PRIMARY KEY says\par
+is that social_security_number is\par
+the primary key for the table.\par
+What the database will do is it'll ensure that I cannot have\par
+more than one instance of the Social Security number field\par
+in my table.\par
+So that's one of the advantages of the primary key.\par
+It makes sure that you can't duplicate them.\par
+So only one row for every student.\par
+In the case of Course, one way for each course number,\par
+because course number is the primary key.\par
+And in the case of the Enrolls_in,\par
+my key is a composite key, because I\par
+have both the Social Security number as well\par
+as the class in the key.\par
+So what I do is I add a constraint over here,\par
+which says that I'm going to create a primary key called\par
+PK_enroll.\par
+That's like a creation on the fly.\par
+And that is a composite of Social Security\par
+number and class.\par
+In this case, the primary key is going to be used mainly\par
+for indexing the table.\par
+That's the goal, really, with this thing over there.\par
+So that's our basic structure.\par
+And this is now, once we run this,\par
+is actually going to create these three tables.\par
+And to run this, all we need to do\par
+is to go to this little lightning thing over there\par
+and click on it.\par
+And I get this stuff here, and I want to make sure\par
+that it's all run properly.\par
+It says one warning over here, because I'd already\par
+deleted SchoolDB, so I couldn't actually create it again.\par
+So that's gone.\par
+And then, everything else seems to have worked fine.\par
+So it's always a good idea to check\par
+to see that all these, every query,\par
+has a green check mark next to it\par
+to make sure everything worked properly.\par
+So that's our database defined.\par
+And we can go back and check this stuff\par
+to see whether it actually worked or not.\par
+So if I just delete all this.\par
+I could do SHOW TABLES and run that,\par
+and I get Course, Enrolls_in, and Student.\par
+My three tables are defined in the thing here.\par
+I can see if they've been defined correctly\par
+by looking at the describe.\par
+So let's say DESCRIBE Enrolls_in.\par
+A couple of things about queries.\par
+Every SQL query has to end with a semicolon,\par
+because that allows us, of course, to use\par
+multiple lines if we want to.\par
+And as a matter of convention, the keywords\par
+in the query, the actual SQL commands,\par
+are often in uppercase, so I usually\par
+have to do something like this.\par
+That's just convention.\par
+It's not required.\par
+And the third thing is that even though the table is\par
+called Enrolls_in, it's not case sensitive.\par
+SQL is not case sensitive.\par
+It doesn't care whether you define it as uppercase,\par
+it has to be uppercase.\par
+It's very unlike Python variables in that respect.\par
+So, yes, we have all these three things here,\par
+and it says SSN, Class, Score.\par
+Note that we have key primary, key primary here, because this\par
+was a required thing there.\par
+And that's it, really, right?\par
+And this says no, no for null.\par
+They can't be null.\par
+And Score can be null.\par
+That's what we defined it as.\par
+So that's the first step here.\par
+We've got that in.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

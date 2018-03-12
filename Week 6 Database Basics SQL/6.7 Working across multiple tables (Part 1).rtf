@@ -1,0 +1,189 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 So far, we've looked at how to get data\par
+from a single table using the select command.\par
+Now, we want to see how we can use what's\par
+called a JOIN feature in database and SQL\par
+to get data from multiple tables.\par
+So first, before we worry about that,\par
+let's just take a look at what we really want to do.\par
+So let's say we want to get a list of student names\par
+and classes.\par
+So we want to know from every--\par
+in our database, we've got a bunch of students.\par
+And we have a bunch of classes that they're enrolled in.\par
+And we want to get the names of the students and the classes\par
+that they are enrolled in, like maybe see\par
+one series of class numbers.\par
+So if we're to do this, we need to go across our database\par
+and look at more than one table.\par
+Because if we look at our database structure here again,\par
+what we have is we've got Students over here\par
+and Enrolled In over here.\par
+And we want to figure out--\par
+we know that they are linked together\par
+by Social Security Number.\par
+But the names are in this table over here, right?\par
+So the name of John Childs, or Mary Arias, or whatever\par
+is in this table over here.\par
+And the classes, C1, C2, C3 are in this table.\par
+So we need to go across these two tables\par
+and somehow get the data to take it out.\par
+We can see that the two tables are linked by Social Security\par
+number, right?\par
+So this 111-22-3333 is John's social security number.\par
+And that's the linkage between the Students\par
+and the Enrolled In tables.\par
+So what do you want to do is you want to say,\par
+hey, I want to get.\par
+So in the select statement the first thing\par
+you want to tell it is what do or do you want to see.\par
+Remember, what we're getting from a SELECT command\par
+is another table.\par
+So what you want to tell it is what\par
+is the structure of that table.\par
+And the structure of the table is our select something, right?\par
+So the structure of our table that we want\par
+is the F name, the L name--\par
+first name, last name--\par
+and the class.\par
+So that becomes the start of our query.\par
+So we can go here and say select F name, L name, class, right?\par
+That's what we want to select, right?\par
+Where do we want to select this from?\par
+So our select structure says select the columns that we want\par
+and from the tables that we are getting the data from.\par
+So the tables that we want to get\par
+our data from, in this case, is the Student table\par
+and the Enrolls In table.\par
+So we can just list those from Student, Enrolls In, OK?\par
+And let's run this and see what we get.\par
+I mean, it's not going to be our answer.\par
+But let's see what we get.\par
+So what we get is Error Code Unknown\par
+Column F Name and Field and all that kind of stuff, right?\par
+So well, wait a second, sorry.\par
+I forgot the word from.\par
+So here, now, what I get is a composite which\par
+has taken all our data and said, F name, L name, C1,\par
+so we get John Childs, C1, John Childs, C2, John Childs, C1,\par
+it's sort of a mess.\par
+Because it's taken all the possible combinations\par
+of every row in our Student table\par
+with every row in our Enrolls table.\par
+So we get John Childs for every possible combination here,\par
+C1, C2, C3, C1, C2, C3, everything, right?\par
+So we don't really want that.\par
+What we want is we want a restricted thing.\par
+We want this to be contained to the condition where the Social\par
+Security Number in this table here--\par
+so we want it to be constrained so that we only\par
+want to choose rows where this Social Security Number matches\par
+this Social Security Number.\par
+Make sense?\par
+So what we want to say is we to say, hey, look,\par
+take this row here, and look for a corresponding row over here,\par
+and include only that, don't include every row that shows up\par
+in that table there.\par
+So that's our condition.\par
+And you want to add that condition in.\par
+And that becomes what's called the join condition, really.\par
+And we say here where the student.ssn, which\par
+is the Social Security Number of the student in the Student\par
+table equals enrollsin.ssn.\par
+So now, we are restricting our combining of these two tables\par
+to matching rows, right?\par
+We have a match on Social Security Number.\par
+And then, we run this.\par
+And now, we get our listing of student names\par
+and their classes.\par
+So that's the way we go about doing this.\par
+We can complicate this little bit,\par
+as much as we want actually.\par
+So for example, if you want to see the list of classes\par
+that John Childs is enrolled in, so far in our first query\par
+we're just restricting it to Social Security\par
+Number matching.\par
+And that's it.\par
+So we get all the combinations possible.\par
+And notice that I have an additional thing here\par
+called A and B. So what I'm saying\par
+is choose these columns from the table Student,\par
+but give it an alias A. And the idea here\par
+is that you just want to make typing easier.\par
+You don't want to keep saying student.ssn.\par
+You might have multiple cases of student and multiple\par
+fields redrawing from it.\par
+So rather than having to keep typing the name of the table,\par
+I want to use the alias A or the alias b.\par
+And that's what I'm doing over here.\par
+I can make this even more specific\par
+by saying something like this.\par
+I could say select a.f name, a.l name,\par
+b.class from Student, A, Enrolls In, B. Just by saying A and B,\par
+it becomes an alias.\par
+And that'll replace student by a.ssn equals b.ssn\par
+and execute this.\par
+The nice thing about this is that anyone reading the query\par
+can know clearly where F name and L name are coming from.\par
+I don't have to say it.\par
+The reason I don't have to say it is because F name and L name\par
+are unique in my table, right?\par
+There's no F name and L name that\par
+is duplicated anywhere here.\par
+But SSN is not unique.\par
+So if I include SSN, I have to specify exactly where I'm\par
+getting it from.\par
+So if I did for example here SSN, and tried to run this,\par
+I get an error.\par
+Because it tells me SSN column, SSN field,\par
+SSN field list is ambiguous.\par
+So where there's no ambiguity, you don't have to specify it.\par
+But where there is ambiguity, you need to specify it.\par
+It doesn't know which to use, SSN in table A or table\par
+B, right?\par
+That's the idea there.\par
+So let's just keep that in mind.\par
+But as a general rule, if you disambiguate,\par
+and you can think if you disambiguate every field,\par
+then, A, you're safe, you're not going to run into trouble,\par
+and, B, anyone reading your query\par
+can see clearly where the data is coming from, which is always\par
+a good practice in any programming environment,\par
+to make sure that everyone knows what the heck\rquote s going on,\par
+right?\par
+So that's the basic structure.\par
+Like I said, you can add more stuff to this.\par
+So here, I want to get information\par
+from the two tables.\par
+But I only want to see which courses\par
+is the student called John Childs doing well in, right?\par
+So by well, I'm defining as you get a 95 or higher\par
+in the class.\par
+So I can say where this and--\par
+and and is a combining clause over there--\par
+F name equals John--\par
+note that once we're in the data itself,\par
+we have to be compliant, right?\par
+Because it's a literal--\par
+and L name equals Childs, and score greater than equal to 95.\par
+And I can if I want, I will execute this.\par
+It's only in C2 John Childs is getting more than that.\par
+If I want-- I cannot, I don't have to, like I said--\par
+but I can always add the a. and b.\par
+But I don't have to because they are not duplicated.\par
+The same name is not used in multiple tables.\par
+So it's not going to be a problem.\par
+SQL can figure that stuff out, right?\par
+So here, what I've done is I'm saying,\par
+OK, take these two tables, combine them\par
+at the equal Social Security Numbers,\par
+and then also add this condition that from the--\par
+in a sense, what I'm saying is from the resulting table\par
+make sure that the only rows that I get\par
+are the ones that contain first name John, last name Childs,\par
+and a score greater than or equal to 95.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

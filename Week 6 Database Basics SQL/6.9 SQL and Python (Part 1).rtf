@@ -1,0 +1,194 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Let's now look at how we can use Python as a client\par
+to an SQL server.\par
+And look at the connectivity within Python.\par
+It turns out to be actually fairly simple\par
+and once we've done Python, you know,\par
+it's a straightforward process.\par
+So the essential goal here is-- and irrespective\par
+of which particular server you're\par
+using, whether it's PostgreS or MySQL or some other server,\par
+we have the same basic structure.\par
+So there's a set of standards that\par
+have been set down for a Python database API\par
+and we follow that standard.\par
+If you move to a different server,\par
+you're going to have to, again, look for the equivalent API\par
+commands that will sort of connect you to that server\par
+itself.\par
+So what do we do?\par
+Well, the steps are we import the API module, whatever\par
+that is.\par
+And remember, in Python, whenever\par
+you want to do something, you import a library.\par
+So that's what we want to do here.\par
+Then you acquire a connection with the database server.\par
+It's much like we clicked on the local host thing\par
+in our MySQL Workbench.\par
+What that data did was it created\par
+a connection between the Workbench, which is the client,\par
+and your MySQL server, which is the server, right?\par
+So similarly, we also need to do that in Python.\par
+We acquire a connection with the database server.\par
+So there's going to be a function that\par
+will acquire the connection.\par
+Then we issue a bunch of commands,\par
+which are SQL commands, essentially,\par
+sent as strings to the server.\par
+Or you call a stored procedure, a stored procedure\par
+like our school schema under SQL or school data under SQL\par
+with our stored procedures.\par
+Sets of queries that are stored in a single file.\par
+And once we've done all that, we can close the connection.\par
+That's our basic structure here.\par
+The library that we work with is called pymysql.\par
+And if you want to work with this,\par
+the structure here is we do the same steps\par
+that we have outlined before.\par
+We start by importing the library, which\par
+is import pymysql.\par
+We acquire a connection to the database server.\par
+And there's a pymysql function called\par
+connect, which you give it the name of the connection itself\par
+and not the server itself.\par
+Which could be a URL but likely it's just local host.\par
+The name of the user and I'm going\par
+to use root, the password.\par
+And actually, we need one other thing here,\par
+which I seem to have forgotten to put in the database itself.\par
+And we will see that in the example.\par
+So connect is the way of connecting to the database.\par
+And then you create what's called a cursor object.\par
+What is a cursor object?\par
+The cursor object is essentially this.\par
+It tells you, hey, you know, this is where\par
+my command is going to be.\par
+So you can see the little blinking line here,\par
+that's a cursor.\par
+So the cursor object tells it this is the next command\par
+and you enter commands into your database\par
+and into all that kind of stuff.\par
+So the key here is connect and then\par
+you create a cursor object.\par
+And when you're finished with that particular cursor\par
+or that thing you can do, you can close\par
+it using the close command.\par
+So let's look at this in practice.\par
+And I'll go to Safari here.\par
+And we have Python and MySQL.\par
+The first thing I want to do is import pymysql.\par
+Now you may not have it installed.\par
+I'm not sure if I have it in this machine.\par
+No, it's not there, right?\par
+So again, just to revisit this in a second, what we can do\par
+is we can go here and do pip install pymysql.\par
+So this is going to go and get the pymysql library\par
+and install it.\par
+And once we've done it, we can import it, right?\par
+So remember this command, exclamation point\par
+is our command that tells our Jupiter browser\par
+to not use Python but to go out to the operating system\par
+and run this command, run the pip command,\par
+which is the Python installer program from the operating\par
+system.\par
+So it's saying get this from--\par
+and you have to have a web connection for that,\par
+internet connection for that, because this is going out\par
+to the internet to get it.\par
+And it gets pymysql, downloads it, and installs it.\par
+So that's our step one.\par
+So we've got that.\par
+So now we import this in.\par
+And then you create a cursor object.\par
+So I'm going to create a connection, sorry.\par
+So I call the connect function from pymysql\par
+and I give it the various attributes that I need.\par
+That I use and need are the URL of the server.\par
+In this case, it's local host, so we just use that.\par
+The name of the user, and note that these\par
+are all strings, right?\par
+These are Python strings.\par
+The user I'm using is root, you are probably\par
+using the root too.\par
+I've set up my password as None, because I just want it set up.\par
+And this doesn't mean there is no password,\par
+it's just a string that has the uppercase N followed by O-N-E.\par
+And I'm telling it to use the database school db.\par
+So you have to tell the Python, pymysql connector, what\par
+database are you going to be using\par
+when you call this thing here.\par
+And then, once I've got that, so I\par
+know I have a variable called db that contains my connection.\par
+And now, for that connection, I set up a cursor object.\par
+Why do I need that?\par
+Well, you could actually be connecting\par
+to multiple databases or multiple servers.\par
+Your Python program might be getting data from one server,\par
+like perhaps you're trading an application\par
+and you're getting data from your historical price\par
+databases, you're getting data from maybe a fundamentals\par
+database somewhere else, you're getting data that's\par
+coming in from your trades.\par
+And, you know, doing all kinds of stuff\par
+for portfolio management, market to market, all kinds of things.\par
+So there could be multiple sources for data.\par
+So you could be having db1, db2, db3, db4, whatever, right?\par
+So multiple connections.\par
+So, for each connection, you create a connection object.\par
+And in this case, that's like db, in the variable db.\par
+And then, for each connection itself,\par
+you can create a cursor object.\par
+You can create multiple cursor objects\par
+because you can have multiple clients inside your program\par
+itself, right?\par
+So that's a possibility, too.\par
+So we run this stuff here and we get these two objects.\par
+We can take a look at them.\par
+Let's go insert, set above here, and I say db.\par
+It tells me it's a pymysql connection object\par
+and I've had no cursor.\par
+It tells me it's a cursor object, right?\par
+So now, the next thing you want to do is execute query.\par
+So the way this works is that when you execute a query,\par
+you call this function called execute on a cursor.\par
+Take any cursor and call the function execute on it.\par
+And that's what gets executed.\par
+Right.\par
+And what you do is you pass your query\par
+as a string to the function.\par
+So this is pure SQL.\par
+There's nothing fancy in that, right?\par
+So it says show tables, that's my string.\par
+Notice I have my semicolon.\par
+Because every query end with a semicolon.\par
+And that's inside a Python string.\par
+So what this is going to do is it's going to go to the server\par
+and execute this command.\par
+And every SQL query returns a table,\par
+so it'll get a table back.\par
+A table is what?\par
+A table is a bunch of rules, right?\par
+We have rule zero, rule one, rule two, rule three.\par
+So you can think of it as a collection.\par
+And what we end up doing is you get this collection back\par
+and that sort of sits.\par
+So let's say we have a server here,\par
+and this is your client program.\par
+And you can think of a buffer over here.\par
+So when you send the query, the query goes to the server\par
+and the server puts the result in a buffer.\par
+OK?\par
+Into that table.\par
+And then the client can say, get me one item from the buffer.\par
+So it will take one item and remove it from the buffer\par
+and give it to the client.\par
+Or it can say, give me all of them.\par
+So the way it does that is it uses these commands,\par
+fetch one to get one item.\par
+Or fetch all to get them all.\par
+So let's take a look at this here.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

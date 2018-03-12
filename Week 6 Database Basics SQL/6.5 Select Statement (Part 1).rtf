@@ -1,0 +1,219 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 So now let's see how we can query a database.\par
+So the main command that we use to actually create the database\par
+is the SELECT statement.\par
+And this is a very powerful statement\par
+with lots of variations that we can\par
+add on to it, clauses and conditions\par
+and all kinds of stuff.\par
+So let's focus a little bit on that.\par
+So what does SELECT do?\par
+Well, the idea is very simple.\par
+What SELECT does is, given a command, what\par
+it does is it says give me set of records\par
+from one or more tables.\par
+So it could be one table or many tables.\par
+So essentially, what you're doing\par
+is you have a database that contains a lot of information,\par
+and you want some information out of it.\par
+The data is scattered.\par
+It's sitting in multiple tables, in Student,\par
+in Enrolls_in, in Course, or maybe hundreds of tables.\par
+And you want to be able to look across these tables\par
+and pull out information, or the information that you need.\par
+So it might need to go through multiple tables\par
+to actually get the information that you need.\par
+And that's idea here.\par
+So when you give a SELECT command, what you're doing\par
+is you're saying go to my database\par
+and get me the information that I want.\par
+And to do that, you have to, of course,\par
+know the structure of your database,\par
+the schema of your database.\par
+And you tell it which tables to access\par
+and what data it will return to you finally.\par
+That's the idea here.\par
+So what you're doing is you're actually\par
+just describing the result set.\par
+The goal is that the server will take\par
+care of the processing, or actual procedure.\par
+A computer, by definition, is going\par
+to go through its process step by step, and very micro step\par
+by step.\par
+But we don't have to tell it how to get the information,\par
+we just have to tell it what we want.\par
+We want data that combines information\par
+from this table, that table, and that table,\par
+and bring it all in.\par
+And that's the idea here with this thing.\par
+That's what SELECT does.\par
+So let's take a look at the SELECT statement.\par
+The basic clauses that we have, or the basic structure,\par
+as we saw an example earlier, is that you\par
+start with the word SELECT.\par
+And what we're saying is that this is the selection\par
+of information that you want.\par
+And you tell it where the data is coming from.\par
+So this is pretty much the basic structure.\par
+You're always going to have SELECT,\par
+and you tell it what you want selected.\par
+So the star here is what we want.\par
+And the FROM is from where is it coming.\par
+So SELECT is the verb that we are saying to get the data,\par
+and FROM tells the database server which\par
+tables to access the data from.\par
+The same information can be in multiple tables,\par
+so you want to be very clear which tables you want it from.\par
+So the simplest statement, of course,\par
+is this SELECT * FROM Student,\par
+which is going to return all the data, every row in the Student.\par
+Well, of course, you don't always\par
+want everything from a table.\par
+You want to choose something about a particular student\par
+or some information that is restricted.\par
+So the next thing that we have in our SELECT statement\par
+is the clause called WHERE.\par
+And what the WHERE clause does is\par
+it's like the IF in case of Python.\par
+What the WHERE clause does is it sets\par
+a condition for the selection.\par
+So here in this second query, what we are saying\par
+is SELECT * FROM Student WHERE city = \ldblquote New York\rdblquote .\par
+So we are saying get me all information about every student\par
+who has a city value that-- maybe that's where they live--\par
+that's New York.\par
+And notice that this equals sign over here\par
+is the ordinary equals sign \ldblquote =\ldblquote .\par
+It's not the double equals that we normally\par
+see in procedural languages.\par
+So this description is saying, hey, database, give me\par
+the list of students, all the information about students\par
+who live in New York.\par
+That's what we are saying.\par
+So database figures out how to do it and delivers it for us.\par
+We can also choose specific fields.\par
+So when we say star, what we are doing\par
+is we're saying give me all the information.\par
+But we may not want them all.\par
+Maybe we want only the first name and last name.\par
+So now you can say, hey, the only things\par
+I want are f name and l name.\par
+So these field names should correspond to the names\par
+of the columns in the database.\par
+And everything else is pretty much the same.\par
+So now all we're getting is the first name and the last name\par
+of the student from New York.\par
+We can also sort them.\par
+So we want to select the social security\par
+number from the Student table, and order them by first name.\par
+And we can say ascending.\par
+The default is ascending.\par
+But we don't have to say ascending.\par
+But you can say ORDER BY.\par
+And ORDER BY is saying now that the data that we get\par
+should be ordered by the first name of the student, sorted\par
+by the first name of the student.\par
+ASC is ascending.\par
+And we can also say by descending.\par
+And that'll take care of that for us.\par
+And finally, we can also say something\par
+like SELECT DISTINCT, which says get\par
+me the unique cities from the Student table,\par
+if we want to know, for example, which cities our student\par
+population comes from.\par
+So let's take a look at some of these things here.\par
+So let's say we go here.\par
+And so I say SELECT * FROM Student.\par
+And that gives us the entire Student table.\par
+I could say SELECT * FROM Student WHERE city\par
+= \ldblquote New York\rdblquote , and run that.\par
+I forgot to put in--\par
+forgot the double quotes, so it gave me an error.\par
+And I can run that.\par
+And that tells us that the students\par
+that we have from New York are John Childs and Mary\par
+Arias. I could say SELECT DISTINCT city FROM Student.\par
+And then I'm going to say equals New York for that.\par
+And I run this.\par
+Then it tells me the distinct cities\par
+are New York, Seattle, and San Francisco.\par
+And I could actually add, if I wanted to-- here,\par
+we can see that these are not sorted, because Seattle should\par
+come after San Francisco.\par
+So I could say ORDER BY city, and run that.\par
+And now they're sorted.\par
+I could sort if by city descending.\par
+And we should see them in reverse order.\par
+And roughly, that's what we get here, right?\par
+So that's the basic structure for this stuff here.\par
+Have I got them all?\par
+Yeah, I can-- yeah.\par
+So that's the basics of the SELECT command.\par
+The next thing we can do is add some more information to that.\par
+So what we are doing is we've chosen-- in our initial setup,\par
+we've chosen to extract actual columns.\par
+But we can apply functions to the columns, as well.\par
+So for example, if I look at the Enrolls_in table,\par
+there's a grade column, or a score column in that table.\par
+And I can find the average.\par
+So average obviously you can only\par
+find for numerical columns, integers or floats or whatever.\par
+And so I can find an average for the score from that thing here.\par
+So what this says here is that you\par
+want to select the average score from Enrolls_in.\par
+So it's going to find the average from that table there.\par
+We can do that selectively.\par
+We can say only for the class c1.\par
+So that would find it only for class c1.\par
+And we can also GROUP BY.\par
+We For example, let's take a look at this, actually.\par
+And so I could say SELECT--\par
+so let's take a look at our table here.\par
+SELECT * FROM.\par
+So we look at the Enrolls_in table.\par
+It has three columns, social security number, class,\par
+and score.\par
+And what I want to find is the average.\par
+So I replace the star by the average of the score.\par
+And that tells me the average is 71.\par
+OK.\par
+Then I can selectively do this.\par
+I could say WHERE class =\ldblquote c1\rdblquote .\par
+So what that is doing is it's telling us\par
+that we want to use only for where the class is c1.\par
+And I click on this, and it tells me that, for c1, 72\par
+is the average.\par
+OK?\par
+And then I replace the WHERE clause by--\par
+what I want to do is I want to say here, if I do SELECT star\par
+FROM Enrolls_in, I have three different classes-- c1, c2,\par
+and c3.\par
+So what I want to do is I want to find\par
+the average by the class.\par
+So rather than having to do WHERE class equals c1,\par
+class equals c2, class equals c3,\par
+I can say do this for the entire setup\par
+by using a GROUP BY clause, and say GROUP BY class.\par
+And give me the average score.\par
+So what this is going to do now is\par
+it's going to take each class and group them together.\par
+So in a sense, what's happening is\par
+that we get these records here, c1, c1, and c1 grouped\par
+together.\par
+And you find an average for this group.\par
+And then c2, which is only one, we\par
+find an average for that group.\par
+Then c3, which is only one, we'd find\par
+the average for that group.\par
+And we run this, and we get the average score is c2, 95--\par
+c1, 72, c2, 95, c3, 44.\par
+We can see that we can also add over here the class,\par
+the thing we're grouping by.\par
+And we get the information that's organized like that.\par
+So it's a very handy way of getting\par
+information of groups of data from our database itself.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 
