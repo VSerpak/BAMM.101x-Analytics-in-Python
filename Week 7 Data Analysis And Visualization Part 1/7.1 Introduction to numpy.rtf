@@ -1,0 +1,187 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 In today's session, we're going to look at the basics of data\par
+analysis with pandas and numpy.\par
+Pandas and NumPy are two packages--\par
+modules that are available with Python\par
+and are very useful for data analysis.\par
+So for today, we're really going to just look at the libraries.\par
+And next week, we will look at more an analytical example.\par
+So today is sort of an introduction to these two\par
+libraries.\par
+It should be fairly light.\par
+Let's see.\par
+Python has a huge number of libraries\par
+for supporting data analysis.\par
+The main ones that we look at here--\par
+the ones that we're going to look at here, the main ones.\par
+But that doesn't mean that we're restricted to that.\par
+So it's a good idea to sort of, whenever you're\par
+doing some kind of, analysis to use Google effectively\par
+to see what else is available and whether there is something\par
+that will fit your own particular need.\par
+But the basics are that almost every library\par
+is going to use NumPy as its underlying data structure,\par
+so to speak.\par
+But what NumPy does is it supports numerical and array\par
+operations.\par
+And it's very fast.\par
+It's a very fast way of being numeric and array operations.\par
+Most stuff is built on that.\par
+There's SciPy, which does some scientific applications--\par
+and we're not going to worry too much about it--\par
+but it has a lot of capabilities for advanced differential\par
+equations and things like that.\par
+This Pandas, which supports data manipulation and analysis--\par
+and Pandas is going to be our basic data structure.\par
+Pandas will provide our basic data structures\par
+for most of what we will do in machine learning and analysis\par
+down the road in the rest of the class--\par
+the rest of this course.\par
+And then there is visualization libraries.\par
+There are many of them.\par
+And they all have their own strengths and weaknesses.\par
+So it's always a good idea to look\par
+and see what suits your particular application\par
+the best.\par
+So Matplotlib is the basic library\par
+which sits inside Pandas.\par
+And Pandas [INAUDIBLE] support for that.\par
+So that's something we will do anyway.\par
+The seaborn and Bokeh, which are two third-party libraries\par
+that are pretty good.\par
+They have, again, have their own strengths and weaknesses.\par
+But we will take a look at some of them along the way.\par
+There's Plotly, which a really nice library for drawing graphs\par
+and those kind of things.\par
+There's gmplot, which is a great library for [? putting ?] maps,\par
+very quickly integrating your data with the Google Map.\par
+Google Maps, everyone understands those.\par
+So it's always a good idea to think\par
+if you have a mapping [INAUDIBLE] application to see\par
+how you can pull it up in a map.\par
+So the key here is that when we're\par
+talking what visualizing data, we can visualize data\par
+in many different ways.\par
+You could put a graph, a bar chart, a pie chart.\par
+Or you can throw in a map, or you can\par
+throw in an interactive map.\par
+That way you can sort of go in and out,\par
+and drill down, and get more information.\par
+There are many different ways of doing stuff.\par
+And each library approaches this process in its own way.\par
+That means that some of them, like bokeh, is very\par
+good at interactive mapping.\par
+Gmplot is good at handling Google Maps.\par
+Plotly is good for almost any kind of thing,\par
+but also does maps and--\par
+if you want to have ZIP- code-based maps,\par
+use shapefiles.\par
+Plotly integrates well with that.\par
+There's another library called basemap\par
+that does that integration, too, but probably a lot slower\par
+[INAUDIBLE] as well.\par
+So it really depends what you want to do.\par
+So we'll take a look at a few examples\par
+in the rest of this course.\par
+But keep in mind that there is no perfect library out there.\par
+It's not that you can take one library\par
+and use that for all your visualization needs.\par
+It really depends on what you want to do.\par
+So keep that in mind.\par
+And be ready to Google.\par
+So that's our introduction to the libraries.\par
+Why do we want to use NumPy?\par
+Now, NumPy is a good--\par
+NumPy or "numb-pie"-- people use either term interchangeably--\par
+is very useful, because it's a fast mechanism for dealing with\par
+arrays and matrices and those kind of things.\par
+It's fast.\par
+And is also more space-efficient than lists.\par
+Now, the key reason for this, of course,\par
+is that a list can have different objects inside it.\par
+So you can have a list that mixes\par
+integers, strings, or even your own user-defined objects\par
+inside the theme list.\par
+So what that means is that if I have a list,\par
+and I'm looking at this list over here,\par
+and say if I have 1, and then A, and then 2, and then B,\par
+and I'm looking for the B, and I know I'm looking for,\par
+let's say, X equals this.\par
+I'm looking for X 3.\par
+So X 3 is B. But I can't get of this directly\par
+by saying, that hey, it's the fourth element in the list,\par
+because I don't know how much space the elements before it--\par
+these ones-- are using.\par
+I don't know because they could be of any type at all.\par
+What NumPy does is it says, hey, you can't mix this stuff up.\par
+So a NumPy array will contain 1, 2, 3, 4.\par
+And now if I--\par
+X equals this.\par
+If I do X3 three, then it says, hey, it's\par
+an element in the fourth place.\par
+They're integers.\par
+If an integer is in, say, 32 bits of 4\par
+bytes, or whatever, then I know that it is a byte number, 3 x\par
+4, starting from there, right?\par
+So yeah, that's right, 3 times 4.\par
+0 times 4, blah, blah, blah.\par
+Right, 3 times 4.\par
+So it knows it's there, and can go directly to that\par
+and access it.\par
+So that in a very intuitive sense,\par
+tells us that it's going to be much faster than using a list.\par
+The second thing that NumPy does is it's also written in C.\par
+So C, as we know, is a very fast language.\par
+So we don't really want to know C because it's also\par
+a complicated language.\par
+So NumPy is running C, so it's already faster.\par
+Even this implementation is faster than what Python is.\par
+Of course, many Python entrepreneurs\par
+will actually be using C underlying it.\par
+But in principle, yes.\par
+It has good support for linear algebra,\par
+for Fourier. transforms, random numbers, all kinds of things.\par
+So it's very useful for any mathematical or calculations\par
+that you may want to do.\par
+And with data analysis, typically, you\par
+do lots of mathematical calculations.\par
+The basic structure in NumPy is the idea of an array.\par
+So with an array--\par
+we already talked about this--\par
+An array is a sequential collection just like a list.\par
+The only difference is that it has like objects.\par
+They have to be the same data type.\par
+The same type.\par
+So this makes indexed access faster,\par
+because you can figure out exactly where it is.\par
+And it's also more memory efficient,\par
+because you don't have to worry about the overhead of keeping\par
+different objects together.\par
+So lists are designed for things like making fast insertions.\par
+And ideally, a list is that it will change very often.\par
+So since it's going to change very often,\par
+you want to be able to do things like insert into stuff.\par
+Roughly, the list structure--\par
+you have, a list contains slate memory addresses\par
+of each element, something like that.\par
+Some such thing.\par
+So it has a big overhead in just maintaining the list itself.\par
+NumPy arrays don't have that same overhead,\par
+and so they're a little bit more space-efficient.\par
+But I don't think that's the main reason.\par
+The main reason is the faster access.\par
+They're mutable, just like in the case of lists,\par
+you can change an array.\par
+They're optimized for matrix operations,\par
+because all the functions are written with this idea\par
+that you have this like matrix or list, or matrix of array,\par
+or whatever.\par
+And it's optimized for that.\par
+And it provides random number support.\par
+So that's the reason you really want to use NumPy.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+Next \par
+}
+ 

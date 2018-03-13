@@ -1,0 +1,208 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 If I try to reshape it so that we get to 10,\par
+3 then I have a problem, because the total size of the new array\par
+must be unchanged.\par
+So here I have 6 times 3, that means 18 different elements.\par
+if you multiply the rows by the columns,\par
+you should get 18, basically.\par
+So 10 times 3 is obviously 30, so I don't have 30 elements,\par
+so that's not going to work.\par
+What I could do is 6 times 3, or 3 times 6.\par
+So this would work.\par
+Or 3 times 6, which it already is.\par
+But I can't do anything other than something that becomes 18,\par
+right?\par
+So I'll try the number of elements must be the same.\par
+So you can reshape it to anything\par
+as long as the number of elements is the same.\par
+Numpy has a whole bunch of things for initializing arrays.\par
+So for example, if I want to create an empty array of 10\par
+elements, I do this.\par
+So what this is saying is take all the elements from 0\par
+through 9, and create an array of that.\par
+So I get an np array that is 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.\par
+A little bit like the range that we have in Python, right?\par
+So just like the range of in Python, we are saying,\par
+a range, so you're creating an array of that.\par
+And you can do--\par
+you can create a matrix as well.\par
+So this creates a matrix, we think,\par
+for each row is specified that separately, so that's row 1.\par
+And that's row 2.\par
+And that becomes our new range over this.\par
+I could also do here, 2 comma 10,\par
+and I get starting with two, right?\par
+So it's just like the range that we have in--\par
+I could do to 2 comma 10 comma 2, and that will work too.\par
+So just like the range that we have in Python,\par
+this is creating a range over there.\par
+You can create an array of ones, and that's just\par
+going to create an array of 1,1, 1,1, 1,\par
+which is very useful when you're creating for example, a tick\par
+box in a matrix or something--\par
+I'm sorry, in a graph.\par
+You want to create tick points, you can just\par
+create it by 1, 1, 1 1, 1 and you get\par
+these tick points over there.\par
+You can do things like create this stuff,\par
+but raise the entire array to the power of 2.\par
+So here, what this is going to do is step one,\par
+creates a Numpy array from 0 through 9\par
+and that-- each element in that array.\par
+So this is doing is it says, take every element in the array\par
+and raise that to the power of 2.\par
+And we get an array that looks like this.\par
+So this is really two steps, right?\par
+So this is a np array, and then you take an array,\par
+and you apply a function or an operator to it,\par
+like star, star, or plus, or star,\par
+or whatever it gets applied to every element in that array,\par
+and we get a new area that has the powers of 2.\par
+And finally, you can create an identity matrix,\par
+which is useful in matrix multiplication and matrix\par
+operations.\par
+And the identity matrix is just going to create a 10\par
+by 10 matrix here, with 1s in the diagonal elements and 0s\par
+everywhere else.\par
+You can do matrix multiplication.\par
+Matrix multiplication is, again, straightforward here.\par
+You say, create an array, and you got a nice area over there,\par
+and you multiply it by this two-scalar multiplication\par
+by times 2, just like we did over there.\par
+So every element gets multiplied by 2.\par
+Or you can take two different arrays and multiply 5,\par
+get the dot product by multiplying them.\par
+You just have to make sure that the matrix shapes are\par
+correct for the multiplication.\par
+So here we have ay which is of type-- let me just\par
+write that out here.\par
+That should be clear.\par
+The shape of ay is 2 rows and 10 columns.\par
+So to multiply this, we need to--\par
+the matrix that we get has to have 10 rows essentially.\par
+So what we do here is I'm just reshaping it as 10-2,\par
+and multiply them together.\par
+But you don't have to, of course.\par
+Typically you're not going to do that.\par
+You're going to have two matrices\par
+that you are independent that you want to multiply.\par
+But in this case I'm just taking the same thing\par
+and multiplying it, and we get a dot product, which does\par
+this is a 2 by 2 matrix, right?\par
+Exactly that.\par
+You can take a look at how well Numpy\par
+arrays work, how fast they are compared to lists.\par
+For example, let's say I take an array of x over here\par
+and reprint that and take a look at it.\par
+So x is a 2 by 10 matrix, and I'm\par
+going to take a transpose of that,\par
+and I can do a dot product of that.\par
+And I want to functionalize that.\par
+So here I have this over here.\par
+So what I do here is, I'm creating\par
+a function that takes--\par
+so in this case I have n as 10, which\par
+is what originally I did there.\par
+I want to create a function that creates a 2 by n matrix.\par
+Right, a 2 by n matrix.\par
+And the first row in that matrix is powers of 2\par
+and the second draw is powers of 3,\par
+and then I create another ay, which is a transpose of that\par
+so they can do the multiplication.\par
+And I'm going to time the amount time it takes to actually do\par
+the multiplication.\par
+So I import daytime, and from daytime I\par
+want to get to the time now through the multiplication,\par
+and then get the time at the end of the multiplication\par
+and look at the difference.\par
+So if I-- and return the time that it's\par
+taken to do the multiplication, which\par
+is essentially this minus start, n minus start, right?\par
+So I run this, and I get--\par
+this tells me it took 18 seconds to do\par
+this, 18 nanosecond, milliseconds-- milliseconds I\par
+guess, right?\par
+So I can write a similar thing with Python lists.\par
+So in Python list I'm going to create\par
+a list called x which is powers of 2 in range,\par
+and a list called y, and then create a matrix of that, xy.\par
+So this is similar to our--\par
+ax is similar to the ax over here.\par
+It's a list.\par
+And then I'm going to transpose that.\par
+So this is what I'm doing the transposition of it.\par
+I do the transposition of that thing.\par
+And now I'm going to actually multiply them.\par
+So for in the multiplication itself,\par
+if the you know matrix moderation\par
+does it, what happens is that you\par
+take each element in the row, and multiply\par
+by the corresponding element.\par
+So you take the, say, row 1, so 0,\par
+0 in matrix x is going to get multiplied by--\par
+the element in 0, 0 is going to be multiplied\par
+by the element in 0, 0 in y.\par
+And then element in 0, 1 is going\par
+to get multiplied by 1, 0, and 0, 1 and x\par
+is going to be multiplied by 1, 0 in y, et cetera.\par
+So that's how you do simple matrix multiplication\par
+stuff here.\par
+So that's what this list comprehension\par
+thing is doing over here.\par
+And you can sort of analyze this yourself.\par
+I'm not going to go into this in detail,\par
+but you can analyze this for yourself\par
+over there as you go along with it.\par
+But this essentially does the multiplication.\par
+And our goal here is to see, this\par
+is probably the best way to do it with python lists.\par
+more than I'd like to show, but I would think so.\par
+So our goal is to see how long that takes.\par
+So again we have a start time here and an end time here.\par
+And the difference is going to tell us how fast that works.\par
+So if I looked at the 10 over here and ran\par
+this so that took 20 and this took 22.\par
+So what I want to do is, I want to see--\par
+compare the results of all doing the multiplication with the 2.\par
+So I'm going to stick 4n in this list, 10,\par
+100, 1,000 and 10,000, and compute the dot product\par
+using Numpy and compute the dot product using lists,\par
+and then look at the comparison of how quickly they work.\par
+So looking at this here, we see that for Numpy, it's\par
+14, 9, here.\par
+So we get 16, 8, 81, 56.\par
+And for the list, it's 16, 100, 670, 36,216.\par
+So as we see that as the number increases,\par
+Numpy actually scales very well.\par
+It scales really well, because 16, 8, 81, 56.\par
+Actually 10,000 was even faster than 1,000,\par
+which depends on what else is running in the program, right?\par
+So but it's getting really well.\par
+Whereas the list operation is actually increasing almost\par
+pretty much exponentially.\par
+It starts with 16.\par
+With 100 it's 100, with 1,000 it's 670,\par
+and with 10,000 it's 36,216.\par
+And we can run this again and take a look.\par
+What do we get here?\par
+15, 12, 32, 78.\par
+16, 32, 694, 15,423.\par
+I mean ideally you want to run this hundreds of times,\par
+but you can see that Numpy is by far the faster of the two.\par
+And even more important, it scales\par
+almost linearly with this.\par
+It's even better than linearly actually.\par
+So it's a very fast way of calculating as\par
+compared to lists.\par
+So even if we could get a better way\par
+of doing the multiplication of less than this,\par
+I don't really know.\par
+And this is what I could figure out.\par
+We would still have a problem with lists, OK?\par
+So that's the main reason to use Numpy.\par
+It's much faster than anything else.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

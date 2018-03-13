@@ -1,0 +1,196 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 So once you've got that, we have a data frame,\par
+we can start accessing rows and columns.\par
+So let's just walk through some of these simple Pandas, things\par
+that we can do with it.\par
+So I'm going to create a data frame here\par
+with one, two, three rows.\par
+And each row has four elements.\par
+In R1, 00, 01, 02.\par
+You can see these are just the locational places.\par
+10, 11, 12, and 20, 21, 22, and R1, R2, and R3\par
+are the row numbers that we're giving it.\par
+Because the columns are row labels,\par
+so R1, R2, and R3 correspond to the column row labels,\par
+and the rest are A, B, C, just like before.\par
+So let's run this and print it along the way.\par
+So we do this here.\par
+We print.\par
+Look at the way the data frame is.\par
+So the data frame is sitting in this particular location.\par
+And now, what I want to do is I want\par
+to set the index of this data frame as R1, R2, and R3.\par
+So I tell it here, I call the function on data frame.\par
+I call the function SET_INDEX, and I tell it\par
+that the index corresponds to the column that\par
+is named row_label.\par
+So this row label came from here.\par
+And I'm saying in-place equals true, which means\par
+don't create a new data frame.\par
+Change this data frame so that it's the same data frame\par
+but it now has been reformatted so that the rows have been\par
+taken out, row labels have been taken out of the data frame\par
+and put into the index instead.\par
+So that's what this becomes like.\par
+Just to be clear on this, what if I did print_df here?\par
+Then you notice what I'm getting here\par
+is the row label has another column in it\par
+and A, B, C is over there.\par
+So these are columns.\par
+You know what?\par
+Let me just try this separately.\par
+It'll be much clearer if I take this out.\par
+Control + C.\par
+Here.\par
+So we can see row label as just another column.\par
+So when I make it into an index, it\par
+becomes an index that is no longer a column.\par
+We can no longer refer to it by its column name.\par
+So it becomes row_label.\par
+It just becomes an index for that table itself.\par
+So that's really the difference there, but it's the same table.\par
+If I'd say in-place equals false then\par
+it's going to create a new data frame.\par
+Our original data frame will not be--\par
+For example, if I did this, then notice\par
+my data frame is unchanged.\par
+My data frame is unchanged because I've\par
+created a new data frame.\par
+I could call this X equals this and do\par
+print X. You see X has row_label as a separate index,\par
+but df is unchanged.\par
+So the in-place equals true is kind of helpful\par
+if you don't want to create a new data frame, which\par
+is probably advisable.\par
+I mean, if you have a data frame that contains, say, three\par
+or four gigabytes of data, you don't\par
+want to create another data frame that\par
+contains three or four gigabytes of data,\par
+or maybe 100 gigabytes of data.\par
+It's going to just use up memory for no reason at all.\par
+So in-place may be not a bad idea.\par
+So given that we have this data frame here now--\par
+Let me get back to this.\par
+In-place equals true.\par
+Run that.\par
+So this is the data frame you're working with right now.\par
+So the data frame now has three columns, A, B, C,\par
+and rows that are indexed by R1, R2, and R3.\par
+So let's see how we can get data from this.\par
+Well, the nice thing is that you can access a column directly\par
+by just using this dictionary method of accessing data.\par
+Because of the way Pandas works is the columns\par
+are just dictionary elements that\par
+are indexed by the name of the column.\par
+The df is my data frame.\par
+B is the column name.\par
+df.b I get the data records of the column.\par
+Note that it comes with the index,\par
+so I have R1, R2, and R3.\par
+This is now a data series, right?\par
+And if I do type of this, it says pandas.core.series.Series.\par
+So it's data series.\par
+And if I did type of df, it's a pandas.core.frame.DataFrame.\par
+That's the idea here.\par
+So let me go back to this and do df.b.\par
+To get row data, I use this attribute\par
+called location and use the index,\par
+because the rows are also indexed.\par
+They're like dictionaries, indexed by the row index value.\par
+So I want to say df.loc(R1) is going to give me the row that\par
+corresponds to R1.\par
+So it says column A has a value of zero,\par
+column B has a column one, column C has a value two,\par
+and this is another data series object, a Pandas data series.\par
+I can also get rows by row number.\par
+This is kind of useful, because sometimes it's\par
+faster to get by row number other than by indexing.\par
+If you're looking at time series data,\par
+for example, you know they're arranged by row number,\par
+so you can just use a number other than having\par
+to use the date or whatever every time.\par
+So if I do this, then it'll give me\par
+for iloc(0), which is use the function iloc, which is indexed\par
+by integer rather than this.\par
+And this is going to be the same thing as if I had,\par
+let's say, for one, for example, the same values that I\par
+have for b.\par
+Oh, sorry the rows, not the columns.\par
+So this is the same values as R2.\par
+So this is the same values as here.\par
+I apologize for that.\par
+Got a little confused there.\par
+Because we are getting iloc, we're getting the rows here.\par
+So this corresponds to this.\par
+It's the same result. You can get multiple columns\par
+from the table.\par
+So all you need to do is you give a list of column headers\par
+and you get multiple columns there.\par
+Note that this is a list, so it's not\par
+like df.b and a separately, but inside a list here.\par
+So this gives me this like this.\par
+If I tried doing something like this,\par
+and this is common mistake so watch out for it.\par
+Df.b we know works, but if I did df.b, a then that's\par
+not going to work, right, because there's no key that\par
+corresponds to that.\par
+So this has to be in the form of a list.\par
+So just watch out.\par
+This is a very common mistake in working\par
+with Pandas, data frames.\par
+You can go and get a specific cell from the data frame.\par
+To do that, you want to use the loc function, the loc\par
+attribute, rather.\par
+You tell it which index you want to use\par
+and which column you want to get data from.\par
+So you can do that.\par
+And this will give us the item in here,\par
+which is saying R2 is the index, so it gets this row.\par
+And b is the column.\par
+You get that one.\par
+You can try what's called chained indexing.\par
+And if I do this, this will give me the same result.\par
+You make that b as 1, 1, but there's\par
+a slight difference in that.\par
+And we'll see briefly, very soon,\par
+we'll see what the difference with that thing is.\par
+You can slice your data frame, just like we\par
+did with the NumPy array.\par
+And the basic procedure is very similar, too,\par
+because remember, underlying it, there's NumPy anyway.\par
+So you can slice the rows by giving the row:row thing here.\par
+So we use df.loc, and we say we want row from R1 to R2,\par
+so we get these two rows.\par
+And we get 00, 01.\par
+We don't get row three.\par
+Or you can choose a row/column combination.\par
+And that would be, in this case, we want R1 to R2 in b and c,\par
+So we get that little sub-matrix here, 01, 02, 11, 12.\par
+So next, we're going to look at this is the basics of Pandas,\par
+so the idea here, just to recap a little bit, what we are doing\par
+is we create a data frame.\par
+From the data frame, we have multiple ways\par
+of accessing data from it.\par
+You can access columns by just giving the column name\par
+and using the dictionary structure by saying df.b, a,\par
+for example, inside a list will give you a subset\par
+of columns for that data frame.\par
+Or if you say df.b, that gives you the one single column.\par
+And you can use the loc function to either get a single row\par
+or as a slicer to get multiple rows, like here.\par
+Or you can use it to drill down into a single column,\par
+a single data point, by giving both the row, the row index,\par
+as well as the column name.\par
+And again, you can take a slice, also,\par
+that contains a slice of rows or a slice of columns.\par
+So that's the basic structure.\par
+What we're going to do next in the next unit for this class\par
+is we're going to look at how to get data from various sources\par
+and then do some basic manipulation with Pandas\par
+before we move on to next week's more analytical approaches\par
+with Pandas itself.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

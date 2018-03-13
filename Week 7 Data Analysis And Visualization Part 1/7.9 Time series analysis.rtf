@@ -1,0 +1,209 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 You know we can take this stuff and we\par
+can add a bunch of summary statistics to our thing here.\par
+So there's a nice function called describe.\par
+What describe does is it describes\par
+every numerical column in your data base.\par
+Only for columns that contain numbers.\par
+So it tells you how many elements there are.\par
+And 114 elements expressed in funny ways I guess.\par
+It tells you the mean of the column.\par
+It tells you standard deviation, the minimum,\par
+and it tells you the quantiles-- the quartiles, I am sorry,\par
+of the what each quartile value is.\par
+So this us that for the lowest 25%, the range is from 150,\par
+the range of open is from 150 to 156.0265.\par
+So the 25% to 50%, it's from 156.265 to 170.365.\par
+So 50 to 75, it's 170 to 176, and the max is 182.\par
+I mean this is useful when we're doing our data or machine\par
+learning kind of stuff.\par
+But what it does is, off the bat,\par
+is that the range here, the first quartile\par
+is six price points.\par
+The second quartile is 14 price points.\par
+The third quartile is six price points.\par
+And the fourth quarter is six price points.\par
+So this quartile here, the second quarter\par
+is sort of a mess compared to everything\par
+else in a nicely well-behaved data, saying you\par
+would hopefully get equal ranges in each quartile\par
+but this is not that well behaved.\par
+So now we can use this for quickly\par
+looking at some statistics.\par
+But our interest is to see whether in general\par
+if we buy at the open instead of the close,\par
+are we going to make money?\par
+So let's see what percent of the total days are up days.\par
+And now as we're doing this we can\par
+see we can actually do very quickly run\par
+functions on our data frames.\par
+That's the nice thing about it.\par
+So we have our data frame.\par
+And the data frame we have this, the up column,\par
+so this becomes the up column.\par
+So we can say for the up column compute the sum of all values.\par
+So it's going to add up all the ones basically.\par
+Divide that by the count of all items in the thing here.\par
+So the count is 114.\par
+So we add up the number of times as a one by the number of 14\par
+by 114 and we get the percent that we are interested in.\par
+Note that you're doing it on a different day\par
+so you probably have more than 114 elements.\par
+you should have anyway.\par
+So this does us that 48% of the time, if we like we\par
+can multiply this by 100 so that we get like a nice percent.\par
+48.245% of the time we're going to be getting the close\par
+being higher than the open.\par
+So if assuming we don't care about differences\par
+at this point, in general we will lose money,\par
+probably would have historically, lost money if we\par
+had followed the buy at open, sell\par
+at the close policy, or the number of days\par
+because we might be--\par
+I mean the strategy might still work\par
+because the up days might be more\par
+powerful than the down days.\par
+But we don't know all that.\par
+So just in principle this is a very simple analysis.\par
+So that's the goal here.\par
+So what can we do?\par
+We can take a data frame, we can compute summary statistics\par
+in all numerical columns, and we can\par
+apply our own transformations and operators on those values\par
+to get stuff from there.\par
+We can create new columns using elements\par
+from the old columns, which is kind of nice,\par
+and do analysis on that as well if you want to do that.\par
+So now what else can we do with this?\par
+So there's a lot of stuff we can do\par
+because we are working with time series data,\par
+and we can see that time series data is ordered by time\par
+and that's the way our data frame is structured.\par
+So we want to be able to do some time series analysis this\par
+under it across the time.\par
+So there's a bunch of functions that Pandas provides us.\par
+The first function is percent change.\par
+What percent change does is given a column,\par
+so let's say the close column him for example,\par
+given the close column, you can apply the percentage function\par
+change function to that.\par
+So what this is going to do is, it's going to give you\par
+for the close, it's going to give you, let's say\par
+that's the close, so it's going to do the percent change for--\par
+sorry that's the describe thing here.\par
+So here are the close is 167.19, 169.26.\par
+So we're going to get we're doing a one day percent change,\par
+so the percent change date change for 2017 0103 is going\par
+to be unknown since we don't know the previous day's close.\par
+But for four, the percentage change\par
+is going to be 169.26 minus 167.19 divided by 167.19.\par
+And we're going to get that value there.\par
+So let's take a look at that.\par
+This is a one time period percent change\par
+and that's what we get here.\par
+We're conveniently done because this is time series data.\par
+The nice thing is that we can actually give it an argument\par
+and we can sum number, and it'll give us an end day percent\par
+change, which means in this case,\par
+like for example a 2 day percent change would be 168.70 minus\par
+167.19 Two days divided by 167.19.\par
+So it'll look at the price end days before\par
+and computer percent change based on that.\par
+This is very useful for technical analysis.\par
+We can do that so we get initially\par
+we get NaNs because we don't have enough\par
+we don't have 13 days of data.\par
+So once we have 13 days of data we\par
+can start getting our percent changes.\par
+Pandas function can ignore NaNs, so wherever there are\par
+NaNs it'll just ignore that.\par
+So our percent change here, for example,\par
+has a bunch of NaNs in the beginning,\par
+and you want to compute the mean on the column.\par
+So it'll give us a mean with the NaNs ignored.\par
+So that's the nice thing about it, NaNs are just ignored by it\par
+and we can work with that.\par
+We can create rolling windows.\par
+Rolling windows are very nice because what\par
+you want to do is so in the percent change\par
+what you're doing is we're looking at 13 days percent\par
+change is taking the price today and looking at the price\par
+13 days ago and looking at the difference.\par
+However, what we might want to do\par
+is you might want to compute moving averages\par
+across the stakes, might want to compute a 21 day moving average\par
+of a 13 day price change.\par
+So what we want to do is we want to construct\par
+windows of 13, 13 days each, oh sorry-- of 21 days each.\par
+And for each 21 day window, we compute an average,\par
+then slide the window by one day, compute a new average,\par
+slide the window one day, create a new average, et cetera.\par
+So Pandas has a rolling windows function.\par
+What it does it extracts windows from the data series.\par
+We have a data frame, from the data frame\par
+we extract the close column.\par
+We compute an end day percent change where n is 13.\par
+And we compute 21 day rolling means\par
+on that, rolling windows on that.\par
+So this constructs an object that contains all the windows.\par
+It's a generator object.\par
+It doesn't actually construct the windows,\par
+but it will give us the windows when we need it.\par
+When do we need the windows?\par
+When you want to construct, for example, the mean.\par
+So what this is going to do is it's\par
+going to construct the mean for the 13 day percent change\par
+on a 21 day rolling window.\par
+So we're going to get an initial set of NaNs\par
+because we need 13 data points for the percent change,\par
+and 21 data points for the rolling window\par
+so we need to get 21, 13 day percent changes.\par
+So we need 21 plus 13 data points before we\par
+can start getting any values.\par
+So you're going to get those many NaNs first,\par
+and then this is the moving average that we can do on that.\par
+So we can construct many of these.\par
+For example I'm going to construct here an 8 day, a 13\par
+day, a 21 day, 40, 34 day, 55 day moving average\par
+on a 13 day percentage changes.\par
+So I get a whole bunch of them.\par
+And then if I want to plot them, all I need to do\par
+is to use the function dot plot.\par
+So what dot plot will do is it'll\par
+take a data series, a single series,\par
+and draw a graph out of it.\par
+So here, I'm going to plot the 8 day and the 34 day average.\par
+Let's take a look at it.\par
+And we get a plot that looks something like this.\par
+So this is the missing data, the initial 21 plus 13 days,\par
+which are NaNs, right, because our data series contains NaNs.\par
+And then this is the two moving averages.\par
+We can see that the 20,34 day moving average is the smoother\par
+one, and the 8 day moving average is the noisier one\par
+because it's shorter.\par
+And you can see that.\par
+So you see that the 8 day moving average\par
+is kind of low all the way down and then it sort of took off.\par
+So I guess this is where IBM is now are performing self\par
+historically.\par
+So that's the basic stuff.\par
+We take what have we done, we can take our construction data\par
+frame, we can do some pretty basic time series stuff\par
+with it, like compute percent changes for different time\par
+periods.\par
+We can get rolling windows, and the rolling windows\par
+we can construct, we can draw anything we like,\par
+the means, the standard deviations,\par
+maybe write other functions on it, doesn't really matter.\par
+You can do whatever you feel like with that.\par
+But that's what Pandas provides us.\par
+So at the last piece, we will look at in the next unit\par
+after we finish this one, whenever\par
+we're done with this one is, we look at a very simple analysis\par
+using Pandas.\par
+So get ready for that.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

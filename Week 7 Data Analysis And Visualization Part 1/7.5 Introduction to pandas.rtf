@@ -1,0 +1,211 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Pandas is the basic package for data analysis in Python.\par
+It provides integrated data manipulation and analysis.\par
+So the key here is that you can manipulate\par
+data and some basic analytical capabilities.\par
+And the power really comes from the fact\par
+that it feeds into various machine learning libraries.\par
+You can then take the basic Panda data structures\par
+and feed them into all kinds of different packages\par
+that you can use for more powerful analysis.\par
+It's well integrated with data visualization libraries.\par
+Pandas comes by default. You can use any matplotlib function\par
+in it.\par
+So you get-- the matplotlib libraries are already there,\par
+in-built into it.\par
+So for very quick visualization of graphs, et cetera,\par
+Pandas is really good.\par
+If you wanted the more complicated stuff,\par
+then you can use all of the other libraries we mentioned.\par
+But for the basic stuff, it's really, really good.\par
+It also has built in time-series capabilities,\par
+which is very useful.\par
+We'll see that there.\par
+It's optimized for speed.\par
+It's got numpy sitting underneath it,\par
+so that's always a good thing.\par
+And the Pandas is open source, so it\par
+comes with a bunch of libraries that\par
+are useful for getting data.\par
+You can get data from CSV files, from Excel files,\par
+from HTML pages.\par
+Grab all the tables.\par
+Google, from the World Bank, from the Federal Reserve.\par
+We could, till recently, get data from Yahoo,\par
+but it's an open source library.\par
+So Yahoo made a change to their underlying data structures\par
+and HTML pages, and so currently, this is not working.\par
+And that's the pitfalls of working in the open source\par
+world.\par
+But hopefully, it will get fixed,\par
+and someone will make it work sooner rather than later.\par
+There are work-arounds around it.\par
+You can google them, but we will not focus on that right now.\par
+The main things in Panda is that it organizes data\par
+into two data objects, and that's the data structure\par
+that it works with.\par
+The essential idea is something called a DataFrame, which\par
+is a two-dimensional table object in which it\par
+can recognize the columns and can recognize the rows.\par
+And you can address columns and rows by name\par
+rather than having to go through 0, 1, 2, as we do in lists,\par
+and arrays, and numpy arrays, and all that.\par
+So that's a two-dimensional thing.\par
+And each column or each row is also\par
+a series, a series of one-dimensional array object,\par
+which, again, has meta information built into it\par
+that's kind of useful.\par
+The key thing with Panda that we are interested in\par
+is how to work with series and data frames,\par
+because when we go to machine learning and all\par
+that kind of stuff, we're going to be using Panda's data frames\par
+as our basic data structure.\par
+Each column corresponds to a named data series,\par
+so you know a column has a meaning.\par
+And you can index every row.\par
+So every row also has a meaning.\par
+So you can think of, in time series, for example,\par
+you might have open, high, low, closed, et cetera, prices.\par
+And then you have a date stamp.\par
+So the date stamp is a row index,\par
+and Open, High, Low, Closed becomes a column name.\par
+And that becomes your data frame that you can then\par
+use for analysis.\par
+So that's how Pandas works.\par
+So let's take a look at Pandas in practice,\par
+and we go to our Pandas notebook over here.\par
+So before we do anything else, let's\par
+make sure we have everything installed.\par
+So the first thing we have to work with\par
+is that we need to make sure that we have these two\par
+libraries.\par
+Pandas comes installed in Anaconda's Python by default,\par
+so we don't have to worry about Pandas.\par
+However, for reading data, there's\par
+a nice library called Pandas Data Reader\par
+that we need to download.\par
+And Pandas Data Reader for the HTML part uses html5lib,\par
+but it uses this particular version of html5lib.\par
+So the first thing you want to do\par
+is you want to download these two things\par
+and make sure that your html5lib that you're working with\par
+is 1.0 B8.\par
+OK?\par
+So let's run these two.\par
+So we have both these installed.\par
+And just with a safe side, after you install stuff,\par
+it's not a bad idea to restart the kernel.\par
+So if you restart the kernel in here,\par
+we'll clear all the output as well so\par
+that we don't have anything.\par
+If you restart the kernel, then you are sure that any changes--\par
+because when you install one library,\par
+it might be loading other modules\par
+and installing those as well, or updating them,\par
+or changing them.\par
+And what you want to make sure is\par
+that you are not in your current notebook, which is not\par
+going to be the case in our case right now, because we\par
+are starting with this.\par
+But if you install it later, for example,\par
+then you want to make sure that the current notebook has\par
+the latest library loaded inside it.\par
+If it's already loaded the library previously,\par
+it's not going to reload the new version just because you've\par
+got a new version in there.\par
+So that's the goal there, right?\par
+So once we've got this stuff here,\par
+we want to work with inputs.\par
+I put all the inputs upfront here,\par
+but of course, we can do them any way we\par
+feel like before we use them.\par
+But just to make sure you have all of them.\par
+So we, of course, need Pandas.\par
+So that's our base library.\par
+We need Pandas Data Reader.\par
+This is for reading data from Google,\par
+getting HTML from tables, that kind of stuff.\par
+We want to import numpy as np, right?\par
+And Pandas is typically loaded with the alias PD.\par
+Again, this is just a convention,\par
+it's not a requirement.\par
+We're going to import matplotlib.pyplot and call\par
+that PLT, because that's our alias for that.\par
+And we're going to import datetime.\par
+And SDT.\par
+Well, we don't have to--\par
+conventionally, we don't really need to do that.\par
+Did I do that?\par
+What we'll do is we get rid of this, because typically, you\par
+don't need that.\par
+So I know I have that there.\par
+And the only other thing that we want to make sure\par
+is we use this command here called matplotlib in line.\par
+The percent sign is a Jupyter command.\par
+It's telling the browser something\par
+that is a meta function of the browser itself.\par
+So Jupyter has a whole bunch of things you can do on the page.\par
+We have not really looked at that at all.\par
+We are focusing only on Python, but there's a lot of stuff\par
+you can do with that as well.\par
+So one of the things we want to do\par
+is we want to tell it that any graphs\par
+that we draw using matplotlib-- and you\par
+know matplotlib is part of Pandas,\par
+so Pandas can automatically access the matplotlib\par
+functions.\par
+But any graph that we want to draw using matplotlib\par
+should show up on our browser itself.\par
+If you don't do this, then it's going\par
+to pop up a window somewhere behind,\par
+and you won't know that it's there,\par
+and your browser will be waiting for you to complete that.\par
+It's kind of a mess.\par
+So when you're working on Anaconda,\par
+it's a good idea to add this.\par
+But if you're writing your code somewhere else, like in an ID,\par
+like perhaps PyCharm or something like that,\par
+then you don't need it, or Eclipse.\par
+But if you are working in the Anaconda Jupyter notebook,\par
+then in the Jupyter notebook, you\par
+should always do this, because you\par
+want the graphs to show up right there in the output\par
+part of your thing.\par
+These are the imports that we want.\par
+So let's run this.\par
+And we got them all imported.\par
+And let's start by looking at the data frame.\par
+So here, the data frame, like I said earlier,\par
+is a bunch of columns and a bunch of rows.\par
+And what we want to do is we want to give our columns names.\par
+So what we are saying is, take this data,\par
+which is these two rows here--\par
+1, 2, 3, and 1, 2, 3--\par
+and give-- so there are two rows and three columns.\par
+And for each column, you're going\par
+to give a name to each column.\par
+So column 0 has the name A, column 1 has the name B,\par
+column 2 has the name C. And we can look at this,\par
+and we get a data frame that looks like this.\par
+So here, what do we see?\par
+We see that Pandas has given column names,\par
+and it's given row indices.\par
+So since we didn't specify an index explicitly,\par
+it's made up an index of row numbers--\par
+0, 1, et cetera.\par
+And that becomes our index over there.\par
+But this is the basic structure of a Pandas data frame.\par
+The idea is that the data is sitting in here,\par
+in this 1, 2, 3, 1, 2, 3 stuff.\par
+And we've got a bunch of row indices\par
+and a bunch of column indices that we can then\par
+use to access data, just like an Excel spreadsheet.\par
+In an Excel spreadsheet, you have A, B, C in the columns\par
+and 0, 1, 2, 3, in the rows.\par
+So you can think of Pandas as a slightly more knowledgeable\par
+version of Excel, at least in terms of the data structure.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

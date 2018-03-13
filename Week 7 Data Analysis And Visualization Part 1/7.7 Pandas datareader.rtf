@@ -1,0 +1,178 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Now we're going to take a look at the various ways of reading\par
+data from Pandas, using Pandas.\par
+We can get data from HTML tables and any web page.\par
+There's a nice way of doing that.\par
+We can get data from Google Finance,\par
+from the Federal Reserve, from the World\par
+Bank, all kinds of places.\par
+So we'll take a look at some of these things here.\par
+CSV files, Excel files.\par
+I'm not going to do CSV and Excel here.\par
+We will definitely cover that in other classes as examples.\par
+But just so you know that we can do that if you\par
+want to already know that.\par
+So any HTML page that contains tables,\par
+use bundles to extract the tables from that page.\par
+So what are the tables there in HTML page?\par
+The tables contain the tag--\par
+this tag here if I do insert, so anything that's inside.\par
+So table tags typically contain a bunch of rules, so I have tr,\par
+and maybe column 1, 3 td, c1 / td.\par
+What the heck happened here?\par
+Slash tr.\par
+So I get this thing here.\par
+And you can see this comes out as a table like this.\par
+So this is a basic table structure.\par
+So what Pandas does is it provides us with a function\par
+called read.HTML, that given--\par
+this function here, that read.HTML-- that given a URL\par
+can go to the URL and pick out all the tables that are\par
+inside table tags like this.\par
+So it looks for the table tags, and then looks for the trs\par
+and tds to get that table structure out,\par
+and takes that stuff and shoves it\par
+into a bundled data frame-- because data frames are tables\par
+anyway, right?\par
+So that's the idea here.\par
+So we call this functional\par
+read_HTML so I can run this, and I get this back here.\par
+I get my table back inside a df list variable.\par
+And what I'm getting back is a list of tables,\par
+because any HTML page can contain multiple tables.\par
+So right now it says I have just one particular table\par
+in that thing here.\par
+So that's just one there.\par
+But it's a list containing one element, but it's a list,\par
+so to extract the actual table itself,\par
+I need to index it to the zeroth element--\par
+there's only one element--\par
+and they can print that and they get this data frame.\par
+So have gone to the Bloomberg markets currencies page\par
+and pulled out the single table that\par
+is there that contains currencies, values, changes,\par
+net change, time, and a two day change,\par
+which is NaN for some reason, I'm not sure why.\par
+But that's really in the data itself.\par
+So this is what it's pulling out for us.\par
+So we get this inside a data frame now, right?\par
+And we can see it's a data frame if I did type df--\par
+it tells me it's a Pandas data frame.\par
+So that's a really convenient way of grabbing data\par
+from the internet.\par
+Any pages that-- any page you're interested in\par
+contains data in the form of a table,\par
+you just call read.HTML, give it the URL,\par
+and it's going to pull out all the tables from there.\par
+And if you note here that this had actually already--\par
+for us it's-- and just to make the structure clearer rather\par
+than using print, I'm going to just use df.\par
+The column names-- it's figured out for us that the column\par
+names are inside the--\par
+the header column is there, contains\par
+currency, value, change, et cetera.\par
+So we already have that in a very usable structure\par
+for our things out there.\par
+But the index it hasn't done.\par
+And index it will not do automatically,\par
+but you can specify the index.\par
+Say that if I wanted this to be my index, the EUR-USDur,\par
+USD-JPY I can set the index to this and set in place equals\par
+true, just to make there.\par
+Now I get a nice little table here\par
+that has the thing properly done for us.\par
+And we can now use our loc to extract values from here.\par
+So this tells us that the euro to Swiss Franc exchange rate\par
+currently is 1.0899 blah, blah, blah, right?\par
+So that's the-- it can extract specific currency rates\par
+or changes or whatever you feel like.\par
+So change, 0.002 all that stuff.\par
+Even the time, if I'm interested in the time.\par
+It's kind of a useful way of doing that.\par
+So this is a really nice way of getting data from there.\par
+The next thing you want to do is,\par
+you want to make sure that-- we talked a little bit about\par
+chained indexing earlier, where we said we could--\par
+in this section here, where I said that you could either go\par
+drill down to a specific cell by either giving r2, b and loc,\par
+or doing chained indexing where you do df.loc f r2,\par
+so you get here a series--\par
+I'm sorry, a data frame which contains the raw information,\par
+then you extract the b column of that series-- which is\par
+going to be only one element.\par
+So this is called chained indexing,\par
+and this is just complete normal indexing\par
+or whatever you want to call it.\par
+So the results are slightly different,\par
+and we want to see what happens when you do these two things is\par
+that, when you do chained indexing, what Pandas does\par
+is it creates a copy of the data,\par
+rather than the actual value.\par
+So when you drill down and you get to this value here,\par
+for example--\par
+I'm using here I think df.loc--\par
+I first drill down and get the row that\par
+corresponds to Euro, USD, and then I\par
+get the value of the column chained.\par
+So this is now a copy of what's actually in our data frame.\par
+So now if I look at--\par
+let's say I store this currently in EUR-USD\par
+I just store that value somewhere.\par
+I go and I do.loc, and I change EUR-USD.\par
+Change-- this is-- I'm saying get me this value\par
+and change it to 1.0.\par
+And if I print these things here, I find that--\par
+so it's telling me it's trying to set a copy of a slice\par
+from a database.\par
+So what it's doing is, it's changed this df.loc\par
+and made this return a copy.\par
+And that copy is an ephemeral copy\par
+because I haven't stored it anywhere.\par
+So I'm not storing it anywhere, it's an ephemeral copy.\par
+I change the value of that ephemeral copy to 1.0.\par
+And then when I look and access the same value again\par
+or go back to the same location again inside my original table,\par
+I find that it's unchanged.\par
+And the reason is because I used chained indexing,\par
+it actually did that on a copy.\par
+So instead-- I don't want to use chained indexing,\par
+I want to use direct indexing.\par
+And direct indexing won\rquote t work with a copy,\par
+but it works the actual locations.\par
+So now here I do df.loc, EUR-USD change.\par
+This is no longer a chained index.\par
+We are not using--\par
+we're not getting one thing first us.\par
+We're saying go and get me that location.\par
+So here I go and I change that 1.0.\par
+So what this does is it creates a view of the database--\par
+of the data frame.\par
+So now it's sort of pointing to the actual location\par
+of the thing inside my data frame itself.\par
+And if I change this, then I find that inside my data frame\par
+it has actually changed.\par
+The copy that I made and I stored inside another variable,\par
+EUR-USD, that hasn't changed.\par
+Because that's copy-- when I do an equal to here,\par
+it's actually creating a copy.\par
+But the original location has changed now\par
+because I did not use the chain indexing method to get it.\par
+That's the thing here.\par
+So that's the key here.\par
+So you have to be really careful when\par
+you are doing the data frame--\par
+when you're working on the data frame,\par
+you want to make sure that if you want to work with a copy,\par
+you're working with a copy.\par
+If you want to work with the original,\par
+you work the original.\par
+To work with the original, use this mechanism.\par
+To work with a copy, use this mechanism.\par
+And you'll be fine with that as long\par
+as you're clear what you're doing, you'll be all right, OK?\par
+Just make sure that you get that.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 
