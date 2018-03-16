@@ -1,0 +1,223 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 With Pandas we can do a simple kind of analysis very,\par
+very quickly.\par
+So for example here, I want to look at a linear regression\par
+example that I'm going to do here.\par
+And the goal here is sort of roughly--\par
+it's a contrived example, so forgive me for that.\par
+But there are various companies that work in the solar sector,\par
+and some of them don't work anymore.\par
+They've merged with other companies.\par
+But let's say we have three of these companies.\par
+FSLR, which is First Solar.\par
+RGSC, which is another solar company,\par
+and I think it's called Resource Capital or something.\par
+I forget the name of it.\par
+And then there's SCTY, which is Solar City.\par
+There are three different companies.\par
+Each company either builds or leases\par
+solar panels, though they have slightly different marketing\par
+strategies or business models, so to speak.\par
+And there is also an ETF that's available\par
+that is called that has a ticker, TAN,\par
+which trades on solar.\par
+It's a solar ETF.\par
+So what we want to do is, we want to look at-- our goal\par
+is to sort of use Pandas to try to figure out\par
+what a good investment strategy would\par
+be if you have historical data on these companies.\par
+So we're going to use--\par
+first we're going to look at things like correlations\par
+between the returns of these companies,\par
+and the correlations between TAN and the three companies.\par
+And then try to figure out what the risk-reward profiles are.\par
+And then say, hey, what should we do?\par
+We have the money to invest, and we want to invest that money.\par
+So this is an exploration process,\par
+and we're going to use Pandas to do this stuff here.\par
+So the first thing you want to do\par
+is actually extract the data.\par
+So I'm going to extract data here from July 1st, 2015\par
+to June 1st, 2016.\par
+The reason for this is that the data is not complete,\par
+because some companies came into existence later,\par
+and some companies have gone out of existence.\par
+And in this example, I'm just going to work with this stuff\par
+here.\par
+So I start with this, end with this,\par
+and I'm going to get the data from Google.\par
+And now because I'm getting data from multiple items,\par
+multiple tickers, I'm going to give them all a list.\par
+Earlier there was only one ticker.\par
+I can just give that ticker itself.\par
+But I have four tickers here, so I'm\par
+going to give them all a list.\par
+I have the start date and the end date.\par
+And all I want from that is the close prices from what\par
+I get back.\par
+I don't want anything other than the close prices, OK?\par
+I don't want the open, high, lows, and all that stuff.\par
+And I take all this thing, and I put it\par
+inside a data frame called "Solar ETF."\par
+And I've got the data, and we can take a look at it.\par
+And that's what the data I get, right?\par
+Indexed by date, and with the columns\par
+correspond to the tickers that we have.\par
+I don't really need the close price, right?\par
+So that's my data frame.\par
+That's what I'm going to work with.\par
+Now, I'm looking at the returns on these things.\par
+So the returns I'm going to calculate here.\par
+I'm going to calculate the one-day percent change.\par
+So I want to convert into a new data frame called "REITs."\par
+And the REITs contains the one-day data,\par
+one-day percent change for each of these stocks\par
+for the dates given.\par
+I have that.\par
+Now I can-- simple stuff I can do.\par
+I can say, let me look at each stock\par
+and see how it correlates with the ETF.\par
+I can do it visually by drawing a scatter plot.\par
+So I do plt.scatter.\par
+PLT feels matplotlib function, remember.\par
+And matplotlib library.\par
+And from the matplotlib library use\par
+the scatter function to scatter the returns on FSLR and TAN.\par
+And looking at this, I can see there\par
+is reasonable correlation.\par
+There are some outliers.\par
+But all in all, it looks like reasonably correlated set up.\par
+TAN is the ETF.\par
+And FSLR, First Solar, it sells solar panels.\par
+I can draw a scatter plot between RGSC and TAN.\par
+And this is a lot messier.\par
+So there's some vague correlation,\par
+but it's very, very messy, right?\par
+And then we can look at Solar City and TAN.\par
+And that's a little bit better.\par
+But looking at it--\par
+yeah, it's also pretty well correlated.\par
+They aren't as neat as First Solar, but--\par
+and the idea here is that we can look\par
+at correlations as numbers.\par
+And we can look at them as scatter plots.\par
+Visuals are usually better when you're conveying information.\par
+So this is one quick way of looking at visually\par
+trying to get this stuff.\par
+Or we can just go ahead and get the correlation matrix,\par
+and take a look at it.\par
+So there's a function called C-O-R-R, CORR,\par
+which you apply to a data frame, any data frame.\par
+And then it's going to pull out the correlations\par
+between the columns and the data frame.\par
+So we get a--\par
+in our case, we have four columns,\par
+so we get a four by four matrix.\par
+And just looking at this, we can see that our visuals\par
+were pretty good.\par
+It tells us First Solar to the ETF\par
+is 0.67 SCTY is a little bit lower.\par
+And RGSC is kind of low, right?\par
+So we can look at this stuff and figure out\par
+what the correlations are.\par
+So now we can do some very basic risk analysis here.\par
+What we are going to do is, we're\par
+going to draw a plot that plots the risk-reward, risk-return\par
+trade-off for each of these four tickers that we have there.\par
+So let me just draw this.\par
+And I'll show it and explain this to you in a second.\par
+So what we have in our thing here,\par
+is that we've got the means.\par
+We take our returns, and we take our standard deviations,\par
+and we compute the means and the standard deviation\par
+for each of the columns in this thing here.\par
+So if I insert this here, and I do rets.mean() I\par
+get four data points.\par
+And if I do rets.std(), I get four data points.\par
+So what I'm doing is, I'm taking each data point\par
+and the returns are on the x-axis and the mean returns,\par
+expected returns, the x-axis.\par
+And the standard division is on the right, on the y-axis.\par
+So for TAN, for example, the standard deviation is 0.25.\par
+So that's over here.\par
+And the mean was -0.0202, so that is probably\par
+somewhere there.\par
+0.00, -0.005, so that's somewhere over there, right?\par
+And then I'm-- when you of course draw a graph,\par
+you want to label it, because you want to show it to someone.\par
+And they are not going to want to see this without labels.\par
+So when matplotlib, you can just label it\par
+by saying x label, y label, and giving labels.\par
+So we get expected returns here.\par
+And standard deviations over there\par
+by just using these values here, expected return and standard\par
+deviations there.\par
+And then what I'm doing is, I'm going\par
+to zip this stuff up here and apply the zip function.\par
+And then take each point and draw little boxes around them.\par
+So I get the name of the ticker there.\par
+And you can read-- you can see all this stuff is pretty\par
+straightforward, actually.\par
+So this tells you where everything is positioned.\par
+I have the type.\par
+I'm giving the color as yellow.\par
+And I'm drawing little boxes around it.\par
+So that's the box-style round.\par
+And the pad is the space around RGSC\par
+These are various things that we want\par
+to do for making the graph look pretty.\par
+The easiest way to figure all this out--\par
+I could sit and talk about it-- is to actually change stuff.\par
+So for example, if I change 0.5 to 0.9 here and ran this--\par
+oh, not very clear.\par
+See, that's telling you the intensity of the color\par
+in this thing here, right?\par
+So you can just try changing any of these things\par
+and see what it looks like, but this is essentially\par
+the labels stuff.\par
+So I've labeled each of these things here.\par
+And that's getting labeled right here.\par
+The label, right?\par
+So that's getting labeled over there.\par
+And it says TAN, FSLR, SCTY, RGSC.\par
+And you can see all that stuff.\par
+As I'm looking at this plot over here,\par
+it's pretty clear that if you look at our data--\par
+and this is actually a very, very illustrative visual when\par
+you think about it, because it's telling us\par
+that the highest average return that you can expect\par
+is from FSLR, right?\par
+Because expected returns on the x-axis.\par
+So FSLR has the highest return.\par
+And it has a slightly higher standard deviation than TAN.\par
+So its risk is higher, and the return is higher.\par
+On the other hand, SCTY and RGSC.\par
+SCTY gives you pretty much the same return as TAN,\par
+with a much higher risk.\par
+And RGSC gives you a lower return with a higher risk.\par
+So if you were a trader, you would definitely not\par
+want to invest in RGSC and SCTY with the caveat\par
+that past performance doesn't reflect--\par
+doesn't necessarily mean you're going\par
+to see the same thing in the future.\par
+But based on the past, you would not want to--\par
+because in investing in RGSC and SCTY doesn't give you\par
+any additional return, but gives you a lot more risk.\par
+And in RGSC, actually get lower return.\par
+You might want to invest in FSLR,\par
+because you get a higher risk.\par
+Depending on your level of risk aversion\par
+you have, you might want to either just say, hey,\par
+I'm willing to accept a slightly lower return and a lower\par
+risk with TAN, or get a slightly higher return with slightly\par
+higher risk with FSLR.\par
+And you can-- there are various metrics\par
+that you can use to figure out which way is better.\par
+But you can see this a very, very clear graph,\par
+because it really tells you what the risk return\par
+profile looks like.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 
