@@ -1,0 +1,222 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 When we look at the columns in foreclosed data, latitude\par
+and longitude, they all have missing values.\par
+We could take a look at the info again,\par
+and it tells us that this 829,900 was 910,000.\par
+Obviously, the missing value is here.\par
+Similarly for latitude and longitude,\par
+we have missing values as well.\par
+So let's get rid of all of them.\par
+You know, what the heck?\par
+We don't really want missing values.\par
+So we'll throw them all out.\par
+And this, we can do very simply by using the same procedure\par
+that we use for incidence zip.\par
+But here I'm going to use a logical operator in the middle\par
+of the conditions.\par
+And in the pandas world, the logical operator\par
+that we use in conditions is not the A in D,\par
+or OR or NOT as in Python.\par
+But we use ampersand as an and.\par
+This would be an or-- or I'm sorry--\par
+this would be an or-- the pipe character.\par
+And this would be a not-- the exclamation point.\par
+So that's how that works inside pandas.\par
+So what we're going to say here is\par
+that we want to include only those lines that\par
+have a NOT NULL value for latitude,\par
+a NOT NULL value for longitude, a NOT NULL\par
+value for close date.\par
+So that should take care of that.\par
+Let's run this, and look at the info here.\par
+And now we're down to 806,000, and they're all the same.\par
+So now we have a data frame that contains\par
+data that is all NOT NULL.\par
+We've hopefully got rid of all the NULL values.\par
+So that's the next step.\par
+Next thing we can do is we can start\par
+looking at the borough data and seeing\par
+our goal is to clean the data.\par
+So what we really want is a data frame\par
+that contains data that is meaningful to us.\par
+So we want to look at every column\par
+to see whether the data in that thing makes sense or not.\par
+So let's take a look at the second column--\par
+the borough column--\par
+and another column-- borough column-- we look at that,\par
+and we look at the unique values there.\par
+And we find that we have six values even though there\par
+were only five borough.\par
+And there's one borough that says unspecified.\par
+So that's a problem for us.\par
+What are the unspecified borough?\par
+So we can of course remove it.\par
+But before removing anything, we should also\par
+look at the data, itself, to make sure\par
+whether that removal is not going to cause us\par
+problems down the road.\par
+And what are the problems down the road?\par
+You don't want to remove data systematically\par
+from your data frame because otherwise, your analysis\par
+is going to miss out on some systemic property that\par
+is useful.\par
+So you typically want to see that if you're moving data\par
+that the data is occurring reasonably, randomly inside it\par
+rather the problematic data is occurring reasonably, randomly\par
+inside your data.\par
+If that is the case, then you get rid of it.\par
+It's not going to effect your analysis.\par
+Or if there's a systematic reason\par
+why we have unspecified in our database,\par
+then we should probably keep it--\par
+OK-- because we want maybe something useful\par
+that we get out of it.\par
+So let's see what we get from here.\par
+So what I'm going to do is I'm going to say,\par
+all right, show me the data that has the value of borough\par
+unspecified.\par
+So this is what we're seeing here--\par
+data borough equals equals unspecified.\par
+And we are extracting this from the data.\par
+And from there, we go look at the two columns, agency\par
+and incidence zip, just to see whether the unspecified borough\par
+occurs systematically across agency or incidence zip.\par
+All right.\par
+So that's the goal here.\par
+In reality, like I said, there's something like, I think,\par
+60 or 70 columns in that database.\par
+So you really need to look at it in more with the entire data\par
+set.\par
+But we are working with a smaller\par
+data set because the limitations are full--\par
+the speedo processing and the fact\par
+that we have to upload and download all this data.\par
+So we look at this here, and we run this through here,\par
+and we look at this, and we look as just looking\par
+at-- eyeballing it, it looks like there's lots\par
+of NYPD in this thing here.\par
+Lots of them are NYPD.\par
+So we want to find out now is that really the case?\par
+So let's take a closer look at this.\par
+So what we'll do is we're going to use the GROUP BY function.\par
+And we'll look at this in more detail later.\par
+But the GROUP BY function, what it does\par
+is it groups data in a data frame\par
+by groups, which is somewhat like the SQL GROUP BY\par
+that we saw last week.\par
+It does pretty much the same thing.\par
+So what we're going to do is we're going to look for the--\par
+extract the data for unspecified burrow, then group\par
+it by the agency so that we get the agency groups by NYPD, DOS,\par
+DUE, borough sanitation, et cetera,\par
+and come up with a count by groups.\par
+OK.\par
+So we can take a look and see whether we have some bias here\par
+in this.\par
+So we looked through this stuff here,\par
+and we find that we've got--\par
+well, this is all-- it's going to be the same in every column.\par
+But we have 67 column--\par
+67 rows for the housing department-- that's DHS.\par
+I think it's housing.\par
+I'm not really so sure-- and 725 for the New York Police\par
+Department.\par
+So clearly, there is a bias here of some sort\par
+because 725 cases are NYPD cases.\par
+So the New York Police Department\par
+tends to do a lot of unspecified stuff.\par
+What we want to do next is then find out\par
+is this a significant proportion of NYPD cases?\par
+Maybe if it's a small proportion,\par
+we can still ignore it.\par
+And like I said, there's very many more columns here.\par
+So then maybe if we had all the columns,\par
+we might find that there are certain kinds\par
+of NYPD complaints that come with unspecified borough\par
+like maybe their TLC complaints-- complaints\par
+on moving violations of a certain type.\par
+OK.\par
+Something like that.\par
+We don't know.\par
+We don't have all the data, but that's\par
+what we would want to see.\par
+We want to see whether there is some small reason for that.\par
+But right now all we know is that, hey, we\par
+got 725 cases of unspecified borough for NYPD,\par
+and we want to find out are these a significant proportion\par
+of NYPD complaints or not?\par
+So let's see if we can figure that out.\par
+So what we'll do then is we'll say,\par
+all right, we want to find the total NYPD complaints.\par
+So let me run this piece by piece,\par
+so we can take a look at each step.\par
+Go in that, go in that, comment that, and run this.\par
+So what this does is it's-- we're counting here the number\par
+of cases where the agency is NYPD.\par
+Very straightforward.\par
+So let's see what that is.\par
+Complaints total.\par
+It does this 274,408.\par
+So we got 725 out of that.\par
+That doesn't look like a huge amount,\par
+but let's get the exact number or exact percentage.\par
+So here what we're going to look at is how many are--\par
+let's look.\par
+I don't want that.\par
+So 725.\par
+So we've got-- these are the cases where we have\par
+NYPD and an unspecified borough\par
+And then we can divide the first number--\par
+oh, sorry-- the second number by the first number to figure out\par
+the percent of cases where NYPD is unspecified and it is NYPD--\par
+a good percentage of NYPD complaints\par
+that are unspecified that have an unspecified borough.\par
+And that's 0.26%.\par
+It's not a huge number.\par
+And like I said, what we would like to do,\par
+of course, is take this data and look at the entire data set\par
+and then see whether there is some systematic reason\par
+for these 0.26% cases.\par
+But we don't have all that.\par
+So what we'll do is we'll just chuck them.\par
+OK.\par
+We'll throw them out.\par
+And because for one thing, it can\par
+be hard to explain that when we are representing our results\par
+to management or whatever.\par
+We'll say unspecified borough.\par
+And they'll say, what the heck is that?\par
+So what we'll do is we'll take our data\par
+and say include only those elements in our data\par
+where the borough is not equal to unspecified.\par
+So this is where borough is Manhattan, Queens, Brooklyn,\par
+Bronx, and Staten Island.\par
+So this note is our NOT sign over here.\par
+It says NOT equal to.\par
+This is actually pretty common in computer programming\par
+languages.\par
+Python is a bit of an exception with the AA and D stuff.\par
+So that takes us through to that.\par
+And let's take a look at our thing now.\par
+And, so, it's down below.\par
+And what do we have now?\par
+Data dot info.\par
+And we are now down to 805,000 from 970,000 approximately.\par
+So we lost quite a bit of data in this process.\par
+So we need to be careful.\par
+We've lost, I think, almost 170,000 lines of data.\par
+So that's a pretty hefty chunk of our data--\par
+10%, more than 10%.\par
+So we should be a little bit careful\par
+when we think about this.\par
+If you're losing a lot of data, we're\par
+going to lose a lot of meaning in our analysis as well.\par
+So I'm going through this very, very quickly.\par
+But in reality, you want to take a lot of pains\par
+over figuring out whether something should be retained\par
+or not retained in your data set.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

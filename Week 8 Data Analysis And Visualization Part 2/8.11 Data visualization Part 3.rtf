@@ -1,0 +1,243 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Next, let's take a look at the time angle in this.\par
+So we really have the creation date for every incident.\par
+We can do things like building an incident for the number\par
+of incidents by month.\par
+This would be very useful if we had all our data.\par
+If he had it running from 2010 to today,\par
+we could look at the number of incidents by month,\par
+and see if there's some kind of seasonality in these indices.\par
+We could do a seasonality by agency, seasonality by borough.\par
+We could do a lot of stuff for that.\par
+We only have two months data, so we can't really\par
+do that kind of stuff.\par
+But if you have the time and a fast enough internet connection\par
+to download the entire data, and a powerful computer-- actually,\par
+it doesn't require a great deal of power, but some of you\par
+probably need like 4 gigabytes RAM or something like that\par
+to process all that stuff in a reasonable time-- you\par
+can actually run this through the entire data set.\par
+So we're going to need to do some data\par
+manipulation for this.\par
+So we want to do a month number of instances by month.\par
+So what we have is data that is in daytime format.\par
+And what you want to do is you want\par
+to extract from that the year and the month.\par
+So what we can do here is, luckily for us,\par
+they are all 2010, 11, 12, they are in increasing order,\par
+so we can actually just extract everything as a yyyy mm\par
+format from this thing here.\par
+And to do that, we take or create a date column\par
+and apply this function to it. as time\par
+is a function that takes a date time object and convert it\par
+into a string.\par
+So we are going to convert our data object into a percent\par
+y, percent m string.\par
+As simple as that.\par
+And we do that, and we get a new column\par
+that is data yyyy, mm and data yyyy\par
+mm becomes a new column here.\par
+And let's take a look at it.\par
+String the extraction.\par
+And obviously, we have this nice column with the strings in it.\par
+So that's, essentially, what we do.\par
+We manipulate columns.\par
+We change them.\par
+We do stuff for them.\par
+So we manipulated this column and got this new one.\par
+And now, we can do a group by, by using yyyy, mm and agency\par
+and do a graph here.\par
+And we saw earlier that 1515 is a bit too big.\par
+So I'm going to make this 1212.\par
+And we run that, and we get this by agency.\par
+So this tells us--\par
+NYPD has the highest here.\par
+But in 11, the brown line, which is housing department,\par
+has gone up.\par
+12 brown line has shot up even more due to the winter months.\par
+So they are the colder months.\par
+People are, I guess, turning on their radiators\par
+and finding that they don't work.\par
+So brown line goes from September-- it shoots up\par
+in October and November.\par
+And then, it shoots really high in December.\par
+This is when people are realizing hey,\par
+my heating doesn't work.\par
+And then, they're complaining about it.\par
+And then, it falls again in January,\par
+I guess, because by then, if you haven't\par
+got the heating working, you probably\par
+can't live there anymore.\par
+It's too cold.\par
+So that tells us something over here.\par
+If we had more months, my guess, is in summer,\par
+this brown line will be really, really low,\par
+because there won't be those many heating complaints,\par
+but there could be other complaints.\par
+We don't know.\par
+Maybe, there are other complaints\par
+that occur in New York City housing in summer.\par
+Maybe, air-conditioning complaints go up.\par
+I don't know.\par
+So that's worth looking at.\par
+Otherwise, the NYPD complaints tend to go down in Winter,\par
+for some reason.\par
+I'm not really sure whether these are--\par
+it's hard to see though.\par
+This could be NYPD.\par
+It could be DOE.\par
+I'm not sure which one it is, because this one is actually\par
+a bit darker than that.\par
+So we need to take a look at it by examining each column\par
+and seeing whether they are really the same or not--\par
+probably NYPD.\par
+We saw the NYPD had the most number of complaints.\par
+So we can do a seasonal analysis by that.\par
+We can look at the agencies and see which\par
+agencies have the highest one.\par
+So here, I really want to just show you\par
+how we can draw multiple graphs.\par
+So we could, for example, here-- we group by agency,\par
+look at the size, and then, we can call this function\par
+sort values, which is a Pandas function.\par
+And what sort values does is it sorts the values\par
+that it gets inside from--\par
+here, we get a size, so the size is\par
+going to be the number of records in each agency group.\par
+And we can sort those, and we can\par
+see that NYPD has the highest 273, followed by HPD 244.\par
+And DOE is really down there.\par
+So none of those are DOE.\par
+They're too low for that.\par
+And we can set ascending even to false,\par
+if you want to be in descending order--\par
+and to true-- by default, it's set to true,\par
+so then it would be in ascending order.\par
+We can plot this.\par
+This gives us a graph like this.\par
+If you have many, many of these things,\par
+we can try to restrict them if you want.\par
+But for now, let's do it agency borough, unstack this.\par
+So this is our agency borough setup.\par
+What we've done is we've taken the grouping of agency\par
+and borough.\par
+We compute the size here and unstack.\par
+And then, we look at the data here.\par
+Since we have the count, this tells us,\par
+for each borough, what the count is for each agency.\par
+And [INAUDIBLE] 311 agency there as well.\par
+OK, so we've got all that counts here.\par
+And we can graph this, but what we could do\par
+is we could create a bunch of graphs.\par
+So for example, we have five boroughs, right?\par
+And we want to see each borough next to each other.\par
+So what we can do is we can create five graphs, one\par
+for each borough.\par
+And in each borough's graph, we show the agency plots,\par
+and then, we put these side-by-side.\par
+So you get a nice set, like a bunch of subplots,\par
+and you get a very visual view of how\par
+these boroughs differ in terms of the agencies\par
+that they complain to.\par
+So how do we do that?\par
+Well, what we want is a set of side-by-side graphs,\par
+plots in this case.\par
+So we want to have five plots.\par
+So we'll do them in two plots in row one, two plots in row two,\par
+and one plot in row three.\par
+But our frame has to have six boxes, because it\par
+has to be symmetrical.\par
+So we need two, two, two.\par
+So what we're going to do is we're\par
+going to say we have two columns in our graph plot.\par
+And you know what?\par
+Let me draw it, and we can take a look at it.\par
+You get something like this, right?\par
+So we say we have two columns and three rows.\par
+So three rows are--\par
+we have Bronx, Brooklyn in row one,\par
+Manhattan, Queens in row two, and Staten Island in row three.\par
+So this is an easy way of comparing stuff.\par
+So we settled that.\par
+Then, we set up my plot libs by plot to create a figure.\par
+And the figure contains subplots, so each of these\par
+is a subplot--\par
+Bronx, Brooklyn-- these are subplots.\par
+And each subplot will be in a particular location.\par
+And we tell it how many subplots we want.\par
+So there are two columns and three rows of subplots.\par
+And the entire figure is 12, 12 in size.\par
+Again, that's something you can control.\par
+So it'll fit all six subplots into three times two that is--\par
+subplots into a 12 by 12 figure.\par
+And then, we go through our subplots by--\par
+we enumerate agency borough [INAUDIBLE] items.\par
+So let's take a look at what that is.\par
+That will make it pretty clear here.\par
+It's going to, essentially, enumerate all the stuff that we\par
+have here, and that's that.\par
+OK, let me do it like this.\par
+Four I, comma, label, comma call,\par
+in [INAUDIBLE] agency borough [INAUDIBLE]\par
+items is a iterator.\par
+It's not going to have values.\par
+Enumerate this.\par
+Print, I, comma, label, label, comma call.\par
+So we see what happens here, right?\par
+So we get I is zero.\par
+And then, we get the columns for that.\par
+The label is Bronx, and the agencies are all of these.\par
+These are the calls.\par
+So we're getting zero Bronx, three, one, one-- zero, Bronx,\par
+DCA, zero Bronx, DEP, et cetera.\par
+So we get this whole setup over here.\par
+So that's what this is producing for us, the enumerate.\par
+So this gives us our [INAUDIBLE] I label and column.\par
+So instead of the axes-- and what\par
+this tells us is where, for each eye, the plot is going to go.\par
+So that's what this one tells us here.\par
+This locates it.\par
+And this is the division of the two\par
+and the remainder of dividing by the two.\par
+And then, we sort the values within this here.\par
+These are the values that we're sorting, the agency counts.\par
+So we sort those values, and we picked the first five.\par
+That's what this is saying here.\par
+Remember, we slice it.\par
+So we pick the first five.\par
+And then, we put it inside a bar chart\par
+and give it the right axis location\par
+and set the title for the axis.\par
+For each one will have the title of the label, which\par
+is Bronx or Brooklyn or Manhattan\par
+or whatever, and which was this over here, right?\par
+That's the label, Staten Island.\par
+That's the label.\par
+Remember, this was-- getting I. That's I, that's label,\par
+and that's comma--\par
+and our thing here, I label, comma.\par
+So we get that.\par
+And then, set the label to that.\par
+And then, that's it.\par
+It will automatically display it, and it comes up here.\par
+And we get this stuff here.\par
+We get this, so we can look at this thing\par
+and try to see whether there are some differences\par
+across boroughs.\par
+And we see that here in Bronx, in Brooklyn and Manhattan\par
+and Queens, the NYPD has the most number of complaints.\par
+But in Bronx, the NYPD actually is lower than the housing\par
+department complaints.\par
+HPD is high in Brooklyn, the Bronx, Manhattan, and Queens.\par
+But in Staten Island, where there\par
+are very few public housing, New York City houses,\par
+it's relatively low.\par
+So that's what we can look at the boroughs\par
+and figure out which agencies are featured higher,\par
+in terms of number of complaints,\par
+and which are fewer.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

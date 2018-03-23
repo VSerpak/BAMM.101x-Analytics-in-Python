@@ -1,0 +1,268 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Let's digress a little bit and take a more detailed look\par
+at the pandas groupby function.\par
+It's a very powerful function.\par
+It is very useful to understand how that works\par
+and you can do a lot with it.\par
+We're doing fairly simple stuff, but we actually do quite a lot\par
+with it.\par
+So let's say we start with a little dataframe\par
+and data from here contains--\par
+let's take a look at that in a frame,\par
+it contains four columns age, author, country, and gender.\par
+So it's for various authors.\par
+And now what we do is we've got four authors in our dataframe--\par
+George Orwell, John Steinbeck, Pearl Buck,\par
+and Agatha Christie.\par
+And we know which country they come from the UK, USA, USA,\par
+and UK.\par
+And they have genders available and ages.\par
+I suspect when I made these, I think,\par
+they're the age that they actually died at,\par
+so they're all no longer with us, so to speak.\par
+And that's day the age died at.\par
+So we got that.\par
+Now we can group these by country,\par
+so we know how to do that.\par
+So we have a column called country,\par
+it's a categorical column.\par
+So all you need to do is to say writers.groupby country and we\par
+get--\par
+close this.\par
+And we get the groups by country.\par
+So we can take a look at what these groups look like\par
+and let's just see here.\par
+The country is UK and the groups are integers--\par
+0 and 3.\par
+So the 0 and 3 refer to the index column,\par
+we don't have a specific index column here.\par
+So it's telling us that UK is row 0 and 3,\par
+which is what it is.\par
+And USA is row 1 and row 2, which is what it is.\par
+So that's just grouping them by the index values--\par
+which makes sense, that's what it should do.\par
+We can do some basic analysis on the groups.\par
+We can see what is the first element in each group.\par
+So that gives us the group.first,\par
+tells us that George Orwell and John Steinbeck are the first\par
+elements in each of the groups--\par
+the UK group and the USA group.\par
+So this is our groups, UK and USA.\par
+The first item there.\par
+We can look at the last item.\par
+And it'll tell us is Agatha Christie in the UK group\par
+and Pearl Buck in the USA group--\par
+not that it really helps us that much,\par
+but it's a good way of looking at the data just\par
+to see examples.\par
+When you have large numbers of groups\par
+you can do a group.first to see what\par
+other items in each group-- what kind of items\par
+are in each group.\par
+So you get [INAUDIBLE] result.\par
+More interesting would be we could add the groups\par
+and get a sum of the groups.\par
+What that does in this case--\par
+the column that we have that is sum-able is the age column.\par
+What this will do is it will add up the age columns\par
+and age columns here are 46 plus 85, for UK.\par
+And 66 plus 80, for USA.\par
+And we get the sum there.\par
+We can find the mean and that's the mean of the sum.\par
+And we can apply any function, though you already\par
+have the sum function.\par
+I can apply any function to it.\par
+And when I apply the function what it's doing\par
+is it's applying the function to the row\par
+and then returning the summary of the other stuff there.\par
+So we get here UK is 131, both the authors are included here\par
+and both the genders are included here.\par
+So we get a kind of summary of this whole thing\par
+through the apply function because we are applying it\par
+on the group.\par
+And the group contains all the data for that group.\par
+That's the idea here.\par
+So we already seen the groups, so that's good.\par
+We can group multiple columns, we saw that too.\par
+So we want to group by country and by gender.\par
+So we do that and we get a grouping now\par
+that it's grouped by country and genders.\par
+So we get UK female and that contains row 3, which\par
+was Agatha Christie.\par
+And UK male-- which contains row 0, which was George Orwell.\par
+This one here.\par
+In UK, if USA female, which was Pearl Buck and that was row 2.\par
+And USA male that was John Steinbeck and that's row 1.\par
+So that's a multi-level grouping and we can group by--\par
+we can do even better things than that.\par
+We have been grouping here in our data,\par
+so if you look at my data again--\par
+let me just insert a set above [INAUDIBLE]..\par
+So I've been grouping by country, gender--\par
+these are categorical columns and we have age,\par
+which is the numerical column.\par
+[INAUDIBLE] might want to group by age groups,\par
+so in the sense--\par
+let's say I have a column with multiple--\par
+with the content is wearable and I might want to group\par
+them by values of the wearable-- less than 10, greater than 10,\par
+greater than 10, less than 20, that kind of stuff.\par
+What I can do is I can write a function.\par
+So here what I'm going to do in this example\par
+is I'm going to group by age groups.\par
+I want to say groups in such a way that the ages less than 30\par
+or the age was less than 60.\par
+I have a young person, a middle person,\par
+and whether they died young, they died in middle age,\par
+or they died in old age.\par
+If the age was less than 30 when they died then\par
+they died when they were young, which actually is nobody here.\par
+If the age was less than 60 when they died\par
+then they're middle aged and that's George Orwell.\par
+And if otherwise, they died in old age.\par
+[INAUDIBLE]\par
+So what I do is I write a functional called age groups.\par
+And what I want to do is I want take\par
+this value, 46, for example, and decide on the group based\par
+on the value itself.\par
+So what we need to do is I need to pass two age groups\par
+a dataframe that is entire dataframe, writers\par
+because that's where I am grouping from.\par
+I need to parse the index of a row,\par
+so the row index would be 0.\par
+And the name of the column that I want to group on.\par
+So if am grouping an age this column will be age.\par
+So what these two together will do\par
+is they are going to identify a single cell my data frame.\par
+So I get a dataframe and a single cell of the dataframe\par
+and I look at the value of that single cell.\par
+And depending on that value I return the grouping\par
+that I want for that cell-- whether the young,\par
+middle, or old.\par
+That makes sense.\par
+So again what I'm doing is getting\par
+a single value for the cell and using\par
+that single value to decide on what kind of group\par
+it falls into.\par
+And notice that the labels I'm giving on my own,\par
+I can give whatever labels I want over here.\par
+So I can create my own groupings.\par
+So I do this and I run the function.\par
+So what I want to take writers and I want to apply groupby.\par
+And for groupby I want to apply this function here.\par
+Where I vary the index because I want to go row by row.\par
+Remember, when I group stuff, I group them in groups of rows.\par
+I'm taking subsets of the rows and including them in groups.\par
+So I want to take every row, extract from that row\par
+the specific cell that I'm looking at from the dataframe.\par
+This is the dataframe and this is the specific cell\par
+I'm looking at.\par
+And notice that since I'm through the dataframe here--\par
+could be an independent dataframe.\par
+It doesn't have to be the same dataframe.\par
+It could be grouping one data framed\par
+by values in another data frame, perfectly all right.\par
+And I get this thing over here.\par
+So this gives me the cell, so this function will\par
+return young, middle, or old.\par
+And depending on that, the data will be grouped\par
+in young, middle, or old.\par
+So let's run this.\par
+And we get here--\par
+we don't have any young age person\par
+because 46 is the lowest age.\par
+So we get middle is row 0, which is George Orwell.\par
+And old is everybody else, which are John Steinbeck, Pearl Buck,\par
+and Agatha Christie.\par
+So that's a very convenient way of grouping stuff together.\par
+And to take another example, we can also group--\par
+just take a different example here.\par
+Let's say we have a bunch of people\par
+and-- let me run this thing here, whoops.\par
+I need to import numPy.\par
+I should've done that up front, I don't\par
+know why I didn't do that.\par
+Import numPy as np.\par
+Import Panda as as pd just to be on the safe side.\par
+So here what I'm doing I want to combine a few things over here,\par
+so it's worth looking at this in more detail.\par
+So what I'm doing is I'm creating a data\par
+frame that has five columns--\par
+A, B, C, D, E--\par
+and five rows.\par
+In each row has an index--\par
+Joe Steve, the name of a person-- and I'm\par
+randomly putting numbers between positive 5\par
+and 5 inside this thing here.\par
+So these are all random numbers and if I run this again,\par
+of course, I would get completely different set\par
+over there.\par
+So just creating this stuff here,\par
+calling the np.random function, which we looked\par
+at the numPy random last time.\par
+So I'm looking at a random number normally distributed\par
+between 5 and 3--\par
+I'm sorry, I should have--\par
+I misstated completely with it.\par
+I'm looking at a random of 5 by 5 matrix--\par
+of random numbers that are normally\par
+distributed with a mean 0 and a standard deviation of 1.\par
+So that's the numbers I get so we\par
+see we've got 1.1, 4.79, negative 0.44, et cetera,\par
+right?\par
+So what we're going to do is we want\par
+to write a function that takes three arguments again--\par
+the dataframe index in a column and returns\par
+a grouping for that row.\par
+So we get to group stuff if it's greater than zero,\par
+it goes in group 1.\par
+Otherwise, it goes in group 2.\par
+So the reason I'm doing this here because we\par
+get more numbers and we can actually\par
+do some statistical stuff on it.\par
+So let's see, this is again straightforward.\par
+We parsed the dataframe--\par
+the function of dataframe, an index, and a column.\par
+And we can use the index and the column\par
+to zero in on a single cell using the loc function.\par
+And you say, if that's greater than zero\par
+then we return one group 1.\par
+Otherwise, we return group 2.\par
+So let's run that and create the groups, so we get these groups.\par
+Group 1 has Joe, Steve, Jim.\par
+Group 2 has Wes and Travis.\par
+And now we can actually compute statistics\par
+on these groups, that's nice for us.\par
+So we got all this stuff here, so I'm just\par
+going to recreate those groups here by using the function.\par
+I haven't saved it anyway.\par
+So I'm going to use this group creation\par
+and then run mean or standard deviation on it\par
+and actually get data--\par
+get statistical value.\par
+So this tells us that group 1 has a mean of 1.15.\par
+Group 2, negative 0.97.\par
+And a standard deviation of 0.37 and group 2\par
+has a standard deviation of 0.73.\par
+So you can already see that if you were, for example, looking\par
+at historical returns on a stock and we\par
+wanted to group them by, perhaps, the industry group\par
+or even by--\par
+let's say the trading volume and you want to look at the returns\par
+or even maybe one month prior return of a lagging one month\par
+return for say a two month return or one month\par
+return two months ago with the one month return last month.\par
+And then compare the mean and standard deviation\par
+of the returns, we could do that quite easily using\par
+this sort of method over here.\par
+So grouping is a very, very versatile function\par
+to use in dataframes.\par
+It's versatile because you can group by anything at all.\par
+And once you have the groups you can\par
+find means, standard deviations, or apply any function\par
+that you want to that grouping to do comparison across groups.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

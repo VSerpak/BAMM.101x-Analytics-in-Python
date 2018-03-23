@@ -1,0 +1,236 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 So we've spent the first part of this class looking\par
+at how to clean data and essentially\par
+learn a few things about pandas along the way.\par
+But the idea there is that we take our data,\par
+we examine it in as much detail as possible.\par
+And that really means getting down and looking\par
+at the actual values, looking at what the data is telling us\par
+in terms of what it contains, and then trying\par
+to figure out what kinds of anomalies\par
+we are finding in the data that looks problematic\par
+and then removing any data that is problematic\par
+but is not going to bias our results.\par
+That's our goal with the data creating process.\par
+So once we've done that, we can actually\par
+start visualizing the data and looking at it for purposes\par
+of presenting our results or figuring out what\par
+the data is trying to tell us.\par
+So what we're going to look at today is--\par
+for the rest of this class is how\par
+we can visualize data with the really basic Python tools\par
+on data visualization.\par
+And then the last four classes of this session,\par
+of this of course, we'll look at more advanced techniques\par
+for data analysis.\par
+But for now, let's start with basics of visualization.\par
+And before we do anything, of course,\par
+we need to read the data.\par
+Fortunately, we have the very nice function that we wrote.\par
+And we can just call that.\par
+So I've included the function on top of this file\par
+here, called data visualization.\par
+And we can load that function and read our data.\par
+And that's going to take a minute or two.\par
+And while that does that, we will look at what we do next.\par
+So there are a lot of stuff you can do.\par
+And we'll start with a very simple but very, very effective\par
+way of looking at data, which is taking your data\par
+and plotting it on Google Maps.\par
+So everyone understands Google Maps.\par
+So if you ever need to present data to anybody else\par
+and you present it in a Google map,\par
+they've got to figure out what the heck--\par
+they're going to see what's going on.\par
+So what we'll do is, we have data here\par
+for two months of 311 complaints.\par
+And these complaints are across the city.\par
+And the data contains latitudes and longitudes for every data\par
+item, for every complaint.\par
+And what we want to do is--\par
+we can take a look at that here now.\par
+Let's actually run.\par
+So we have latitudes and longitudes here.\par
+And this tells us the location of the complaint\par
+and a fairly precise location.\par
+So what we can do is, we can say,\par
+all right, let's see how these complaints are\par
+distributed across the city.\par
+I mean, are there regions of the city where the complaints are\par
+more frequent and other regions of the city where\par
+they are less frequent?\par
+And then maybe that will give us some insight into how\par
+these complaints occur.\par
+And if, for example, we were the city\par
+and we were allocating resources to handle complaints\par
+and they needed physical resources on the ground,\par
+so to speak, we can allocate those resources\par
+based upon the density of complaints across the city.\par
+So we have latitudes and longitudes.\par
+The first thing you want to do, of course,\par
+is to install this library call gmplot.\par
+So the library you're going to use for this, which is a Google\par
+map plot, I guess, is gmplot.\par
+So you want to just install that.\par
+So let me install that here.\par
+I don't have it on this machine.\par
+So that's got installed.\par
+So you also want to do that.\par
+And remember, the installation of libraries\par
+is fairly straightforward in Python.\par
+You do pip install and give the name.\par
+Though I have upgraded upgrade over here,\par
+I don't need it in this case whether I'm doing a first time\par
+installation.\par
+The --upgrade is when you want to upgrade\par
+from a previous version to a new version.\par
+So in this case, in this particular machine,\par
+it's a clean installation.\par
+And it's not my machine.\par
+This is the machine provided for the class.\par
+So that's there.\par
+And what we can do now is--\par
+what we want to do is we want to draw finally\par
+a heat map that helps us see the relative concentration\par
+of complaints using the latitudes and longitudes.\par
+So what we want to do is set up the map itself.\par
+So gmplot is pretty straightforward.\par
+What it says is that you are going to do a Google map.\par
+Now, the Google map is the entire world.\par
+So we want our Google map to be centered\par
+at a particular location.\par
+There are two ways of using gmplot to center the map.\par
+And what we're going to do is-- you can use either method.\par
+One method is to actually provide\par
+a latitude and longitude.\par
+And then the map center will be there.\par
+And the other method is to give a location.\par
+And if gmplot understands the location,\par
+then it will center it right there.\par
+So New York, it understands very well.\par
+And it centers it over there.\par
+And then the next thing you can do\par
+is you can tell it what your zoom factor is.\par
+And this might require some trial and error\par
+to get the room right.\par
+So for example, I'm using a city.\par
+So in a city, I will want to zoom in quite a bit,\par
+because I want to zoom into the city itself.\par
+But if I'm, say, doing a heat map for the United States,\par
+then I want to probably zoom out.\par
+So I want to see the whole United States on the screen.\par
+I don't want to just see New York City on the screen.\par
+So this is going to be centered in New\par
+York with a zoom factor of 10.\par
+And like I said, we have to see whether that makes sense\par
+or not.\par
+And a lot depends upon various factors on that stuff there.\par
+So let's do that.\par
+So we've got the map centered.\par
+The next thing to do is to actually generate\par
+the heat map itself.\par
+And this is really, really simple.\par
+We have two vectors--\par
+a latitude vector and a longitude vector.\par
+We've removed all lines that contain even one\par
+NA from our table, from our data frame.\par
+So that means that every row has a latitude as well\par
+as a longitude.\par
+And there's data in there.\par
+We haven't checked for bad latitudes and longitudes.\par
+It's conceivable that there's a mistake.\par
+Rather than a latitude of 40.7,\par
+this should be negative 74 actually,\par
+because it's New York.\par
+It's west of the Greenwich--\par
+of the international-- whatever that thing is--\par
+date line, not date line.\par
+Is it date line?\par
+No, it's called the Greenwich Mean Time line.\par
+So this is-- where has it gone?\par
+Here.\par
+So we've got latitudes of 40.744, negative 70.73,\par
+et cetera.\par
+So it's conceivable that some of these are bad.\par
+I don't know, I haven't checked.\par
+But we should probably be checking those as well.\par
+So what we would like to do-- and this\par
+would be something you want to think about--\par
+is look for a bounding box.\par
+A bounding box is a frame that you can put on a location\par
+and say that all points in that location\par
+are between this latitude and longitude--\par
+or give it a latitude to the south, a latitude to the north,\par
+a longitude to the east, and a longitude to the west.\par
+And you know it's in that place there.\par
+So that way you can check and see\par
+whether there's some bad data entered.\par
+People make mistakes when entering data.\par
+It's not uncommon.\par
+So you want to make sure of that.\par
+But for now, we will assume that it's all good.\par
+So here we take the data latitude, which is our latitude\par
+column, our data longitude is our longitude column,\par
+and draw a heat map.\par
+That's about it.\par
+Once you've written the file using g\par
+map to draw, you've written the file to incidents.html,\par
+you can view this.\par
+Just be a little bit careful.\par
+You can view it on Chrome.\par
+It doesn't view on Safari and I'm not\par
+sure what other browsers.\par
+So on Chrome, it'll show up, like this.\par
+And we get a nice little view of our heat map.\par
+So what this is showing, like I said,\par
+it shows you a bunch of dots.\par
+And the concentration of the dots, as the density increases,\par
+you get a redder color.\par
+It goes from pretty yellow to green to red\par
+and shows you how the density increases.\par
+So this tells us that-- if you look at this map here,\par
+we can see the density is quite around here.\par
+There's a peripheral density around in Queens.\par
+There's a slightly lower density in this area of Queens.\par
+Staten Island has a very low density, except near the ferry.\par
+This is where the Staten Island Ferry is, so probably something\par
+to do with the ferry, I guess.\par
+I don't really know.\par
+And that's the thing here.\par
+And we can zoom in a little bit into this map here.\par
+It's, of course, Google Maps, so it's completely interactive.\par
+And we can zoom in a bit.\par
+It's a bit slow to render, but it is there.\par
+And we get a little better view of what's going on here.\par
+Because what we see is that, if you\par
+look at this thing over here, we can\par
+see that the red spots are in Upper Manhattan.\par
+And I don't know if you guys can see this on your screen,\par
+but Upper Manhattan is--\par
+where it says, 9A, 9A, that area is Upper Manhattan\par
+with some red spots there.\par
+There's red spots in the Bronx.\par
+Then in Lower Manhattan towards the East River\par
+down here, there's red spots, and then Brooklyn a little bit.\par
+And then a lot of this is also to do with the fact\par
+that the months that I've taken are winter months.\par
+And there'll likely be more heating complaints.\par
+And lot of the city-owned houses are\par
+in Upper Manhattan, the Bronx, and in eastern Brooklyn.\par
+So that's where we tend to see-- and Lower Manhattan\par
+and eastern Brooklyn.\par
+So this is where we tend to see complaints.\par
+So that's probably something to do with that.\par
+What we would like to do, of course,\par
+is take all 78 years of data\par
+and look at the heat map for that.\par
+But that's going to be a very, very intensive process.\par
+So that's the idea here and getting back to this.\par
+So a heat map is a very, very quick and convenient way\par
+of conveying information to whoever is\par
+interested in that information.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

@@ -1,0 +1,157 @@
+Last week we looked at pandas and numpy, the basic tools
+for data analysis and working with data, really, on Python.
+Today, what we're going to do is we're
+going to take a look at how we can use pandas
+as our starting point really for analyzing data and visualizing
+data in Python.
+It's a very useful package, and it is very flexible.
+And you can do a lot of stuff with it.
+So what we're going to do, actually,
+is we'll work with this file over here
+that I've got that's called NYC311datasubset.csv.
+This is a subset of data that's available on New York City's
+open source Open Data Project, and what
+this contains is every complaint that
+is called in to New York's 311 number
+is recorded and registered in this file.
+What I've done is-- the file is huge.
+There are many, many fields, and the data goes back to 2010.
+So there's many, many gigabytes of data sitting out there.
+What I've done is I've taken a subset of this data.
+I've taken a few columns, not many.
+And two months of data, I think it's September and October
+of last year, of 2016.
+And that's about it.
+So even that's quite a lot.
+So it's more than 100 megabytes in size,
+and I have a zip file that is loaded up
+on our course site, which you should probably
+download and work with.
+You can download it, unzip it, and keep it
+in the same directory as where your Jupyter Notebook is
+running from.
+So that's what we're going to start with.
+So the first thing, of course, when you work with data
+is you've got to get the data.
+So let's say that's our data file.
+We'll import pandas as PD and numpy as NP.
+We're going to use this function called readcsv,
+which is a very flexible file--
+a very flexible function, and can read data
+from multiple places.
+Though it's called csv, it's actually very, very flexible
+in reading stuff from almost anywhere.
+And the documentation is at that URL that's provided over there.
+So let's read that.
+And all we need to do really is to say readcsv and give it
+the name of the data file.
+So we do that, and it's going to take a little bit of time,
+because it's a very, very large File Oh, not that long.
+It did it much faster here than my machine.
+And we get this data out here.
+And what we can see is that our data contains several columns.
+There's a Unique Key column, a Created Date column,
+a Close Date column, Agency, Incidence, Borough, Latitude,
+and Longitude.
+So this data, it's pretty clear what it is.
+Created Date is the date at which
+the complaint was received, the date and time the complaint was
+received.
+And that's recorded over here.
+Close Date is the date and time that the complaint was
+handled effectively and closed.
+The Agency is the agency responsible,
+and there are many different agencies.
+This is the Department of Sanitation in New York.
+There's the New York Police Department.
+There's the Housing Department.
+There's the Board of Education.
+There's all kinds of stuff, right?
+Incident Zip is the zip code for which the complaint was--
+for where the complaint is.
+So for example, if you have a heating complaint
+and you report it to the city, then the zip code
+of your apartment is what's going to show up over there.
+The Borough is the borough of New York City.
+There are five boroughs in New York City;
+Queens, Brooklyn, Manhattan, Staten Island, and the Bronx.
+So that's the borough.
+It tells you which borough it was in.
+And then we have the latitude and longitude
+of the location of the complaint.
+So for example, if it's a heating complaint,
+then that's the latitude and longitude of your apartment,
+and that's what's going to show up over there.
+So that's the-- and we see one of them is called Unique Key.
+So it's kind of nice to see that it's-- first of all,
+it says Unique, which is very helpful,
+because we know it's unique.
+But we can take a look at our data
+itself, and see what kind of data we have.
+So this tells us here that we have these columns, so
+Unique Key, et cetera.
+It tells us how many rows of data are there.
+This is just two months data.
+So you can imagine how much data--
+what size of data we would have if we had done everything
+from 2010 to whatever today's date is.
+So there are 971,000 records of Unique Key.
+We find that some of them, like Closed Date, has fewer records.
+So we can see that over here.
+That's the Close Date.
+And that's NaN, because we have two months of data.
+And though, of course, this data should be more than that.
+But this-- so what this tells us is
+that this complaint, whatever it is
+that was recorded on this date, hasn't
+been closed as of the time that I
+downloaded the data from there.
+So those are NaNs.
+The agency is-- well, every-- we have an agency.
+Sometimes Zips are missing, and there
+could be many reasons for that.
+The borough is always there.
+And the latitude and longitude could be missing as well.
+For example, maybe if it's a moving violation or something,
+then you don't exactly know where it is recorded.
+Maybe.
+I don't really know.
+So we see that this is--
+the data.info command tells us what the structure of our data
+file is, of a panda data frame is,
+because we loaded all this into--
+I should have pointed that out--
+it's all got loaded into a panda's data frame.
+So it's the data frame here.
+This thing, with the columns and the things.
+It's all that stuff.
+And it looks like--
+from our data file, it looks like we already
+set the unique key.
+The name tells us it's a unique key,
+and it looks like it really is a unique key.
+Therefore, what we can do is we can make that into an index.
+It's not going to be really useful for us,
+but it's a good idea when you're loading a data file
+to see what the index is.
+Because then if you want to access some data really,
+really quickly, you can use the index.
+Also, pandas allows us to maintain multiple data frames
+and then use SQLite drawings to join them together.
+So knowing the key for--
+or the index for a particular data frame would be really,
+really Useful I mean, we saw that it SQL,
+so we can think of pandas as a table.
+So multiple tables, you can use a SQLite syntax
+to access data across multiple tables, if you want to.
+So we'll make that that.
+And then do that, all we need do is
+to say, hey, when you're reading the CSV, we're saying, hey,
+the index call is Unique Key.
+That's what we can say there.
+So let's look at the first 10 records here.
+Yes?
+We have a nice key over there.
+And that's good.
+End of transcript. Skip to the start.
+  Previous

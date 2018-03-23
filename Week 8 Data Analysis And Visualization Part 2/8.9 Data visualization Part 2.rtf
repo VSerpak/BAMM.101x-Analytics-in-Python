@@ -1,0 +1,187 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 So now, let's do some grouping operations.\par
+The grouping operations are probably\par
+the easiest way of getting a sense of your data.\par
+You have some categorical variables\par
+and you want a group your data by those categorical variables.\par
+Compute things like means, the count, the size--\par
+and the standard deviation and those kind of things by group.\par
+So then you get some sense for how\par
+your-- what are the differences across different categories\par
+inside your data.\par
+So in our data, we have two major categories\par
+that we can think of.\par
+There are agencies and there are boroughs.\par
+So we can start by grouping data by borough.\par
+So the first thing we want to do is, of course,\par
+going to draw lots of graphs is to in line on my plot lab stuff\par
+so that it shows up in the screen.\par
+And then we group the data by borough.\par
+So we say data to group by borough\par
+and that's going to group it.\par
+As simple as that.\par
+We compute the size of each group,\par
+so that's going to count the number of elements\par
+in each group.\par
+And then we plot it.\par
+And say we want to do a bar graph,\par
+and then we get this nice little bar\par
+graph that tells us that the largest complete number\par
+of complaints is in Brooklyn by quite a order of magnitude,\par
+250,000.\par
+And then we have Queens, Manhattan in second place,\par
+pretty much close to each other, with the Bronx\par
+pretty close to that.\par
+Then Staten Island, way down, with very few complaints\par
+would make sense because Staten Island, though it's\par
+a fairly large boroughs, actually has a very low population\par
+relative to the other boroughs.\par
+But this does tell us that Brooklyn, you know,\par
+is a place with a lot of complaints,\par
+and it would be nice to see what they are.\par
+Actually, in a previous demonstration,\par
+I looked at the complaints for Brooklyn, and a lot of them\par
+are noise related.\par
+So apparently Brooklyn noise is a big deal.\par
+But we don't have all that data.\par
+I've cleared the data because of the size issue here.\par
+So if you have the time, you should probably\par
+go to the 311 site, download the larger data set\par
+and explore that.\par
+But for now, we can just work with this.\par
+So Brooklyn has got the highest, so that tells us straightaway\par
+that Brooklyn is a big complain zone, tons of complaints there.\par
+We can look at them by agency, and that\par
+may be more interesting also.\par
+So again, we do same thing, we group by agency.\par
+And we-- product, and we get this\par
+over here, that many more agencies of course.\par
+So this tells us that most complaints\par
+are New York City New York Police Department\par
+complaints, followed by the housing\par
+HPD, which is the Housing Department, I think,\par
+complaints.\par
+And that is probably, again, due to the fact\par
+that we have winter months, so they\par
+are more likely to be heat related complaints or actually,\par
+we have September and October, so we\par
+might have some air conditioning complaints,\par
+and then heat related complaints,\par
+but housing complaints are up there.\par
+And then transportation complaints\par
+and energy protection, and all that kind of stuff.\par
+So this will give us an indication of what sort\par
+of complaints we are getting.\par
+In general, if you get--\par
+if you're running an agency of like 311\par
+and you find that two of your agencies\par
+are skewing all the results, perhaps you\par
+should have a separate department that\par
+just takes care of that stuff, but anyway, that's\par
+not our problem.\par
+So we have agencies and we have boroughs,\par
+so next thing you might want to do, is\par
+you might want to see, like, which agencies are--\par
+for which boroughs, which agencies are more likely\par
+to be complaint zones.\par
+Like, for example, NYPD is huge, but what\par
+if NYPD is huge only in Manhattan,\par
+but not anywhere else or only in Queens and not anywhere else.\par
+So I want to see whether there are\par
+some differences in the way complaints occur by agency\par
+across different boroughs.\par
+So we can combine them into a single group by--\par
+and when you want to do multiple group by multiple things,\par
+what are you going to get as a two-layered grouping.\par
+So this says here, group by agency\par
+and then group by borough.\par
+So we're going to get a two-layer grouping.\par
+We'll first group by agency, and within agency, it'll\par
+group everything by borough.\par
+OK, so we get agency NYPD, borough one, borough two,\par
+borough three, borough four, borough five.\par
+Agency DOT, borough one, borough two, borough three, borough four,\par
+borough five.\par
+That kind of stuff, right?\par
+And we can do that, and we can draw\par
+a nice little graph of this.\par
+And we get this graph here and we see,\par
+oh my goodness gracious, we can't even\par
+read this stuff, right?\par
+This is densely populated, and even if you could spread\par
+and read it, it'd be really hard to make out differences\par
+across this because what this is really saying\par
+is NYPD Manhattan, NYPD Staten Island, that kind of stuff,\par
+right?\par
+Which is kind of meaningless.\par
+So what you want to do is-- what Matplotlib allows us to do,\par
+is it allows to unstack this so that we can now\par
+plot them so that we can group them by one or the other.\par
+Right?\par
+So let's unstack this and take a look at it.\par
+So unstack this.\par
+And what I get is, I get for each borough or for each agency\par
+because agency is my first level.\par
+Right?\par
+So I take every agency and within the agency,\par
+I group by boroughs, right?\par
+So I first group by agency and inside that I group by borough.\par
+So what I want to get is, for every agency,\par
+I'm going to get the borough grouping.\par
+So now we get a slightly different graph\par
+here, which is a lot more readable\par
+and we can see there are--\par
+it tells us for each--\par
+for NYPD, it tells us the borough--\par
+relative borough complaint's, number of complaints.\par
+And what we can do is, it still is a pretty small graph,\par
+so what we can do is we can make it bigger,\par
+and to make it bigger we use this fig size parameter\par
+to our plot function.\par
+And what the fig size parameter does,\par
+is it tells you how big you want the figure.\par
+And you can, again, play around with these numbers\par
+to see what kind of size you get.\par
+Then we give it a title, that's kind of nice,\par
+and we will do exactly what we did before.\par
+We accept a slightly larger figure,\par
+and we get a nice big figure here that looks like this.\par
+It's a bit too big, I think.\par
+So what I can do, is I can make it a little bit smaller\par
+and make it 12.\par
+12.\par
+I'll run that again, and see whether it fits on the screen.\par
+Yeah.\par
+So that's a little bit better, right?\par
+You can actually read it.\par
+So this-- looking at this, now we get some more information.\par
+So it tells us that Manhattan is green, and Brooklyn is orange,\par
+Bronx is blue.\par
+So if I look at NYPD complaints, I\par
+find that the most number of complaints are in Brooklyn,\par
+and the second most complaints in Brooklyn are--\par
+second most complaints are in Queens, on the New York Police\par
+Department.\par
+Right?\par
+Whereas if I look at how HPD, then\par
+we see the most complaints are in Brooklyn,\par
+followed by the Bronx, followed by Manhattan,\par
+and then Queens is way down there.\par
+You know, far fewer complaints for HPD,\par
+and so on and so forth.\par
+So I can actually go and look at each agency\par
+or flip it around and look at each borough\par
+and see if there are differences.\par
+So to flip it around, all I would need to do\par
+is to replace, to interchange these two.\par
+So instead o of agency borough, I would have borough agency.\par
+And that flips them around, and I can see them-- see the--\par
+I would see a graph that was by borough, but it will show you--\par
+the bars here would be for each agency in that sense.\par
+So this is another way of looking at the data\par
+and trying to get some sense out of it.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 
