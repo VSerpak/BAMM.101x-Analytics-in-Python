@@ -1,0 +1,199 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Let's start by computing the proportion\par
+of positive and negative words in a piece of text.\par
+This should be a fairly simple kind of sentiment analysis.\par
+We look at the text, and we count\par
+the number of positive words.\par
+We count the number of negative words,\par
+and we decide whether something is positive-- the text itself,\par
+the document itself is positive or negative, depending\par
+upon whether there are more positive or more negative\par
+words. very nice, but it's a simple way to do it.\par
+So we can write a function here called\par
+Get Words, which is actually going to get\par
+the words from a URL, right?\par
+So the two URLs, if you are looking at it,\par
+are the positive words, dot txt here, this one.\par
+And the negative words, dot txt.\par
+And we're going to get these words here.\par
+So this is a very straightforward function.\par
+All it does is it takes a request library,\par
+which we've used before, and gets,\par
+well, user request dot get, and then decodes it\par
+from latin one text, to get the actual list of words.\par
+And the URL contains the words listed one after the other.\par
+And you can take a look at it here, if you like.\par
+So this is it.\par
+It's got some junk on top, which all starts with semi-colons,\par
+and then, this is a positive words,\par
+so it contains all the words that it thinks are positive.\par
+OK, lots of words, but they are without polarities--\par
+and similarly for the negative words.\par
+So all this function does is it gets the data.\par
+It removes any line that starts with a semi-colon, which\par
+is a comment line, and then takes\par
+every other line which contains one word\par
+and adds it to this list of words,\par
+and returns a list of words.\par
+So we get a list of positive words\par
+and a list of negative words.\par
+That's what we get here.\par
+So we run this, and we can do length,\par
+positive words-- there's 2,006 positive words.\par
+And length-- there are 4,783 negative words pretty much.\par
+Overweighted on negative words.\par
+So now, all we need to do is to read our texts\par
+and count the number of words.\par
+So I have sample text here.\par
+This is not the entire data, but it just\par
+contains a couple of reviews of community,\par
+which is a restaurant in Manhattan and near Columbia\par
+University called Community Food and Juice.\par
+And Le Monde, which is another restaurant-- they are actually\par
+right next to each other on Broadway.\par
+And I'm going to read that data.\par
+So all I need to do is open the file, and then read it.\par
+So that's it.\par
+So I read these two, and I get Community and Le Monde\par
+And then I want to compute the sentiment.\par
+So the sentiment is, again, straightforward.\par
+In this case, I just want to count the number of words.\par
+So I go through a text, a piece of text here, Community,\par
+for example.\par
+And if I take a word-- if it isn't positive words,\par
+I increment the counter by one.\par
+So suppose, I started with zero, and increment by one.\par
+If it's a negative word, I increment that counter by one.\par
+This way, I take care of the possibility\par
+that a word is both positive as well as negative.\par
+I don't really know.\par
+I haven't looked at it in detail,\par
+but it's possible that there's a word that fits in both columns.\par
+So in that case, I take negative as I add one.\par
+And the same thing I do for this thing here.\par
+The only thing I'm doing here adding to this\par
+is from the NLTK library package on Python,\par
+I'm importing the function word tokenize.\par
+What word tokenize does is it takes a word\par
+and makes it into a single token,\par
+so it will remove any punctuation.\par
+Like, for example, if you have a word--\par
+a sentence that ends with this was a delightful experience,\par
+period--\par
+So experience, period, if you're looking at separating words\par
+by just spaces, experience, period, will become a word.\par
+But it's not really a word.\par
+So word tokenize will take care of the period for us--\par
+hopefully anyway.\par
+So we do that.\par
+And then once I've got that, then I\par
+can compute the proportion of positive words\par
+to the total number of words in the thing.\par
+This is the length of the number of words in the Community\par
+reviews, Community Food reviews.\par
+And I compute the proportion of that\par
+and the conversion of negative words.\par
+And we end up with this thing over here,\par
+which says 5.09% of the words used in community\par
+were positive, and 5.33 were positive in Le Monde.\par
+So Community in a sense has slightly lower positive words\par
+of proportion to the total text, because that's\par
+the way you want to look at it, because the text\par
+has smaller and larger--\par
+to compare them would be comparing apples and oranges.\par
+So people are more positive and more negative about Le Monde\par
+in their reviews, so it inspires slightly higher feelings\par
+I guess--\par
+and less positive and less negative about community.\par
+But on the average, if you take the difference\par
+between positive and negative words,\par
+Community comes out a little bit ahead of Le Monde\par
+on this very naive analysis.\par
+So that's the first thing we can do.\par
+The second thing we're going to do\par
+is we're going to use this NRC data to look at equally\par
+simple sentiment analysis.\par
+And NRC data is a little bit interesting,\par
+because what it does is the words\par
+are quartered into two sentiments,\par
+positive or negative, and eight emotions.\par
+So every word can be either positive or negative.\par
+And it can also have associated with it\par
+the emotions of anger, anticipation, disgust, fear,\par
+joy, sadness, surprise, and trust.\par
+So this is what that it contains.\par
+So it's a nice thing to do.\par
+And again, it's probably better at using\par
+this for Facebook posts, where people are actually\par
+commenting with more emotion than for restaurant reviews.\par
+But let's take a look at it, we might get something interesting\par
+out of it.\par
+So the first thing to do is read the analysis sentiment data.\par
+And like I said, this is not available\par
+online with without permission anymore.\par
+So please, it's part of the data that I've given you guys.\par
+So please use it only for this class.\par
+And all we're going to do here is we read the sentiment data,\par
+and we're going to construct a dictionary out of it.\par
+So let me just run this.\par
+And we construct this emotion dictionary out of it\par
+that looks like this.\par
+So for every word, we attach a list of emotions and sentiments\par
+to it.\par
+So this is abandonment, for example,\par
+as the anger, fear, and negative, sadness, and surprise\par
+associated with it.\par
+Abhorrent has anger, disgust, fear, and negative.\par
+What's a positive word?\par
+Let's see of we can get something positive here.\par
+Absolution has joy, positive, and trust.\par
+So these are the things we do.\par
+And all we're really doing is we are\par
+going through this stuff over here,\par
+ignoring the first 46 lines, which is, I guess,\par
+just junk in the text, and then taking the text itself--\par
+and let me see if I can take a look at it, actually no point.\par
+And then, you can take a look at the text\par
+and see how it's structured, extracting the emotions,\par
+and then appending them to this--\par
+if the dictionary already has a key called abrupt or key called\par
+abscess--\par
+so the first time it goes, it creates this key\par
+and attaches the word negative to it as a value.\par
+And the second one in order just adds that\par
+to the list of values that are the value for the key absence.\par
+That's what it does.\par
+So that's all it's really doing here.\par
+So it's really straightforward.\par
+And then, we can make a function out of this if you like.\par
+So let's do that.\par
+Probably don't need it for this, but if you\par
+want to use it again, than this is going\par
+to take care of that for you.\par
+You have this function forever.\par
+So we can take it out, so we look at abandonment--\par
+abandoned-- and we see that it has anger, fear, negative,\par
+and sadness associated with it.\par
+Now that we've downloaded the NRC data,\par
+let's see if you can attach emotions\par
+to various restaurant reviews.\par
+This is not going to work very well, because we're\par
+going to use the Yelp API.\par
+And the Yelp API doesn't give us reviews.\par
+All it does is it gives us a review snippet.\par
+So Yelp, I guess, protects their reviews,\par
+and they don't want people downloading them,\par
+because that's where their intellectual property really\par
+is, right?\par
+So when do you get one review snippet-- so\par
+what we are going to end up doing\par
+is we are going to analyze these review snippets for emotion.\par
+So hopefully, that will give us some information.\par
+And more importantly, it'll give us\par
+some experience, both using NRC data,\par
+as well as using the Yelp API.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

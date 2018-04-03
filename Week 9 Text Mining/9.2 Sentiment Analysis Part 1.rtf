@@ -1,0 +1,180 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Now that you are ready with your data properly set up,\par
+we can start working with text itself.\par
+So let's see what we can do with it.\par
+The first thing and probably the easiest thing to do with text\par
+is to figure out the sentiment of piece of text.\par
+Sentiment means is it saying something positive?\par
+Is it saying something negative?\par
+Is it going to inspire?\par
+Is it surprise or fear or something like that?\par
+And that's the idea in sentiment analysis,\par
+and it's not a simple subject.\par
+Because if you look at our examples over here that I have,\par
+you can say something like, I had an excellent souffle\par
+at the restaurant Cavity Maker.\par
+So what this is saying, the word excellent souffle\par
+is telling us that I really liked this.\par
+It's a very positive statement about the restaurant.\par
+because excellent souffle at that place.\par
+Excellent is a positive word, and it\par
+implies that we like the souffle and we like the restaurant.\par
+It's positive about both.\par
+But then, there are certain cases--\par
+and English language being a funny language--\par
+there are certain cases where things--\par
+all languages I guess-- where it's not always so clear.\par
+For example, if I had a statement that said,\par
+The Girl on the Train is an excellent book\par
+for a stuck-at-home snow day.\par
+That's a positive word, right?\par
+Because it says The Girl on the Train\par
+is an excellent book for a stuck-at-home snow day.\par
+You're stuck at home.\par
+You can't go anywhere.\par
+There's like piles of snow outside.\par
+So what do you do?\par
+You curl up with The Girl on the Train,\par
+and that sounds like a good way to spend your time.\par
+So that's a positive statement.\par
+However, if I see The Girl on the Train\par
+is an excellent book for using as a liner for your cat's\par
+litter box.\par
+Now, clearly, if this comes up in a review,\par
+then it would indicate that the reviewer did not\par
+like The Girl on the Train because they\par
+want to use it for something where a book is not\par
+intended to be used for.\par
+Just to be clear, I actually enjoyed the book a lot,\par
+so it's not something that I would say the book is not nice.\par
+It's actually a great book.\par
+It's an example.\par
+And anyone reading this will understand\par
+that the reviewer did not like the book,\par
+but for a computer to figure this out\par
+is going to be really hard.\par
+Because how does it know that liner for your cat's litter box\par
+is not the normal use for a book?\par
+It's a negative connotation for us, but for a computer program\par
+it's really hard.\par
+Then there's a third case here.\par
+The Girl on the Train is better than Gone Girl.\par
+Now, these are two books, and we are saying\par
+this book is better than that.\par
+But the reviewer, for example, could\par
+have disliked Gone Girl a lot and said I didn't really\par
+like the book at all.\par
+You know, I hate Girl on the train,\par
+but it's better than Gone Girl.\par
+It's not as bad as that, which is not necessarily\par
+a positive statement.\par
+All we can say is that this is in the eyes of the viewer\par
+or the document is better than this,\par
+but we can't say whether it's good or bad\par
+or a sign of more general sentiment to that.\par
+So when you're working with language,\par
+you need to bear these things in mind.\par
+That, in general, the English language\par
+is not always clear as to whether something\par
+is being stated positively or negatively.\par
+And sometimes if you have a comparative,\par
+you should just use it only for comparisons.\par
+So we can say Girl on the Train is better than Gone Girl,\par
+but we can't really say anything independently about it.\par
+That's a caveat we should keep in mind, but that said,\par
+a lot of text mining is done on technical or official documents\par
+which are not going to be using sarcasm in this form.\par
+So they're not going to be saying stuff like this.\par
+So if, for example, you're reading\par
+analyst reports for stocks, then unlikely\par
+to be saying things in this format.\par
+They're more likely to be very clearly saying\par
+that there's positive growth or growth is on target or things\par
+like that.\par
+So with official documents or technical documents\par
+or documents that have content and are not fiction,\par
+are not reviews or things like that, the odds are--\par
+running essentially, of course, and this can be as ironic\par
+or sarcastic as anybody else--\par
+the odds are that your data is going to look pretty good.\par
+But the bottom line in all this is that sentiment analysis\par
+is a good starting point, but bear in mind that it's not\par
+always going to work very well.\par
+Sentiment analysis is usually done\par
+using a corpus of positive and negative words.\par
+So this is the other tricky aspect of sentiment analysis.\par
+So out there on the internet, you're\par
+going to find lots of collections\par
+of words that are positive and negative,\par
+and you can use those.\par
+But of course, if you have a very well-defined domain\par
+that you're doing sentiment analysis in,\par
+you might be better off in constructing\par
+your own positive and negative words because in your domain\par
+there may be a different set of words that are applicable.\par
+So that's the idea there, and there\par
+are several different sets of analysis.\par
+I've listed a few of them here.\par
+There are many, many more.\par
+These are just sets of positive and negative words\par
+in the Hu and Liu sentiment analysis lexicon.\par
+There's the NRC emotion lexicon, which I've included actually\par
+in my data set that I'm giving you guys,\par
+but the lexicon itself is no longer\par
+available without permission on the internet.\par
+So bear in mind that the use of this lexicon\par
+is solely for this class.\par
+If you want to use it for anything else,\par
+you should probably get permission for it.\par
+There is SentiWord list, which a list of words\par
+rated with positive or negative sentiment.\par
+And we're not going to use this one,\par
+but it says, for example, excellent is a highly positive.\par
+So it has a 0.7 rating, whereas good is maybe 0.4\par
+or 0.4, that kind of thing.\par
+So positive, negative words are just words.\par
+There's no polarity attached to them.\par
+These ones have some polarity.\par
+And then there's Avada's sentiment tool,\par
+which has 7,800 words with positive or negative polarity.\par
+This comes as part of Python NLTK.\par
+You have to download some things for it.\par
+We'll do that along the way.\par
+And the thing about biosentiment,\par
+which we're going to use here-- and again,\par
+not perhaps in the context it's meant to be used.\par
+But it's really been constructed using email and chats\par
+and informal texts.\par
+So it contains things on emoticons.\par
+Emojis and those kind of things are also included in it.\par
+So it's really good.\par
+If you're working with Twitter feeds or Facebook posts\par
+or things like that, and you want to do some sentiment\par
+analysis on those, then biosentiment\par
+actually works very well, should work very well.\par
+Nothing is certain.\par
+For most of our class, we're going\par
+to use these two examples.\par
+I've compiled a set of 15 reviews of four neighborhood\par
+restaurants, the neighborhood being the Columbia University\par
+neighborhood.\par
+And these are just taken off from Yelp,\par
+so they're just general reviews.\par
+I'm also going to use the Yelp API.\par
+So as a sort of side benefit, we're\par
+going to see how do you use the Yelp\par
+API, which is kind of nice.\par
+And then I have the presidential inaugural addresses,\par
+which is included in the corpus, and I've added--\par
+like we just did in the first video--\par
+I've added Obama and Trump, Obama 2013 and Trump 2017\par
+to that corpus.\par
+And that's about it really.\par
+So these three examples we're going to use,\par
+and that's going to be our focus for the rest of this week's\par
+session.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 
