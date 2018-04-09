@@ -1,0 +1,242 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 So that's what we do with this.\par
+We can do the same thing, if you like,\par
+with the presidential addresses--\par
+but we won't do that right now.\par
+And I'll leave that to you guys to do.\par
+The next thing we can do is we can\par
+look at Named Entities inside our text.\par
+So named entities are very useful when\par
+you are analyzing documents-- because named entities what\par
+they do is, they are useful for identifying people,\par
+places, organizations, and those kinds of things.\par
+And because often what you want to do\par
+is, you want to see a piece of text and say,\par
+is it saying something positive about so-and-so?\par
+Or, something negative about so-and-so?\par
+If you're reading People magazine,\par
+is it saying something positive about Kim Kardashian?\par
+Or, negative about Scarlett Johansson?\par
+That kind of stuff, right?\par
+So you want to be able to identify those entities\par
+and work with them.\par
+And similarly if you're reading a document that's\par
+a stock document-- an analyst document--\par
+and it's talking about different products,\par
+and you want to grab those products and see,\par
+is the document saying positive things or negative things\par
+about those products?\par
+That's where identifying the named entities\par
+is a very useful thing.\par
+And NLTK provides a nice framework for doing that.\par
+So what it really does is, it uses--\par
+it starts with something called part-of-speech tagging.\par
+So it looks at sentences and tries\par
+to tag them based upon what part of speech they represent.\par
+Are they nouns, verbs, adverbs?\par
+Those kind of things.\par
+And then it takes the sentences and then\par
+chunks them together so that you get different parts of speech.\par
+So you have noun clauses, noun phrases, verb phrases--\par
+and so, it takes a sentence and breaks it up\par
+into its components and then tries to figure out--\par
+based on these components-- it tries\par
+to figure out what things represent people, places,\par
+and organizations.\par
+And this could be more than one word.\par
+And they may even be separated by something else,\par
+but it'll try to figure that out.\par
+So let's just run this, and take a look at it.\par
+So in our document here, which is\par
+Community data for the Community Food & juice restaurant--\par
+it pulls out these things as named entities.\par
+So typically when you use named entities, what you want to do\par
+is you want to run through a large number of documents.\par
+So let's say you're looking at analyst reports,\par
+and you have a set of 1,000 reports--\par
+you want to take a few hundred of them and run through those,\par
+pull out all the named entities from there,\par
+and then eyeball them and see, do they make sense?\par
+And then remove things that are not named entities.\par
+So for example, my guess is this is not actually a named entity.\par
+The reason it got identified as a named entity is\par
+because it's a four-word uppercase--\par
+four-letter uppercase-- four uppercase letters\par
+in a single word, so it thinks as an abbreviation.\par
+Might be an named entity--\par
+I don't know.\par
+But it probably is not.\par
+Bill Boston Bottomless, maybe.\par
+Bottomless margaritas, right?\par
+So that's really where it came from.\par
+I'm not sure that this is a named entity, at all.\par
+It's probably just a mistake somewhere in that.\par
+But generally, it's pretty good.\par
+A good community of food--\par
+it's figured out that's an entity.\par
+We can see that is figured out Brooklyn, which is an entity.\par
+We figured out a few--\par
+Fire Island Beer, which is three different words--\par
+but it's figured out that it's probably\par
+some kind of entity, named entity, on this kind of thing.\par
+Greendale Community College-- three different words.\par
+Troy bonds-- So these are, probably--\par
+it's done a reasonably good job of that.\par
+Now the whole goal here, of course,\par
+is that once you have the named entities,\par
+you can use these named entities to compute sentiments on them.\par
+So let's say we want to-- we know that Service is the name\par
+entity, and we want to find out whether the restaurant is\par
+positive in service or negative in service.\par
+So we can do then is we could say, hey, we got our sentences,\par
+we look at the sentiment on the using our order\par
+comparison to figure out whether the sentences are\par
+positive or negative.\par
+So here, and then maybe computer composite score on it.\par
+So here, for example, we've got the word "service"\par
+in Community, and we can see that in general the compound\par
+is negative 0.17 over here, but 0.84, 0.49, 0.49, 0.74.\par
+So it's reasonably positive on service for this one here.\par
+So what we've done here, of course,\par
+is we've taken the sentences here\par
+that have the word "service" in them--\par
+any sentence that has the word "service" in it,\par
+and then figured out the--\par
+appended that to a list of meaningful sentences,\par
+and then found that for those meaningful sentences,\par
+we've have done a comparison and we look at those six\par
+sentences of these scores.\par
+So you can do a fact calculator for all these kind of things.\par
+So let's see if we've got, for example, of a food item.\par
+So we run this thing here.\par
+And what it does is, for service it'll tell us\par
+the composite score is 0.432.\par
+So all we're really doing is we're using the same stuff\par
+that we did before over here--\par
+computing a polarity score for each sentence,\par
+and then totaling up the polarity scores.\par
+So that's negative 0.17 plus 0.84 plus 0.49, blah, blah.\par
+And then, dividing it by the total number of sentences,\par
+which is 6--\par
+and getting the average of that, which is an average compound\par
+score, really.\par
+And that tells us that we have an effect on Community data\par
+raw that says it's 0.43.\par
+And we can try this on Lemont data--\par
+[TYPING]\par
+--and that's 0.22.\par
+So Lemont has poorer service than Community.\par
+We can try it on Heights--\par
+that's 0.75.\par
+So Heights is really high on service rating.\par
+And we try on Amigo's--\par
+and that's 0.02.\par
+So if you're looking for service,\par
+you don't want to go to Amigo's-- that's the bottom\par
+line, right?\par
+That's got a really low rating, at least for these 15.\par
+I should please point out that there are just 15 reviews--\par
+a subset of a large number of reviews,\par
+and when we include all of them the whole thing\par
+could just change.\par
+But we get the idea here.\par
+So that's the way we can use a compound score along\par
+with named entities to try to figure out how\par
+it rates on various features.\par
+So for example, if I wanted to look at brunch.\par
+We know that-- wait, we want to see,\par
+actually-- is that a named entity?\par
+Let's take another named entity, and--\par
+yeah, brunch is a named entity.\par
+So let's take brunch and see if we can work with that.\par
+So if I do brunch here and look at Community, I get a 0.43.\par
+And then if I look at Lemont--\par
+[TYPING]\par
+--it's a 0.25.\par
+If I get a look at--\par
+[TYPING]\par
+--Amigo's-- 0.5.\par
+Amigo's is good for brunch, who would have thought that, right?\par
+And then, Heights--\par
+[TYPING]\par
+--is 0.42.\par
+All right, so this is-- it gives us\par
+something for each one of the named entities,\par
+we can do this analysis.\par
+And then, compute based on how we consider-- what we consider\par
+important named entities for our documents,\par
+we can decide what the document is\par
+trying to say about those entities itself.\par
+The only other thing that I should point out here,\par
+actually before we go forward is that when\par
+you're doing the part-of-speech tagging,\par
+you want to use this thing called english.pickle,\par
+which is really the grammar that is required for this.\par
+And NLTK-- has various such pickles for, I think,\par
+Spanish and a couple of others--\par
+I forget which ones, but you can look them up\par
+in your data-- in nltk_data to sit around with it.\par
+And then the last thing we can do is we can say,\par
+all right, we know that we have service, so we can--\par
+we have looked at it, we found that service in Community\par
+is good, but we want to see what they really do say about it.\par
+So there's a nice function called concordance\par
+in NLTK, which it shows you the words around the number\par
+of characters.\par
+So it's saying 100 characters around the word "service"\par
+in our document.\par
+So this says, "The food, service, and ambiance\par
+is exactly what we are looking for."\par
+Two write, "Brunch, hunger, and slow service."\par
+That's the negative service that we found.\par
+"Items on the menu," "Service is great,"\par
+"Service-- nice company."\par
+And we can do this for each one of them if we want to,\par
+and that's just a way of checking\par
+to see whether these words make sense or not.\par
+That's for Lemont.\par
+And it says, "We've never had a bad experience here,"\par
+"Horrible service," "Service was poor,"\par
+"Mediocre food," "Slow service," "Awful service,"\par
+"I figured service would be quick,"\par
+"Better service," "Go a block down for brunch,\par
+it's not really a good place for service."\par
+"Good service," "Yes, they were attentive,"\par
+"Quite good food, and good service,"\par
+and they could be returning customers.\par
+So yeah, it's mixed.\par
+OK.\par
+So that's the deal here.\par
+And notice that I think--\par
+I suspect-- that are our analyzer didn't really\par
+find this very well.\par
+So if you look at--\par
+let me go back here, and if you looked at this here,\par
+and if they replace--\par
+oh, god, this thing doesn't move.\par
+If I change this to Lemont data--\par
+[TYPING]\par
+--and then run this here, which is our service thing here.\par
+Well, there are quite a few negative ones.\par
+So these are awful service ones.\par
+But I suspect some of these which look positive\par
+are probably more like our excellent for cat\par
+litter, kind of lining the cat litter box kind of examples\par
+because the service looked a little better than this.\par
+So that's where we want to go.\par
+So again, just to recap, what you want to do\par
+is we want to be able to take out a document,\par
+look at the named entities-- and then from the name entities,\par
+try to figure out whether the document is talking positively\par
+or negatively about the named entities.\par
+And then if you know our domain and we\par
+know which entities you're looking for,\par
+we can actually say a lot about a document\par
+by looking at whether it says something positive or negative\par
+about things that we are interested\par
+in that particular document.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

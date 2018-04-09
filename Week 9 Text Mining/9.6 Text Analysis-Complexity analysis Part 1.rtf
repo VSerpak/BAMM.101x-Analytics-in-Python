@@ -1,0 +1,229 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Another thing we can do at a very simple level\par
+is to look at how complex a particular document is.\par
+What's complex?\par
+Complexity is the average word length of a document.\par
+In general, if you have a technical document,\par
+it might have longer words.\par
+The average sentence length for people\par
+expressing more complex ideas, then\par
+they will probably use longer sentences rather than\par
+shorter ones.\par
+And you would also like to see the vocabulary of the sentence.\par
+For this, it's a little bit iffy,\par
+but if you want to see the ratio of unique words used\par
+to the total number of words in the document.\par
+And this is a bit iffy because obviously,\par
+as the document gets longer, the variety in the words\par
+is going to be lowered in proportion.\par
+I mean, there are only so many words in the English language\par
+after all.\par
+So if you ever have a book that is 500 pages long--\par
+And you have another book that is five pages long\par
+or short story of five pages long,\par
+the proportion of different words in the five pages long\par
+text is going to be higher than the proportion\par
+of different words in the 500 page text.\par
+I mean it makes sense.\par
+So keeping that in mind, so when you do the vocabulary\par
+proportion, you probably want to be also comparing documents\par
+that are similar in size.\par
+Just keep that in mind.\par
+So in general, when you're dealing with text mining,\par
+you start with the idea of a token.\par
+A token is a sequence or a group of characters of interest.\par
+For example, we've been using a word as a group of interest.\par
+So word is our token.\par
+But it could be a sentence.\par
+So it could be a document.\par
+It just depends on how you, on what level\par
+you want to do the analysis.\par
+But generally, a word is not a bad way to look at it.\par
+So the first step is always to convert stuff into tokens.\par
+And NLTK provides two functions that are useful for that.\par
+There's sentence tokenize and word tokenize.\par
+And each of them are there to create words and sentences.\par
+Basically, get rid of stuff that is not something\par
+that's a word or a sentence.\par
+Like for example, a punctuation or a images or stuff like that.\par
+So if you take Le Monde data and we word tokenize it\par
+and sentence tokenize it, we get 188 sentences\par
+and 2,595 words in our compendium\par
+of reviews of that thing.\par
+And we can now look at the sort of complexity of it.\par
+So what we can do is, we could say,\par
+hey, how many characters are there.\par
+Well, we have a piece of text.\par
+We can count the number of characters.\par
+So that's the 12,332 characters.\par
+How many words are there?\par
+We can count that, and then we can divide the number of words\par
+by, we can divide the number of characters\par
+by the total number of words to get\par
+the average length of a word.\par
+So in the Le Monde reviews, the average length of a word\par
+is four.\par
+Which is pretty much par for the course.\par
+You would expect four or five to be in most documents\par
+to be the average length.\par
+Because the mini words like to, in,\par
+and, uh, that are short words and they get used very,\par
+very often.\par
+Then you can take the number of words in the text\par
+and divide it by the total number of sentences.\par
+We know how to calculate those too.\par
+And you get a length of sentences\par
+feature here, which is 13.\par
+Which is kind of on the low side I think, but you know, it's OK.\par
+And then you take the vocabulary.\par
+That is, the number of unique words.\par
+And the number of unique was easy to do.\par
+What do you do is each word as you get it,\par
+you add it to a set of words.\par
+Sets are kind of useful for this, because sets,\par
+if you add a word twice, it's just\par
+going to ignore the second one.\par
+So you get the unique words.\par
+That's our vocabulary.\par
+And we can take the length of the vocabulary\par
+and divide by the number of words\par
+to get a proportion of unique words.\par
+So this tells us they are 29% of Le Monde's text\par
+is words that are used, the unique words in that text.\par
+And we can take this stuff in functionalize this.\par
+We're going to use this a little bit.\par
+So let's go where we functionalize this.\par
+So we write a get complexity function.\par
+And we can do that for that.\par
+So what it does it returns as a tuple that contains\par
+the length of the unique word.\par
+756 unique words.\par
+Four words per, four characters per word, 13 words per sentence\par
+and 0.29 is the proportion of unique words\par
+to total number of words.\par
+And then we can run this for all of them.\par
+And we can compare across the text.\par
+So we see here that in general, Le Monde actually\par
+has the lowest sentence complexity.\par
+It's 13.\par
+And whereas Community and Heights have a 16.\par
+So people who write reviews, very naive.\par
+Remember, we are looking at 15 reviews\par
+out of possibly thousands.\par
+So it's fairly naive this thing.\par
+But what we are saying is that people--\par
+roughly what we would say that is\par
+that the people who write reviews for Community\par
+and Heights tend to write more complex sentences than people\par
+who write for Le Monde.\par
+And Amigo's is in the middle.\par
+But they all use the same number of characters per word,\par
+and they have pretty much the same vocabulary percent here.\par
+Though Amigo's is really low, even though\par
+if you look at here, Community has a very high number\par
+of words.\par
+But if you look at these three 756, 720 and 792,\par
+they're fairly close to each other.\par
+And comparatively fewer words are used,\par
+fewer unique words are used in Amigo's.\par
+So they tend to repeat the same words more often, whatever\par
+that means.\par
+Remember, this is not really a very scientific piece\par
+of analysis here.\par
+But that's the idea here.\par
+We could do a word cloud comparison.\par
+So what we could do here is, and let\par
+me just run this and show you what\par
+we're going to get out of it.\par
+Because what we want to do is, you want to see,\par
+are there differences in the way these restaurants are\par
+viewed by the reviewers.\par
+If you had 1,000 reviews, this would actually\par
+be very, very useful.\par
+So what you can do is, we create word clouds.\par
+And what we're going to do here is do a couple of things.\par
+One is we're doing word clouds.\par
+We saw how to do that before.\par
+And the second is we're going to do this sub-plotting like we\par
+did with our boroughs and agencies and all that stuff\par
+in the data visualization.\par
+So this is very similar to that thing here.\par
+And in this, we have a bunch of stock words.\par
+So these things aren't moving very well.\par
+So here what we do is we construct our word clouds by\par
+and remove unwanted words.\par
+And we can add as many words as we like to this.\par
+So what I'm doing is, I'm just saying\par
+if you have a string of delete words,\par
+then you can just delete them.\par
+But I don't have a string of delete words, do I?\par
+I have an empty string.\par
+I can delete that if I don't like it.\par
+And then I, of course, had the stock words from here\par
+or I can delete words that are not germane or don't make sense\par
+in my domain.\par
+So that's an additional thing.\par
+And just adding that to it.\par
+I can remove short words.\par
+Short words are words that are shorter than a certain length,\par
+minimum length.\par
+And here I've just said zero initially.\par
+We can do that stuff here.\par
+And now we have four restaurants,\par
+so I have a two by two array.\par
+A two by two subplot structure.\par
+And then we use the same thing we did before and show\par
+our thing here.\par
+And this is a little bit big side here.\par
+Let me see if it fits.\par
+OK, let me see if I can make height 900.\par
+A bit smaller.\par
+That's a little bit better.\par
+So what this tells us is that if you look at this,\par
+Community is good for brunch.\par
+Le Monde also has some brunch, but we don't see brunch\par
+in Heights and Amigo's.\par
+So clearly people don't really use Heights\par
+and Amigo's, or don't talk about brunch anyway,\par
+when they talk about Heights and Amigo's.\par
+Heights has a bar, like I said before, that has good bar.\par
+People like it because of the bar.\par
+And we see bar shows up as a huge word over here.\par
+This has pancake, so I guess pancakes are good.\par
+Coffee.\par
+This probably has burritos, quesadillas and margaritas.\par
+This is more of a Mexican kind of place, so quesadillas,\par
+margaritas and those kind of things.\par
+And so when we look at these things,\par
+you know, night, food, bar, we can clearly almost\par
+sort of visualize that this place good for brunch.\par
+It has pancakes, you know, brunch food, eggs,\par
+that kind of thing.\par
+This place is also have French food, it is French.\par
+It's got, people talk about service.\par
+We don't know, does it say good service or bad service.\par
+But it also has dinner, so it's probably a dinner-ish place.\par
+And drinks are good.\par
+Coffee is good over here, or at least they talk about coffee.\par
+We don't know if it's good or bad.\par
+And these ones are more Mexican-oriented\par
+here with margaritas and quesadillas\par
+and those sort of things.\par
+And Heights also has tacos, Mexican food.\par
+And the bar is really one reason why people like it so much.\par
+So comparing restaurant reviews, not\par
+going to get us anything useful.\par
+So what we want to do is, we want to look at the,\par
+we'll look at the NLTK's inaugural text.\par
+So anything that contains this huge corpora\par
+of pre-organized text, which we downloaded\par
+upfront before we started this thing here.\par
+What you want to do is, you want to import that corpora.\par
+So let's just do that.\par
+And when you're finished importing it,\par
+we'll start on the next video.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

@@ -1,0 +1,236 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Another thing we can do with text documents\par
+is to look at Word Clouds.\par
+Word Clouds are not really rocket science.\par
+And all you do is you look at the text,\par
+you look at the words in the text,\par
+you count their frequency, and then\par
+you throw them out into the cloud,\par
+where each word is sized based relative to the frequency--\par
+its frequency in the text.\par
+So they're not rocket science.\par
+But they're really, really useful\par
+because you very quickly see what the text is saying.\par
+And you get the top few words.\par
+And it tells you, oh yeah, that's\par
+what this thing is all about.\par
+So let's take a look at that.\par
+And to do that, we will also need\par
+to install Word Cloud, which is probably do set above.\par
+And we install Word Cloud-- pip install Word Cloud.\par
+So once we got Word Cloud installed, what we'll do\par
+is we'll take all the snippets and combine them\par
+into one string.\par
+And then generate a Word Cloud using the words in the string\par
+just to see what do they say about restaurants\par
+in the neighborhood that we have around here.\par
+And so let's do that.\par
+So all snippets are these ones.\par
+So what you want to do essentially\par
+is run through this here and extract the item\par
+in for each tuple in the third location, location two.\par
+So we want to run through this list of snippets\par
+and extract whatever's in location two of each tuple,\par
+and then concatenate them all into one giant string.\par
+So that should be easy.\par
+So we'll do that here.\par
+You do this.\par
+And we get a nice, long string that does all that stuff here.\par
+And now you want to set up a Word Cloud for this.\par
+Word Cloud is pretty easy to set up.\par
+All we do is we import--\par
+from Word Cloud we import Work Cloud and Stop Words.\par
+Stop Words is a set of words that-- and this,\par
+we'll use these stop words in other places, too--\par
+which are very commonly used, like off, and the, and add,\par
+and in, and all that kind of stuff.\par
+So we eliminate all those words.\par
+And then we are going to display it,\par
+so we don't import matplotlib as well.\par
+So it uses that.\par
+And make sure it's inline.\par
+Again, we want to display it in our thing here.\par
+And then we create the Word Cloud.\par
+We say, word cloud equals word cloud,\par
+which is the object we've imported over here.\par
+Give it the stop words, so you can give any list, any set\par
+for the stop words over here.\par
+You can create your own stop words if you like.\par
+You have a background color, white--\par
+and that's over there-- a width and a height,\par
+so to make it bigger or smaller, and then you generate it.\par
+And you generate it using-- you're\par
+generating the Word Cloud here using the text that we created\par
+over here.\par
+That's the variable that we are passing to it.\par
+And then we use the show--\par
+matplotlib Image Show button.\par
+Well, this is creating an image.\par
+So we want to image--\par
+IM Show is Image Show.\par
+And we say, show this word cloud.\par
+That's this one.\par
+And then-- It says the axis is off.\par
+It doesn't matter.\par
+We don't need axes for these.\par
+We don't need x and y.\par
+And then show it.\par
+So this is what it does here.\par
+So is says, pretty, french, food, place, restaurant, blah,\par
+blah, right?\par
+So but this is all the restaurants.\par
+What we would like to do, of course,\par
+is compare the restaurants and see how they work together.\par
+So in our data set that you should have downloaded,\par
+they're for sets of reviews, a review for a community.\par
+And that is in a location data slash community.\par
+And there are, I think, 15 files per reviews, or 15 reviews.\par
+And then Le Monde is in data slash Le Monde.\par
+And Heights is in data slash Heights.\par
+And Amigo's is in data slash Amigo's.\par
+These are four different restaurants.\par
+They were in communities of local, American food\par
+restaurants with a focus on local foods.\par
+Le Monde is a Frenchish kind of restaurant.\par
+Heights is a Tex-Mex kind of restaurants.\par
+And Amigo's is also a mixed-Mexican restaurant.\par
+None of them are pure Mexican, but they are kind of Mexican.\par
+And so what we set up the thing here.\par
+We're going to use NLTK for this.\par
+And from NLTK dot corpus, the library\par
+we import this plain-text corpus reader.\par
+Plain-text corpus reader is a way of reading data,\par
+as a corpus, into your application here.\par
+So what it does is, it essentially takes a file--\par
+if I look at our--\par
+is there a files here?\par
+If you go here, data-- if I go data community,\par
+it has all these files here.\par
+So it takes these files.\par
+And it can load them into as separate files, and each\par
+of them as separate documents into your application.\par
+And that set of documents is what's\par
+called a corpus in the lexicon that they use here.\par
+And the nice thing is then that you can actually sort them.\par
+So here we are community 1, 2, 3, 4, 5, 6, 7, 9, 10.\par
+You could sort them by the names of these things.\par
+And we'll use that for-- for this it doesn't matter.\par
+But for the inaugural text, we'll use that.\par
+Actually, they're right here.\par
+You can see the inaugural texts are numbered by year.\par
+So we can always assume-- we know that 941 comes before 953.\par
+953 comes before 993.\par
+So these become sorted.\par
+And we can use that fact that they are in a certain sequence\par
+when you're doing analysis.\par
+Not so much for community and all that, we don't really care.\par
+Plus, It's not going to work very well because they're not\par
+really sortable.\par
+Their texts of 10 are going to come before two, for example,\par
+which is not what we want.\par
+Oh sorry, that is what we want.\par
+That is what you want, right?\par
+1, 1-0, 1-1, yeah that's actually what we want.\par
+So it'll actually work.\par
+So what we do is we set up the route directory, where we are\par
+going to get the files from.\par
+So we have a route for community.\par
+And we set up the format of the files,\par
+like your directory might contain many other files.\par
+The files we are looking for are community dot star\par
+for community.\par
+We could put all of them in one location,\par
+and then be a community files, a community dot star,\par
+Le Monde files as Le Monde dot star, et cetera, et cetera.\par
+We can work with that.\par
+And then we set up our corpuses in our application\par
+by creating this plain-text corpus\par
+reader, which has the route.\par
+It needs to know the route where the files are located,\par
+and how to identify the files in that folder.\par
+So this could be anywhere.\par
+It doesn't have to be in data community.\par
+It could be anywhere you want to give the complete path to this.\par
+In our case, we don't have the complete path.\par
+But we are giving a relative path\par
+because the data, the directory data,\par
+is in the same location as where our current text\par
+mining dot ymp file is.\par
+So we do all that stuff.\par
+And we can look at the file IDs of these things.\par
+And we see that they correspond to the file IDs there.\par
+So what the plain-text corpus reader is doing\par
+is it's storing these things with their file IDs\par
+in a internal directory structure, so to speak.\par
+And you can access each one separately if you want to.\par
+Or you can access all the data.\par
+So you can say, Amigo's data, which is our variable\par
+that we put this one here.\par
+This is Amigo's data where we can\par
+use the raw function to extract all the stuff in this here.\par
+So this is the entire text of all the reviews.\par
+And these reviews were actually just cut and paste.\par
+I just cut and pasted them from Yelp.\par
+So that's all there are there.\par
+So now we are just modifying comparative analyzers,\par
+so that it does as where the restaurant name is.\par
+It's a very simple one.\par
+You can take a look at it.\par
+And then we run it.\par
+And we get this over here, now.\par
+This is our all snippets.\par
+I run it for the restaurant data.\par
+So it's the restaurant data, I'm going to give it--\par
+the tuples, I'm going to give the name of the restaurant.\par
+So essentially, I have taken out the ID field from there.\par
+That's what I've done.\par
+So we have community and community dot role, Le Monde,\par
+Le Monde data role, Heights, Heights data role,\par
+and Amigo's, Amigo's data role.\par
+So I'm taking all the text of those 15 reviews,\par
+and we're going to look at the--\par
+compare the emotions on those things there.\par
+So for these four, we get this over here.\par
+Looks very different now.\par
+The 0.04 for community fear has vanished.\par
+The reason being that this snippet is not\par
+included in the reviews.\par
+The snippet is what Yelp is providing me right now.\par
+The reviews are what I had downloaded earlier.\par
+So that snippet is not there.\par
+And so we're not seeing any fear in community right now.\par
+We are seeing a bit of fear in Amigo's.\par
+So again, bear in mind that these numbers,\par
+though they look small, are actually\par
+quite meaningful because there's a lot of other stuff\par
+that doesn't have emotion attached to it in the reviews.\par
+So what this does, it says that community has the highest\par
+positive rating, 0.05.\par
+It also-- they all are equally negative and equal\par
+in trust inspiration.\par
+But for some reason, Amigo's inspires some fear.\par
+And both community and Amigo's have at least something\par
+that is disgusting about it, about them.\par
+Height's has the highest anticipation.\par
+And this actually makes sense to me\par
+because it's a very nice bar.\par
+And people like to go there and drink.\par
+There's some sadness--\par
+I don't know where that comes from--\par
+associated with community, Heights, and Amigo's.\par
+And there's also surprises through all of that.\par
+So that's kind of nice.\par
+So we can do this kind of stuff here.\par
+So that's the thing.\par
+And again, just bear in mind that you can--\par
+you don't have to use fear, or trust, negative, positive, joy.\par
+If you're working in a domain, you\par
+can actually attach your own words\par
+and use those instead of using these.\par
+And then use the same procedure to figure out\par
+what the documents are trying to tell you.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 
