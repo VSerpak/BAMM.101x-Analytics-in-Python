@@ -1,0 +1,220 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Let's start by looking at how we can construct a simple network\par
+and what we can do with that.\par
+So this is very basic stuff.\par
+So first thing you want to do always, of course,\par
+with Python is we want to figure out\par
+what are the imports that we need to use for this.\par
+So we want to import NetworkX, which you should probably\par
+get easily, given that you've installed Anaconda's Python.\par
+We're going to draw the network.\par
+So you want to make sure that you\par
+are using Matplotlib Inline, so that we can see\par
+the network on the notebook.\par
+We want to import NumPy.\par
+Because we might need it.\par
+And we want to import Pyplot.\par
+Because we might need it, OK?\par
+These are the basic imports.\par
+And this should be pretty much it for the networks.\par
+But What we will see down the road.\par
+So we want to make a simple network.\par
+A network is a set of nodes and a set of edges.\par
+So the first question when you want to create a network\par
+is we want to ask ourselves what are the nodes\par
+and what are the edges.\par
+So let's say we start by creating\par
+a bunch of nodes that are these in this list, 1, 2, 3, 4, 5, 6,\par
+7, 8.\par
+So notice that these are all immutable integers.\par
+1 is a node.\par
+2 is a node.\par
+3 is a node.\par
+We can give anything we want, as long as it is immutable.\par
+So we set up a network by using this function nx.graph.\par
+graph.\par
+Nx, if you recall, is our NetworkX module, the alias\par
+for our NetworkX module.\par
+So we set up our network by saying nx.graph.\par
+So what this does is it creates a network object,\par
+a graph object for our network.\par
+And what we want to do now is we have the network.\par
+It's empty.\par
+We haven't added any nodes or edges to it.\par
+So what we want to do is we want to add these nodes\par
+and add the edges.\par
+So our nodes are these things here.\par
+And we can just add them using the function add_nodes_from\par
+and give it a list or some collection of nodes.\par
+So that's going to add the nodes 1, 2, 3, 4, 5, 6, 7,\par
+8 into the graph.\par
+Then, we want to add the edges.\par
+Edges are the linkage between two pairs of nodes,\par
+in between a pair of nodes.\par
+So this tells us that 1 and 2 is linked, 2 and 3 is linked,\par
+1 and 3 are linked, 4 and 5 is linked.\par
+So clearly, 1 and 4 don't have an edge between them.\par
+1 and 2 have an edge.\par
+2 and 3 have an edge.\par
+1 and 3 have an edge.\par
+But 1 and 4 doesn't have.\par
+Because we don't have a 1 and 4 here anywhere.\par
+So we add that using the function add_edges_from.\par
+And then, we can take a look at our network by just drawing it.\par
+So let's draw that.\par
+And we don't get this because I have not imported it.\par
+OK, we can ignore these warnings.\par
+Anything that comes in pink is a warning.\par
+And this is telling us that some of these functions that\par
+actually NetworkX is using, I believe,\par
+are deprecated and may not be valid in later versions\par
+of Matplotlib.\par
+This is one thing you have to watch out for in Python.\par
+When you have something that's working,\par
+you probably don't want to change the libraries\par
+or upgrade the libraries for that application.\par
+So one of the things that you can do in Python\par
+is run virtual machines.\par
+And we don't have time in this class to look at that.\par
+But you might want to look up that stuff here--\par
+virtual environments, I'm sorry, and look that up online,\par
+and see how you can set up a virtual environment.\par
+What the virtual environment will do\par
+is it'll take all your inputs and seal them\par
+in that environment.\par
+And then, if you upgrade a library\par
+in some other environment, it's now\par
+going to upgrade it in this environment,\par
+so that you know your package will keep running.\par
+So it's not a bad idea.\par
+But anyway, this is our network now.\par
+So we got this network here.\par
+And it shows us our nodes and our edges.\par
+Of course, we don't know what the nodes are.\par
+So what we can do is we can add a few labels to the nodes.\par
+So I'm just going to walk through this.\par
+Because we will be using this a lot down the road.\par
+Or you will be using it a lot.\par
+So let's say we start with our simple network.\par
+And we're going to give it a layout.\par
+There are many possibilities for layouts in Python and NetworkX.\par
+So for example, I could see here, nx.randomlayout.\par
+I think that's right, random layout.\par
+That would be another layout.\par
+And there are quite a few of them.\par
+You can look up all the various layouts on NetworkX.\par
+But spring layout is just a very simple way\par
+of looking at a network.\par
+So we'll use that.\par
+So we have nx.springlayout.\par
+And we tell it we want to take a simple network, the one we\par
+defined earlier with the edges and nodes,\par
+and keep that in this network--\par
+keep that as the layout of our network.\par
+Note that the layer of the network\par
+has nothing to do with the graph itself.\par
+It's more for the visualization than anything else.\par
+Then, we draw the nodes.\par
+So we draw the nodes.\par
+And we give it, using the function, draw_networkx_nodes.\par
+It's very straightforward.\par
+We tell it the network we want to draw it for.\par
+We want to give it the layout that we want to use, right?\par
+That's our [? boss ?] here, which is the layout\par
+that we are using for this.\par
+We give it the color of the nodes.\par
+And R is for red.\par
+B is for blue.\par
+Y is for yellow.\par
+G is for green, that kind of stuff.\par
+We give it a node size.\par
+And this, again, you can play around with a little bit\par
+to see.\par
+So I'm giving it 500.\par
+Obviously, if you give a higher number,\par
+you're going to get a larger visual of the node.\par
+And a smaller number will give a smaller node.\par
+And the alpha is the Matplotlib thing that we're looking for,\par
+which what it does is it tells you\par
+how dense the color of the node is going to be.\par
+A lower alpha will make it more transparent.\par
+And a higher alpha will make it more opaque.\par
+So that draws our nodes.\par
+Once we do this, our nodes will get drawn.\par
+Then, we want to draw the edges.\par
+So for edges, again, NetworkX has simple function,\par
+add_networkx_edges.\par
+And we tell it the network, the layout, the list of edges--\par
+and the list of edges is what we gave up ahead on the top--\par
+the width of the edge-- so this tells you\par
+how thick the line is.\par
+Edges are represented as lines.\par
+So this tells you how thick the line is.\par
+Then of course, alpha is the color density,\par
+how opaque or transparent it is.\par
+And we give a color to the edge, B, which is blue.\par
+So we're going to get a network with red nodes and blue edges,\par
+which is different from here, where\par
+we had, well, some odd looking color,\par
+orange, reddish, pinkish thing as nodes\par
+and black as the edges.\par
+Now, we want to give the nodes names.\par
+So what I'm going to do here is I'm\par
+going to create here a list of names of nodes,\par
+or rather a dictionary of node names.\par
+And then, for each node in my list of nodes, the 1, 2, 3, 4,\par
+5, 6, the list of nodes we had, I'm\par
+going to add to that the node number.\par
+So it's an integer and a string version of that node.\par
+Because it'll look nicer, more better, with strings anyway.\par
+So then, what we want to do is we need to pass it as string.\par
+So I think we need to pass it as a string.\par
+So that's why we have a string node here.\par
+And then, we draw the labels.\par
+So the labels are what's going to show up as 1,\par
+2, 3, 4, 5, 6, 7 in the thing.\par
+We give it our network.\par
+We give it the layout.\par
+We give it the dictionary of node names.\par
+And we give it the font size.\par
+So this is really a mapping from our node number to a node name.\par
+So that's what we have over there.\par
+We don't know the axis.\par
+Because we don't need an axis for a network.\par
+There's no x and y.\par
+Then, we show it.\par
+So let's see how that looks like.\par
+And we get a nice looking graph like this.\par
+All right, note that this is going to be different\par
+every time you run it.\par
+Because it's really just laying it out as you're like here.\par
+So this tells us now we have our nodes numbered and edges\par
+nicely colored in blue.\par
+And we can play around with this a little bit--\par
+we will do that down the road--\par
+to add more information to our graph.\par
+But the basic graph is very straightforward.\par
+What you want to do is you want to decide\par
+what the format of your node is, the color, the transparency,\par
+et cetera.\par
+You want to decide with the format of the edges\par
+are, the color, the transparency, et cetera.\par
+You want to decide what data you want to show up in the node.\par
+Because remember, the node can actually contain lots of data.\par
+For example, if there are people,\par
+you might have the social security number, the name,\par
+the address, phone number, all that kind of stuff.\par
+And you don't want to pack all that into this.\par
+You might want to just back in the first name of the person\par
+or the last name of the person.\par
+So you can extract that and use that over here,\par
+instead of using the entire contents.\par
+That's the idea there.\par
+And then, you use the Network X labels just to actually render\par
+the labels on the graph.\par
+So that becomes our simple graph over here.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

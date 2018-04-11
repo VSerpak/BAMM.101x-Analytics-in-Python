@@ -1,0 +1,182 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Let's take a simple example.\par
+The example we're going to take is a bunch of locations\par
+and the duration of travel time between these locations.\par
+So our network is going to consist of locations,\par
+and our edges are going to consist of parts\par
+between these locations.\par
+And the edges are going to have a weight.\par
+The weight on the edge is the duration\par
+that it takes to go from place A to place B.\par
+So what we'll do is we will construct this network\par
+by going onto Google Distance Matrix API to get travel times.\par
+Google's Distance Matrix API, what it gives you is you\par
+give it a bunch of origins and a bunch of destinations,\par
+and it returns a matrix.\par
+Somewhat like in an old road map,\par
+when you get at the bottom, it tells you\par
+the distance between pairs of cities\par
+that are reflected in the map.\par
+So what this does is it gives us the duration, or travel time,\par
+or whatever information we want.\par
+The distance, for example.\par
+The Distance Matrix API can give us lots of stuff\par
+there between any two pairs of locations in this stuff.\par
+And we get a matrix with--\par
+In our case, the origins and the destinations\par
+are going to be the same, so we're going\par
+to get cross matrix, really.\par
+What we will use is to--\par
+The Distance Matrix API takes latitudes and longitudes\par
+for each location.\par
+And so we're going to use the function that we wrote\par
+way back in class three and we used last week, as well,\par
+to figure out the latitudes and longitudes of each location\par
+in our network.\par
+So that, we'll just walk through that.\par
+We've done that so often now that it's not\par
+really that great.\par
+So we can do that, and see if it runs.\par
+Yup, we get latitude and longitude\par
+from New York, New York.\par
+So now, we look at the locations that we have here.\par
+So the locations we have here are\par
+all around Columbia University.\par
+So we've got a bunch of places.\par
+So we have Columbia University as our first location\par
+and a bar called Amity Hall Uptown on Amsterdam Avenue\par
+as the second location.\par
+Ellington in The Park, that's a restaurant in Riverside Park.\par
+Chaiwali, that's a restaurant in Manhattan.\par
+That's a bit of distance from here, but it's there.\par
+Grant's Tomb, that's a location that\par
+is where General Ulysses S. Grant, President\par
+of the United States and a Civil War general, is buried.\par
+A Pisticci's, another restaurant.\par
+Nicholas Roerich Museum is a museum near Columbia\par
+that has paintings by Nicholas Roerich, who\par
+was an artist who painted a lot of scenes in the Himalayas.\par
+And Audubon Terrace, which is a historical building\par
+in New York.\par
+And Apollo Theater, which is a well-known theater in Harlem.\par
+So these are our locations.\par
+And so what we want to do, of course,\par
+is we want to be able to get all the locations for these,\par
+all the latitudes and longitudes,\par
+for these locations.\par
+So we can do that by using our getLatLong function.\par
+And we run that, and it gives us a list\par
+of the latitudes and longitudes of our locations, right?\par
+So we've got all this stuff here.\par
+So next, what we want to do, I've put this in this format\par
+here.\par
+This is the format that Google's Distance Matrix API expects\par
+for its latitudes and longitudes,\par
+so that's why it's going in this format, where\par
+I've done the stuff there.\par
+OK, so now we want to do the Distance Matrix API.\par
+So the API itself has this URL, and the URL\par
+has a bunch of origins and a bunch of destinations.\par
+And in our case, origins and destinations\par
+are the same, so we say origins equals,\par
+add the list of latitudes and longitudes.\par
+And then, the destinations equals, and add the list\par
+of latitudes and longitudes.\par
+And Google's Distance Matrix API will give us the data\par
+depending upon whether we want to walk, drive, or cycle.\par
+And I believe if you pay for it, you\par
+can also get through public transportation.\par
+So we're going to get the walking distance,\par
+because these are all within walking distance of Columbia.\par
+So we set the mode equals walking\par
+and add this to the API, API URL,\par
+and we get this as our URL.\par
+So this has a bunch of origins, a bunch of destinations.\par
+It has the mode, walking, and that's pretty much it, right?\par
+The API itself, of course, is this one here,\par
+Distance Matrix API.\par
+And we're going to get our results back in JSON format.\par
+So we can get this stuff here, and we\par
+can sort of graph all of it.\par
+So what we do is we go to Google, here, and get the JSON\par
+version of our result. So you can take a look\par
+at what the result looks like.\par
+If I run this, I get the result looks something like this.\par
+So we can see that we've got destination addresses here,\par
+origin addresses over here.\par
+Maybe I'll make this bigger.\par
+Destination addresses over here, origin addresses here.\par
+And they're all the same, of course,\par
+because we're doing a cross thing here.\par
+Our data is sitting in the rows, and our goal here\par
+is to find the duration, which is this value at the bottom\par
+here, which is the number of seconds\par
+that it takes to get from one place to the other.\par
+So these are sitting in an array or in a list that contains\par
+all the cross information.\par
+So I'll leave that to you guys to figure out,\par
+but that's what we're pulling out over here, right?\par
+So we get the data from Google, and then\par
+we go through the JSON, much like what we've done before,\par
+and extract the value element from each cross duration.\par
+So the value element is this one here.\par
+And add that to make--\par
+So we have our nodes in our graph\par
+are going to be the addresses, the various addresses\par
+that we have--\par
+Amity Hall, Ellington in The Park, all that stuff.\par
+And we're going to get--\par
+The edges are going to be from the origin,\par
+from one place to another place.\par
+And we add the duration, which is\par
+what we extract over here, from the JSON file,\par
+and put that in a variable called d.\par
+You can give any name you want to that.\par
+This is the name that the network\par
+is going to use for that edge, for the edge weight,\par
+for the value in that edge.\par
+I used d because it'll show up nicer on the graph,\par
+but if we have better rendering, you\par
+can use a more descriptive name.\par
+You'd probably call it duration, but we'll\par
+see the graph, because our space is limited,\par
+we don't want to be taking up a lot of room with names, really.\par
+And then we can draw the graph itself.\par
+So let's do that.\par
+We get the graph here.\par
+This is what it looks like.\par
+So what we want to do, of course, as always,\par
+is we want to functionalize this so we\par
+can reuse it if necessary.\par
+So let's make that function and call it over here.\par
+The function basically just does exactly what we did before.\par
+And we can test the function by drawing it\par
+with node and edge labels.\par
+We print all the edges.\par
+And that's what this is doing.\par
+It's sending us multiple edges here.\par
+The star in this tells us that there's\par
+more than one thing in it.\par
+Star is what's called the unpacking operator.\par
+It's unpacking the list of edges so that we get them\par
+all one by one.\par
+And this is the edges we have in our graph, right,\par
+and it tells us, for example, that\par
+to go from Amity Hall Uptown to Chaiwali on Linux Avenue,\par
+it'll take you 799 seconds of walking.\par
+That's the goal there.\par
+So that's that.\par
+And now we can iterate through the nodes,\par
+just to check everything, and we get our--\par
+I'm sorry, through the edges to get all the edges.\par
+We've got that, too.\par
+And next, we can draw the graph with our labels.\par
+So let's draw this, and we'll talk about it\par
+a little bit in a second.\par
+So here, what we are doing is--\par
+Let me draw it first, actually.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

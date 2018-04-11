@@ -1,0 +1,167 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 This week, we're going to look at network analysis of Python.\par
+What are networks?\par
+Networks are connected bi-directional graphs--\par
+that means that they can go in one direction or the other.\par
+And within a network there are nodes,\par
+which mark the entities inside a network.\par
+And edges, that mark, you can think of,\par
+the relationships between networks, or between the nodes\par
+and the network.\par
+So networks are kind of important\par
+these days, because a lot of it has to do with the internet,\par
+because the internet is one giant network.\par
+But just to think of where we can find networks in the world\par
+today, if you think about your Facebook friends--\par
+that's a network.\par
+You're connected to somebody, somebody\par
+is connected to somebody else, someone's connected to somebody\par
+else, and then that chains around\par
+and comes right back to you.\par
+So that's one large collection-- set of connections or edges\par
+between nodes, which are your friends--\par
+you and your friends, people.\par
+And edges, which are the relationships,\par
+or the friendships between people.\par
+And that's on one giant graph.\par
+And then, of course, other social networks, as well--\par
+maybe Twitter, you follow people, people who follow you,\par
+all that kind of stuff.\par
+Then there are other, real world networks,\par
+like transportation networks.\par
+If you think of an airline, with its hub and spoke\par
+kind of set up, and connections between hubs\par
+to spokes, and then from feeder lines from the spoke to someone\par
+else, et cetera.\par
+For a single airline, you can get a network.\par
+And you can get a network that actually encompasses\par
+all air routes, or all bus routes, or all train routes,\par
+or a mix of all of them within a transportation network.\par
+Power grids, where power flows from the suppliers\par
+to the radius consumers-- finally, businesses,\par
+households, et cetera-- through receiving stations,\par
+and en route between the supplier and the consumer,\par
+there are many such stations.\par
+So what happens is, that the power networks--\par
+they flow the power wherever it's needed.\par
+And you have multiple outlets from a single supplier,\par
+and they can go to wherever they're needed,\par
+and that becomes a network, again.\par
+Now, of course, internet routers,\par
+there's no question-- the entire internet is one big network.\par
+You have activity networks.\par
+So you're setting up a project, and in the project,\par
+you have a bunch of steps that you want to do.\par
+Some steps require the completion of other steps\par
+before they can happen, so that becomes-- so,\par
+say if step one has to be done before step two,\par
+then step one is one node, step two is another node,\par
+and there is a linkage between step one and step\par
+two, which is sort of prerequisite linkage.\par
+And if you have many such steps, then you\par
+can build a network of these steps,\par
+and then start looking for bottlenecks,\par
+and things like that, that you really\par
+want to focus on to get your activity completed on time.\par
+So these are all the practical examples of networks.\par
+So when you say networks, what you really mean\par
+are large graphs, and graphs that are connected,\par
+and you can have flow from one direction to the other,\par
+like in a power network.\par
+So the flow is from the supplier to the consumer,\par
+or you can have bi-directional flows,\par
+which are like internet router connections--\par
+well, the connection of nodes on the internet,\par
+where data can flow either way.\par
+And of course, you have Facebook friends--\par
+they can flow either way, as well.\par
+So, what are we interested in?\par
+Typically, in a network, or in a graph--\par
+so to speak-- we're interested in answering questions\par
+about the network.\par
+You have a network, you want to see, what is the shortest\par
+path between two nodes?\par
+You want to travel from New York to Boise,\par
+Idaho, then what you want to do is\par
+you want to figure out what's the fastest\par
+way you can get there?\par
+What's the shortest path in terms of time,\par
+or in terms of cost, depending on what\par
+your criteria or criterion is.\par
+If you're more interested in the cost,\par
+then you want to look at the least cost approach.\par
+You're interested in time, then the least time approach\par
+to go from New York to Boise, for example.\par
+Or you want to see connectedness--\par
+how connected is the network?\par
+If a network is strongly connected,\par
+then flow of information is pretty good in the network.\par
+So you want to see if your network is well\par
+connected, or poorly connected.\par
+And again, it will work for almost any kind of network.\par
+Centrality-- you want to find out\par
+which nodes are central in your network,\par
+because central nodes are important because they\par
+will be the ones where you can, at the lowest cost,\par
+transmit from.\par
+So if you have like in a hub and spoke, a hub\par
+and spoke airline network, a hub is a central network.\par
+It's well connected to lots of cities.\par
+So therefore, it's a central network.\par
+And if you were to fly from the hub to somewhere else,\par
+obviously you're going to fly much faster,\par
+than if you want to go from one spoke\par
+node to another spoke node-- you're\par
+to fly through the hub, or maybe several hubs, to get there.\par
+Clustering-- you want to see how closely tightly clustered\par
+the nodes are.\par
+So these are all kind of orthogonal, in a sense,\par
+with factors or things that you want to look at in the network.\par
+Clustering tells you how tightly connected they are.\par
+So if you have a network in which,\par
+let's say you have three nodes, and they're all\par
+connected with each other, then it's a very tightly connected\par
+network-- or cluster.\par
+And that's the idea.\par
+And communicability, which is somewhat like the other ones,\par
+like centrality, I guess, in a sense,\par
+but communicability tells you how easy it\par
+is to communicate between either any two nodes in the network,\par
+or across the entire network.\par
+So we'll look at all these facts as we go along.\par
+In Python, there's a really nice package\par
+called NetworkX that does a lot of the network work for us.\par
+And in the NetworkX package, you can have nodes and edges,\par
+and these edges can contain data.\par
+So a node can be any Python object.\par
+You can throw in, like, a node is a person,\par
+you could put in their name, their address, their phone\par
+number, all that kind of stuff, and store that inside the node.\par
+And the data can also be an object.\par
+So the data could contain, for example, the simplest example\par
+would be if you're looking at a transportation\par
+network, the duration that it takes to go from point A\par
+to point B. And you include that inside.\par
+Nodes can be hashable, which means\par
+nodes can be Python objects, or they\par
+can be hashable objects, which means\par
+it must be immutable objects.\par
+The reason being, of course, when you hash something, then\par
+the location where it's stored is\par
+based on a function that uses a function based on the value.\par
+So if it's a mutable object, and the value changes,\par
+then that function will no longer work properly.\par
+So it has to be immutable object in Python.\par
+So they could be strings, integers, flutes,\par
+they could be tuples--\par
+but you can't use lists, or dictionaries, or sets,\par
+because lists, dictionaries, and sets are mutable.\par
+So that's the basic structure of networks over here.\par
+And now what are we going to do for the rest of this class\par
+is to see how we can analyze, build networks, draw networks,\par
+analyze networks, using NetworkX.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 
