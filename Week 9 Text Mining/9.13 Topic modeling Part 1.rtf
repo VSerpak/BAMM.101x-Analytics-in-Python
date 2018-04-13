@@ -1,0 +1,250 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Now let's look at topic modeling.\par
+Topic modeling is a little bit more complicated than anything\par
+we've looked at, because it requires a lot of input\par
+from the reader.\par
+What Python can do is it can give you\par
+a sense for what the main topics of a document are.\par
+But you have to make sense of those topics.\par
+It'll give you a bunch of words and say\par
+these are the words that are likely to be going together\par
+as a topic.\par
+And then you have to say does it make sense to me or not.\par
+So we will use topic modeling over here as a simple example.\par
+What topic modeling does is it uses unsupervised learning.\par
+You don't need to know anything else before that.\par
+And no a priori knowledge is necessary, so to speak.\par
+And the algorithm used is called a latent Dirichlet allocation\par
+model, which is--\par
+there's a lot of mathematics behind it.\par
+But the idea is that it computes conditional probabilities\par
+for topic word sets, and then identifies\par
+the most likely topics as a combination of words.\par
+So it's taking words, looking at the occurrences of these words,\par
+and then seeing how closely they go together,\par
+and then using the words that go together\par
+for computing probabilities that they are likely to be topics,\par
+and then using that as--\par
+the probabilities as a way of figuring out\par
+which sets of words are more important than which\par
+other sets of words.\par
+And then those become topics.\par
+And this does it over multiple passes.\par
+So initially, it just randomly picks stuff,\par
+and sort of guesses at it, and then keeps pruning and refining\par
+until it gets it.\par
+So there's a lot of information about it you can look up\par
+on this website over here.\par
+But if you do more than the MicroMasters,\par
+you will probably learn more of these things along the way\par
+anyway.\par
+But for now, we'll just assume that it does\par
+something really nice for us.\par
+So what do we need to do?\par
+We need to import--\par
+again, JSON includes the LDA model.\par
+And we want to import the--\par
+for JSON, we need to Import capora.\par
+We need a LDA model.\par
+We need to input stop words.\par
+And we will input PPrint, of course,\par
+for pretty printing stuff.\par
+So the first thing we do is prepare the text.\par
+So one of the texts that I have in our data set here\par
+is a review of the Nikon Coolpix 4300 camera.\par
+And we're just going to use that as an initial topic.\par
+But that's probably the easiest to deal with.\par
+And we again clean it up a little bit.\par
+We get a strip text that is cleaned up on this thing.\par
+And then we take our words, remove anything that's\par
+in stop words here, remove anything\par
+that's a number by doing this, and make sure everything\par
+is in lower case.\par
+And we get a text that is a bunch of words.\par
+So let's take a look at this.\par
+It does here 360 words and texts.\par
+So we can take a look at texts, as well.\par
+So that's what it is.\par
+So it's telling us we have here--\par
+oops.\par
+The sentences that we have are--\par
+sentence one contains annotated minqing hu bing,\par
+which is the author of the review, by the way.\par
+So we want to ignore all this computer science\par
+So this is the sentence-- the best 4MP compact digital\par
+available camera perfect enthusiastic\par
+amateur photography.\par
+After taking out the stop words, we get a sentence here.\par
+So our text is actually a list of sentence words.\par
+A list of lists, and each sublist\par
+is the words in a sentence.\par
+We get this.\par
+Then we can create a dictionary and a corpus.\par
+So let's take a look at what these things are here.\par
+Let me actually run this again.\par
+Let's see the dictionary.\par
+The dictionary here is--\par
+dictionary dot-- well, actually I have all that there.\par
+Why am I doing this.\par
+So the dictionary is every word in the text is given a number.\par
+So annotated is given the number zero,\par
+minqing the number one, number two, number three, et cetera.\par
+So the goal here roughly is to construct sentences\par
+that are these numbers instead of the actual words\par
+itself, because like I said earlier,\par
+all LDA is doing is it's creating\par
+a network of these sentences.\par
+And we'll see how closely related they are.\par
+So if it says sentence one is word 7, 14, 23, 24, 25,\par
+and sentence two is 7, 14, 6, 9, 25,\par
+then it knows that there's a linkage of three of the words\par
+are connected in those two sentences.\par
+So rather than looking at words, it looks at numbers.\par
+It's much faster, right?\par
+So text is much harder to handle.\par
+So what the dictionary that we're computing here,\par
+using the capora dictionary text, is, all it's doing\par
+is it's replacing the word by number.\par
+And this is keeping track of what\par
+the linkage between the word and the number is.\par
+The next thing we have is--\par
+so if you look at the keys, the keys are essentially Guess.\par
+Oh, wait I need to comment that out\par
+because you're going to see that thing.\par
+The keys are just 0, 1, 2, 3, 4, That's the idea here.\par
+And then if we look at the corpus,\par
+the corpus is now the dictionary--\par
+the numbers of the words.\par
+So it's like text, except that it's\par
+replacing the words by numbers.\par
+So it's telling us that sentence number nine has occurrence\par
+of 17, word number 17 occurs once,\par
+word number 66 occurs twice, word number 73 occurs once,\par
+word number 72 occurs once, et cetera.\par
+So if you look at word number 63,\par
+or you look at the text nine, just\par
+to see what the words are in that,\par
+text nine is these are the words in text number nine.\par
+OK?\par
+And then if you look at word, say, 73, that's included.\par
+Actually, wait a sec.\par
+I got the wrong one here.\par
+Let me do corpus nine.\par
+So we want to look at 66.\par
+We'll see what the word for 66 is.\par
+And that's rechargeable.\par
+And we can see that the reason that is coming twice in this\par
+is we have rechargeable here and rechargeable here.\par
+So the sentence is rechargeable twice.\par
+So that's why we got 66 comma 2 in our corpus.\par
+And that's the whole linkage here.\par
+So that makes sense at all.\par
+So that's the goal with all this,\par
+is to replace our sentences by--\par
+the words in our sentences by numbers, and then\par
+create a corpus that has two pos where\par
+you have the number of the word in a sentence\par
+and the frequency of its occurrence in that sentence.\par
+So rechargeable occurs twice in this,\par
+so that's an important word in that sentence.\par
+That's the vaguely rough idea.\par
+So that's it.\par
+Once we've got all this stuff together,\par
+we actually do the LDA itself.\par
+And to the LDA, we want to tell it how many topics we want\par
+and how many passes we want to do.\par
+The number of passes is kind of important\par
+because it starts with a very rough estimate.\par
+So the more passes you do, the better you're going to get.\par
+But of course, there's a certain period after which it's not\par
+going to help you at all.\par
+So you really want to be able to run this a number of times\par
+and figure it out.\par
+So let's see what we get here.\par
+And we'll set five and 10.\par
+And we'll run this on that.\par
+It'll take a couple of minutes, maybe less than a couple\par
+of minutes.\par
+It should be pretty fast.\par
+And once we get that, we will print the results.\par
+So we get these results here.\par
+So we're telling it over here that we have five topics.\par
+So they're 0, 1, 2, 4-- that's the five topics.\par
+We're telling it over here that we\par
+want to print only three words per topic.\par
+We can ask for more, if you like.\par
+So I could do five words per topic.\par
+And then I would get five words per topic.\par
+The topics here are camera, pictures, card, manual,\par
+digital.\par
+And each of them has a weight attached\par
+to it, which is the probability that this camera, word\par
+camera is in this topic.\par
+And this makes a lot of sense because camera is part of the--\par
+it's a camera, so you would expect camera there.\par
+So we can ignore camera a little bit.\par
+In fact, we might want to take it out of our topic list\par
+completely and add it as a stop word to this thing.\par
+So this is pictures, card, manual, and digital, right?\par
+So it tells us--\par
+let me go back to three, actually,\par
+because that's a little bit clearer, I think.\par
+So this is about pictures.\par
+This is just a very general camera thing.\par
+This is about the user of the camera, I guess.\par
+This is about the battery life of the camera,\par
+or the battery of the camera.\par
+It tells you something about the battery.\par
+So the topics here are pictures, battery, picture use,\par
+picture card, picture use pics.\par
+And we probably should be stemming the words,\par
+as well, because if we stem them then\par
+this pics and pictures are probably come in the same thing\par
+here.\par
+But we have battery and use as two reasonable topics\par
+over here.\par
+But the point being that you need\par
+to go back and look at the topics and try to make\par
+sense of them.\par
+So how do we match topics to documents?\par
+Well, the idea roughly here is that what you do is you--\par
+let's say you have 1,000 different documents,\par
+and you have a new document coming in.\par
+What you want to do really is you\par
+want to take your initial set of 1,000 documents,\par
+print it up into a training and test sample,\par
+take the training sample, look at that for possible topics,\par
+apply those, do some analysis of the clause we've been doing\par
+and figure out what the topics are, apply those to the--\par
+take the documents in the test sample\par
+and run them through the topic analyzer to see,\par
+given the trained set of topics, what\par
+topics show up inside the test one,\par
+and see if that makes sense.\par
+So you have to do some work upfront, right?\par
+And then what you want to be able to do\par
+is that, as new documents come in,\par
+you want to be able to say what are the main topics\par
+that this new document has using the analysis you've\par
+done before.\par
+Obviously, you know, you have a domain.\par
+And the domain has a bunch of topics\par
+that are of interest to you.\par
+And some of them will be--\par
+some documents will-- let's say you have\par
+10 topics that are of interest.\par
+Some documents will concentrate on topic\par
+one or two, others work on five and six, and, you know,\par
+et cetera, et cetera.\par
+So it's not a question of taking one single document\par
+and deciding what topics it has, but it's really\par
+a question of taking a large number of topics\par
+and deciding what are the range of topics that they cover.\par
+And then when you get a new document,\par
+you can figure out which particular topic or topics\par
+that new document addresses.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

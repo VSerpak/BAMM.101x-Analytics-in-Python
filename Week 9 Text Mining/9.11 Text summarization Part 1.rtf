@@ -1,0 +1,228 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 The next thing we want to focus on is test summarization.\par
+It's test summarization a very useful thing.\par
+You can generate a short summary of a large piece of text\par
+automatically.\par
+Kind of useful if you have to read\par
+lots of papers for a class, or lots of text, lots of books,\par
+or whatever, you can just summarize them,\par
+and hope for the best.\par
+So text summarization really, most\par
+of text summarization works on something\par
+called extraction based summarization.\par
+And the idea there is to take the text,\par
+and look for what sentences you consider important,\par
+and then report those sentences in your summary.\par
+It's not perfect, but that tends to--\par
+especially in structured documents,\par
+tends to work reasonably well.\par
+There are also certain advanced techniques called abstraction\par
+based, which try to abstract knowledge from the document\par
+itself, but those are more complicated.\par
+We are going to focus only on extraction based summerization\par
+over here.\par
+A very nice sort of way, what do you do\par
+is, you identify the most frequent words\par
+in a piece of text, and use those occurrences\par
+of those words in a sentence to decide whether that\par
+is important or not.\par
+So if the word, let's say America,\par
+is used a lot inside a text, then what you can do\par
+is, you could say, look at the sentences that say America,\par
+and you know, those sentences become important.\par
+And if another second most important is God,\par
+then you look for God.\par
+And then the sentences that have both America and God in them\par
+become the more important ones.\par
+And they come out, and so on and so forth, right.\par
+So God bless America would be, and that kind of stuff there.\par
+So, you got this.\par
+So what you want to do, of course,\par
+is import your stuff first.\par
+So if you want to import word tokenize, sentense tokenize.\par
+We're going to import the frequents, FREQ distribution\par
+thing, which determines the frequency\par
+distribution of words.\par
+So that's kind of useful.\par
+You want to import stop words, which\par
+is words that are unimportant, like or, and, the,\par
+and all that stuff.\par
+And we're going to import order dictionary, which is\par
+a special kind of dictionary.\par
+Remember dictionaries in Python are not ordered, so they have--\par
+they're not ordered at all.\par
+But you can force them to be ordered\par
+by importing order dictionary.\par
+You don't really need that, actually,\par
+but it's there right now.\par
+Then you want to prep the text.\par
+So let's say you community data raw.\par
+I'm just going to remove all the extra end of line characters\par
+from there.\par
+So we get a bunch of things here.\par
+The strip text-- really we don't need the other stuff there.\par
+I don't know why it's there.\par
+Maybe it's used later.\par
+I do use it later.\par
+OK.\par
+So I'm setting candidate sentence to an empty set.\par
+And summary sentences to an empty list.\par
+So the summary will contain the summary.\par
+Candidate sentences are candidate sentences.\par
+And the counts are the counts of the each sentence in the thing.\par
+So we get essentially like a set candidate sentence\par
+x as you know 20 times--\par
+or 20 occurrences of useful words.\par
+So the word-- the sentence that has\par
+the maximum number of useful words\par
+are the ones that will get included in our final analysis\par
+here.\par
+So what we do is we take strip text, which\par
+is a text without our backslash ends in them,\par
+and remove any stop words from it,\par
+and any words are not words--\par
+you know, that contain numbers and all that kind of stuff.\par
+You get rid of them.\par
+And we lowercase it all so that we don't\par
+have a case thing inside it.\par
+And I need to run this first.\par
+I haven't done this.\par
+OK.\par
+So that does the words generation for us.\par
+And once we've done that, then we\par
+can construct our word frequencies\par
+and choose the most common n of those words here.\par
+So we use the frequence distribution\par
+to construct the word frequencies.\par
+And then, choose the most common 20 of them\par
+or whatever you want to choose.\par
+And we can print them.\par
+So let's take a look at that.\par
+So it tells us that I is 73, the 46, food 20--\par
+So our stop with hasn't worked very well,\par
+that's for sure-- brunch 20, good 19, place 15.\par
+These are the most common words in the sentence.\par
+So interesting-- OK-- so we've lower-cased them.\par
+And we've done that.\par
+We can tokenize it and get a bunch of candidate sentences.\par
+So we take our strip text and we've\par
+sentence tokenized it, so it figures out\par
+based on the punctuation where sentences start and end,\par
+and takes each sentence in that, and makes a list of it.\par
+And then, for each candidate sentence,\par
+we create a dictionary here that says candidate sentence.\par
+This is the candidate sentence.\par
+And that's the lower case version of it, right?\par
+So we've got here--\par
+it contains the sentence itself, and then contains\par
+the lower case version of this.\par
+The reason for this is very straightforward.\par
+When we report our summary--\par
+when we compute our summary, we want\par
+to be using only lower case letters.\par
+When we report our summary, we want to report it\par
+with the original cases.\par
+We're going to be extracting actual sentences from there.\par
+So we really don't want like, Columbia here,\par
+to be lower case and that.\par
+We want-- or America-- we want to make\par
+meaningful sense to the reader with the proper punctuation\par
+in it.\par
+So this becomes our candidate sentences.\par
+So these are all the sentences that we have.\par
+Next thing we do is we take our candidate sentences--\par
+we have the long and short, which is really our,\par
+you know, upper case lower case really.\par
+And then, for most frequent words--\par
+so most frequent words--\par
+let's recall what that looks like.\par
+And so it's set above.\par
+Most frequent words you recall is\par
+each word with the frequency of the words.\par
+So that's a list of duples here.\par
+And what we want to do is, we want\par
+to extract from this the word and the frequency\par
+score of all the words.\par
+And if a word isn't short--\par
+OK-- so remember you have two loops here.\par
+The first loop is extracting this here.\par
+So it takes the sentence number one in long and short.\par
+We care about long for a second.\par
+But let's say the short--\par
+the lower case form of the sentences here.\par
+And then we take each word and it's frequency.\par
+And if the each word--\par
+take a word, like say take coffee for example,\par
+if the word coffee is in this lower case sentence,\par
+then add its frequency score, which is 12 to count.\par
+And then, we add--\par
+take that count and set it equal to the candidate sentence's\par
+count start long, so that we now have the--\par
+this should actually be here, right?\par
+This is in wrong place.\par
+This should be here.\par
+So we get the total count of the frequency score there.\par
+And we get our candidate sentence count start long,\par
+which is-- you might want to correct that in your thing\par
+here.\par
+For some reason, this got messed up.\par
+Because what we want to do is, we want to compute this count--\par
+that is the total frequency score\par
+for every word that in a sentence.\par
+And then, throw that into the--\par
+as our total count for that long thing.\par
+So at the end of this, we're going to get--\par
+let's take a look at it--\par
+you know what, let me do the same--\par
+we can take a look at it.\par
+Candidate sentence counts, you can print that.\par
+So we get here, I have a degree from Columbia\par
+and I have to get one from America has a total of 92.\par
+Jeff Winger community, 83.\par
+And we can see, you know, 15 minutes wait for the waitstaff,\par
+45 minutes before we got the wrong dish, 129.\par
+So we have the sentences-- the upper case\par
+version of the sentences with the counts of them.\par
+So all we need to do now actually\par
+is sort this by the count.\par
+And if we sort it by the count, then we\par
+can take the first end sentences and that becomes our naive\par
+summary of this thing here.\par
+So we're going to order dict for this.\par
+So order dict is going to sort our candidates sentence counts\par
+dictionary.\par
+And it's going to sort it based on x1,\par
+which is the second element, the number here.\par
+That's x1.\par
+x0 is that.\par
+And x1 is that.\par
+And make sure that it's sorted in descending order.\par
+Reverse equals true.\par
+We make sure it's ordered in descending order.\par
+And we get the first four sentences.\par
+That's what this is.\par
+It's going to pull out the first four sentences.\par
+And that's our summary really, right.\par
+So we get this here.\par
+I've come here several times, blah, blah.\par
+And that becomes our--\par
+these four sentences.\par
+And it's really up to us how many sentences we want.\par
+And I guess the number of sentences\par
+depends upon the entire total proportion of sentences\par
+in the text, or how many sentences there\par
+are in the text.\par
+So this says I come here for brunch.\par
+They're all nice places in the city where\par
+you can get a very good breakfast of one\par
+third to half less than community.\par
+Brought somebody by after she found a good review\par
+and did not disappoint.\par
+The beans were seasoned perfectly.\par
+Tortilla with fresh and soft, blah, blah.\par
+So that's our summary really.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 
