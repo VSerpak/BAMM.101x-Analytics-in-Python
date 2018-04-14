@@ -1,0 +1,265 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 The next thing we want to do is we\par
+want to look at various network analysis algorithms.\par
+We have this network, and we want to say meaningful things\par
+about it.\par
+So there's lots of stuff that you can do.\par
+And we will look at a few of these features.\par
+And my suggestion is that you explore this on your own.\par
+But we will look at a few of these features, what\par
+I think are probably the more important ones in understanding\par
+the network.\par
+What does understanding the network mean?\par
+Well, the main idea is that given a network,\par
+you want to find out how effectively you can communicate\par
+across the network.\par
+And that really is the main criteria that you want.\par
+In a transportation network, how easy\par
+is it to get from one place to another, right?\par
+So if you have a transportation network that\par
+has one central point, and then from the central point\par
+you have radiating out of it like,\par
+let's say, trains that go in, let's\par
+say, Grand Central Station.\par
+From there you can go to station 1, station 2, station 3,\par
+station 4, station 5.\par
+Or you can go on a different line for the station 7,\par
+8, 9, 10; or a different line to station 11, 12, 13, and 14.\par
+Then your network has a low communicability\par
+because to get from one distant station on one line\par
+to the distant station on the other line,\par
+you have to go all the way to Grand Central\par
+and then go on the other line all the way\par
+to the end of the other station, right?\par
+Whereas if you have a network where you have communication\par
+between the lines themselves, so you go from-- line one\par
+goes to station 1, 2, 3, 4.\par
+And then line two goes to 5, 6, 7, 8.\par
+And then you have a line that goes from, say, station 3\par
+to station 6, another line, like a circular line.\par
+Then you have a better communicability.\par
+And this is often what you find in metros.\par
+You find lines that radiate out and then lines that go across,\par
+various lines that connect up the different lines so\par
+that your communicability goes higher, right?\par
+That's the goal there.\par
+But there are many different ways of looking at it.\par
+So we'll look at these different features of communicability\par
+over here.\par
+But I again recommend that you go through this stuff here\par
+a little bit to see what's going on.\par
+So the first thing is clustering.\par
+The clustering tells you how closely knit\par
+the nodes in a graph are.\par
+Obviously if every node in the graph\par
+has a connection to every other node in the graph, then\par
+your node it is very tightly clustered.\par
+And you can think of communicability as very high.\par
+In one step you can go from anywhere to anywhere.\par
+So let's look at this stuff here.\par
+We can look at a node clustering coefficient or a graph\par
+clustering coefficient.\par
+The node clustering coefficient will show you\par
+a measure that tells you the degree to which a node belongs\par
+to a cluster.\par
+That means, like for example, you could have--\par
+well, we'll look at examples here.\par
+So let's take a look at our graph.\par
+We have a friend graph over here.\par
+We have all these things in this.\par
+And we want to look at the clustering on the friend graph.\par
+And this tells us that node one is clustered 0.10, right?\par
+That means that even though it's very highly--\par
+has-- in fact, this is an interesting result\par
+because even though node one has the highest number of friends\par
+in our graph, it actually has a low clustering coefficient\par
+because maybe those friends are not very well connected\par
+to other nodes, right?\par
+So just because one person has a lot of friends,\par
+if those friends are, let's say, just not\par
+connected to anybody else--\par
+let's say you are connected to six other people.\par
+And five of those other people are not\par
+connected to anyone else, right?\par
+And then you also connect to the sixth person.\par
+But that sixth person is connected\par
+to two people who are connected to three or connected to five.\par
+The sixth person is probably better connected than you are,\par
+even though you have more friends.\par
+So what this is telling us is that though node one has\par
+so many friends, it's clustering coefficient is not that high.\par
+There are other nodes which have much higher clustering\par
+coefficient, like 3.3345, et cetera.\par
+And that really tells you how closely clustered\par
+these things are.\par
+So what you want to do for your graph\par
+is compute clustering-- average clustering coefficient\par
+across the graph.\par
+And we find that the average is 0.58.\par
+Obviously, if you have an average of one,\par
+that would tell you that everything is\par
+connected to everything else.\par
+If you have a clustering coefficient of zero,\par
+that would mean that nothing is connected.\par
+It is just a graph with no edges, right?\par
+So 0.58 is pretty good for a social network\par
+graph, a well-connected graph.\par
+And what we can do is, we'll take an example here\par
+that's much simpler.\par
+So I'm going to draw a complete graph here of four nodes.\par
+And a complete graph is a graph that\par
+has edges between every set of nodes.\par
+So that's what it looks like.\par
+And then we'll look at the clustering coefficient of this.\par
+So if I do clustering of this thing here,\par
+we find that it has a clustering-- every node has\par
+a clustering coefficient of one because it's\par
+connected to everything in the node itself.\par
+So let's remove edge 1, 2 from the graph and draw it again.\par
+So we get this here.\par
+So now we don't have-- we have edges between--\par
+three is connected to directly connected to 1, 0, and 2.\par
+0 is directly connected to 1, 3, and 2.\par
+But 2 and 1 have connections only to two nodes.\par
+They don't have a connection to each other, right?\par
+So now let's look at the clustering coefficient of this.\par
+So looking at this, we see that node 0 has neighbors 1 and 2.\par
+And there are three possible edges\par
+that you can have between 0, 1, and 2.\par
+So that would be 0, 2; 0, 1; and 1, 2.\par
+But of those three possible edges, one is missing--\par
+1, 2.\par
+So you only have two possible edges.\par
+So 2 divided by 3 is our clustering coefficient.\par
+And that's 0.667.\par
+Node 1, on the other hand, has two neighbors, 3 and 0.\par
+And they're all connected.\par
+So there are three possible edges.\par
+And they're all connected.\par
+So 3 divided by 3 is 1.\par
+So the clustering coefficient of that is 1.\par
+So that's the way clustering works.\par
+There's also the notion of centrality and communicability.\par
+So centrality deals with identifying the most important\par
+nodes in a graph.\par
+And communicability measures how easy\par
+it is to send a message from a node I to a node J, all right?\par
+And there are various different measures of communicability.\par
+So let's take a look at each of these things here.\par
+So we need to import them.\par
+So we import closeness centrality and communicability.\par
+And let's look at closeness centrality first.\par
+Closeness centrality is the measure\par
+of how near a node is to every other node in a network.\par
+The higher the closeness centrality, the more central\par
+a node is.\par
+So roughly the idea being that you\par
+can get to a node in shorter jumps, right.\par
+So if you have a high closeness centrality,\par
+you think of a node that's, say, central and connected, say--\par
+well let's take an example here, right.\par
+So let's see our example of four nodes over here.\par
+So we've got these four nodes.\par
+And we remove edge 1, 2, which is exactly what we did before.\par
+And let's draw it again.\par
+So we've got this graph here with edge 1, 2 removed.\par
+And now we compute--\par
+let's see what-- compute the closeness centrality\par
+before that.\par
+The closeness centrality is 1 for everything.\par
+And the reason it's 1 for everything\par
+is that you can get to everything in one jump.\par
+Everything is well connected, right?\par
+So now we want to look at the case where we remove one.\par
+And what we're going to do here is, in this case is,\par
+we have four nodes--\par
+1, 2, 3, 4.\par
+And the shortest path from node 2 are 2 to 0 is length 1.\par
+2 to 3 is length 1.\par
+And 2 to 1 is length 2.\par
+So we sum up these, the sum of the shorter paths.\par
+So the sum of the shortest paths is 2 plus 1 plus 1.\par
+That's 4.\par
+And 2n minus 1 divided by 4, and we get 0.75\par
+as the closeness centrality for node 2.\par
+So it tells us that node 2 is less central essentially\par
+than node 0 and 3.\par
+And node 1 and 2 are equally central.\par
+So if I run this here, I get node 2\par
+and node 1 have a 0.75 closeness centrally.\par
+And node 0 and 3 have a 1.0 closeness centrally.\par
+And intuitively that makes sense because what we are saying\par
+is from 3 you can get to every other node in exactly one step.\par
+Whereas on node 2, you can get to 3 and 0 in one step.\par
+But to get 1 you need two steps.\par
+So it's less central.\par
+OK, that's the goal there.\par
+So the whole idea in this, of course,\par
+is the communicability the graph.\par
+So the next step we want to look at\par
+is how another measure called communicability,\par
+which measures the degree to which one node can communicate\par
+with another.\par
+Now this is a little bit more complex than the other ones.\par
+So it's harder to calculate because it\par
+uses a matrix transformations to actually do that.\par
+But the idea is very simple.\par
+The idea takes into account that you take all the parts\par
+into account.\par
+Note that communicability has two features.\par
+One is that you could say, for example, that 3 to 2 and 3 to 1\par
+in this network are very close.\par
+The closeness centrality of 3 is very high because in one step\par
+you can get 2 and 1.\par
+However, if you look at the network itself,\par
+and let's say we remove the path from 2 to 3.\par
+We remove that path from 2 to 3.\par
+Then what will happen is that to get from 2 to 1,\par
+you have exactly two ways.\par
+If you're going 2 to 1, you can go from 2 to 0, 0 to 3, 3 to 1,\par
+or 2 to 0, 0 to 1.\par
+Whereas, if you had the 2 to 3 part,\par
+then you would have four different ways\par
+of getting there.\par
+You would get 2 to 0.\par
+Well, I'm sorry.\par
+You can go from 2 to 3, 3 to 0, 0 to 1, 2 to 0, 0 to 3, 3 to 1,\par
+2 to 0, 0 to 1, 2 to 3, 3 to 1.\par
+So what we are doing is, we eliminated two paths\par
+by removing that link between 2 and 3.\par
+So roughly what we are saying is that if a path fails,\par
+then the ease with which we can get from one node to another\par
+goes down.\par
+If you have fewer paths between two different locations,\par
+then it's essentially less communicable.\par
+That's your communicability. right?\par
+The more paths you have between two locations,\par
+the more communicable it is.\par
+Think of it like this.\par
+If you can go from-- if you can fly from New York to San\par
+Francisco by multiple airlines, you\par
+have a better choice than if you have only one airline.\par
+And that's the idea there.\par
+If that one airline goes on strike,\par
+or has a outage on its computer systems,\par
+or something like that, then you are in trouble.\par
+If you can fly from New York to Singapore via Europe\par
+or via Japan, than that's better than if you fly only\par
+through Europe.\par
+So if you're flying only through Frankfurt and Amsterdam,\par
+for example, let's say the only choices\par
+you have are Frankfurt and Amsterdam,\par
+and there's a huge snowstorm in Europe,\par
+then you can't go to Singapore.\par
+Whereas, if you can also fly from New York to Tokyo\par
+and then Tokyo to Singapore, then you still\par
+have that option.\par
+That's the rough idea of communicability here.\par
+Rather than just looking at the speed\par
+that you can get from one place to the other,\par
+you want to see whether you have lots of alternatives or not.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

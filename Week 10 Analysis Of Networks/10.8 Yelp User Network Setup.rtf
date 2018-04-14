@@ -1,0 +1,239 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Now we look at social networks and here what we're going to do\par
+is we're going to use a database called the Yelp database\par
+challenge.\par
+The Yelp database challenge contains a lot of information,\par
+but our goal here is to look at just one\par
+particular file in that.\par
+And that's a yelp_academic_dataset_user.json.\par
+You can get the data from this website.\par
+You go to Yelp database challenge\par
+and look for the data.\par
+Download it and throw everything else away.\par
+Just keep this one file.\par
+They are all zipped, so you want to unzip it and then get it.\par
+But once you've got that file, then you\par
+can use the rest of this module.\par
+You can follow along or you can get it later and do that.\par
+So you might want to pause this and get your data,\par
+if you want to, and then restart it.\par
+The data itself contains the user data.\par
+So this is what Yelp is.\par
+Yelp is a review site.\par
+People review restaurants, barber shops, and museums,\par
+and basically everything.\par
+And those reviews show up and on Yelp\par
+you can type anything and look for the reviews\par
+and get information and what other people\par
+think about a particular place.\par
+But to write a review you have to be a user.\par
+And Yelp has this database of users.\par
+So the user data set contains information,\par
+a bunch of JSON records.\par
+And each JSON record looks like this.\par
+It has the ID of a user, the name of the user,\par
+the first name, that is.\par
+The data is encrypted because we don't get the actual user IDs.\par
+So they use a long string to represent each user.\par
+There's the review count, which tells how many reviews the user\par
+has reviewed, the average stars that the user is given,\par
+the votes, the friends of the user--\par
+so Yelp users, somewhat like Facebook users,\par
+can have friends.\par
+So these are the user IDs of the friends.\par
+And then there's some other information.\par
+We're not really interested in all this stuff.\par
+We're interested mainly in the network aspects of this thing.\par
+So what we're going to do is we're\par
+going to look at the user ID.\par
+And because it's a long string and we\par
+don't want to overload our machine\par
+we're going to take that long string\par
+and convert it into 1, 2, 3, 4, etc.\par
+So that our users are numbered from 1 to 300,000 or something.\par
+And similarly for the friend list--\par
+we'll convert the friend list user IDs\par
+using the user ID list here to generate 1, 2, 3, 4.\par
+Just because otherwise there's going\par
+to be a huge amount of memory that our application is\par
+going to use.\par
+So we're really interested in the users and their friends.\par
+That's our goal here because we are looking\par
+at the network aspects of this.\par
+So what we want to do first is read the data\par
+and construct this thing.\par
+We'll just run this because it takes a little while to run.\par
+It's a big file.\par
+And so we'll just run that.\par
+And run this so we know when we get there.\par
+So you can walk through this thing a little bit\par
+and take a look at it.\par
+All I'm really doing here is I'm taking the data file\par
+and then taking each user and making\par
+a dictionary which numbers--\par
+using the count to number users from 1 to whatever\par
+the number of users is.\par
+And map that to each user ID.\par
+I need that because when I get the friends\par
+I get the friends of the user as their full 10 character user ID\par
+or whatever the length of the thing is.\par
+And I need to map that back to the actual user ID.\par
+So first I create this mapping.\par
+And that's what this mapping here is,\par
+the user ID dictionary.\par
+And then I run through the data file again and now I read it.\par
+And each time I read it I map the user ID\par
+using my mapping over here.\par
+So the user ID is really just the number, not\par
+the entire string.\par
+And I do the same thing for the friends.\par
+And I get the friends of the user and here I map each friend\par
+user ID to a number-- like 1, 2, 3, 4 etc--\par
+just so that it's shorter.\par
+And there are 366,715 different records in this.\par
+And we can see that the friends data is--\par
+the way it's represented here becomes something like this.\par
+It says the friends of user 1 are 2, 3, 4, 6, 7, 13, 19,\par
+blah, blah, blah.\par
+That kind of stuff.\par
+So that's the way our friends is represented over here.\par
+So this is our main point of interest with this stuff here.\par
+So friends data here is really a user ID, that's the one,\par
+and a list of user friends, that is generated over here,\par
+and you get the IDs of the friends of the user, that's\par
+generated over there.\par
+So this is a lot of data and I'm going\par
+to cut it down for this class just\par
+to make sure that we can visualize it.\par
+Because if we have 366,000 nodes in our network\par
+and we have let's say even 20 friends per node\par
+or even 10 friends per node, it's\par
+going to be 366,000 times 10 times whatever number of edges.\par
+And that's too many to really work\par
+with in a limited amount of time.\par
+You can work with that if you have\par
+a machine with a large enough memory\par
+and you have lots of time available.\par
+So you can run the stuff and then come back\par
+after a few hours and see the value.\par
+But we don't really want to do that.\par
+So what we're going to do is we're going to cut it down.\par
+And I ran through this database and picked out\par
+a bunch of users.\par
+So what I'm going to make here is--\par
+I have a randomish thing here--\par
+so what I do is I make a list of users\par
+here and create that into a set.\par
+And now what I want to do is, given these users,\par
+I create a super set that contains\par
+all the friends of these users as long as they are also\par
+friends of other users.\par
+So I get a sort of connected graph.\par
+So for example, if 74 is a friend of 2,200\par
+then that gets included in this thing here.\par
+But 74 may also be a friend of 100.\par
+So that edge will also be included.\par
+So let's say I have 74, 100 and 74, 2,200.\par
+So since 74, 2,200 has an edge, 74, 100 will also have an edge.\par
+And if 74 is connected to 325, which is not in my list,\par
+then if 325 is also connected to 2,200\par
+then 325 will get included, but it's not\par
+connected to anything else it will get excluded.\par
+So that's the idea here.\par
+So we run through this stuff here\par
+and create a subset of this thing here\par
+and we'll see how much that looks.\par
+So we ended up with 5,718 edges.\par
+And note that these are bi-directional edges\par
+with 317 individual nodes.\par
+So this is a much more manageable.\par
+So, again, the goal here is just to simplify it\par
+so that we can use it in our class today.\par
+That's the goal here.\par
+So this just checks to see whether we\par
+have any edge in our thing that is not in our node super list.\par
+We don't want any edge that is not in our superlist of nodes.\par
+That's the goal here.\par
+And if there was it would print it out\par
+and we know that it's kind of worked pretty well.\par
+So that's our basic set of nodes and edges.\par
+And that's what we've got here an edge\par
+list and a node super list.\par
+So what we can do is we can create a graph.\par
+And we create a graph and we're going to call it friend graph.\par
+And the friend graph--\par
+we add nodes from the node super list.\par
+So our 317 nodes--\par
+we'll add it over there.\par
+And we'll add edges from edge list.\par
+And then we can print the number of nodes and number of edges.\par
+And we see we have 317 nodes and 2,859 edges.\par
+That's half of this here because these are bi-directional.\par
+So, for example, we would have an edge between 100 and 2,200\par
+then we're also going to have 2,200 and a 100.\par
+But in our directionalist graph we don't want both of them.\par
+So we get half the number of pages there.\par
+So that's what we get here.\par
+We have a graph now.\par
+And now we can draw the graph if we want to.\par
+So let's draw it.\par
+And you can see that it's already a fairly large graph.\par
+In fact, it's a very large graph.\par
+So this, obviously, is one reason\par
+why you want to curtail the size of the graph.\par
+Imagine if this were 366,000 nodes.\par
+We would just get one big red blob which is not\par
+going to be very helpful.\par
+So that's our graph and that's what\par
+we're going to work with for the rest of this thing here.\par
+So we can create the graph we want.\par
+We're going to find the neighbors of one.\par
+We can do this.\par
+It tells us that there's 206 neighbors for node number one.\par
+And we can see if there's a node number zero.\par
+No node number zero.\par
+So we have to know what the nodes are\par
+in it, because our nodes aren't going to be numbered.\par
+So we had 2,200.\par
+2,200 has 14 friends.\par
+That's the thing there.\par
+So that's our graph.\par
+And then one other thing that we can\par
+do with it is from this graph we can remove any nodes that are\par
+not connected to anything else.\par
+So we see here there's one, two, three,\par
+possibly more, we don't know, nodes\par
+that have no friends at all.\par
+So let's just remove them.\par
+We don't want any loners in this stuff here.\par
+So that's pretty easy to do.\par
+We will look for any node that has a degree of one.\par
+And that tells us these are the nodes that\par
+have a degree of one, which means that they have\par
+no connection to anything else.\par
+They have actually one connection,\par
+and if they're not connected to anything\par
+they have a degree of zero.\par
+Anything that has a degree of zero we'll just remove it.\par
+So let's see how many have a degree of zero.\par
+We have actually five such nodes.\par
+So we'll just removed them.\par
+We can also remove degree one nodes\par
+but we'll keep them because it's not too bad for us here.\par
+So let's run this once more and now we get this thing here\par
+that looks-- at least we get numbers here\par
+and we get a thing that looks sort of\par
+like an amoeba of sorts.\par
+But looking at this, we can see that these are all\par
+connected to each other and we have a little disconnected\par
+component over here.\par
+So we will keep that for now.\par
+Just so that we have this thing here.\par
+So this is the final graph that we're going to work with.\par
+And that's what we're going to do for the rest of this class\par
+for understanding the different aspects of the network.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

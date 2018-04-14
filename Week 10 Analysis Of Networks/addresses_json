@@ -1,0 +1,1169 @@
+{
+   "destination_addresses" : [
+      "2960 Broadway, New York, NY 10027, Сполучені Штати Америки",
+      "201 W 103rd St, New York, NY 10025, Сполучені Штати Америки",
+      "478 Riverside Dr, New York, NY 10027, Сполучені Штати Америки",
+      "622 W 168th St, New York, NY 10032, Сполучені Штати Америки",
+      "3 Hudson River Greenway, New York, NY 10025, Сполучені Штати Америки",
+      "501 Riverside Dr, New York, NY 10024, Сполучені Штати Америки",
+      "121 La Salle St, New York, NY 10027, Сполучені Штати Америки",
+      "345 W 107th St, New York, NY 10025, Сполучені Штати Америки",
+      "3753 Broadway, New York, NY 10032, Сполучені Штати Америки",
+      "253 Dr Martin Luther King Jr Blvd, New York, NY 10027, Сполучені Штати Америки"
+   ],
+   "origin_addresses" : [
+      "2960 Broadway, New York, NY 10027, Сполучені Штати Америки",
+      "201 W 103rd St, New York, NY 10025, Сполучені Штати Америки",
+      "478 Riverside Dr, New York, NY 10027, Сполучені Штати Америки",
+      "622 W 168th St, New York, NY 10032, Сполучені Штати Америки",
+      "3 Hudson River Greenway, New York, NY 10025, Сполучені Штати Америки",
+      "501 Riverside Dr, New York, NY 10024, Сполучені Штати Америки",
+      "121 La Salle St, New York, NY 10027, Сполучені Штати Америки",
+      "345 W 107th St, New York, NY 10025, Сполучені Штати Америки",
+      "3753 Broadway, New York, NY 10032, Сполучені Штати Америки",
+      "253 Dr Martin Luther King Jr Blvd, New York, NY 10027, Сполучені Штати Америки"
+   ],
+   "rows" : [
+      {
+         "elements" : [
+            {
+               "distance" : {
+                  "text" : "1 м",
+                  "value" : 0
+               },
+               "duration" : {
+                  "text" : "1 хв",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,2 км",
+                  "value" : 1234
+               },
+               "duration" : {
+                  "text" : "15 хв",
+                  "value" : 892
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "0,7 км",
+                  "value" : 714
+               },
+               "duration" : {
+                  "text" : "9 хв",
+                  "value" : 526
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "4,5 км",
+                  "value" : 4453
+               },
+               "duration" : {
+                  "text" : "57 хв",
+                  "value" : 3400
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,3 км",
+                  "value" : 1294
+               },
+               "duration" : {
+                  "text" : "16 хв",
+                  "value" : 966
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,1 км",
+                  "value" : 1052
+               },
+               "duration" : {
+                  "text" : "13 хв",
+                  "value" : 795
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "0,9 км",
+                  "value" : 928
+               },
+               "duration" : {
+                  "text" : "11 хв",
+                  "value" : 648
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,0 км",
+                  "value" : 985
+               },
+               "duration" : {
+                  "text" : "12 хв",
+                  "value" : 728
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "3,3 км",
+                  "value" : 3326
+               },
+               "duration" : {
+                  "text" : "41 хв",
+                  "value" : 2489
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,5 км",
+                  "value" : 1482
+               },
+               "duration" : {
+                  "text" : "17 хв",
+                  "value" : 1044
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : [
+            {
+               "distance" : {
+                  "text" : "1,2 км",
+                  "value" : 1234
+               },
+               "duration" : {
+                  "text" : "16 хв",
+                  "value" : 949
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1 м",
+                  "value" : 0
+               },
+               "duration" : {
+                  "text" : "1 хв",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,7 км",
+                  "value" : 1737
+               },
+               "duration" : {
+                  "text" : "22 хв",
+                  "value" : 1321
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "5,5 км",
+                  "value" : 5520
+               },
+               "duration" : {
+                  "text" : "1 год 10 хв",
+                  "value" : 4229
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "0,9 км",
+                  "value" : 896
+               },
+               "duration" : {
+                  "text" : "11 хв",
+                  "value" : 678
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,1 км",
+                  "value" : 2075
+               },
+               "duration" : {
+                  "text" : "26 хв",
+                  "value" : 1589
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,0 км",
+                  "value" : 1995
+               },
+               "duration" : {
+                  "text" : "25 хв",
+                  "value" : 1476
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "0,6 км",
+                  "value" : 591
+               },
+               "duration" : {
+                  "text" : "8 хв",
+                  "value" : 459
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "4,4 км",
+                  "value" : 4396
+               },
+               "duration" : {
+                  "text" : "55 хв",
+                  "value" : 3318
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,4 км",
+                  "value" : 2416
+               },
+               "duration" : {
+                  "text" : "30 хв",
+                  "value" : 1777
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : [
+            {
+               "distance" : {
+                  "text" : "0,7 км",
+                  "value" : 711
+               },
+               "duration" : {
+                  "text" : "9 хв",
+                  "value" : 556
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,7 км",
+                  "value" : 1737
+               },
+               "duration" : {
+                  "text" : "21 хв",
+                  "value" : 1289
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1 м",
+                  "value" : 0
+               },
+               "duration" : {
+                  "text" : "1 хв",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "4,1 км",
+                  "value" : 4120
+               },
+               "duration" : {
+                  "text" : "53 хв",
+                  "value" : 3180
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,4 км",
+                  "value" : 1358
+               },
+               "duration" : {
+                  "text" : "17 хв",
+                  "value" : 992
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "0,3 км",
+                  "value" : 338
+               },
+               "duration" : {
+                  "text" : "4 хв",
+                  "value" : 269
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "0,4 км",
+                  "value" : 444
+               },
+               "duration" : {
+                  "text" : "5 хв",
+                  "value" : 292
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,2 км",
+                  "value" : 1186
+               },
+               "duration" : {
+                  "text" : "14 хв",
+                  "value" : 864
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "3,0 км",
+                  "value" : 2959
+               },
+               "duration" : {
+                  "text" : "37 хв",
+                  "value" : 2222
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,4 км",
+                  "value" : 1387
+               },
+               "duration" : {
+                  "text" : "17 хв",
+                  "value" : 992
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : [
+            {
+               "distance" : {
+                  "text" : "4,5 км",
+                  "value" : 4453
+               },
+               "duration" : {
+                  "text" : "56 хв",
+                  "value" : 3348
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "5,5 км",
+                  "value" : 5520
+               },
+               "duration" : {
+                  "text" : "1 год 9 хв",
+                  "value" : 4121
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "4,1 км",
+                  "value" : 4132
+               },
+               "duration" : {
+                  "text" : "51 хв",
+                  "value" : 3071
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1 м",
+                  "value" : 0
+               },
+               "duration" : {
+                  "text" : "1 хв",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "5,5 км",
+                  "value" : 5489
+               },
+               "duration" : {
+                  "text" : "1 год 8 хв",
+                  "value" : 4063
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "4,0 км",
+                  "value" : 4050
+               },
+               "duration" : {
+                  "text" : "51 хв",
+                  "value" : 3034
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "3,7 км",
+                  "value" : 3697
+               },
+               "duration" : {
+                  "text" : "45 хв",
+                  "value" : 2707
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "5,2 км",
+                  "value" : 5194
+               },
+               "duration" : {
+                  "text" : "1 год 4 хв",
+                  "value" : 3844
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,2 км",
+                  "value" : 1181
+               },
+               "duration" : {
+                  "text" : "14 хв",
+                  "value" : 850
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "4,0 км",
+                  "value" : 3966
+               },
+               "duration" : {
+                  "text" : "48 хв",
+                  "value" : 2890
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : [
+            {
+               "distance" : {
+                  "text" : "1,3 км",
+                  "value" : 1294
+               },
+               "duration" : {
+                  "text" : "18 хв",
+                  "value" : 1068
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "0,9 км",
+                  "value" : 896
+               },
+               "duration" : {
+                  "text" : "13 хв",
+                  "value" : 750
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,4 км",
+                  "value" : 1356
+               },
+               "duration" : {
+                  "text" : "18 хв",
+                  "value" : 1078
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "5,5 км",
+                  "value" : 5477
+               },
+               "duration" : {
+                  "text" : "1 год 11 хв",
+                  "value" : 4253
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1 м",
+                  "value" : 0
+               },
+               "duration" : {
+                  "text" : "1 хв",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,7 км",
+                  "value" : 1695
+               },
+               "duration" : {
+                  "text" : "22 хв",
+                  "value" : 1347
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,8 км",
+                  "value" : 1799
+               },
+               "duration" : {
+                  "text" : "23 хв",
+                  "value" : 1365
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "0,8 км",
+                  "value" : 806
+               },
+               "duration" : {
+                  "text" : "11 хв",
+                  "value" : 665
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "4,3 км",
+                  "value" : 4316
+               },
+               "duration" : {
+                  "text" : "55 хв",
+                  "value" : 3295
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,7 км",
+                  "value" : 2744
+               },
+               "duration" : {
+                  "text" : "35 хв",
+                  "value" : 2070
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : [
+            {
+               "distance" : {
+                  "text" : "1,0 км",
+                  "value" : 1049
+               },
+               "duration" : {
+                  "text" : "14 хв",
+                  "value" : 825
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,1 км",
+                  "value" : 2075
+               },
+               "duration" : {
+                  "text" : "26 хв",
+                  "value" : 1558
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "0,3 км",
+                  "value" : 338
+               },
+               "duration" : {
+                  "text" : "4 хв",
+                  "value" : 269
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "4,0 км",
+                  "value" : 4030
+               },
+               "duration" : {
+                  "text" : "52 хв",
+                  "value" : 3144
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,7 км",
+                  "value" : 1696
+               },
+               "duration" : {
+                  "text" : "21 хв",
+                  "value" : 1261
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1 м",
+                  "value" : 0
+               },
+               "duration" : {
+                  "text" : "1 хв",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "0,4 км",
+                  "value" : 412
+               },
+               "duration" : {
+                  "text" : "6 хв",
+                  "value" : 337
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,5 км",
+                  "value" : 1524
+               },
+               "duration" : {
+                  "text" : "19 хв",
+                  "value" : 1133
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,9 км",
+                  "value" : 2869
+               },
+               "duration" : {
+                  "text" : "36 хв",
+                  "value" : 2186
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,6 км",
+                  "value" : 1562
+               },
+               "duration" : {
+                  "text" : "19 хв",
+                  "value" : 1140
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : [
+            {
+               "distance" : {
+                  "text" : "0,9 км",
+                  "value" : 928
+               },
+               "duration" : {
+                  "text" : "13 хв",
+                  "value" : 760
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,0 км",
+                  "value" : 1995
+               },
+               "duration" : {
+                  "text" : "26 хв",
+                  "value" : 1532
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "0,4 км",
+                  "value" : 444
+               },
+               "duration" : {
+                  "text" : "6 хв",
+                  "value" : 372
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "3,7 км",
+                  "value" : 3677
+               },
+               "duration" : {
+                  "text" : "48 хв",
+                  "value" : 2893
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,8 км",
+                  "value" : 1800
+               },
+               "duration" : {
+                  "text" : "23 хв",
+                  "value" : 1363
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "0,4 км",
+                  "value" : 412
+               },
+               "duration" : {
+                  "text" : "6 хв",
+                  "value" : 386
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1 м",
+                  "value" : 0
+               },
+               "duration" : {
+                  "text" : "1 хв",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,6 км",
+                  "value" : 1610
+               },
+               "duration" : {
+                  "text" : "20 хв",
+                  "value" : 1219
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,5 км",
+                  "value" : 2516
+               },
+               "duration" : {
+                  "text" : "32 хв",
+                  "value" : 1935
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,1 км",
+                  "value" : 1119
+               },
+               "duration" : {
+                  "text" : "14 хв",
+                  "value" : 834
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : [
+            {
+               "distance" : {
+                  "text" : "1,0 км",
+                  "value" : 985
+               },
+               "duration" : {
+                  "text" : "13 хв",
+                  "value" : 781
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "0,6 км",
+                  "value" : 591
+               },
+               "duration" : {
+                  "text" : "8 хв",
+                  "value" : 457
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,2 км",
+                  "value" : 1186
+               },
+               "duration" : {
+                  "text" : "15 хв",
+                  "value" : 894
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "5,2 км",
+                  "value" : 5174
+               },
+               "duration" : {
+                  "text" : "1 год 6 хв",
+                  "value" : 3967
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "0,8 км",
+                  "value" : 805
+               },
+               "duration" : {
+                  "text" : "10 хв",
+                  "value" : 597
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,5 км",
+                  "value" : 1524
+               },
+               "duration" : {
+                  "text" : "19 хв",
+                  "value" : 1163
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,6 км",
+                  "value" : 1610
+               },
+               "duration" : {
+                  "text" : "19 хв",
+                  "value" : 1156
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1 м",
+                  "value" : 0
+               },
+               "duration" : {
+                  "text" : "1 хв",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "4,0 км",
+                  "value" : 4014
+               },
+               "duration" : {
+                  "text" : "50 хв",
+                  "value" : 3009
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,4 км",
+                  "value" : 2434
+               },
+               "duration" : {
+                  "text" : "30 хв",
+                  "value" : 1802
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : [
+            {
+               "distance" : {
+                  "text" : "3,3 км",
+                  "value" : 3326
+               },
+               "duration" : {
+                  "text" : "42 хв",
+                  "value" : 2526
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "4,4 км",
+                  "value" : 4396
+               },
+               "duration" : {
+                  "text" : "55 хв",
+                  "value" : 3299
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "3,0 км",
+                  "value" : 2951
+               },
+               "duration" : {
+                  "text" : "37 хв",
+                  "value" : 2221
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,2 км",
+                  "value" : 1181
+               },
+               "duration" : {
+                  "text" : "16 хв",
+                  "value" : 944
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "4,3 км",
+                  "value" : 4309
+               },
+               "duration" : {
+                  "text" : "54 хв",
+                  "value" : 3213
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,9 км",
+                  "value" : 2869
+               },
+               "duration" : {
+                  "text" : "36 хв",
+                  "value" : 2184
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,5 км",
+                  "value" : 2516
+               },
+               "duration" : {
+                  "text" : "31 хв",
+                  "value" : 1857
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "4,0 км",
+                  "value" : 4014
+               },
+               "duration" : {
+                  "text" : "50 хв",
+                  "value" : 2994
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1 м",
+                  "value" : 0
+               },
+               "duration" : {
+                  "text" : "1 хв",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "3,1 км",
+                  "value" : 3116
+               },
+               "duration" : {
+                  "text" : "38 хв",
+                  "value" : 2288
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : [
+            {
+               "distance" : {
+                  "text" : "1,5 км",
+                  "value" : 1482
+               },
+               "duration" : {
+                  "text" : "20 хв",
+                  "value" : 1200
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,4 км",
+                  "value" : 2416
+               },
+               "duration" : {
+                  "text" : "31 хв",
+                  "value" : 1876
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,4 км",
+                  "value" : 1387
+               },
+               "duration" : {
+                  "text" : "19 хв",
+                  "value" : 1134
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "4,0 км",
+                  "value" : 4006
+               },
+               "duration" : {
+                  "text" : "52 хв",
+                  "value" : 3147
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,7 км",
+                  "value" : 2745
+               },
+               "duration" : {
+                  "text" : "35 хв",
+                  "value" : 2126
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,5 км",
+                  "value" : 1531
+               },
+               "duration" : {
+                  "text" : "21 хв",
+                  "value" : 1274
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1,1 км",
+                  "value" : 1119
+               },
+               "duration" : {
+                  "text" : "15 хв",
+                  "value" : 890
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,4 км",
+                  "value" : 2434
+               },
+               "duration" : {
+                  "text" : "32 хв",
+                  "value" : 1904
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "3,2 км",
+                  "value" : 3156
+               },
+               "duration" : {
+                  "text" : "41 хв",
+                  "value" : 2453
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "1 м",
+                  "value" : 0
+               },
+               "duration" : {
+                  "text" : "1 хв",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

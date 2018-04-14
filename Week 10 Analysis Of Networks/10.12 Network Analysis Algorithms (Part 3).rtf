@@ -1,0 +1,262 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 The next thing you will look at is the basic stuff,\par
+and the thing is to find out when looking at the node,\par
+at a graph, you want to see what is\par
+the maximum distance from one node to all other nodes?\par
+And so what this does is--\par
+so we have a complete graph here, g.\par
+And actually, we can look at the between centrality\par
+of friend graph.\par
+I should have done that too.\par
+So this tells us that between the centrally\par
+of each of the nodes.\par
+It tells us here that node 7 has a high\par
+between the centrality, 8.81.\par
+Node 1 has a .20.\par
+Node 1349-- oh no, sorry.\par
+It has to be between 0 and 1.\par
+So that's not right.\par
+Oh, because -0.5.\par
+This is actually really low.\par
+So you've got these nodes and it's easy, probably,\par
+for you to try that-- to sort this out and find out\par
+which is the most important node, which\par
+has the highest between the centrality and this thing here.\par
+OK.\par
+You can try that on your own to see\par
+which one has the higher between the centrality.\par
+You can use the operator item getter, key equals stuff, which\par
+we did before, and try that.\par
+So the next thing we're going to do\par
+is look at the dispersion of the graph.\par
+So the first thing we want to find out,\par
+what is the maximum distance that is from one\par
+node to all other nodes.\par
+We have pairs of nodes, and each of them\par
+has a distance from that node to every other node.\par
+And we are looking at a graph to find the maximum distance\par
+between any of the pairs, right?\par
+So we have here from 0, the maximum distance is 1.\par
+From 1, the maximum distance is 1,\par
+because they're fully connected.\par
+And if you remove a single edge from this, then obviously\par
+we're going to get 2 as the maximum distance from 1 to 2,\par
+right?\par
+Because we don't have a direct path between the two of them.\par
+But then the graph itself, we want\par
+to find the shortest path in the graph, that gives you\par
+the diameter of the graph.\par
+So this tells you, like, for all pairs of nodes--\par
+if you take every pair of nodes and compute the maximum\par
+distance between--\par
+or rather, for every node you compute,\par
+you figure out what is the maximum distance\par
+you're going to travel to get to any other or in that thing,\par
+right?\par
+Let me rephrase that, a little bit confusing, right?\par
+So what this is saying here, if you look at this example again,\par
+is that from node 1, to get to any other node,\par
+the maximum you're going to travel to get\par
+to some other nodes is 2.\par
+Because if you travel from 1 to 0, you're going to travel 1.\par
+Travel from node 1 to 3, you're going to travel 1.\par
+You travel from node 1 to 2, you're going to travel 2.\par
+So the maximum you're going to travel is 2.\par
+So what we're going to find is the longest, shortest paths\par
+in the graph, that's the diameter.\par
+So if you take all the shortest paths in our network,\par
+and the shortest paths--\par
+in this example, are 1, 2, 2, and 1.\par
+You take all the shortest paths and you\par
+compute the longest, shortest path, and that becomes\par
+the diameter of your graph.\par
+And the nodes with the longest, shortest pats--\par
+that is, the ones that are at the diameter--\par
+become peripheral nodes in your graph.\par
+So if you take our g away here, the longest,\par
+shortest path is 2.\par
+Because that's what we see in our example here, right?\par
+That's 2.\par
+And the peripheral nodes are going to be 1 and 2\par
+because they are the ones that are the outermost of the graph.\par
+If you take our friend graph, it tells us that the--\par
+well it tells us that we can't do it because our graphs\par
+and not connected.\par
+So if you recall, our friend graph has two components.\par
+So we can really do it for the friend graph\par
+because you can find the maximum shortest path between two nodes\par
+that have no path between them.\par
+Right?\par
+So what you want to do is we want\par
+to look at the subgraph that we made, the largest graph.\par
+And that tells us that the maximum\par
+is eight-- that's pretty low.\par
+You know, think about it.\par
+We have 300 and something nodes and 2,800 edges.\par
+And so the maximum distance between--\par
+maximum the length of shortest path is just 8 nodes.\par
+So that's pretty well-connected.\par
+So its like-- not exactly.\par
+Forget that.\par
+And we can compute the peripheral of our friend graph.\par
+So again, we can't really do the thing.\par
+So for the largest graph, the peripheral\par
+contains these nodes.\par
+These nodes will all have a shortest path\par
+to some other node in the network that\par
+is 8 steps in length.\par
+That's the thing here.\par
+So we've done this, already done this.\par
+Distributing it.\par
+The last thing we will look at is--\par
+well not the last thing, but the second to last thing, really.\par
+Is what are cliques.\par
+Cliques are groups of nodes in the subgraph that are fully\par
+connected with each other.\par
+So if we look at our friend graph over here--\par
+go up a little bit here.\par
+Then we can see that these three nodes, these three components,\par
+are actually fully connected.\par
+So we can actually check that out.\par
+So maybe I can do it here--\par
+let me copy this.\par
+I believe we should functionalize these things\par
+so we don't have to keep copying it.\par
+But I haven't done that in this case here.\par
+If you had a function that drew the graph,\par
+then we would just pass a graph to the function\par
+and it would draw it for us.\par
+But I omitted to do that, so now I'm having to do all this cut\par
+and paste stuff.\par
+That should be a good lesson to functionalize stuff\par
+when you're working with a graph-- with anything,\par
+actually.\par
+So if I do this here.\par
+And now I want to replace this by smallest--\par
+This is a very good lesson for you guys--\par
+for you people on why you should be functionalizing stuff.\par
+Because I'll probably make a mistake as well, right?\par
+Friend graph.\par
+Hopefully it got them all.\par
+Let's check.\par
+Yeah.\par
+No, they're not fully connected because apparently\par
+that's not connected to that.\par
+So that's not a clique.\par
+A clique-- I thought it was a clique though, oddly enough.\par
+Anyway.\par
+Let me try it again.\par
+Going to try it differently.\par
+Look at the way I've drawn it, right?\par
+So if you look at these three nodes over here,\par
+then they are connected to each other.\par
+And then I'm going to reduce the size a little bit,\par
+make it 8.8, just so that we can see it on the screen.\par
+So now we find these are fully connected.\par
+It's a fully connected component.\par
+So this is also a clique.\par
+It's a clique because every node in this\par
+is connected to every other node.\par
+So often you want to find cliques inside graphs\par
+and that's really very, very useful.\par
+Because if you're looking at, let's say Facebook,\par
+And you want to find groups of friends\par
+that are tightly connected to each other, maybe\par
+cliques or high clustering co-efficient across each other,\par
+then you could maybe target ads specifically at them\par
+because they have like interests, right?\par
+So you know that these people are--\par
+there one person clicks off and on and on, and you can say hey,\par
+the other guys don't click very often, but they are friends.\par
+So maybe they have like interests,\par
+and you can target ads at them.\par
+So it's a very useful thing to know about,\par
+or to have that stuff there.\par
+So the idea for clique is that everything is fully connected\par
+in that.\par
+So to do that we import fine cliques and cliques containing\par
+nodes.\par
+But cliques can be really expensive operations.\par
+So we can see whether we're looking at our friend graph\par
+to find cliques, and I didn't put that.\par
+This tells us all the cliques.\par
+So there are quite a few cliques here.\par
+And some of them are reasonably big-- like you know,\par
+this has 1-2-3-4- 5-6-7-8-9 cliques in it.\par
+It's quite big.\par
+So we can use that information for targeting\par
+advertising or whatever.\par
+And we can see what are the cliques\par
+that node 2 is contained in.\par
+So node 2 is actually content in lots of cliques,\par
+and you can see that the cliques grow\par
+bigger as we go further down.\par
+So this, for example, has exactly--\par
+these two are almost exactly the same nodes,\par
+but they differ in one node, right?\par
+That means that these two are not connected to each other,\par
+but between them, this is connected to all these nodes--\par
+14, 144, 395-- all those nodes, but not connected to 46 or 87.\par
+So there will be some overlaps in these cliques.\par
+So that's the idea with cliques.\par
+And cliques, like I said, are very useful.\par
+And the final thing, you can try drawing the cliques--\par
+the maximum clique here, but this\par
+is going to be a really expensive operation,\par
+so we won't do it.\par
+But you can try it at home.\par
+Just un-comment that and run that.\par
+The last thing you're going to do is look at the graph\par
+itself and look at what is the center of the graph.\par
+It's the set of nodes that are the most central, that\par
+has the smallest distance to any other nodes.\par
+And for that, the graph will be fully connected.\par
+So let's take a look at our thing here,\par
+and that's our graph center.\par
+So we have a set of nodes, these other nodes,\par
+that have the smallest distance to the other nodes.\par
+You can think of this as the opposite of the peripheral.\par
+It's the ones with the minimum, shortest paths\par
+to every other node--\par
+to any other node in this stuff here.\par
+So these are very central.\par
+And if you want to have a message that you\par
+want to pass through the graph, and you\par
+want to do it in a minimal--\par
+and let's say there's a cost associated\par
+with taking the message across edges,\par
+then you can proudly start with the central node\par
+and the central nodes and send your message out to that.\par
+Minimize the cost associated with that.\par
+So these are the basic principles\par
+of network analysis, which is graphical analysis of graphs.\par
+And the idea in graphs is really straightforward,\par
+you take a graph, and you want to figure out how--\par
+central particular nodes are, what the--\par
+how clustered the graph is, how communicable the graph\par
+is, how communicable the nodes are,\par
+how easily you can get from one node to the other,\par
+and what nodes are very, very important.\par
+Like between the centrality tells you\par
+something like what could be bottlenecks.\par
+So that you know where to focus your resources,\par
+and either sending messages or keeping\par
+certain nodes evict and alert all the time,\par
+like in a computer network.\par
+For example, if you have a high between centrality and a node,\par
+then what that means is that if that node breaks down,\par
+then the probability of your entire network\par
+being less efficient or losing communicability is very high.\par
+So you want to keep that node up and running,\par
+or have backups, or stuff like that.\par
+So that's the idea on networks, and that's it for this week.\par
+Next week we're going to start looking at machine learning.\par
+For the next two weeks, we will look\par
+at machine learning and regressions, classification\par
+trees, and clustering algorithms.\par
+Thanks.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

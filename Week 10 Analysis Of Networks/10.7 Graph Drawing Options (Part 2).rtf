@@ -1,0 +1,181 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 And we can do nicer things with this.\par
+For example, we have a graph, and we\par
+might want to highlight just the shortest part of that graph--\par
+because we want it to be visible.\par
+And say, we have the graph, we want\par
+to see what the shortest path is.\par
+So what we want to do, of course,\par
+then is to construct a variable, that is give a variable here,\par
+that contains the nodes in the shortest path, that\par
+contains the shortest path.\par
+So what we do is--or contain the edges in the shortest path,\par
+I'm sorry--\par
+so what we do is we get the shortest path.\par
+So we're getting here using the Dijkstra path,\par
+we get our shortest path--\par
+so that becomes the shortest path there.\par
+And then, we iterate through the shortest path, itself,\par
+and decode each element in the shortest path.\par
+And then add the pair of nodes that are in the shortest path.\par
+So, remember, the shortest path looks\par
+like 2, 3, 4, 5-- it's the set of nodes in the path.\par
+So if it's, say, it's 2, 7, 1, 2, then on our edges\par
+are 2 7, 7 1, and 1 2.\par
+And so that's what we pull out over here--\par
+shortest path i, and shortest path i plus 1.\par
+And also, appending the reverse edge-- shortest path, i plus 1,\par
+shortest path i, so that we have both the directions there.\par
+And then we've got that.\par
+So we have shortest path edges, then we run through this stuff\par
+here.\par
+And so then, we go through every edge in the graph.\par
+And then, if the edge is in our shortest path edges--\par
+which is the edges and the shortest path--\par
+then we append that to a list called Path Edges.\par
+And we give the node edge 0 and edge 1.\par
+OK, so for the zeroth element, we\par
+give it the label of the node-- if there is a different one,\par
+because we don't want to be just using numbers.\par
+And for the second one, we give it the label of the edge 1.\par
+And then, the other edges are what was not\par
+in the shortest path edge.\par
+So let's take a look at this thing here.\par
+Oh, and of course, after that it's pretty straightforward--\par
+when we're doing our draw network edges,\par
+we do the path edges in one font, in one format,\par
+and the other edge is another format.\par
+So what we're going to do here is\par
+we're going to let our path edges be highlighted,\par
+and the other ones not.\par
+So let me just run this, and we'll take a look at it.\par
+And this tells us here that the shortest path between--\par
+this graph is actually getting truncated over here,\par
+because the screens aren't big enough, so we'll\par
+draw it a bit smaller--\par
+but from Amity Hall Uptown to Chaiwali\par
+goes through Grant's Tomb--\par
+and this is going to be the shortest path,\par
+and all other paths are not in the shortest path,\par
+even though they could actually get to this same location\par
+by going from here to here, here to here, and here to here.\par
+And we are not printing any other node labels at all.\par
+So we have-- in our thing here, what we have done is--\par
+the only node labels that we have printed\par
+are the ones that are in our shortest path edges.\par
+So this becomes our node label list over here.\par
+And so when we draw the nodes, node labels,\par
+we give it our node label list as a value.\par
+And the other ones won't have any label at all,\par
+so they are pretty much not included in that.\par
+So we are saying here, node label list\par
+equals N for N in address graph nodes--\par
+so we're saying, for node N, the label is nothing.\par
+And for anything else, it's something else.\par
+So that's the goal here.\par
+So that gives us our graph here.\par
+So what we can do is, of course, you know in this example,\par
+we control both our labels, as well\par
+are node labels, as well as our edge labels-- and our edge\par
+styles, as well.\par
+So that pretty much sums up what we can do with graphs.\par
+And what you might want to try, all by yourself, how\par
+would you remove edge labels from all but shortest path.\par
+So if you want to take out-- if you notice here,\par
+we have D13, D9, D whatever, between the nodes that\par
+are not in the shortest path.\par
+So one of the things we might want to do\par
+is, we might want to just remove them completely,\par
+so that we show our entire network,\par
+but we don't show any information that\par
+is not in the shortest path.\par
+You can try that on your own.\par
+The next thing we can do is, we could take--\par
+given an address, we can generate a sorted\par
+by distance list of all of their addresses.\par
+So, for example, we want to know what\par
+is the closest place to Amity Hall Uptown,\par
+and what is the furthest away place.\par
+So this becomes pretty straightforward.\par
+What we do is, we use the Dijkstra path\par
+length function to get the shortest path between--\par
+get the distance between Amity Hall Uptown\par
+and every other location-- that will tell us\par
+how far every other location is from there.\par
+And once we've got that, we use the Item Getter\par
+function attribute from operator,\par
+and use that in the sort.\par
+When you use Item Getter, we've done\par
+this before, I think, what do you\par
+do is you give it the thing that you want sorted,\par
+a collection you want sorted, and you give it a key.\par
+And the key tells you which element of that complex list,\par
+or collection, you want to use.\par
+So we have here a list here-- let\par
+me show you what I mean here.\par
+OK, so this is our distance list--\par
+Columbia, Columbia, 1 Ellington in the park 2--\par
+2, 3, 2, 2, whatever.\par
+So these are the other nodes--\par
+and we have from the beginning, the distance from Amity Hall\par
+and the distance from there.\par
+And we want this list to be sorted by the second element\par
+of each tuple in the list.\par
+So our list contains tuples, and we\par
+want it to be sorted with the second element of each tuple,\par
+so that is element 1.\par
+The first element is element 0.\par
+So that's what we do here.\par
+We say, sort this--\par
+sort the distance list, and use the second item.\par
+And to do that, we need to import this Item Getter\par
+attribute from the operator module.\par
+That's what we do here.\par
+So let's run that, and then we get rid of this extra print\par
+there.\par
+And now we see it's sorted by that.\par
+So we see the closest is Columbia University,\par
+and the most distant one is Pisticci,\par
+which is three minutes away.\par
+Everything is pretty close to Amity Hall Uptown, apparently.\par
+So that's-- that we can do that.\par
+Then what we can also do is we can\par
+look for all parts from one location to another.\par
+So we have Amity Hall Uptown to Chaiwali.\par
+And we can see what are all the paths\par
+that we can get from there.\par
+Because after all, in our network,\par
+we can go multiple ways to there.\par
+So if the shortest path is through Grant's Tomb--\par
+but for some reason there's road work going on, or something\par
+happening, let's say it's a subway network,\par
+and you know subways at nights-- and if you live in New York,\par
+you would know this--\par
+subways at nights and on the weekends can be pretty iffy.\par
+They get closed for maintenance all the time.\par
+So if a particular subway is closed,\par
+you have to use an alternate network, route.\par
+So you want to know what are all the ways you can\par
+get from one place to another.\par
+So you can use this function here.\par
+It says, get all simple paths on a network--\par
+all simple paths.\par
+And what all simple paths does is\par
+it shows you all the paths from one place to another.\par
+So this is what this tells us-- these are\par
+all the different ways you can go from Amity Hall Uptown\par
+to Chaiwali on Lenox Avenue.\par
+So that's a useful thing to have.\par
+That's just the same thing, reformatted.\par
+All right, so that's pretty much what\par
+we want to do with the weighted graphs, here.\par
+What we're going to learn next is,\par
+we're going to look at how we can apply the network analysis\par
+functionality, of the functions available in NetworkX,\par
+to social networks, to see what the characteristics\par
+of that network are.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

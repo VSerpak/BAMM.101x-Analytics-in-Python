@@ -1,0 +1,194 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 So here, what we're doing is we're doing\par
+pretty much what we did before.\par
+Instead of using the spring layout,\par
+I'm using a circular layout.\par
+It doesn't really matter, right?\par
+I can try something different, just\par
+to show you that we have many different layouts.\par
+And we are using the draw_networkx_nodes function\par
+to show our nodes in red with large 2,000 size over there.\par
+We are using the draw_networkx_edges\par
+to show the edges of this thing.\par
+And they are blue in color.\par
+We are doing networkx labels.\par
+And the labels the labels are somewhat like the node\par
+labels that we did with the example that we saw earlier.\par
+So these are the node labels here.\par
+We can do edge labels as well.\par
+And for the edge labels, we want to be drawing them\par
+with a font size of 10 and et cetera.\par
+And the node labels we saw, we just did the same thing again.\par
+So this is pretty much what we did before, except we're\par
+using a circular layout.\par
+And we can see this is a really messy looking graph, right?\par
+It's unreadable.\par
+Because we have a lot of data here.\par
+We've got 823, 409, 344, 29.\par
+And the circular layout is really\par
+causing a mess for our thing there.\par
+But we can always work with that.\par
+So what we'll do is we'll take a look at our edge weights,\par
+for starters, just to see what they are.\par
+And this tells us that our edge weights are three digit\par
+integers mostly.\par
+So that's pretty long.\par
+So what we'll try to do is we'll try to reduce this a little bit\par
+and make it readable.\par
+And what we're going to do is we're\par
+going to convert it from seconds into minutes, right?\par
+So that will give us a little bit shorter numbers here.\par
+So we've got 3, 6, 12, 4, 3, 4, 9, 9, 9.\par
+So that takes a little bit less room.\par
+And now, let's look at the graph here again.\par
+And what we get is-- and I've also made the graph bigger.\par
+So what I've done here is I'm now using\par
+just what we did last week.\par
+I'm using Matplotlib to create a figure object.\par
+And I'm making the figure object 12 by 12.\par
+So that's what we are going to put all our data into.\par
+So now, everything will go into this figure object.\par
+And we'll show the figure, rather than just drawing\par
+the network as a graph and showing that.\par
+So we get a much bigger set up over here.\par
+And you know what?\par
+Let's try this with spring layout as well.\par
+I should have done that.\par
+Let's see what that looks like.\par
+I think it'll be a little bit messy.\par
+But let's check it out.\par
+Yeah, this looks a little bit messy, right?\par
+So anyway, this is what it shows us here like this.\par
+So this is a largeish graph.\par
+So if you want to really show it to look nice--\par
+and the reason it's so dense is that, in our graph,\par
+we have every node connected to every other node, right?\par
+So we have a lot of edges.\par
+Every node has an edge to every other node.\par
+So this is why it's so confusing.\par
+But typically, in a transportation network,\par
+you're not going to have every node directly connected\par
+to every other node.\par
+You're going to have to go through one or more nodes\par
+to get to some other node.\par
+So what we can do is we can--\par
+I'm not going to do this stuff here.\par
+We can randomly remove some of the edges.\par
+So we'll just take out 60% of the edges,\par
+so that we get a much smaller graph.\par
+So what we're going to do is--\par
+well, it's actually 75% of the edges.\par
+So we'll take out 75% of the edges and see what we get here.\par
+Why does it say 60%?\par
+It should say 75%, right?\par
+So let's run that.\par
+And now, we can draw it again and see what we get.\par
+So now, we get a little bit more manageable graph here, right?\par
+And this is what it looks like over her now.\par
+So now, what we would like to do,\par
+of course, what we should be doing really,\par
+is removing the long names and replacing them by numbers,\par
+so that this becomes more readable.\par
+And that would be something you might want to play around with.\par
+So instead of saying Ellington in the Park,\par
+you do number one, in Chaiwali, number two, that kind of stuff.\par
+So then, you get a graph that is a lot more readable.\par
+But as we can see already, we can see from Chaiwali,\par
+Lenox Avenue in New York to Columbia University\par
+is a 12 minute walk.\par
+We have an edge there.\par
+So this is a lot more readable.\par
+Of course, we've just randomly remove this\par
+to reflect a real transportation network.\par
+So what we'll do now is we'll work with this graph\par
+a little bit to see what we can get out of it.\par
+And let's see what we can get here.\par
+We've got addresses.\par
+We don't really want that.\par
+It printed these addresses.\par
+We can now look for the shortest distance between any two\par
+places.\par
+So let's pick the shortest path from Amity Hall to Chaiwali,\par
+for example.\par
+So let's run that.\par
+And it tells you the shortest path from Amity\par
+to Chaiwali is from Amity Hall to Audubon Terrace to Columbia\par
+to Chaiwali.\par
+That's the way it is.\par
+It actually is not really the shortest in reality.\par
+But this is because are paths are randomly created.\par
+Technically, you would just go straight\par
+from Amity Hall to Chaiwali or Amity Hall\par
+to Columbia to Chaiwali.\par
+But you wouldn't go Amity Hall, Audubon Terrace,\par
+which is other side, back to Columbia, and back to Chaiwali.\par
+But remember, we've just randomly taken\par
+out nodes from here.\par
+So we've got the shortest path.\par
+You can also use what's called a Dijkstra path.\par
+The Dijkstra path is an algorithm.\par
+You use the Dijkstra algorithm to calculate a path.\par
+And what it also does is it uses the weights on the path\par
+to compute the shortest path length and the shortest path.\par
+So the Dijkstra path is going to actually look\par
+at the distances between various things\par
+in computing the distance.\par
+So here, we get the Dijkstra path, actually in this case,\par
+is pretty much the same, because of the way\par
+our network is structured.\par
+But it tells us that the distance\par
+is 33 minutes, if you do a walk that\par
+goes in that particular way.\par
+So that's the-- nothing there.\par
+We can go ahead and whoops.\par
+Well, it tells us--\par
+I'm trying to find the shortest path between every node\par
+in this thing here.\par
+And it says there's no path at all between Columbia\par
+University and Amity Hall--\par
+no, between Columbia University and Ellington in the Park.\par
+Because we took out too many paths.\par
+So you know what?\par
+Let me go back and change this a little bit.\par
+And because we're trying to find a path\par
+between every pair of nodes.\par
+And we get a pair of nodes that--\par
+For example, here, whatever this is, along\par
+with Columbia University, there's no path at all.\par
+So that causes a problem.\par
+And at Ellington in the Park and Columbia University,\par
+there's no path at all.\par
+So maybe we did take out too many nodes.\par
+So let me go back to this here and recreate our address graph.\par
+And then, instead of 75%, let's remove 60%.\par
+So we get a few more nodes in it.\par
+And hopefully, it's completely random.\par
+So we could still end up with--\par
+well, this looks good, though.\par
+I think we have paths between everything.\par
+So that looks good.\par
+So now, we can go back and run all the paths\par
+so we get all these path here, which are the shortest\par
+path for everything.\par
+Just for the heck of it, let's see what this produces for us.\par
+So this tells us now that the shortest\par
+part from Amity Hall to Chaiwali is via Grant's Tomb.\par
+And that's 16 minutes duration, which actually a little bit\par
+more sense.\par
+But even that's a little bit out of the way.\par
+So we have that.\par
+So that's what we can do.\par
+We can take our network, and then figure out things\par
+like shortest parts using Dijkstra's algorithm,\par
+if we have weights on our edges, or just shortest path,\par
+if there are no weights at all.\par
+And so that's the first thing that we have here, OK.\par
+So now, next, what we are going to look at\par
+is what we can do with a graph and drawing it,\par
+so that it gives us more information,\par
+and when we come back in our next video.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 
