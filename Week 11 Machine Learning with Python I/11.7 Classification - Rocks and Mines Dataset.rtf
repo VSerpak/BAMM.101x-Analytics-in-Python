@@ -1,0 +1,181 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 The first thing we can do is generate in-sample errors.\par
+So we're looking at a regression,\par
+so it's kind of straightforward to go and look\par
+at the predictions that our model does,\par
+and look at the actual values, and compute\par
+a mean square error, for example, in that range.\par
+So we're looking at our training predictions,\par
+our actual dependent variable values,\par
+and squaring them-- the difference between the two,\par
+and squaring them, and we get a mean square.\par
+We can look for an r-square.\par
+That's typical in regressions.\par
+We can look at an r-square, and we\par
+get an r-square of 0.65 on our training sample,\par
+and 0.04 on our testing sample.\par
+That's pretty horrible when you think about it, right?\par
+I mean, look at this.\par
+The training is 0.65.\par
+The testing is 0.04.\par
+But the question is, do we really care?\par
+The first thing we need to note is, of course,\par
+is that our problem has training predictions\par
+and the predictions and actuals are not identical, right,\par
+in the sense that they're not in the same kind of data\par
+that we're looking at.\par
+So if you look at our two samples here,\par
+look at the training predictions, this\par
+is the values we get, right?\par
+Negative 0.101, 0.38, blah, blah.\par
+And if I look at y train, it's 0 and 1.\par
+So obviously, the mean square error, or the r-square,\par
+are going to be messed up, right?\par
+Because they are comparing 0 and 1 by that kind of stuff.\par
+We haven't applied a threshold, basically.\par
+So what we need to do is we need to start thinking a little bit\par
+more creatively on how we want to predict\par
+the results of our thing here.\par
+So what we want to do is we're getting a continuous value\par
+in our prediction, which is why our stuff doesn't work.\par
+So we need to convert these continuous values\par
+into categorical 1's and 0's.\par
+And we can do this by fixing a threshold between 0 and 1.\par
+And values greater than threshold are mines,\par
+and values less than the threshold are rocks.\par
+And we build our confusion matrix.\par
+So in sklearn for regression, there is no confusion matrix.\par
+But for logistic regression, you can actually build--\par
+there's a function for that.\par
+So what we'll do is we'll write our own function,\par
+because that's easy to do.\par
+So what this function does is it takes our predicted values,\par
+the actual values, and takes the threshold,\par
+and tells us how many cases--\par
+it essentially constructs that matrix that we saw.\par
+How many cases are true positives?\par
+How many are false negatives?\par
+How many are true negatives?\par
+And how many are false positives?\par
+So that's a very straightforward thing to do,\par
+so I'm not going to walk through that.\par
+We write that function, and we're\par
+going to create a testing predictions variable.\par
+That is our predictions based on data.\par
+Oh, I should also point out that once we've fitted the model,\par
+we can actually get predicted values by calling this function\par
+model.predict, and give it a set of independent variables,\par
+a data frame containing our independent variables,\par
+and it'll produce the dependent--\par
+the actual predictions for that set of independent variables.\par
+So we can run that.\par
+And we have this.\par
+And now we want to run our confusion matrix.\par
+And let's try it with 0.5 and see what we get.\par
+So we'll run it with 0.5.\par
+We find that we have 27 cases that\par
+are true positives, nine cases that are false negatives,\par
+five cases that are false positives,\par
+and 22 cases that are true negatives.\par
+We can now actually compute all our true positive rate,\par
+false positive rate, precision, recall,\par
+whatever we want using these numbers for this threshold\par
+value, for a single threshold value.\par
+We can also compute what's called a misclassification\par
+rate, which is the number of false positives\par
+plus false negatives divided by the number of cases,\par
+which tells us how many cases were incorrectly classified.\par
+So we can see that in our testing sample,\par
+22 cases, 22% of the cases were incorrectly classified.\par
+So that's-- if you get, of course, 0%, then that's great.\par
+That means everything was correctly classified.\par
+Essentially what we're saying is that we\par
+want our false positive and false negatives\par
+to be minimized.\par
+So if we can--\par
+in a very generic sense, of course,\par
+our actual model might require something different.\par
+But in a general sense, we want our false positives\par
+and false negatives to be minimized.\par
+So if we can minimize that number, that will be great.\par
+We can look at the precision and the recall,\par
+and again, we run our confusion matrix on that.\par
+And we get a 84% confusion-- precision,\par
+75% recall, and an F score of 0.79, which is not that bad.\par
+The question, of course, is, what does it cost us?\par
+In the sense that, is it good enough,\par
+where good enough would mean, is it very expensive\par
+to make mistakes?\par
+So that's where we always go with this stuff here.\par
+But for now, we look at this and we say,\par
+hey, that's not a bad result at all.\par
+It looks pretty good.\par
+84% precision.\par
+84% of the mines that it recognized, that the model said\par
+were mines, were actually mines, right?\par
+So that's pretty good.\par
+And it recalls 75% of the mines that the mines were actually\par
+were and are set up, 75% of the time, or 75% of those\par
+were recognized as mines.\par
+So obviously some were--\par
+we had some mines that were classified as rocks,\par
+and that's why they're not equal.\par
+So obviously, the results that we get-- all, precision,\par
+recall, the numbers, misclassification rate,\par
+all these kind of numbers here, the confusion matrix--\par
+all these depend upon what the threshold is.\par
+So what we want to do is we want to start\par
+trading off these things.\par
+So let's try, for example, threshold of 0.9\par
+and see what we get.\par
+OK.\par
+So we saw that we had 84%, 75%, and 79% for precision, recall,\par
+and F score.\par
+And if we run this with 0.9, we find that the precision goes up\par
+to 88%.\par
+The recall drops to 41%.\par
+And the F score drops all the way down to 57%\par
+So that's a pretty steep change.\par
+The question now is, are we willing\par
+to give up so much on the recall,\par
+like all the way from 75% to 41%,\par
+or 42%, rather, just for a 4% gain in the precision?\par
+And again, that depends on what we plan to do.\par
+If we are looking at, let's say, identifying all the mines--\par
+if we wanted to make sure that our model\par
+actually-- when it says it's a mine, that it actually\par
+is a mine, if that was our primary motivation,\par
+then we would probably say yes, you know,\par
+we don't care about if it doesn't get all the mines,\par
+we don't worry about it, as long as we know with some confidence\par
+that when our model is saying it's a mine,\par
+it's actually a mine.\par
+For example, if you want to send your team in\par
+to defuse the mine, and it costs you money every time\par
+they try to defuse a rock.\par
+So what you want to do is you want\par
+to make sure that if you're sending them into the field\par
+to defuse something, that it actually\par
+is a mine, in which case you are more interested in precision.\par
+On the other hand, if you're more interested in getting\par
+safely through the mine field, then you\par
+might be more interested in the recall,\par
+right, because then you want to find more of the mines\par
+correctly.\par
+So it's a question, again, of what your model is really\par
+seeking to do in the real world.\par
+So you have to really look at those things then.\par
+The next thing is something called a receiver\par
+order characteristic, and that's an ROC code,\par
+and this comes out of I think radio signals, something.\par
+But it's got a history of its own.\par
+But what ROC code does is it shows\par
+the performance of a binary classifier\par
+as a threshold varies.\par
+We're going to take a look at this when\par
+we come back in our next video.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

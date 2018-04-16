@@ -1,0 +1,284 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 So in the Receiver Order Characteristics,\par
+we compute two series, a false positive rate\par
+series that are on different thresholds, which we saw,\par
+of course, is the proportion of rocks\par
+that identify as mines, things that are falsely recognized\par
+as mines when they're not.\par
+And that's false positive divided by true negatives plus\par
+false positives.\par
+And a true positive rate, which tells us what proportion\par
+of actually mines--\par
+that's the same as recall-- are identified as mines.\par
+So we can compute these two and then\par
+we brought them, as we saw in our classification analysis\par
+digression, so to speak.\par
+We plot them in a curve and we want\par
+to find out how good our model is by looking\par
+at these kind of things here.\par
+So let's take a look at that.\par
+So first thing, before we go to ROC curve,\par
+let's see if our model discriminated or not.\par
+So what we can do is, we can take our data\par
+and look for wherever the thing was actually--\par
+wherever our case was actually a mine--\par
+we identify those ones and say these are the ones that\par
+were identified as mines.\par
+And if the prediction was also a mine--\par
+so we have a mine that's actually a mine\par
+and the prediction is a mine--\par
+then we store that in the recure positives.\par
+And if the prediction was not a mine,\par
+then we store that in whatever prediction\par
+we get in the negatives.\par
+Right?\par
+So what we want to find out is whether things are actually\par
+mines or recognized as mines, and things\par
+that are actually rocks were identified as rocks or not.\par
+So we do that, and we can draw a little curve over here.\par
+And that's what this is doing, which\par
+is a sort of histogram, which tells us\par
+that these here were mines that were actually\par
+recognized as mines.\par
+And then as we go further south, they were recognized.\par
+So the 0.06 values, these are our actual values, not our 0\par
+and 1, but the actual predictions,\par
+the continuous prediction between 0 and 1.\par
+And so this tells us that, yes, we\par
+have some kind of discrimination but not perfect.\par
+So in this, the greens are rocks and the blues are mines.\par
+But our recognition, you know, if you have a threshold say,\par
+if you put a threshold at 0.8, for example,\par
+then we pretty much have everything correctly\par
+recognized as a mine.\par
+If we put our threshold anywhere below that,\par
+things get a bit messy.\par
+So this is what this is showing us.\par
+So if the greens and the blues are perfectly separated,\par
+then our model has done a great job of separating.\par
+But here we have some rough idea of that.\par
+But more interesting than that is what happens in a hold\par
+out sample.\par
+So we do the same thing with a testing sample\par
+and we find that it's a lot more messy, right?\par
+In the hold out sample, we have a lot\par
+of greens that are intruding on to the blues.\par
+So that's not so great, right?\par
+Still, we can see that if you fix a threshold between, let's\par
+say 0.625 and 0.75, somewhere there,\par
+we will get some kind of a separation.\par
+We're going to get a lot of false positives\par
+and false negatives.\par
+But there will be some kind of separation.\par
+So that's one way of looking at it.\par
+But we'll look at it with an ROC curve.\par
+And SK LUN has its own ROC package, so we will use that.\par
+And what ROC curve does is, given a y, an actual y--\par
+this is 0s and 1s that were actually in the training sample\par
+here, and given our predictions--\par
+and these remember, are continuous values--\par
+the ROC curve is going to run through the predictions\par
+at different thresholds and decide whether they're 0s or 1s\par
+and compute the false positive rate and the true positive\par
+rate.\par
+And then we can plot that in a curve.\par
+So just to show you what that is, I'm going to take this--\par
+maybe I've done it here.\par
+No.\par
+I'm going to take this, insert a cell above.\par
+Let's look at that.\par
+And look at the area.\par
+So this tells us the area under the curve\par
+is 0.98, which is like humongous.\par
+So our predictions are, this has actually\par
+a very stable kind of model, if nothing else, right?\par
+And we can see the actual values also.\par
+So we have FPR, TPR thresholds.\par
+And look at them.\par
+So this tells us the FPR rates.\par
+We see varying 0, 0.014 all the way to 1.\par
+And if the true positive rate is 0.01, well, that's not so good.\par
+But 0.74, 0.74, 0.85, 0.85, blah, blah.\par
+And the array that we, the thresholds\par
+that we get, because our data actually, thresholds\par
+are continuous.\par
+So rather than being from between 0 and 1,\par
+they're reading from negative 0.47 to 1.44.\par
+That's OK.\par
+So that's what the ROC is doing.\par
+It's just looking different thresholds\par
+and plotting our TPRs and FPRs for that.\par
+So we can plot these in a nice little graph\par
+and take a look at the curve.\par
+So we get a curve here that looks like this.\par
+So this is our in sample ROC curve has an area\par
+under the curve of 0.98.\par
+And we find that it's reasonably stable.\par
+So if we look anywhere in this middle area that is not\par
+at the edges of the orange-ish curve--\par
+I'm assuming it's orange, but you know what I mean--\par
+then we should be in a fairly stable area\par
+where moving the threshold this way\par
+or that way is not going to affect our results too much.\par
+OK?\par
+Assuming that we don't know what the trade between TPR and FPR\par
+is, right?\par
+I mean, that's the goal here.\par
+If you know the tradeoff between TPR and FPR is,\par
+we can pick a threshold.\par
+But we want to be picking a threshold in the middle\par
+anyway because that's likely to be more stable when\par
+we get new results or new cases coming into our model.\par
+But of course, that's our training sample, right?\par
+So what we really want to do is look at the out sample ROC\par
+curve.\par
+So let's draw that.\par
+And we find the out sample ROC here doesn't look as great,\par
+but it's still not bad.\par
+0.84 is still pretty good.\par
+And we still find that the area in the middle, somewhere\par
+from a threshold of let's say 0.25 to 0.8\par
+or so is a reasonably stable threshold area.\par
+Again, at the extremes, it's not great.\par
+At the extremes, we find a small change in threshold\par
+can cause a huge change in the curve.\par
+And that's not what we want.\par
+We want to be working inside the stable area.\par
+So that's the way to look at this stuff.\par
+So what the ROC and AOC curves give you is--\par
+and the UOC number, the area under the curve\par
+gives you-- is a good idea of how good your classifier is\par
+and how sensitive it is to changes in the threshold.\par
+Too sensitive is not good.\par
+And so you don't want to be too sensitive.\par
+And so roughly what we want to do then\par
+is we want to figure out what should our model do.\par
+I mean, we've gone through all of this analysis.\par
+We have precision.\par
+We have recall, all kinds of stuff.\par
+But we don't know what is it that we\par
+want to finally do, right?\par
+What threshold should we pick?\par
+So generally, what you want to do then\par
+is you want to look back into the domain\par
+and try to figure out what the cost of picking\par
+a particular threshold is going to be.\par
+In other words, what is the cost of the true positive rate\par
+versus the false positive rate, precision versus recall.\par
+Depending on your model, that's what is\par
+the most important thing here.\par
+So let's take an example.\par
+Let's say that everything that's classified as a rock\par
+needs to be checked with a hand scanner\par
+at dollars, $200 a scan.\par
+And everything that's classified as a mine\par
+needs to be defused at $1,000 if it's a real mine, or $300\par
+if it turns out to be a rock.\par
+So we have cost numbers here.\par
+And you know, you can pick anything.\par
+Like the cost, for example, if human lives are involved,\par
+if the mines are small mines that will injure people,\par
+or big mines that will blow up people, you can decide.\par
+You can try to put a cost number to it.\par
+And I don't necessarily mean dollars, but maybe\par
+a utility number, right?\par
+So anything that measures whether something\par
+is good or bad, essentially.\par
+But you're picking the result. The negative outcome\par
+is good or bad number.\par
+So here, let's say we want to, with these numbers, what\par
+we want to do is we want to get a,\par
+first get a confusion matrix.\par
+We get a confusion matrix on our test sample,\par
+not on the training sample.\par
+And let's say at this point-- and you\par
+want to probably do this for more continuous numbers--\par
+but we'll take two extremes, 0.1 and 0.9.\par
+And say, all right, what's the cost associated\par
+with a threshold of 0.1?\par
+So we get back our true positive rate, false positive rate,\par
+et cetera, and compute a cost over here.\par
+So the true positive rate is CM-0.\par
+confusion matrix true positive rate at CM-0.\par
+And we know that that is telling us\par
+that something is a mine when it is actually a mine.\par
+So that's $1,000 when we're going to go and test it.\par
+So it's going to be $1,000.\par
+Then the next is the false positive rate,\par
+which tells us that something is a mine but it's not a mine.\par
+So that's going to cost us $300.\par
+Because if we send someone to do it, to test it\par
+and it turns out to be a rock, and we spent\par
+$300 trying to figure that out.\par
+The next is our false negative rate, which is--\par
+or it doesn't matter in this case.\par
+But this is what tells us it's a rock.\par
+If it's a rock, it costs us $200 to check it and make sure\par
+that it is actually a rock.\par
+And if a mine is classified as a rock, and we can check it\par
+and assuming nobody gets blown up,\par
+then that costs us another $200.\par
+Am I right about this?\par
+Let me see.\par
+Yup.\par
+It could be a different number here\par
+because if it's classified as a rock\par
+and turns out to be a mine, you might get blown up.\par
+But in this example, let's just say we are safe.\par
+You know, we go and test it, it costs us $200,\par
+but it doesn't kill us.\par
+So that gives us a cost for 0.1.\par
+And then we can run the same thing for a threshold of 0.9\par
+and see what we get.\par
+So we get a cost here that says at 0.1,\par
+it costs us $41,100 in our training sample.\par
+And at 0.9, it costs us $24,800.\par
+So let's take another example.\par
+And if we say everything that's classified as a rock\par
+would be assumed a rock.\par
+And if it's wrong, it'll cost us $5,000 in injuries, treatment\par
+of injuries, or whatever.\par
+So whenever something is classified as a rock\par
+and it turns out to be incorrectly classified,\par
+it turns out to be a mine, it costs us $5,000.\par
+Otherwise it doesn't cost us anything.\par
+We are walking through the field.\par
+We're not testing anything at all.\par
+So here in this case, the only thing we care about\par
+is this one over here.\par
+That is a false negative where it says it's a rock\par
+but it turns out to be a mine.\par
+So we again take 0.1 and we compute the cost.\par
+So this is $5,000 times this and everything else is 0.\par
+And we do the same thing for 0.9.\par
+It's $5,000 for this, and everything else is 0.\par
+And we run the cost and we now get that 0.1 threshold\par
+is going to cost us $10,000.\par
+But a 0.9 threshold is going to cost $105,000.\par
+So we can see that in these two cases,\par
+our results are different.\par
+Depending upon our cost structure,\par
+if our cost structure corresponds to this case,\par
+then we will pick a 0.1 threshold-- sorry,\par
+a 0.9 threshold, because that's better, right?\par
+$24,800 is lower than $41,100.\par
+Whereas in this case, we would probably pick the 0.1 threshold\par
+because that's better.\par
+So it's a question of how we want to use the results,\par
+what the cost structure in our real world domain is,\par
+and that is what controls the choice of threshold\par
+more than anything else in a classification problem.\par
+So that's it for using regression for classification.\par
+I urge you to try logistic regression on your own\par
+and seeing what kind of results you get.\par
+And then compare that with the results we got for this.\par
+And next week, we're going to look\par
+at a couple of other of machine learning\par
+models and some other examples.\par
+So until next week.\par
+Thank you.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 
