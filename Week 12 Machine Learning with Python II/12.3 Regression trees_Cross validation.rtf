@@ -1,0 +1,254 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 So what exactly do decision trees do?\par
+Well, decision trees try to minimize entropy.\par
+What is entropy?\par
+Entropy is the degree of variance inside the data.\par
+So what we're going to do is we're going to take our data\par
+and split it up into sets where the variance is lower.\par
+With the combined variance, you add up the variances, you know.\par
+You don't physically add them up, but you know what I mean.\par
+When you take the variance of the two sets and the combined\par
+variance is lower than the variance of the combined set.\par
+So the variance, adding up of the variance of the two subsets\par
+is lower than the variance of the overall data.\par
+You might end up with a higher variance in one of the subsets\par
+than you have in the overall data,\par
+but the combined variance has to be lower.\par
+So that's the rough goal here.\par
+So roughly what we're doing is, if you take a marble\par
+from a box of 100 blue marbles, then you\par
+know pretty much that the marble is going to be\par
+blue with 100% probability.\par
+And then if you take a marble from a box of 50 blue and 50\par
+red marbles, then the probability\par
+is going to be 50% that you get a blue or a red marble.\par
+That's the idea here.\par
+So if you take a box of 100 marbles, which\par
+are blue and red, and we can split them\par
+up so, with the mix, then your probability when\par
+you draw a marble, the probability\par
+that it's going to be blue is 50%.\par
+But if you can split them up into two groups\par
+where one group has all 50 blue and the other has\par
+all 50 red, then the combined probability, you know--\par
+because you have these two groups\par
+and you know for certain that one group has all blues\par
+and the other has all reds-- then the probability of picking\par
+a blue or a red marble is 1, right?\par
+Because you split it up.\par
+And that's what a decision tree is trying to do.\par
+It's trying to find some rule that\par
+splits the marble by color.\par
+So for example, if the blue marbles\par
+happen to be bigger than the red marbles,\par
+right, let's say the blue marbles are 1 inch radius--\par
+that's pretty big for a marble--\par
+1 inch diameter, and the red marbles\par
+are 1/2 an inch diameter, so you split on marble size\par
+and you get two groups that are now all blue or all red.\par
+But you split on some other variable.\par
+You split it on a feature of the marble that is not the color.\par
+The color is a dependent variable\par
+and the feature is the size.\par
+And that's how the decision tree model really works.\par
+So it tries to minimize the combined entropy of the model.\par
+The regression tree, what it's doing is it takes--\par
+it runs regressions for each of the independent variables\par
+on the dependent variable.\par
+It picks the variable that has the most explanatory power\par
+and splits it at several points.\par
+So it'll take the variable and say, all right,\par
+fixed acidity has the most explanatory power.\par
+It splits that on several points and decides\par
+which point gives you the best discrimination between the two\par
+halves.\par
+In the regression tree, that means\par
+that it looks at the mean square error in the two\par
+halves of each split.\par
+And then finally, it picks the split point that gives you\par
+the lowest mean square error.\par
+So in our tree here, what it was doing was,\par
+it was looking at the impurity, which\par
+is this case with the mean square error,\par
+since it's a regression tree.\par
+And we're dropping the mean square error from 0.6509\par
+all the way down to 0.4149 over here, or 0.3114 over here.\par
+So this is what's going on over there with this thing here.\par
+And so it's picking the split points and works that stuff\par
+there.\par
+So that's how that works.\par
+Now the problem, of course, with regression trees,\par
+like with all models, is that we don't\par
+know how well it's going to perform in the outside world.\par
+Right?\par
+When we are looking at things that we can't see.\par
+So in our example here--\par
+if I can scroll up--\par
+we are actually using the tree measuring on the testing\par
+and training samples.\par
+But in general, we don't know how\par
+it's going to work when we end up\par
+with data that's not inside our current data set at all.\par
+Right?\par
+So that's one possible problem.\par
+The second problem is since we are splitting on entropy,\par
+we need a lot of data to actually calculate\par
+the true entropy.\par
+We can think of there being a true entropy in the world,\par
+like we have 100 model set.\par
+But you can think of a billion model\par
+set that is really withdrawing this 100 model set from.\par
+Right?\par
+So there's a true entropy in the billion model set,\par
+and we have sample entropy that we're\par
+measuring from our model set.\par
+So we want to know how well the sample entropy\par
+reflects the true entropy.\par
+And the larger sample set we get,\par
+the more reasonably we can expect\par
+that to reflect the actual entropy.\par
+So if we get a larger sample set, then presumably--\par
+and you know, enough variation captured in that sample set--\par
+then presumably that would work better\par
+in the outside, unseen cases.\par
+And if we don't get a larger sample set,\par
+then it won't work as well in unseen cases.\par
+That's the idea there.\par
+So if you're working with smaller sample sets,\par
+then we can use a technique called cross-validation.\par
+Even if you're not working with small sample sets,\par
+you probably can do it any way.\par
+It's probably helpful anyway to see how robust our model is.\par
+So the idea here is very straightforward.\par
+We have a sample in our training and test combined.\par
+And we divide it up into a training and a testing.\par
+We train on the training and we tested on the testing.\par
+And that gives us an estimate of how good our model is.\par
+So we could train it on the training,\par
+test it on the testing, and get a reasonable result. However,\par
+if we pick a different training set and a different testing\par
+set, we divide up our original data into different training\par
+and testing set, we may get a very dramatically\par
+different result. If that happens,\par
+then our model is not going to be robust because it's\par
+really dependent upon how we split the data into training\par
+and testing.\par
+And that's not so good.\par
+So we can use a technique called cross-validation to see\par
+how robust our model is.\par
+So what we do in cross-validation is,\par
+you take the entire data set and split it up\par
+into k smaller sets.\par
+And then you train the data on k minus 1 of those sets.\par
+So if you have like 100 data items,\par
+you can split it up into 10 smaller\par
+sets of 10 data items each.\par
+You run a training tree on 90--\par
+on the first 9, that is 90 of them--\par
+and test it on the last 10.\par
+And then use the results from your testing and store that\par
+result. Then you take another 9, which is not the original 9--\par
+maybe like 1, 2, 3, 4, 5, 6, 7, and 10--\par
+and test it on 9.\par
+And then take 1, 2, 3, 4, 5, 6, 7, and then 9 and 10,\par
+and test it on 8, et cetera.\par
+Right?\par
+So these are called folds.\par
+And you run it on different subsets\par
+of the data, different subset of the folds,\par
+and measure the mean square error.\par
+The idea being, in a regression tree--\par
+or classification tree-- the idea being\par
+that on each time that you run it,\par
+you get a mean square error that's fairly similar to what\par
+you'll be getting with different subsets,\par
+then your final results are likely to be\par
+more robust because they're not dependent on where\par
+you split your training and testing sample.\par
+That's the idea here.\par
+You take the average of all test performance metrics.\par
+So let's run that on our--\par
+it's a typical way of running a, testing a model out.\par
+So we run that on our thing here.\par
+So we call from Model Selection, we\par
+pick this thing called Cross-val Score, and we pick K Fold.\par
+K Fold is going to create the number of folds,\par
+the number of subsets that we're dealing with.\par
+So the first thing we do is we do a cross-validation on K\par
+Fold, and we split it on 5.\par
+And we shuffle the data with a random.\par
+So when we do the folding, we want\par
+to shuffle our data first and then do the picking,\par
+rather than just pick randomly, just\par
+pick them linearly from there.\par
+So I run the cross-validation here--\par
+whoops, I did not run this first--\par
+run my cross-validation there.\par
+And now what I want to do is, I have 5 folds\par
+and I want to create many, many trees.\par
+So I'm going to create trees that range from,\par
+in depth from 1 to 10.\par
+So I don't know, for example, whether a depth 3\par
+tree or a depth 5 tree or a depth 10 tress is better.\par
+I don't know, right?\par
+So what I want to do, I want to say, all right,\par
+run them all from 1 to 10.\par
+I run the decision, call the decision tree regressor,\par
+and then I fit the data, making sure that the max\par
+depth is controlled over there.\par
+And then I compute the mean of the cross-validation score\par
+for those trees over there and store that in a table.\par
+So let me see if I run this, I get trees of depth 1.\par
+I'm getting that cross-validation score\par
+and storing them for each depth separately.\par
+Right?\par
+So depth 1 is negative 0.548, depth 2, 0.512, depth 3, 0.482,\par
+482, blah, blah, et cetera.\par
+So I get these nine depth values.\par
+And the idea is to see whether these depth values,\par
+or these different values that you're\par
+getting from the cross-validation tests\par
+are reasonably similar.\par
+In this case, we can see they are reasonably similar.\par
+If they are reasonably similar, then that\par
+means that we are a model that is likely to be more robust.\par
+So what is the tree in this case?\par
+In this case, we don't really have a treat\par
+because we have many, many trees.\par
+And what we're really doing is, we are not generating a tree.\par
+We're generating many trees.\par
+But we want to get an estimate for the average error\par
+of the model.\par
+That's what we're trying to do.\par
+So the average error of the model\par
+is somewhere in this range here.\par
+And also get an idea of what depth we\par
+should use for our tree, right?\par
+So maybe our depth should be somewhere here.\par
+A 0.3 or 0.4 is probably a good depth to use on the stuff\par
+here because the error drops and then starts rising again\par
+as the tree gets bigger.\par
+And then once we do that, we can pick a depth.\par
+And we have our model.\par
+And now we want to actually generate the tree itself.\par
+So now we go back and no longer use a training and testing\par
+sample.\par
+Because we've run the thing on each individual folds\par
+and we are saying we don't really\par
+want to use a training and testing here\par
+because we don't want our tree to be subject to our decision\par
+on where to, which ones to include in the training, which\par
+cases to include in the training and which\par
+to include in the testing.\par
+So we run the data on the entire tree.\par
+And once we run the data on the entire tree,\par
+we are good to go, right?\par
+So that becomes our tree there.\par
+So that's where we are in this thing here.\par
+That becomes our tree, and then we\par
+use that for our model over here.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

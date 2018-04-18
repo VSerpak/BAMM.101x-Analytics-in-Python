@@ -1,0 +1,224 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 So let's take a look at one column,\par
+because whenever we look at data,\par
+we want to really understand what's going on inside our data\par
+before we do anything.\par
+We've already seen this when we did our data cleaning.\par
+But in this case, the data is clean,\par
+but we still want to understand what\par
+is the nature of this data.\par
+So let's examine the distribution\par
+of the data in column 4.\par
+And if you look at column 4 here,\par
+we have the quintile data for column 4.\par
+Well, actually, column 5, I guess.\par
+Should be column 5.\par
+0.67-- oh, here.\par
+Column 4.\par
+I'm sorry.\par
+0.00067.\par
+So this tells us that-- let me push this here.\par
+So the minimum is 0.0067.\par
+That's this number there.\par
+And the maximum is 0.4010.\par
+So our data ranges from this to this.\par
+And what we want to see is whether the quartiles\par
+are evenly distributed or not, because that tells us\par
+how well distributed the data is.\par
+So we can see here that quartile 1 varies from 0.0067 to 0.038,\par
+which is about 0.03 in range.\par
+This is 0.3805 to 0.625.\par
+0.625 to 0.1.\par
+So these three are reasonably similar,\par
+and the only difference that we have here\par
+is that the last quartile actually is humongous.\par
+It varies from 0.1 to 0.4.\par
+It has a 0.3 range.\par
+So it's much larger than other quartiles.\par
+So what this does is it tells us that,\par
+hey, maybe we have some outliers in our data.\par
+And outliers can mess things up, because when you have outliers,\par
+it's harder to predict.\par
+You're trying to get maybe a line or predict a line\par
+or predict something in the future,\par
+but an outlier can mess stuff up.\par
+So it's good idea to look for outliers in the data\par
+and see what was happening with them.\par
+We can use a quantile plot to help us identify outliers.\par
+And here, let's take a look at the quantile plot.\par
+So what this does is it'll show us--\par
+draw a line, which is the straight line from our data.\par
+And then it plots all the data points as we go,\par
+from decreasing order to increasing order in our data\par
+set.\par
+So if they were uniformly distributed, or evenly\par
+distributed, I should say, then they\par
+would be on or close to this red line that we see in the plot.\par
+But we can see that we have a bunch of outliers--\par
+a few on the bottom, not a lot, but a lot on the top.\par
+On the top, there's a whole bunch of outliers.\par
+So that's not so great, but we've got to live with it,\par
+because that's life for us.\par
+So that's the first step.\par
+And when you look at outliers, you\par
+have to decide whether you want to keep them or take them out\par
+or whatever.\par
+Typically, taking out outliers is a process\par
+that is best avoided, because the bottom line is\par
+you want to get as good a result as possible.\par
+And if the outliers are fat enough--\par
+that means there's enough outliers-- then\par
+when you test your model in the real world,\par
+you're going to have a higher probability of getting blown\par
+up, which is not so great.\par
+On the other hand, if you believe\par
+that the cost associated with not correctly dealing\par
+with the outliers is low, then you can throw them out,\par
+because in that case, you will get a far more robust result\par
+in the part that is reasonably following\par
+the red line in our plot here.\par
+In this plot, for a large chunk of the data\par
+that's on or close to the red line,\par
+if you can get a reasonable estimate.\par
+And if the costs associated with missing outliers or not\par
+dealing with outliers properly is not high,\par
+then you can just ignore it and say, let's chuck them about.\par
+For now, let's keep them in, because we\par
+want to see what we get from all of this stuff here.\par
+So next thing you want to look at\par
+is, what are the unique values of the dependent variable,\par
+because we saw that we have 0 to 59 independent variables.\par
+And there's a 60th column, and that's a dependent variable.\par
+And we find that's an array with R and M. R is a Rock,\par
+M is a mine.\par
+So that's the stuff there.\par
+So we know that we have two values for dependent variables.\par
+So we've got, really, looking forward, looking at the stuff,\par
+we can see that we need to guess the categories of the data.\par
+As we get sonar soundings, we want\par
+to guess what category they're going to fall into.\par
+So we have a categorical learning problem over here.\par
+And our categories are two.\par
+It's called a binomial classification problem.\par
+So now, let's look at the correlations\par
+between independent variables.\par
+This is also kind of crucial, because\par
+if your dependent variables are highly correlated, then adding\par
+lots of dependent variables is not\par
+going to help you that much.\par
+So typically, in regression, you want\par
+to find relatively uncorrelated dependent variables-- sorry,\par
+independent variables-- and use them\par
+rather than using a whole bunch of correlated ones.\par
+So looking at this, we can just eyeball this and see, hey, 0--\par
+after 0, obviously, is a 1.\par
+The diagonal elements are all 1's.\par
+And 0 to 1 is 0.73, 0.57, 0.49, 0.34.\par
+And this makes intuitive sense to us,\par
+because we know that the sonar--\par
+we are just increasing the frequency of the sound waves\par
+slowly.\par
+So the idea that 1 and 0 and 1 and 2\par
+will give you pretty similar results, soundings,\par
+is very reasonable.\par
+So the correlation is going to be high,\par
+and then it'll keep decreasing as we go by.\par
+If we look through this stuff, we\par
+find that it keeps decreasing, if you look at row one\par
+in this, this one.\par
+It keeps decreasing, keeps decreasing, decreasing,\par
+and actually becomes negative around here.\par
+So in the middle range, it's negative.\par
+And then as we go up there, it starts increasing again.\par
+So oddly enough, we start getting higher correlations\par
+as our frequencies get really divergent, which\par
+is kind of interesting.\par
+But that's something to note here.\par
+So the various techniques in linear regression\par
+to find the set of uncorrelated variables\par
+that really explain your result more.\par
+So you want to try to look up those things if you want to.\par
+For our exercise, we're going to just use them all.\par
+We have these correlations.\par
+It's kind of hard to read this whole thing.\par
+So what we'll do is we'll draw a little color plot that\par
+shows our correlations.\par
+It's kind of a neat way of looking at correlations.\par
+So we give it our correlation matrix.\par
+That's the data frame, really, here.\par
+The data frame of correlations that we compute.\par
+This one.\par
+And use the matplotlib pylot function, call plot p color.\par
+So what p color is going to do is it plots these in color.\par
+This is not really exciting looking,\par
+but I can explain this to you here.\par
+So what we get along the-- oops, that's\par
+not going to work-- along the diagonal over there,\par
+the yellow one, is very high correlations.\par
+As we go into the lighter yellow and then into green,\par
+the correlations are dropping.\par
+As we go into the blues, the correlations\par
+are becoming negative.\par
+And then we go back into more positive territory, ending up\par
+with positive correlations again.\par
+So if we look, for example, at the zeroth column, the very\par
+first column, the zero, and watch it as it goes along,\par
+we see that 0 is initially-- the correlation between 0 and 1\par
+and maybe 2 is high, and then it starts dropping off.\par
+And then it goes on till we get to about 21 or 22\par
+where it turns blue.\par
+So that becomes negative, and that goes on\par
+till about 30 something.\par
+And then it starts becoming positive again.\par
+And finally, at about 60, it's reasonably positive.\par
+Nowhere near, of course, the high\par
+correlations we saw earlier, but the correlations are there.\par
+So this tells us something about our data,\par
+that the correlations are tightly\par
+correlated across the various variables.\par
+But there's a lot of room to play in the mid area, where\par
+there's negative correlations and low correlations\par
+in the middle area.\par
+So we can use that to advantage.\par
+But for now, we'll just stick with this.\par
+So let's look at the correlations of one with this,\par
+and this will really intuitively show us\par
+what we've been talking about so far.\par
+What this shows us is that the correlation of 0 to 0 is 1,\par
+then 0 to 1 is 0.789, something like that.\par
+And then it drops rapidly.\par
+As you go to 2, 3, 4, 5, it drops rapidly down.\par
+So probably around 5, it's already\par
+dropped all the way to 0.2.\par
+And then it keeps dropping.\par
+Juggles around a little bit.\par
+Then it keeps dropping into negative territory around 25.\par
+And then it rises, rises, rises, ending at about 0.2.\par
+So clearly our situation with this, with 1 anyway--\par
+and for most of them this is the case--\par
+for the two or three columns that are around\par
+the column, plus minus 2 or three columns,\par
+the correlation is very high.\par
+But then it sort of tapers off.\par
+So in general, highly correlated items are not good,\par
+low correlated items are good, and you\par
+want to actually try to pull out the ones that are\par
+highly correlated if you can.\par
+But in our case, we're going to have a hard time doing that,\par
+because of the way the data is.\par
+If we pull out one, we still have\par
+everything is correlated with everything nearby.\par
+So we can't pull all the nearby columns of everything out,\par
+so we might have to do like 1 and 5, and 15 and 20.\par
+And maybe it's not a bad idea to try that.\par
+And of course, if the correlation\par
+is high with the dependent variable, then that's good.\par
+That's something that we want to look at.\par
+So our dependent variable here is categorical.\par
+So we don't really have correlations.\par
+So we'll skip that step.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

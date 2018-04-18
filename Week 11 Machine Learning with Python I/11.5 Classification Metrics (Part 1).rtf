@@ -1,0 +1,260 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Interpreting the categorical prediction results,\par
+we have a categorical prediction problem here, a classification\par
+problem.\par
+There are a bunch of statistics that we can use to figure out\par
+how good our results are.\par
+And a lot depends upon what you want\par
+to do with the resulting model.\par
+So when you think about this, we're\par
+going to try to use our rocks and mines example.\par
+And keep that in mind as we work with it.\par
+But before we do that, I'll digress a little bit,\par
+and we'll take a dummy example and go\par
+through some of these various prediction results\par
+that we can get.\par
+So the topics here are precision, recall,\par
+true positive rate, false positive rate, precision recall\par
+curve, ROC curve, F-curve, and the area under the curves.\par
+So for this, let's move to our slides and take a look at that.\par
+So let's see what the class four classification metrics\par
+we can use in our results here.\par
+So here's an example that I want to work with.\par
+The example has two highly dependent variable\par
+with two categories.\par
+And the category are represented by ones and zeros.\par
+So this, the column one in our example here--\par
+this column-- is the actual data.\par
+So this is actually what we know.\par
+We know that case one had an actual of one,\par
+case two had an actual of one.\par
+And the last case, for example, had an actual of zero.\par
+And then column two is what our model has predicted.\par
+So these are the predictions, right?\par
+So, for example, if you look at the first row,\par
+it tells us that the actual was one and the predictor was one.\par
+So that was an accurate prediction.\par
+The second row tells us the actual\par
+was one-- the second case.\par
+And the prediction was zero.\par
+So this was an incorrect prediction.\par
+So the first thing we do when we are\par
+looking at categorical variables and trying\par
+to see a classification prediction problems\par
+and try to see how well we have done our prediction,\par
+or the machine has learned, is that we create what's\par
+called a confusion matrix.\par
+A confusion matrix, it is sort of a two by two in this case,\par
+but it could be-- depending on the number of categories\par
+you have, it could be larger.\par
+But it will tell you how many cases you got right\par
+and you got wrong along several dimensions.\par
+So the first thing that tells us is that--\par
+so the general idea here is that one is a positive prediction--\par
+so you could say a mine, for example--\par
+and zero is a negative prediction, or a rock.\par
+And the positive and negative that we\par
+use those terms are the connotations\par
+are not strictly accurate.\par
+For example, I might decide that I'm\par
+more interested in finding the rocks and not the mines.\par
+So maybe then a rock would be the positive\par
+and a mine would be the negative.\par
+So that's the idea there.\par
+So but the goal here is say, for our example, a one is positive\par
+and a zero is negative.\par
+So the first thing we do is we look for true positives.\par
+True positives are cases--\par
+like this one here--\par
+where the actual is one and the prediction is one.\par
+So we predicted something as being positive\par
+and it actually is a positive.\par
+So that becomes a true positive.\par
+So we can count the true positives.\par
+And the true positives, we can see,\par
+are this is a true positive, that's a true positive,\par
+that's a true positive, that's a true positive,\par
+and that's a true positive.\par
+So we count them.\par
+We get five of them.\par
+So we get five true positives.\par
+And we mark a five over there.\par
+So that's our first data point in that cell,\par
+in the confusion matrix.\par
+So you can think it's called a confusion matrix.\par
+It tells you how confused your model is really, right?\par
+If it was perfectly unconfused, then all cases\par
+would fall either in this cell or in this cell,\par
+the true negative cell.\par
+True negatives are what?\par
+True negatives are where your model predicts a zero\par
+and it actually is a zero.\par
+So if you look at true negatives, that's\par
+a true negative, that's a true negative,\par
+that's a true negative, and that's a true negative.\par
+So we get four true negatives.\par
+So, essentially, our model has done a good job\par
+on this five and four--\par
+nine cases in our sample data set, on this fake data set.\par
+Then on the other hand, we also have\par
+cases where the actual value is one\par
+and the model predicts a zero.\par
+So the model is predicting a negative.\par
+So it's incorrectly, or falsely, predicting a negative.\par
+So we call that a false negative.\par
+So a false negative is where the actual is a one--\par
+or positive-- and the model is predicting a zero or negative,\par
+or falsely predicting a negative.\par
+So it looks like I made a mistake in this column\par
+over here.\par
+So I'm just changing, for the purpose of this stuff,\par
+I'm changing the last column from a zero,\par
+one to a one, zero.\par
+[INAUDIBLE] change over there so the numbers match here.\par
+So we get a false negative in these three cases--\par
+this, this, and this.\par
+And that's where the actual is one and the prediction is zero.\par
+And then, finally, you want to look for the false positives.\par
+That is where the model predicts that something is a one,\par
+but actually it's a zero.\par
+So it's creating a positive, but in actuality, it's a negative.\par
+So for that, we want a zero in the column one\par
+and a one in column two.\par
+So that becomes here a false positive and false positive.\par
+And we get two of those.\par
+So that becomes our confusion matrix.\par
+So this tells us how confused we are.\par
+Generally, like I said, again, if you\par
+have a really good model, then you\par
+would hopefully get all your cases\par
+falling in these two cells.\par
+So now we can look at the [? race ?] metrics.\par
+So the metrics are-- well, for the first metric is precision.\par
+And precision tells us what proportion of the cases\par
+that the model said were one were actually one.\par
+So this is if the model is saying\par
+one, that means that our predictor-- our machine\par
+learning model-- is saying it's a one.\par
+And it actually turn-- it's a one, then--\par
+and it does it in all the cases in our model, very precise.\par
+In other words, it's recognized every--\par
+every mine that it recognizes as a mine is actually a mine.\par
+That doesn't mean it recognizes all mines, but it finds--\par
+if it finds a mine, it's a mine.\par
+If it's 100%, then that's a mine.\par
+That's what it's trying to tell us.\par
+So generally, for example, let me flip it around a little bit\par
+and say if rocks were a one and mines were a zero,\par
+and then we identified everything the model identified\par
+as a rock was actually a rock, then\par
+we could safely cross the field by stepping only\par
+on things that the model recognizes as a rock.\par
+Because we know it's going to be a rock if it's 100%.\par
+So that's what precision is really telling us.\par
+So that's the first thing.\par
+And that is defined by the total of true positives divided\par
+by the true positives plus false positives.\par
+So true positives plus false positives\par
+are the number of positives identified by the model.\par
+And if the true positives equals the true positives\par
+with false positives-- which means\par
+the false positive is zero-- then we get 100% precision.\par
+In our case, we get five true positives\par
+and two false positives.\par
+So we get 71.4% as our precision,\par
+which is telling us that in our case\par
+71.4% of the time if the model recognizes a mine,\par
+it's actually a mine.\par
+So that's what that tells us.\par
+The second thing is recall.\par
+And what recall says is what proportion of the cases that\par
+are actually one, or positive, we'll\par
+identify it as one by the model.\par
+So what this is saying is that if you look at our data\par
+set and we look at all the actual mines in our data set,\par
+then we want to find [? the fee ?] of--\par
+how many of these were recognized as mines\par
+by the model itself.\par
+For example, or just put it in perspective,\par
+if our model finds all the mines and identifies them\par
+correctly as mines, then that's a great thing.\par
+Because that means that everything\par
+that it hasn't identified as a mine is not a mine.\par
+That's what that means.\par
+So if you look at this here, we get--\par
+for that to be case true, the total number of actual mines\par
+are the true positives plus the false negatives.\par
+Why?\par
+Because if you look at this here, true positives are--\par
+this is true positives here.\par
+And what we're looking at is a total of actual one,\par
+which is the true positives plus the false negatives, 5 plus 3.\par
+So that's the total number of actual mines in our data set.\par
+So that's our denominator, true positives plus false negatives.\par
+And the numerator is a true positive.\par
+That is the proportion of the number of mines\par
+that it currently recognizes as mines or the ones\par
+that it currently recognizes as ones, so if--\par
+which means that if we get 100%, then we\par
+have no false negatives.\par
+And we know that we've identified all the mines\par
+correctly.\par
+Even if we actually have some additional recognize--\par
+we could have some false positives in this,\par
+like some-- we could have, let's say,\par
+there are 100 mines and 100 rocks,\par
+and we identify 120 of the set as mines.\par
+Then we still have 100% recall if all 100 of the mines\par
+are actually in that 126 set.\par
+We have 20 false negatives-- false positives, sorry.\par
+But those 20 false positives we don't care about,\par
+because we know that we got the mines correctly.\par
+That's the idea there.\par
+So in our case, we got a 62.5% recall rate.\par
+And then there's a thing called an F-score,\par
+which balances these two out.\par
+In reality, depending on what you want to do with the model,\par
+you might want to focus more on precision or more on recall.\par
+And there is a trade-off between the two.\par
+So what the F-score does is it balances them out and tries\par
+to find it if you don't care whether you're\par
+more precise or more a bit of recall.\par
+And it does that by using this formula here,\par
+which is a balancing formula.\par
+And we find that our precision recall score is 67%.\par
+The other metrics that we focus on\par
+are called true positive rate, which\par
+is what proportion of the cases that were actually one\par
+were identified as one, which is the same as recall.\par
+So that same 62.5%, it tells us, again, how many mines were--\par
+how many of the actual mines were correctly\par
+identified as mines, basically.\par
+And the false positive rate, which\par
+is different from the others, but says\par
+what proportion of the cases that the models said were one\par
+were actually zero.\par
+That means that what proportion the model\par
+identified as mines when they were actually rocks.\par
+So, again, if you flip it around a little bit\par
+and we say if you're looking for the rocks,\par
+we want to make sure, for example,\par
+that ideally what we would like in our minefield\par
+is to correctly identify the rocks.\par
+If we correctly identify the rocks,\par
+then we are in good shape, because we\par
+want to cross the minefield.\par
+So if you can step only on rocks, we are safe.\par
+So we are not as interested, so to speak, in finding\par
+all the mines correctly.\par
+We are more interested in finding all the rocks\par
+correctly, if that makes sense.\par
+So for us, again, we can trade off\par
+this true positive rate and false positive rate,\par
+and figure out--\par
+and you're going to have to trade them off, and figure out\par
+where they land in the stuff here.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 

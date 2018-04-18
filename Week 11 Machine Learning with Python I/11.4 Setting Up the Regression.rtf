@@ -1,0 +1,175 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 So now, let's see if you can train a classifier\par
+on rocks versus mines.\par
+So to do this, we want to use a package\par
+in Python called sklearn or scikit-learn, S-C-I dash kit\par
+dot learn or something like that.\par
+Anyway, you've got this here.\par
+So we get sklearn.\par
+We import data sets.\par
+And we import the linear model.\par
+We're going to use a linear model here.\par
+I'll do it again, anyway, but these\par
+are the metrics we are going to focus on,\par
+the ROC curve and the AUC.\par
+And I'll explain that as we go along.\par
+And we can work with this here.\par
+So let me import it before I forget.\par
+And we'll also import numpy and random,\par
+because they're useful for building our training\par
+and testing samples.\par
+Then we read the data, of course.\par
+We've got that.\par
+We've already done that before.\par
+And now, the first thing we want to do\par
+is we want to take our dependent variable, which are currently\par
+two characters, R and M, and convert them into 0 and 1.\par
+Because when you do a regression,\par
+our dependent variable has to be numerical.\par
+So we convert that into 0, 1.\par
+And we're going to use our np.where,\par
+if you recall this one.\par
+This is like the Excel F. And what\par
+it says is wherever DF 60, which is\par
+a dependent variable the column, equals R, you pop a 0.\par
+And otherwise, you put a 1.\par
+And we know that from our earlier examination\par
+that the unique values are all only R and M.\par
+So we won't have any NAs or anything else to deal with.\par
+So we take our DF 60, and we convert it from R and M\par
+into 0 and 1.\par
+The next thing we need to do is to divide the data set\par
+into training and test samples.\par
+Now obviously, we can take our entire data set and run\par
+it and get the result, and then hope for the best when\par
+something new comes in.\par
+But that's not going to be really a great idea.\par
+Because what we want to do is, we\par
+want to see whether the results that we get are robust or not.\par
+If they're not robust, then we don't\par
+want to use them when we send our troops\par
+or people into the minefield.\par
+To test whether it's robust or not, typically, what you do is,\par
+you take your data set and divide it\par
+into two parts, a training and a testing sample.\par
+You train the machine on the training sample.\par
+And then test it on the testing sample\par
+to see whether the results you got from the training sample\par
+actually make sense with some data\par
+that you haven't used in training, though,\par
+in trying to parametrize or train your model.\par
+So that's a really important step.\par
+If you don't do that, you get into trouble.\par
+You have to make sure that your results are\par
+going to be reasonably robust.\par
+Otherwise, you're going to be in trouble.\par
+So training and testing and, in fact, often, people\par
+use a third hold out sample, completely unseen sample,\par
+that they then, after they've trained the model in training\par
+and testing and they've tested it out and looked\par
+at different ways of treating it,\par
+then they finally take a third sample that hasn't been used\par
+at all in the process, and see whether the results hold\par
+over there.\par
+For example, you might train your model\par
+using one classification technique,\par
+and then try another classification technique,\par
+and try a third classification technique.\par
+And then you pick the one that looks the best.\par
+But at this point, you've only trained\par
+on one set of data, test another set of data.\par
+And then you use that to pick a model.\par
+So now, you want to see whether that process of training\par
+and testing has biased your results to whatever\par
+data was in the training and test examples.\par
+So now, you pick a third one and test it out there.\par
+And hopefully, it'll work out well.\par
+We will use only a training and testing sample.\par
+And sklearn has a model selection package,\par
+which contains a function called train test split.\par
+What that does is, you give it the fraction of data\par
+that you want in your test sample.\par
+I think test size equals 0.3 over here.\par
+You give it a data frame.\par
+And it's going to split the thing into two data frames,\par
+a training and testing one.\par
+And then we've got that.\par
+So once we have training and testing,\par
+we will pull out from our data frame\par
+the independent variables.\par
+Put row 0 on words to 0 colon 60, which is from the training.\par
+We have two of the things here, training and testing.\par
+We are limited on this.\par
+And we can see this for a second.\par
+Insert set above.\par
+So here, if I look at train, we see it's a data frame.\par
+And it has row 6, row 193, row 179, row 139, row 94 row 24.\par
+So it's randomly picked a certain set of rows\par
+from our data frame.\par
+And that goes in the training.\par
+And the other rows have gone into testing, the ones that\par
+are not in and this thing here.\par
+So that's our train.\par
+And from the training on this data frame, that\par
+is our training data frame, the one that we just saw here,\par
+we pick the columns 0 through 60, that is 0 through 59.\par
+Remember, the last one doesn't get included.\par
+So these are independent columns,\par
+and they go into the X train, which\par
+is the independent variables in our training data set.\par
+And the 60th column, that is actually the 61st,\par
+but that goes into Y train, which\par
+is our dependent variable.\par
+And similarly, we do the same for X test and Y\par
+test for the testing sample.\par
+And notice we use the iloc here because we are\par
+using row indices to pick data.\par
+And we use raw indices use iloc If you use the raw numbers, 0,\par
+1, 2, 3, 4, then you use iloc.\par
+If you use the actual index, we don't have an index here,\par
+but if you had an index and use an actual index,\par
+you could use .loc instead.\par
+So this gives us our thing here.\par
+And we see that Y training contains 6, 193, 179,\par
+which pretty much caused [INAUDIBLE]\par
+6, 193, 179, 139, 94.\par
+So they are aligned.\par
+We want aligned data in our training and testing samples.\par
+So once we have that, then we build our model\par
+and fit the training data.\par
+And this is a standard procedure.\par
+Regardless of which particular model\par
+you are using for machine learning from the sklearn\par
+package, you're going to use the same two steps.\par
+You're going to first start by building a model itself.\par
+So you get this, and we're going to use linear regression over\par
+here.\par
+I should point out that for our data,\par
+logistic regression is another option, which\par
+is probably slightly better.\par
+But because I want to explain the various methods\par
+for evaluating results, we'll use linear regression here.\par
+To use logistic regression, you just replace linear regression\par
+by logistic regression.\par
+And then most of what we're going to do\par
+is probably going to work equally well with that.\par
+But anyway, so we've moved from the linear models in sklearn.\par
+We're going to be picking the linear regression package.\par
+And we created this model here.\par
+And then what you want to do is, we\par
+want to fit the model to our training data.\par
+And to fit the model, you tell it\par
+what your training sample independent variable values are\par
+and what the corresponding dependent variables are.\par
+And that will fit the model for us.\par
+So this is pretty much what we will\par
+do regardless of which particular model\par
+we happen to be using.\par
+Once we've done that, we fit in our model.\par
+And now, we can start thinking about how\par
+to interpret the results.\par
+End of transcript. Skip to the start.\par
+  Previous\par
+}
+ 
